@@ -25,7 +25,7 @@ class Settings(BaseSettings):
 
     # Cau hinh ket noi ChromaDB (Vector Database)
     chroma_persist_directory: str = "./chroma_data"
-    chroma_collection_name: str = "electronics_knowledge"
+    chroma_collection_name: str = "electronics_troubleshooting"
 
     # Cau hinh mo hinh embedding
     embedding_model_name: str = "BAAI/bge-m3"

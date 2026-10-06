@@ -17,7 +17,7 @@ def test_default_settings():
     assert settings.debug is True
     assert settings.neo4j_uri == "bolt://localhost:7687"
     assert settings.neo4j_user == "neo4j"
-    assert settings.chroma_collection_name == "electronics_knowledge"
+    assert settings.chroma_collection_name == "electronics_troubleshooting"
     assert settings.embedding_model_name == "BAAI/bge-m3"
     assert settings.llm_model_name == "qwen2.5:7b"
 

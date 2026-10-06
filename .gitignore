@@ -12,6 +12,7 @@ env/
 .pytest_cache/
 
 chroma/
+chroma_data/
 *.db
 
 node_modules/
