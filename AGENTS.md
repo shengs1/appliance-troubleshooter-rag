@@ -1,364 +1,183 @@
-\# RAG Electronics Assistant - Engineering Rules
+# RAG Chatbot - Project Rules
 
+## Project type
 
+This is a beginner academic project.
 
-\## Project role
+The developer is building their first RAG chatbot and must be able to understand and explain the code during an oral examination.
 
+Therefore, prioritize:
 
+1. Simplicity
+2. Readability
+3. Explainability
+4. Correctness
+5. Testability
 
-This repository implements a Vietnamese electronics troubleshooting chatbot.
+Do not over-engineer the project.
 
-
-
-The system uses Retrieval-Augmented Generation (RAG) to retrieve relevant troubleshooting knowledge and generate grounded answers.
-
-
-
-\## Technology stack
-
-
-
-Primary technologies:
-
-
-
-\- Python
-
-\- LangChain
-
-\- ChromaDB
-
-\- Neo4j
-
-\- FastAPI
-
-\- pytest
-
-\- local/self-hosted LLM
-
-\- Git
-
-
-
-\## Architecture principles
-
-
-
-\### ChromaDB
-
-
-
-Use ChromaDB for:
-
-
-
-\- semantic/vector retrieval
-
-\- similarity search
-
-\- embedding-based document retrieval
-
-
-
-Do not use ChromaDB as the source of truth for graph relationships.
-
-
-
-\### Neo4j
-
-
-
-Use Neo4j for:
-
-
-
-\- entities
-
-\- relationships
-
-\- device/component relationships
-
-\- error-code relationships
-
-\- symptom relationships
-
-\- cause relationships
-
-\- repair/action relationships
-
-\- graph traversal
-
-
-
-Do not duplicate graph logic unnecessarily in ChromaDB.
-
-
-
-\### LangChain
-
-
-
-LangChain is responsible for orchestration between:
-
-
-
-\- document retrieval
-
-\- graph retrieval
-
-\- prompt construction
-
-\- LLM generation
-
-
-
-Keep retrieval and generation components modular and testable.
-
-
-
-\### FastAPI
-
-
-
-FastAPI is the application/API boundary.
-
-
-
-Do not place large RAG implementation details directly inside route handlers.
-
-
-
-Use services/modules for business logic.
-
-
-
-\## Coding rules
-
-
-
-Before changing code:
-
-
-
-1\. Inspect the relevant files.
-
-2\. Understand the existing architecture.
-
-3\. Search for existing implementations before creating new ones.
-
-4\. Identify dependencies and compatibility constraints.
-
-5\. Prefer the smallest safe change.
-
-
-
-Do not:
-
-
-
-\- rewrite unrelated modules
-
-\- replace working architecture without a reason
-
-\- delete existing functionality without explicit justification
-
-\- silently change public API contracts
-
-\- introduce unnecessary dependencies
-
-\- hard-code credentials
-
-\- expose secrets in logs
-
-
-
-\## Environment and secrets
-
-
-
-Never commit:
-
-
-
-\- .env
-
-\- API keys
-
-\- passwords
-
-\- OAuth credentials
-
-\- database credentials
-
-\- tokens
-
-\- private keys
-
-
-
-Environment variables must be used for secrets.
-
-
-
-\## Database safety
-
-
-
-Never:
-
-
-
-\- drop Neo4j databases without explicit instruction
-
-\- delete Chroma collections without explicit instruction
-
-\- perform destructive migrations silently
-
-\- modify production-like data during tests
-
-
-
-Before schema changes:
-
-
-
-1\. Inspect current schema.
-
-2\. Identify dependencies.
-
-3\. Plan migration.
-
-4\. Update tests.
-
-
-
-\## Testing
-
-
-
-After meaningful code changes:
-
-
-
-1\. Run targeted tests.
-
-2\. Run broader tests when appropriate.
-
-3\. Inspect failures.
-
-4\. Fix regressions before declaring completion.
-
-
-
-Do not claim tests passed without actually running them.
-
-
-
-\## Git
-
-
-
-Before a large change:
-
-
-
-\- inspect git status
-
-\- inspect relevant diff
-
-\- create a logical checkpoint when appropriate
-
-
-
-After implementation:
-
-
-
-\- inspect git diff
-
-\- verify no unrelated files changed
-
-\- summarize modified files
-
-\- summarize tests
-
-
-
-Never reset or discard user changes unless explicitly instructed.
-
-
-
-\## RAG correctness
-
-
-
-Generated answers should be grounded in retrieved evidence.
-
-
-
-Avoid hallucinating:
-
-
-
-\- device specifications
-
-\- error-code meanings
-
-\- repair procedures
-
-\- component relationships
-
-
-
-When retrieval confidence is insufficient, the system should prefer a transparent uncertainty response over inventing technical details.
-
-
-
-\## Performance
-
-
-
-Avoid:
-
-
-
-\- loading the entire knowledge base into memory
-
-\- unnecessary repeated embedding
-
-\- unnecessary Neo4j round trips
-
-\- redundant vector searches
-
-\- rebuilding indexes unnecessarily
-
-
-
-Prefer batching, caching, and targeted retrieval where appropriate.
-
-
-
-\## Maintainability
-
-
+## Coding style
 
 Prefer:
 
+- simple Python
+- small functions
+- descriptive names
+- clear control flow
+- straightforward modules
+- comments for important logic
+- easy-to-follow code
 
+Avoid unless clearly necessary:
 
-\- typed Python
+- complex design patterns
+- factories
+- unnecessary abstractions
+- complicated dependency injection
+- repository patterns
+- microservices
+- unnecessary databases
+- unnecessary dependencies
+- premature optimization
 
-\- clear module boundaries
+If a complex technique is necessary, explain:
+- why it is needed
+- what problem it solves
+- how it works
 
-\- dependency injection where useful
+## Main technology
 
-\- configuration through environment/settings
+The project uses:
 
-\- unit tests for core retrieval logic
+- Python
+- LangChain
+- ChromaDB
+- Neo4j
+- FastAPI
+- local LLM
+- pytest
 
-\- integration tests for database-backed flows
+Do not add additional technologies without a clear reason.
 
-\- descriptive names
+## ChromaDB
 
-\- small functions with single responsibilities
+Use ChromaDB for:
 
+- document embeddings
+- semantic similarity search
+- retrieving relevant text chunks
+
+Keep ChromaDB usage simple and easy to understand.
+
+## Neo4j
+
+Use Neo4j for structured relationships such as:
+
+Device
+→ Model
+→ ErrorCode
+→ Symptom
+→ Cause
+→ RepairAction
+
+Use simple, parameterized Cypher queries.
+
+Do not create unnecessarily complicated graph structures.
+
+## LangChain
+
+Use LangChain mainly to connect:
+
+retrieval
+→ context
+→ prompt
+→ LLM
+
+Do not introduce complicated agent systems unless required.
+
+## FastAPI
+
+FastAPI is the API layer.
+
+Keep routes simple.
+
+Prefer:
+
+route
+→ function/service
+→ result
+
+Do not put the entire RAG implementation inside route handlers.
+
+## RAG principles
+
+The system should retrieve information before generating an answer.
+
+Use:
+
+ChromaDB
+→ semantic retrieval
+
+Neo4j
+→ relationship/structured retrieval
+
+Then combine the useful results before sending them to the LLM.
+
+The model must not invent error codes, causes, or repair procedures when the retrieved evidence does not support them.
+
+## Data safety
+
+Never expose or commit:
+
+- passwords
+- API keys
+- tokens
+- private keys
+- database credentials
+- .env secrets
+
+Never delete real knowledge data or databases without explicit instruction.
+
+## Git
+
+Before large changes:
+
+- inspect git status
+- understand existing changes
+
+After changes:
+
+- inspect git diff
+- run relevant tests
+- check that unrelated files were not modified
+
+Never reset or discard user changes without explicit instruction.
+
+## Testing
+
+After meaningful changes:
+
+- run relevant tests
+- inspect failures
+- fix problems before declaring completion
+
+Do not claim that tests passed unless they were actually run.
+
+## Development workflow
+
+For a task:
+
+1. Inspect
+2. Explain the plan
+3. Implement
+4. Test
+5. Review the changes
+6. Report the result
+
+For large architectural changes, do not immediately write code.
+
+## Student-friendly requirement
+
+Every implementation should be understandable by a beginner who knows basic Python.
+
+Prefer code that can be explained clearly during an oral examination over code that is unnecessarily sophisticated.

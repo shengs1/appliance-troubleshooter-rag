@@ -1,419 +1,204 @@
 ﻿---
-
 name: rag-engineering
-
-description: Designs, implements, debugs, tests, and reviews the project's RAG pipeline using LangChain, ChromaDB, Neo4j, FastAPI, and local LLMs. Use for retrieval, ingestion, graph, vector database, RAG, API, evaluation, and architecture tasks.
-
+description: Build and maintain a simple, understandable Vietnamese electronics troubleshooting RAG chatbot using Python, LangChain, ChromaDB, Neo4j, FastAPI, and a local LLM.
 ---
 
+# RAG Engineering Skill
 
+## Purpose
 
-\# RAG Engineering Skill
+Use this skill for:
 
+- RAG development
+- document ingestion
+- ChromaDB
+- Neo4j
+- LangChain
+- retrieval
+- local LLM
+- FastAPI
+- testing
+- debugging
 
+This is a beginner academic project.
 
-\## Purpose
+The code must remain simple and easy to explain.
 
+## Required workflow
 
+### Phase 1 - Understand
 
-Use this skill whenever the task involves the RAG architecture, retrieval system, knowledge ingestion, ChromaDB, Neo4j, LangChain, FastAPI integration, evaluation, or debugging.
+Before changing code:
 
+1. Inspect the relevant files.
+2. Understand the current implementation.
+3. Search for existing code before creating new code.
+4. Identify dependencies.
+5. Identify possible side effects.
 
+Do not assume a component exists without checking it.
 
-\## Required workflow
+### Phase 2 - Plan
 
+Create a simple implementation plan.
 
+The plan should state:
 
-For any non-trivial task:
+- what will change
+- what files are involved
+- why the change is needed
+- how it will be tested
 
+Do not create unnecessary architecture.
 
+### Phase 3 - Implement
 
-\### Phase 1 - Understand
-
-
-
-Inspect:
-
-
-
-\- repository structure
-
-\- relevant modules
-
-\- configuration
-
-\- dependencies
-
-\- tests
-
-\- database integration
-
-\- current API boundaries
-
-
-
-Search the repository before introducing new code.
-
-
-
-\### Phase 2 - Plan
-
-
-
-Create a concise implementation plan.
-
-
-
-The plan must identify:
-
-
-
-\- files to modify
-
-\- files to create
-
-\- dependencies
-
-\- database/schema impact
-
-\- API impact
-
-\- testing strategy
-
-\- risks
-
-
-
-For architecture-changing tasks, do not immediately modify files.
-
-
-
-\### Phase 3 - Implement
-
-
-
-Implement incrementally.
-
-
-
-Rules:
-
-
-
-\- preserve working behavior
-
-\- avoid unrelated refactors
-
-\- reuse existing abstractions
-
-\- keep database access isolated
-
-\- keep retrieval logic testable
-
-\- keep FastAPI routes thin
-
-
-
-\### Phase 4 - Verify
-
-
-
-Run:
-
-
-
-\- targeted tests
-
-\- relevant integration tests
-
-\- lint/type checks if configured
-
-\- application startup/import checks where useful
-
-
-
-Inspect:
-
-
-
-\- git diff
-
-\- changed files
-
-\- test output
-
-
-
-\### Phase 5 - Review
-
-
-
-Before finishing, answer:
-
-
-
-1\. Did the implementation satisfy the requested behavior?
-
-2\. Did it break an existing interface?
-
-3\. Are database changes safe?
-
-4\. Are secrets protected?
-
-5\. Are error cases handled?
-
-6\. Are tests sufficient?
-
-7\. Did unrelated files change?
-
-
-
-\## Hybrid retrieval strategy
-
-
-
-When both ChromaDB and Neo4j are involved:
-
-
-
-1\. Determine what information is semantic.
-
-2\. Determine what information is relational.
-
-3\. Retrieve semantic candidates with ChromaDB.
-
-4\. Retrieve graph relationships with Neo4j.
-
-5\. Merge/rerank results using explicit logic.
-
-6\. Pass only useful grounded context to the generation model.
-
-
-
-Do not blindly duplicate every document in both stores.
-
-
-
-\## Ingestion pipeline
-
-
-
-A typical ingestion pipeline should be considered in this order:
-
-
-
-source
-
-â†’ cleaning
-
-â†’ normalization
-
-â†’ metadata extraction
-
-â†’ chunking
-
-â†’ embeddings
-
-â†’ ChromaDB
-
-â†’ entity/relationship extraction
-
-â†’ Neo4j
-
-
-
-Do not change the pipeline order without understanding downstream dependencies.
-
-
-
-\## Retrieval debugging
-
-
-
-When retrieval quality is poor, inspect separately:
-
-
-
-1\. source data
-
-2\. cleaning
-
-3\. chunking
-
-4\. metadata
-
-5\. embeddings
-
-6\. ChromaDB retrieval
-
-7\. Neo4j retrieval
-
-8\. merging/reranking
-
-9\. prompt construction
-
-10\. final generation
-
-
-
-Do not immediately blame the LLM.
-
-
-
-\## Neo4j rules
-
-
-
-Before modifying graph logic:
-
-
-
-\- inspect current labels
-
-\- inspect relationship types
-
-\- inspect property names
-
-\- inspect indexes/constraints
-
-\- inspect existing Cypher queries
-
-
-
-Prefer parameterized Cypher.
-
-
-
-Avoid destructive queries.
-
-
-
-\## ChromaDB rules
-
-
-
-Before modifying vector retrieval:
-
-
-
-\- inspect collection configuration
-
-\- inspect embedding model
-
-\- inspect distance/score behavior
-
-\- inspect metadata
-
-\- inspect top-k behavior
-
-
-
-Ensure embedding model compatibility when changing indexed data.
-
-
-
-\## FastAPI rules
-
-
-
-Keep routes thin.
-
-
+Write straightforward code.
 
 Prefer:
 
+- simple functions
+- simple classes when useful
+- explicit logic
+- readable variable names
+- minimal dependencies
 
+Avoid unnecessary:
 
-route
+- factories
+- abstract base classes
+- complex dependency injection
+- repository layers
+- complicated design patterns
+- excessive abstraction
 
-â†’ service
+### Phase 4 - Verify
 
-â†’ retrieval
+After implementation:
 
-â†’ generation
+1. Run relevant tests.
+2. Verify imports.
+3. Check application behavior.
+4. Inspect git diff.
+5. Check that unrelated files were not changed.
 
+### Phase 5 - Review
 
+Before declaring completion:
 
-rather than placing complex RAG logic inside route handlers.
+- Does the code solve the requested problem?
+- Is the code easy to understand?
+- Is error handling reasonable?
+- Are secrets protected?
+- Are tests present where appropriate?
+- Were unrelated changes avoided?
 
+## ChromaDB workflow
 
+Keep the basic process:
 
-Validate inputs.
+documents
+→ cleaning
+→ chunking
+→ embeddings
+→ ChromaDB
+→ similarity search
 
+Do not add complicated vector infrastructure unless necessary.
 
+## Neo4j workflow
 
-Return structured errors.
+Keep the graph understandable.
 
+Example:
 
+Device
+→ HAS_MODEL
+→ Model
+→ HAS_ERROR
+→ ErrorCode
+→ HAS_SYMPTOM
+→ Symptom
+→ CAUSED_BY
+→ Cause
+→ FIXED_BY
+→ RepairAction
 
-Avoid leaking internal stack traces or secrets.
+Use parameterized Cypher.
 
+Avoid destructive queries.
 
+## Hybrid retrieval
 
-\## Testing strategy
+Start simple:
 
+User question
+→ ChromaDB search
+→ Neo4j search
+→ combine useful results
+→ create context
+→ send to LLM
 
+Do not add RRF, reranking, score normalization, or other advanced ranking methods unless there is a demonstrated need.
 
-Core tests should cover:
+If a more advanced method is introduced, explain why.
 
+## Local LLM
 
+Use one clear local LLM interface.
 
-\- chunking
+Do not introduce multiple model providers or complicated fallback systems unless required by the project.
 
-\- metadata extraction
+## FastAPI
 
-\- embedding/indexing integration
+Keep API routes thin.
 
-\- vector retrieval
+Prefer:
 
-\- graph retrieval
+request
+→ simple function/service
+→ RAG
+→ response
 
-\- hybrid retrieval
+Use Pydantic models for request/response validation.
 
-\- prompt/context construction
+## Data handling
 
-\- API behavior
+Do not invent real electronics troubleshooting data.
 
-\- failure cases
+Sample data may only be used when clearly labeled as sample/test data.
 
+Real knowledge should come from the project's actual dataset.
 
+## Testing
 
-When database integration is required, explicitly distinguish unit tests from integration tests.
+Test important logic separately:
 
+- cleaning
+- chunking
+- ChromaDB retrieval
+- Neo4j retrieval
+- hybrid retrieval
+- RAG prompt construction
+- API behavior
 
+Keep tests simple and understandable.
 
-\## Completion criteria
+## Student project rule
 
+The developer must be able to explain every important part of the implementation during an oral examination.
 
+Therefore:
 
-Do not declare a task complete until:
+- readability is more important than optimization
+- simplicity is more important than abstraction
+- explicit code is preferred over clever code
+- avoid unnecessary libraries
+- avoid unnecessary architecture
 
+When adding a complex component, explain:
 
-
-\- implementation exists
-
-\- relevant tests run
-
-\- failures are understood
-
-\- git diff was inspected
-
-\- no unrelated changes were introduced
-
-
-
-Final response should summarize:
-
-
-
-\- what changed
-
-\- why
-
-\- tests run
-
-\- remaining limitations
-
-
-
-
+1. What it does
+2. Why it is needed
+3. How it works
+4. Why the simpler approach is not enough
