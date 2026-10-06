@@ -1,0 +1,23 @@
+[project]
+name = "rag-chatbot"
+version = "0.1.0"
+description = "Vietnamese electronics troubleshooting RAG chatbot"
+readme = "AGENTS.md"
+requires-python = ">=3.12"
+dependencies = [
+    "pydantic>=2.6.0",
+    "pydantic-settings>=2.2.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
