@@ -193,6 +193,7 @@ def search_graph(
             "error_code": r.get("error_code", ""),
             "source_url": r.get("source_url", ""),
             "retrieval_source": "neo4j",
+            "distance": None,
         })
     return results
 
@@ -251,6 +252,7 @@ def search_hybrid(
             "error_code": str(meta.get("error_code", "")),
             "source_url": str(meta.get("source_url", "")),
             "retrieval_source": "chroma",
+            "distance": r.get("distance"),
         })
 
     # 2. Tim kiem cau truc quan he tu Neo4j

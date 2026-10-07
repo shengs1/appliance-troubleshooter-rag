@@ -12,7 +12,7 @@ def test_default_settings():
     """Kiem tra cac gia tri mac dinh cua Settings."""
     settings = Settings()
 
-    assert settings.app_name == "Electronics-Rag-Chatbot"
+    assert settings.app_name == "appliance-troubleshooter-rag"
     assert settings.app_env == "development"
     assert settings.debug is True
     assert settings.neo4j_uri == "bolt://localhost:7687"
@@ -20,6 +20,7 @@ def test_default_settings():
     assert settings.chroma_collection_name == "electronics_troubleshooting"
     assert settings.embedding_model_name == "BAAI/bge-m3"
     assert settings.llm_model_name == "qwen2.5:7b"
+    assert settings.scope_distance_threshold == 0.40
 
 
 def test_custom_environment_settings(monkeypatch):

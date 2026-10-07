@@ -12,8 +12,10 @@ from __future__ import annotations
 from typing import Any
 from fastapi import FastAPI, HTTPException, status
 from pydantic import BaseModel, Field
+import gradio as gr
 
 from rag_chatbot.rag import generate_rag_answer
+from rag_chatbot.ui import CUSTOM_CSS, build_demo
 
 
 # 1. Khoi tao ung dung FastAPI
@@ -72,12 +74,20 @@ def chat(request: ChatRequest) -> ChatResponse:
         # Goi quy trinh RAG da hoan thien o Phase 6
         rag_result = generate_rag_answer(clean_question)
 
-        # Trich xuat danh sach nguon tham khao doc nhat tu cac tai lieu truy van
+        # Trich xuat nguon tham khao tu tai lieu phu hop nhat (top 1) neu khong bi tu choi
         sources: list[str] = []
-        for doc in rag_result.get("retrieved_documents", []):
-            url = doc.get("source_url")
-            if url and url not in sources:
-                sources.append(url)
+        retrieved_docs = rag_result.get("retrieved_documents", [])
+        if rag_result.get("llm_status") != "refused_scope" and retrieved_docs:
+            top_url = retrieved_docs[0].get("source_url")
+            if top_url:
+                sources.append(top_url)
+            else:
+                top_brand = retrieved_docs[0].get("brand")
+                for doc in retrieved_docs:
+                    url = doc.get("source_url")
+                    if url and (not top_brand or doc.get("brand") == top_brand):
+                        sources.append(url)
+                        break
 
         return ChatResponse(
             question=rag_result["question"],
@@ -93,3 +103,13 @@ def chat(request: ChatRequest) -> ChatResponse:
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Lỗi hệ thống khi xử lý câu hỏi: {exc}",
         )
+
+
+# 4. Tich hop giao dien web Gradio vao FastAPI tai endpoint /chat-ui (Phase 9)
+demo = build_demo()
+gr.mount_gradio_app(
+    app,
+    demo,
+    path="/chat-ui",
+    css=CUSTOM_CSS,
+)

@@ -28,7 +28,7 @@ def test_build_context_from_retrieved_results():
         {
             "question_id": "Q0358",
             "question": "Máy điều hòa Samsung lỗi CF",
-            "answer": "Nguyên nhân sự cố: Mã CF là nhắc vệ sinh bộ lọc. Cách khắc phục: Hãy vệ sinh hoặc thay bộ lọc rồi đặt lại nhắc lọc.",
+            "answer": "Nguyên nhân sự cố: Mã CF là nhắc vệ sinh bộ lọc. Cách khắc phục: Hãy vệ sinh hoặc thay bộ lọc.",
             "brand": "Samsung",
             "device": "Điều hòa",
             "error_code": "CF",
@@ -72,7 +72,7 @@ def test_prompt_instructs_no_unsupported_additions_for_q0358():
         "- Hãng: Samsung\n"
         "- Thiết bị: Điều hòa\n"
         "- Mã lỗi: CF\n"
-        "- Hướng dẫn xử lý: Nguyên nhân sự cố: Mã CF là nhắc vệ sinh bộ lọc. Cách khắc phục: Hãy vệ sinh hoặc thay bộ lọc rồi đặt lại nhắc lọc."
+        "- Hướng dẫn xử lý: Nguyên nhân sự cố: Mã CF là nhắc vệ sinh bộ lọc. Cách khắc phục: Hãy vệ sinh hoặc thay bộ lọc."
     )
     prompt = create_prompt(question, context)
 

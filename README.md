@@ -1,4 +1,4 @@
-# Electronics-Rag-Chatbot
+# appliance-troubleshooter-rag
 
 Chatbot hỗ trợ tra cứu và hướng dẫn xử lý sự cố thiết bị điện tử gia dụng (điều hòa, tủ lạnh, máy giặt, máy sấy, lò vi sóng, máy lọc không khí) sử dụng kỹ thuật RAG (Retrieval-Augmented Generation).
 
@@ -221,8 +221,8 @@ curl -X POST "http://localhost:8000/chat" \
 
 1. **Clone repository**:
    ```powershell
-   git clone https://github.com/<USERNAME>/Electronics-Rag-Chatbot.git
-   cd Electronics-Rag-Chatbot
+   git clone https://github.com/<USERNAME>/appliance-troubleshooter-rag.git
+   cd appliance-troubleshooter-rag
    ```
 
 2. **Cài đặt thư viện với `uv`**:
@@ -237,7 +237,7 @@ curl -X POST "http://localhost:8000/chat" \
    ```
    Mở file `.env` và điền mật khẩu Neo4j thực tế của bạn:
    ```ini
-   APP_NAME=Electronics-Rag-Chatbot
+   APP_NAME=appliance-troubleshooter-rag
    APP_ENV=development
    DEBUG=True
 
@@ -286,7 +286,7 @@ curl -X POST "http://localhost:8000/chat" \
 ## Cấu trúc thư mục
 
 ```text
-Electronics-Rag-Chatbot/
+appliance-troubleshooter-rag/
 ├── chroma_data/                         # Thư mục lưu trữ dữ liệu ChromaDB
 ├── data/
 │   ├── evaluation/

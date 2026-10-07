@@ -14,6 +14,7 @@ import requests
 
 from rag_chatbot.config import get_settings
 from rag_chatbot.retrieval import search_hybrid
+from rag_chatbot.scope import REFUSAL_MESSAGE, should_refuse
 
 
 def build_context(retrieved_docs: list[dict[str, Any]]) -> str:
@@ -138,13 +139,24 @@ def generate_rag_answer(
     # 1. Truy van ket hop Hybrid Retrieval
     retrieved_docs = search_hybrid(question, k=k)
 
-    # 2. Xay dung ngu canh tu tai lieu
+    # 2. Kiem tra pham vi cau hoi (Scope Check - Phase 10A)
+    if should_refuse(retrieved_docs, question=question):
+        return {
+            "question": question,
+            "answer": REFUSAL_MESSAGE,
+            "context": "",
+            "prompt": "",
+            "retrieved_documents": retrieved_docs,
+            "llm_status": "refused_scope",
+        }
+
+    # 3. Xay dung ngu canh tu tai lieu
     context = build_context(retrieved_docs)
 
-    # 3. Tao prompt chong ao giac
+    # 4. Tao prompt chong ao giac
     prompt = create_prompt(question, context)
 
-    # 4. Goi Local LLM
+    # 5. Goi Local LLM
     try:
         answer = call_local_llm(prompt, model=model, base_url=base_url)
         llm_status = "success"
