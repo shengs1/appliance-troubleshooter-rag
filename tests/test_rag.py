@@ -60,8 +60,27 @@ def test_create_prompt_contains_question_and_context():
     assert context in prompt
     # Kiem tra cac chi dan chong ao giac (Grounding instructions)
     assert "NGỮ CẢNH KỸ THUẬT" in prompt
-    assert "Tuyệt đối KHÔNG tự sáng tác" in prompt
+    assert "KHÔNG tự suy diễn" in prompt
     assert "cơ sở tri thức chưa có đủ thông tin" in prompt
+
+
+def test_prompt_instructs_no_unsupported_additions_for_q0358():
+    """Kiem tra prompt chua cac quy dinh nghiem ngat chong them that thong tin khong co trong ngu canh (vi du Q0358)."""
+    question = "Máy điều hòa Samsung lỗi CF là gì?"
+    context = (
+        "--- TÀI LIỆU THAM KHẢO 1 ---\n"
+        "- Hãng: Samsung\n"
+        "- Thiết bị: Điều hòa\n"
+        "- Mã lỗi: CF\n"
+        "- Hướng dẫn xử lý: Nguyên nhân sự cố: Mã CF là nhắc vệ sinh bộ lọc. Cách khắc phục: Hãy vệ sinh hoặc thay bộ lọc rồi đặt lại nhắc lọc."
+    )
+    prompt = create_prompt(question, context)
+
+    # Prompt phai cam doan suy dien tu kien thuc pho thong, loi khuyen chung chung hoac khuyen cao dich vu
+    assert "KHÔNG tự suy diễn" in prompt
+    assert "không thêm lời khuyên chung chung" in prompt
+    assert "Trả lời ngắn gọn, trực tiếp" in prompt
+
 
 
 def test_rag_pipeline_with_q0358_example():
