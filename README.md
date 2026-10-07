@@ -287,10 +287,6 @@ curl -X POST "http://localhost:8000/chat" \
 
 ```text
 Electronics-Rag-Chatbot/
-├── .agents/
-│   └── skills/
-│       └── rag-engineering/
-│           └── SKILL.md                 # Chỉ dẫn quy trình kỹ thuật
 ├── chroma_data/                         # Thư mục lưu trữ dữ liệu ChromaDB
 ├── data/
 │   ├── evaluation/
