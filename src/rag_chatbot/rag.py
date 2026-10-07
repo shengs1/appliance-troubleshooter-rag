@@ -9,12 +9,37 @@ Nhiem vu trong Phase 6:
 """
 
 from __future__ import annotations
+import re
 from typing import Any
 import requests
 
 from rag_chatbot.config import get_settings
 from rag_chatbot.retrieval import search_hybrid
 from rag_chatbot.scope import REFUSAL_MESSAGE, should_refuse
+
+
+def strip_sources_from_answer(text: str) -> str:
+    """Loai bo bat ky dong chua URL, nguon tham khao hoac nguon doi chieu ma LLM co the tu y sinh ra."""
+    if not text:
+        return ""
+
+    cleaned_lines: list[str] = []
+    for line in text.splitlines():
+        line_stripped = line.strip()
+        lower_line = line_stripped.lower()
+        if (
+            lower_line.startswith("nguồn đối chiếu:")
+            or lower_line.startswith("nguồn tham khảo:")
+            or lower_line.startswith("**nguồn tham khảo:**")
+            or lower_line.startswith("**nguồn đối chiếu:**")
+            or lower_line.startswith("- nguồn đối chiếu:")
+            or lower_line.startswith("- nguồn tham khảo:")
+            or re.match(r"^(?:-\s*)?<?https?://\S+>?$", line_stripped)
+        ):
+            continue
+        cleaned_lines.append(line)
+
+    return "\n".join(cleaned_lines).strip()
 
 
 def build_context(retrieved_docs: list[dict[str, Any]]) -> str:
@@ -56,7 +81,7 @@ def create_prompt(question: str, context: str) -> str:
     2. Khong tu bia dat ma loi, nguyen nhan hoac cach sua khi tai lieu khong co.
     3. Neu khong du thong tin, noi ro la du lieu hien tai chua du.
     4. Giu nguyen ma loi, ten hang, loai thiet bi.
-    5. Dan nguon link tai lieu o cuoi cau tra loi khi co san.
+    5. KHONG tu xuat URL hay nguon tham khao (he thong se tu dong hien thi rieng).
     """
     prompt = f"""Bạn là trợ lý AI chuyên nghiệp hỗ trợ chẩn đoán và hướng dẫn khắc phục sự cố thiết bị điện tử gia dụng.
 Nhiệm vụ của bạn là giải đáp câu hỏi của người dùng dựa DUY NHẤT vào phần NGỮ CẢNH KỸ THUẬT dưới đây.
@@ -66,7 +91,7 @@ CÁC NGUYÊN TẮC BẮT BUỘC:
 2. Trả lời ngắn gọn, trực tiếp và giữ nguyên đúng ý nghĩa của dữ liệu được cung cấp.
 3. Nếu ngữ cảnh không có thông tin hoặc không đủ dữ liệu để giải đáp, hãy thông báo rõ ràng rằng cơ sở tri thức chưa có đủ thông tin xử lý cho trường hợp này.
 4. Luôn giữ chính xác tên hãng, loại thiết bị và mã lỗi kỹ thuật.
-5. Nếu ngữ cảnh có đường link nguồn, hãy ghi rõ nguồn tham khảo ở cuối câu trả lời để người dùng tiện kiểm chứng.
+5. Tuyệt đối KHÔNG tự chèn đường dẫn URL, không ghi "Nguồn tham khảo", không ghi "Nguồn đối chiếu", không tạo danh sách link hay markdown link trong câu trả lời (phần nguồn sẽ do hệ thống hiển thị riêng). Chỉ trả về nội dung giải đáp kỹ thuật.
 
 NGỮ CẢNH KỸ THUẬT:
 {context}
@@ -158,7 +183,8 @@ def generate_rag_answer(
 
     # 5. Goi Local LLM
     try:
-        answer = call_local_llm(prompt, model=model, base_url=base_url)
+        raw_answer = call_local_llm(prompt, model=model, base_url=base_url)
+        answer = strip_sources_from_answer(raw_answer)
         llm_status = "success"
     except (ConnectionError, RuntimeError) as err:
         answer = f"[Thông báo dịch vụ Local LLM]: {err}"

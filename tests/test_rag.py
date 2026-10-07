@@ -135,3 +135,22 @@ def test_generate_rag_answer_with_mocked_llm():
         assert res["llm_status"] == "success"
         assert "vệ sinh hoặc thay thế bộ lọc" in res["answer"]
         assert "Q0358" in [d["question_id"] for d in res["retrieved_documents"]]
+
+
+def test_strip_sources_from_answer():
+    """Kiem tra ham strip_sources_from_answer loai bo cac dong URL va tieu de nguon do LLM tu sinh."""
+    from rag_chatbot.rag import strip_sources_from_answer
+
+    raw_text = (
+        "Mã lỗi CF của máy điều hòa Samsung là nhắc vệ sinh bộ lọc. Cách khắc phục: Hãy vệ sinh hoặc thay bộ lọc.\n\n"
+        "Nguồn đối chiếu: <https://www.samsung.com/vn/support/doc1>\n"
+        "Nguồn tham khảo: https://www.samsung.com/vn/support/doc2\n"
+        "- https://www.samsung.com/vn/support/doc3"
+    )
+
+    cleaned = strip_sources_from_answer(raw_text)
+    assert "https://www.samsung.com" not in cleaned
+    assert "Nguồn đối chiếu:" not in cleaned
+    assert "Nguồn tham khảo:" not in cleaned
+    assert cleaned == "Mã lỗi CF của máy điều hòa Samsung là nhắc vệ sinh bộ lọc. Cách khắc phục: Hãy vệ sinh hoặc thay bộ lọc."
+
