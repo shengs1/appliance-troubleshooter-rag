@@ -1,0 +1,610 @@
+{
+  "total_evaluated": 10,
+  "llm_success_count": 10,
+  "llm_unavailable_count": 0,
+  "avg_latency_seconds": 31.76810182999761,
+  "min_latency_seconds": 22.21616549999453,
+  "max_latency_seconds": 55.21093380000093,
+  "details": [
+    {
+      "question_id": "Q0358",
+      "question": "Máy điều hòa Samsung lỗi CF",
+      "llm_status": "success",
+      "answer": "Nguyên nhân sự cố: Mã CF là nhắc vệ sinh bộ lọc.\nCách khắc phục: Hãy vệ sinh hoặc thay bộ lọc rồi đặt lại nhắc lọc.\n\nTham khảo: <https://www.samsung.com/vn/support/home-appliances/check-out-the-displayed-error-codes-on-the-indoor-unit-air-conditioner/>",
+      "context": "--- TÀI LIỆU THAM KHẢO 1 (Nguồn tìm kiếm: both) ---\n- Hãng: Samsung\n- Thiết bị: Điều hòa\n- Mã lỗi: CF\n- Câu hỏi tham khảo: Máy điều hòa Samsung lỗi CF\n- Hướng dẫn xử lý: Nguyên nhân sự cố: Mã CF là nhắc vệ sinh bộ lọc. Cách khắc phục: Hãy vệ sinh hoặc thay bộ lọc rồi đặt lại nhắc lọc.\n- Nguồn đối chiếu: https://www.samsung.com/vn/support/home-appliances/check-out-the-displayed-error-codes-on-the-indoor-unit-air-conditioner/\n\n--- TÀI LIỆU THAM KHẢO 2 (Nguồn tìm kiếm: chroma) ---\n- Hãng: Samsung\n- Thiết bị: Điều hòa\n- Mã lỗi: CL\n- Câu hỏi tham khảo: Máy điều hòa Samsung lỗi Cl\n- Hướng dẫn xử lý: Nguyên nhân sự cố: Mã Cl là báo chức năng tự động làm sạch. Cách khắc phục: Có thể chạy chức năng Auto Clean để khử mùi.\n- Nguồn đối chiếu: https://www.samsung.com/vn/support/home-appliances/check-out-the-displayed-error-codes-on-the-indoor-unit-air-conditioner/\n\n--- TÀI LIỆU THAM KHẢO 3 (Nguồn tìm kiếm: chroma) ---\n- Hãng: Samsung\n- Thiết bị: Điều hòa\n- Mã lỗi: 22\n- Câu hỏi tham khảo: Máy điều hòa Samsung lỗi 22\n- Hướng dẫn xử lý: Nguyên nhân sự cố: Mã 22 liên quan cảm biến nhiệt độ bộ trao đổi nhiệt. Cách khắc phục: Nếu mã vẫn xuất hiện, hãy yêu cầu dịch vụ kiểm tra.\n- Nguồn đối chiếu: https://www.samsung.com/vn/support/home-appliances/check-out-the-displayed-error-codes-on-the-indoor-unit-air-conditioner/\n\n--- TÀI LIỆU THAM KHẢO 4 (Nguồn tìm kiếm: chroma) ---\n- Hãng: Samsung\n- Thiết bị: Điều hòa\n- Mã lỗi: E5\n- Câu hỏi tham khảo: Máy điều hòa Samsung lỗi E5\n- Hướng dẫn xử lý: Nguyên nhân sự cố: Mã E5 liên quan cảm biến bộ trao đổi nhiệt dàn lạnh. Cách khắc phục: Kiểm tra cảm biến; có thể cần thay cảm biến.\n- Nguồn đối chiếu: https://www.samsung.com/vn/support/home-appliances/check-out-the-displayed-error-codes-on-the-indoor-unit-air-conditioner/\n\n--- TÀI LIỆU THAM KHẢO 5 (Nguồn tìm kiếm: chroma) ---\n- Hãng: Samsung\n- Thiết bị: Điều hòa\n- Câu hỏi tham khảo: Samsung Điều hòa không đủ mát?\n- Hướng dẫn xử lý: Nguyên nhân sự cố: Bộ lọc, cài đặt hoặc luồng khí có thể làm giảm hiệu quả làm mát. Cách khắc phục: Kiểm tra chế độ, nhiệt độ và vệ sinh bộ lọc.\n- Nguồn đối chiếu: https://www.samsung.com/vn/support/home-appliances/contents/",
+      "retrieved_documents": [
+        {
+          "question_id": "Q0358",
+          "question": "Máy điều hòa Samsung lỗi CF",
+          "answer": "Nguyên nhân sự cố: Mã CF là nhắc vệ sinh bộ lọc. Cách khắc phục: Hãy vệ sinh hoặc thay bộ lọc rồi đặt lại nhắc lọc.",
+          "brand": "Samsung",
+          "device": "Điều hòa",
+          "error_code": "CF",
+          "source_url": "https://www.samsung.com/vn/support/home-appliances/check-out-the-displayed-error-codes-on-the-indoor-unit-air-conditioner/",
+          "retrieval_source": "both"
+        },
+        {
+          "question_id": "Q0359",
+          "question": "Máy điều hòa Samsung lỗi Cl",
+          "answer": "Nguyên nhân sự cố: Mã Cl là báo chức năng tự động làm sạch. Cách khắc phục: Có thể chạy chức năng Auto Clean để khử mùi.",
+          "brand": "Samsung",
+          "device": "Điều hòa",
+          "error_code": "CL",
+          "source_url": "https://www.samsung.com/vn/support/home-appliances/check-out-the-displayed-error-codes-on-the-indoor-unit-air-conditioner/",
+          "retrieval_source": "chroma"
+        },
+        {
+          "question_id": "Q0362",
+          "question": "Máy điều hòa Samsung lỗi 22",
+          "answer": "Nguyên nhân sự cố: Mã 22 liên quan cảm biến nhiệt độ bộ trao đổi nhiệt. Cách khắc phục: Nếu mã vẫn xuất hiện, hãy yêu cầu dịch vụ kiểm tra.",
+          "brand": "Samsung",
+          "device": "Điều hòa",
+          "error_code": "22",
+          "source_url": "https://www.samsung.com/vn/support/home-appliances/check-out-the-displayed-error-codes-on-the-indoor-unit-air-conditioner/",
+          "retrieval_source": "chroma"
+        },
+        {
+          "question_id": "Q0365",
+          "question": "Máy điều hòa Samsung lỗi E5",
+          "answer": "Nguyên nhân sự cố: Mã E5 liên quan cảm biến bộ trao đổi nhiệt dàn lạnh. Cách khắc phục: Kiểm tra cảm biến; có thể cần thay cảm biến.",
+          "brand": "Samsung",
+          "device": "Điều hòa",
+          "error_code": "E5",
+          "source_url": "https://www.samsung.com/vn/support/home-appliances/check-out-the-displayed-error-codes-on-the-indoor-unit-air-conditioner/",
+          "retrieval_source": "chroma"
+        },
+        {
+          "question_id": "Q0993",
+          "question": "Samsung Điều hòa không đủ mát?",
+          "answer": "Nguyên nhân sự cố: Bộ lọc, cài đặt hoặc luồng khí có thể làm giảm hiệu quả làm mát. Cách khắc phục: Kiểm tra chế độ, nhiệt độ và vệ sinh bộ lọc.",
+          "brand": "Samsung",
+          "device": "Điều hòa",
+          "error_code": "",
+          "source_url": "https://www.samsung.com/vn/support/home-appliances/contents/",
+          "retrieval_source": "chroma"
+        }
+      ],
+      "latency_seconds": 55.21093380000093
+    },
+    {
+      "question_id": "Q0417",
+      "question": "Máy sấy Samsung lỗi do",
+      "llm_status": "success",
+      "answer": "Nguyên nhân sự cố: Mã này liên quan cửa, chốt cửa hoặc cảm biến cửa. Cách khắc phục: Kiểm tra cửa đã đóng và chốt đúng cách chưa.\n\nNếu tình trạng vẫn tiếp diễn, vui lòng tham khảo hướng dẫn cụ thể tại [đường link nguồn](https://www.samsung.com/us/support/troubleshoot/TSG10001006/).",
+      "context": "--- TÀI LIỆU THAM KHẢO 1 (Nguồn tìm kiếm: chroma) ---\n- Hãng: Samsung\n- Thiết bị: Máy sấy\n- Câu hỏi tham khảo: Máy sấy Samsung lỗi do\n- Hướng dẫn xử lý: Nguyên nhân sự cố: Mã này liên quan cửa, chốt cửa hoặc cảm biến cửa. Cách khắc phục: Kiểm tra cửa đã đóng và chốt đúng cách chưa.\n- Nguồn đối chiếu: https://www.samsung.com/us/support/troubleshoot/TSG10001006/\n\n--- TÀI LIỆU THAM KHẢO 2 (Nguồn tìm kiếm: chroma) ---\n- Hãng: Samsung\n- Thiết bị: Máy sấy\n- Mã lỗi: TS\n- Câu hỏi tham khảo: Máy sấy Samsung lỗi tS\n- Hướng dẫn xử lý: Nguyên nhân sự cố: Mã này liên quan nhiệt độ hoặc cảm biến nhiệt độ. Cách khắc phục: Vệ sinh lưới lọc xơ vải và đường thoát khí; nếu lỗi tiếp diễn, hãy yêu cầu dịch vụ.\n- Nguồn đối chiếu: https://www.samsung.com/us/support/troubleshoot/TSG10001006/\n\n--- TÀI LIỆU THAM KHẢO 3 (Nguồn tìm kiếm: chroma) ---\n- Hãng: Samsung\n- Thiết bị: Máy sấy\n- Mã lỗi: TO\n- Câu hỏi tham khảo: Máy sấy Samsung lỗi tO\n- Hướng dẫn xử lý: Nguyên nhân sự cố: Mã này liên quan nhiệt độ hoặc cảm biến nhiệt độ. Cách khắc phục: Vệ sinh lưới lọc xơ vải và đường thoát khí; nếu lỗi tiếp diễn, hãy yêu cầu dịch vụ.\n- Nguồn đối chiếu: https://www.samsung.com/us/support/troubleshoot/TSG10001006/\n\n--- TÀI LIỆU THAM KHẢO 4 (Nguồn tìm kiếm: chroma) ---\n- Hãng: Samsung\n- Thiết bị: Máy sấy\n- Mã lỗi: 1, TC\n- Câu hỏi tham khảo: Máy sấy Samsung lỗi 1 tC\n- Hướng dẫn xử lý: Nguyên nhân sự cố: Mã này liên quan nhiệt độ hoặc cảm biến nhiệt độ. Cách khắc phục: Vệ sinh lưới lọc xơ vải và đường thoát khí; nếu lỗi tiếp diễn, hãy yêu cầu dịch vụ.\n- Nguồn đối chiếu: https://www.samsung.com/us/support/troubleshoot/TSG10001006/\n\n--- TÀI LIỆU THAM KHẢO 5 (Nguồn tìm kiếm: chroma) ---\n- Hãng: Samsung\n- Thiết bị: Máy sấy\n- Mã lỗi: TC\n- Câu hỏi tham khảo: Máy sấy Samsung lỗi tC\n- Hướng dẫn xử lý: Nguyên nhân sự cố: Mã này liên quan nhiệt độ hoặc cảm biến nhiệt độ. Cách khắc phục: Vệ sinh lưới lọc xơ vải và đường thoát khí; nếu lỗi tiếp diễn, hãy yêu cầu dịch vụ.\n- Nguồn đối chiếu: https://www.samsung.com/us/support/troubleshoot/TSG10001006/",
+      "retrieved_documents": [
+        {
+          "question_id": "Q0417",
+          "question": "Máy sấy Samsung lỗi do",
+          "answer": "Nguyên nhân sự cố: Mã này liên quan cửa, chốt cửa hoặc cảm biến cửa. Cách khắc phục: Kiểm tra cửa đã đóng và chốt đúng cách chưa.",
+          "brand": "Samsung",
+          "device": "Máy sấy",
+          "error_code": "",
+          "source_url": "https://www.samsung.com/us/support/troubleshoot/TSG10001006/",
+          "retrieval_source": "chroma"
+        },
+        {
+          "question_id": "Q0421",
+          "question": "Máy sấy Samsung lỗi tS",
+          "answer": "Nguyên nhân sự cố: Mã này liên quan nhiệt độ hoặc cảm biến nhiệt độ. Cách khắc phục: Vệ sinh lưới lọc xơ vải và đường thoát khí; nếu lỗi tiếp diễn, hãy yêu cầu dịch vụ.",
+          "brand": "Samsung",
+          "device": "Máy sấy",
+          "error_code": "TS",
+          "source_url": "https://www.samsung.com/us/support/troubleshoot/TSG10001006/",
+          "retrieval_source": "chroma"
+        },
+        {
+          "question_id": "Q0424",
+          "question": "Máy sấy Samsung lỗi tO",
+          "answer": "Nguyên nhân sự cố: Mã này liên quan nhiệt độ hoặc cảm biến nhiệt độ. Cách khắc phục: Vệ sinh lưới lọc xơ vải và đường thoát khí; nếu lỗi tiếp diễn, hãy yêu cầu dịch vụ.",
+          "brand": "Samsung",
+          "device": "Máy sấy",
+          "error_code": "TO",
+          "source_url": "https://www.samsung.com/us/support/troubleshoot/TSG10001006/",
+          "retrieval_source": "chroma"
+        },
+        {
+          "question_id": "Q0430",
+          "question": "Máy sấy Samsung lỗi 1 tC",
+          "answer": "Nguyên nhân sự cố: Mã này liên quan nhiệt độ hoặc cảm biến nhiệt độ. Cách khắc phục: Vệ sinh lưới lọc xơ vải và đường thoát khí; nếu lỗi tiếp diễn, hãy yêu cầu dịch vụ.",
+          "brand": "Samsung",
+          "device": "Máy sấy",
+          "error_code": "1, TC",
+          "source_url": "https://www.samsung.com/us/support/troubleshoot/TSG10001006/",
+          "retrieval_source": "chroma"
+        },
+        {
+          "question_id": "Q0423",
+          "question": "Máy sấy Samsung lỗi tC",
+          "answer": "Nguyên nhân sự cố: Mã này liên quan nhiệt độ hoặc cảm biến nhiệt độ. Cách khắc phục: Vệ sinh lưới lọc xơ vải và đường thoát khí; nếu lỗi tiếp diễn, hãy yêu cầu dịch vụ.",
+          "brand": "Samsung",
+          "device": "Máy sấy",
+          "error_code": "TC",
+          "source_url": "https://www.samsung.com/us/support/troubleshoot/TSG10001006/",
+          "retrieval_source": "chroma"
+        }
+      ],
+      "latency_seconds": 27.499982699999237
+    },
+    {
+      "question_id": "Q0534",
+      "question": "Máy giặt không vào nước thì kiểm tra gì trước?",
+      "llm_status": "success",
+      "answer": "Cơ sở tri thức hiện tại không đủ để trả lời câu hỏi này vì thông tin chỉ đề cập đến sự cố liên quan đến mã lỗi LE1 trên máy giặt LG, trong khi câu hỏi của người dùng liên quan đến máy giặt không vào nước, và thông tin về vấn đề này chủ yếu có trong tài liệu tham khảo từ hãng Samsung.\n\nNếu bạn có thêm thông tin về máy giặt của mình, như hãng sản xuất và mã lỗi (nếu có), tôi sẽ có thể hỗ trợ bạn tốt hơn.",
+      "context": "--- TÀI LIỆU THAM KHẢO 1 (Nguồn tìm kiếm: both) ---\n- Hãng: LG\n- Thiết bị: Máy giặt\n- Mã lỗi: LE1\n- Câu hỏi tham khảo: Máy giặt LG lỗi LE, LE1\n- Hướng dẫn xử lý: Mã lỗi LE và LE1 có thể xuất hiện khi động cơ bị kẹt.\n- Nguồn đối chiếu: https://www.lg.com/vn/tro-giup/ho-tro-san-pham/khac-phuc-su-co/\n\n--- TÀI LIỆU THAM KHẢO 2 (Nguồn tìm kiếm: both) ---\n- Hãng: LG\n- Thiết bị: Máy giặt\n- Mã lỗi: LE1\n- Câu hỏi tham khảo: Cách khắc phục lỗi LE, LE1 máy giặt LG\n- Hướng dẫn xử lý: Động cơ bị khóa/quá tải. Tắt máy, giảm bớt lượng quần áo quá nặng trong lồng giặt, rút điện nghỉ 30 phút rồi thử lại.\n- Nguồn đối chiếu: https://www.lg.com/vn/tro-giup/ho-tro-san-pham/khac-phuc-su-co/\n\n--- TÀI LIỆU THAM KHẢO 3 (Nguồn tìm kiếm: chroma) ---\n- Hãng: Samsung\n- Thiết bị: Máy giặt\n- Câu hỏi tham khảo: Máy giặt không vào nước thì kiểm tra gì trước?\n- Hướng dẫn xử lý: Nguyên nhân sự cố: Nguồn cấp nước, ống cấp hoặc lưới lọc đầu vào có thể có vấn đề. Cách khắc phục: Kiểm tra vòi nước, ống cấp và lưới lọc.\n- Nguồn đối chiếu: https://www.samsung.com/vn/support/home-appliances/what-to-do-when-my-washing-machine-does-not-fill-up-or-drain/\n\n--- TÀI LIỆU THAM KHẢO 4 (Nguồn tìm kiếm: chroma) ---\n- Hãng: Samsung\n- Thiết bị: Máy giặt\n- Câu hỏi tham khảo: Máy giặt không vào nước thì kiểm tra gì trước?\n- Hướng dẫn xử lý: Nguyên nhân sự cố: Nguồn cấp nước, ống cấp hoặc lưới lọc đầu vào có thể có vấn đề. Cách khắc phục: Kiểm tra vòi nước, ống cấp và lưới lọc.\n- Nguồn đối chiếu: https://www.samsung.com/vn/support/home-appliances/what-to-do-when-my-washing-machine-does-not-fill-up-or-drain/\n\n--- TÀI LIỆU THAM KHẢO 5 (Nguồn tìm kiếm: chroma) ---\n- Hãng: Samsung\n- Thiết bị: Máy giặt\n- Câu hỏi tham khảo: Máy giặt không vào nước thì kiểm tra gì trước phải làm sao?\n- Hướng dẫn xử lý: Nguyên nhân sự cố: Nguồn cấp nước, ống cấp hoặc lưới lọc đầu vào có thể có vấn đề. Cách khắc phục: Kiểm tra vòi nước, ống cấp và lưới lọc.\n- Nguồn đối chiếu: https://www.samsung.com/vn/support/home-appliances/what-to-do-when-my-washing-machine-does-not-fill-up-or-drain/",
+      "retrieved_documents": [
+        {
+          "question_id": "Q0082",
+          "question": "Máy giặt LG lỗi LE, LE1",
+          "answer": "Mã lỗi LE và LE1 có thể xuất hiện khi động cơ bị kẹt.",
+          "brand": "LG",
+          "device": "Máy giặt",
+          "error_code": "LE1",
+          "source_url": "https://www.lg.com/vn/tro-giup/ho-tro-san-pham/khac-phuc-su-co/",
+          "retrieval_source": "both"
+        },
+        {
+          "question_id": "Q0147",
+          "question": "Cách khắc phục lỗi LE, LE1 máy giặt LG",
+          "answer": "Động cơ bị khóa/quá tải. Tắt máy, giảm bớt lượng quần áo quá nặng trong lồng giặt, rút điện nghỉ 30 phút rồi thử lại.",
+          "brand": "LG",
+          "device": "Máy giặt",
+          "error_code": "LE1",
+          "source_url": "https://www.lg.com/vn/tro-giup/ho-tro-san-pham/khac-phuc-su-co/",
+          "retrieval_source": "both"
+        },
+        {
+          "question_id": "Q0534",
+          "question": "Máy giặt không vào nước thì kiểm tra gì trước?",
+          "answer": "Nguyên nhân sự cố: Nguồn cấp nước, ống cấp hoặc lưới lọc đầu vào có thể có vấn đề. Cách khắc phục: Kiểm tra vòi nước, ống cấp và lưới lọc.",
+          "brand": "Samsung",
+          "device": "Máy giặt",
+          "error_code": "",
+          "source_url": "https://www.samsung.com/vn/support/home-appliances/what-to-do-when-my-washing-machine-does-not-fill-up-or-drain/",
+          "retrieval_source": "chroma"
+        },
+        {
+          "question_id": "Q0627",
+          "question": "Máy giặt không vào nước thì kiểm tra gì trước?",
+          "answer": "Nguyên nhân sự cố: Nguồn cấp nước, ống cấp hoặc lưới lọc đầu vào có thể có vấn đề. Cách khắc phục: Kiểm tra vòi nước, ống cấp và lưới lọc.",
+          "brand": "Samsung",
+          "device": "Máy giặt",
+          "error_code": "",
+          "source_url": "https://www.samsung.com/vn/support/home-appliances/what-to-do-when-my-washing-machine-does-not-fill-up-or-drain/",
+          "retrieval_source": "chroma"
+        },
+        {
+          "question_id": "Q0565",
+          "question": "Máy giặt không vào nước thì kiểm tra gì trước phải làm sao?",
+          "answer": "Nguyên nhân sự cố: Nguồn cấp nước, ống cấp hoặc lưới lọc đầu vào có thể có vấn đề. Cách khắc phục: Kiểm tra vòi nước, ống cấp và lưới lọc.",
+          "brand": "Samsung",
+          "device": "Máy giặt",
+          "error_code": "",
+          "source_url": "https://www.samsung.com/vn/support/home-appliances/what-to-do-when-my-washing-machine-does-not-fill-up-or-drain/",
+          "retrieval_source": "chroma"
+        }
+      ],
+      "latency_seconds": 32.074457999988226
+    },
+    {
+      "question_id": "Q0001",
+      "question": "tủ lạnh LG Mã lỗi rS",
+      "llm_status": "success",
+      "answer": "Mã lỗi 'rS' cho biết lỗi cảm biến tủ lạnh. Mã lỗi này sẽ yêu cầu kỹ thuật viên phải trực tiếp kiểm tra. Hãy liên hệ Trung tâm bảo hành LG để được hỗ trợ.",
+      "context": "--- TÀI LIỆU THAM KHẢO 1 (Nguồn tìm kiếm: both) ---\n- Hãng: LG\n- Thiết bị: Tủ lạnh\n- Mã lỗi: RS\n- Câu hỏi tham khảo: tủ lạnh LG Mã lỗi rS\n- Hướng dẫn xử lý: Mã lỗi 'rS' cho biết lỗi cảm biến tủ lạnh. Mã lỗi này sẽ yêu cầu kỹ thuật viên phải trực tiếp kiểm tra.\n- Nguồn đối chiếu: https://www.lg.com/vn/tro-giup/ho-tro-san-pham/khac-phuc-su-co/\n\n--- TÀI LIỆU THAM KHẢO 2 (Nguồn tìm kiếm: both) ---\n- Hãng: LG\n- Thiết bị: Tủ lạnh\n- Mã lỗi: RS\n- Câu hỏi tham khảo: Cách khắc phục lỗi rS tủ lạnh LG\n- Hướng dẫn xử lý: Đây là các lỗi cảm biến (cảm biến ngăn lạnh, ngăn đá, cảm biến làm đá...) hoặc các bộ phận bo mạch bên trong. Hãy rút phích cắm nguồn tủ lạnh, đợi khoảng 5–10 phút rồi cắm lại để khởi động lại (reset). Nếu lỗi vẫn tiếp tục hiển thị, cần liên hệ Trung tâm bảo hành LG để được kỹ thuật viên kiểm tra/thay thế linh kiện.\n- Nguồn đối chiếu: https://www.lg.com/vn/tro-giup/ho-tro-san-pham/khac-phuc-su-co/\n\n--- TÀI LIỆU THAM KHẢO 3 (Nguồn tìm kiếm: chroma) ---\n- Hãng: LG\n- Thiết bị: Tủ lạnh\n- Mã lỗi: R\n- Câu hỏi tham khảo: Tủ lạnh LG bị lỗi r\n- Hướng dẫn xử lý: Tủ lạnh của bạn hiển thị mã lỗi này khi phát hiện sự cố với hệ thống bên trong, chẳng hạn như linh kiện bị lỗi, mạch điều khiển hoặc dây bị ngắt kết nối.\n- Nguồn đối chiếu: https://www.lg.com/vn/tro-giup/ho-tro-san-pham/khac-phuc-su-co/\n\n--- TÀI LIỆU THAM KHẢO 4 (Nguồn tìm kiếm: chroma) ---\n- Hãng: LG\n- Thiết bị: Tủ lạnh\n- Mã lỗi: GS\n- Câu hỏi tham khảo: Tủ lạnh LG bị lỗi gS\n- Hướng dẫn xử lý: Tủ lạnh của bạn hiển thị mã lỗi này khi phát hiện sự cố với hệ thống bên trong, chẳng hạn như linh kiện bị lỗi, mạch điều khiển hoặc dây bị ngắt kết nối.\n- Nguồn đối chiếu: https://www.lg.com/vn/tro-giup/ho-tro-san-pham/khac-phuc-su-co/\n\n--- TÀI LIỆU THAM KHẢO 5 (Nguồn tìm kiếm: chroma) ---\n- Hãng: LG\n- Thiết bị: Tủ lạnh\n- Mã lỗi: R\n- Câu hỏi tham khảo: Cách khắc phục lỗi r tủ lạnh LG\n- Hướng dẫn xử lý: Đây là các lỗi cảm biến (cảm biến ngăn lạnh, ngăn đá, cảm biến làm đá...) hoặc các bộ phận bo mạch bên trong. Hãy rút phích cắm nguồn tủ lạnh, đợi khoảng 5–10 phút rồi cắm lại để khởi động lại (reset). Nếu lỗi vẫn tiếp tục hiển thị, cần liên hệ Trung tâm bảo hành LG để được kỹ thuật viên kiểm tra/thay thế linh kiện.\n- Nguồn đối chiếu: https://www.lg.com/vn/tro-giup/ho-tro-san-pham/khac-phuc-su-co/",
+      "retrieved_documents": [
+        {
+          "question_id": "Q0001",
+          "question": "tủ lạnh LG Mã lỗi rS",
+          "answer": "Mã lỗi 'rS' cho biết lỗi cảm biến tủ lạnh. Mã lỗi này sẽ yêu cầu kỹ thuật viên phải trực tiếp kiểm tra.",
+          "brand": "LG",
+          "device": "Tủ lạnh",
+          "error_code": "RS",
+          "source_url": "https://www.lg.com/vn/tro-giup/ho-tro-san-pham/khac-phuc-su-co/",
+          "retrieval_source": "both"
+        },
+        {
+          "question_id": "Q0094",
+          "question": "Cách khắc phục lỗi rS tủ lạnh LG",
+          "answer": "Đây là các lỗi cảm biến (cảm biến ngăn lạnh, ngăn đá, cảm biến làm đá...) hoặc các bộ phận bo mạch bên trong. Hãy rút phích cắm nguồn tủ lạnh, đợi khoảng 5–10 phút rồi cắm lại để khởi động lại (reset). Nếu lỗi vẫn tiếp tục hiển thị, cần liên hệ Trung tâm bảo hành LG để được kỹ thuật viên kiểm tra/thay thế linh kiện.",
+          "brand": "LG",
+          "device": "Tủ lạnh",
+          "error_code": "RS",
+          "source_url": "https://www.lg.com/vn/tro-giup/ho-tro-san-pham/khac-phuc-su-co/",
+          "retrieval_source": "both"
+        },
+        {
+          "question_id": "Q0037",
+          "question": "Tủ lạnh LG bị lỗi r",
+          "answer": "Tủ lạnh của bạn hiển thị mã lỗi này khi phát hiện sự cố với hệ thống bên trong, chẳng hạn như linh kiện bị lỗi, mạch điều khiển hoặc dây bị ngắt kết nối.",
+          "brand": "LG",
+          "device": "Tủ lạnh",
+          "error_code": "R",
+          "source_url": "https://www.lg.com/vn/tro-giup/ho-tro-san-pham/khac-phuc-su-co/",
+          "retrieval_source": "chroma"
+        },
+        {
+          "question_id": "Q0041",
+          "question": "Tủ lạnh LG bị lỗi gS",
+          "answer": "Tủ lạnh của bạn hiển thị mã lỗi này khi phát hiện sự cố với hệ thống bên trong, chẳng hạn như linh kiện bị lỗi, mạch điều khiển hoặc dây bị ngắt kết nối.",
+          "brand": "LG",
+          "device": "Tủ lạnh",
+          "error_code": "GS",
+          "source_url": "https://www.lg.com/vn/tro-giup/ho-tro-san-pham/khac-phuc-su-co/",
+          "retrieval_source": "chroma"
+        },
+        {
+          "question_id": "Q0095",
+          "question": "Cách khắc phục lỗi r tủ lạnh LG",
+          "answer": "Đây là các lỗi cảm biến (cảm biến ngăn lạnh, ngăn đá, cảm biến làm đá...) hoặc các bộ phận bo mạch bên trong. Hãy rút phích cắm nguồn tủ lạnh, đợi khoảng 5–10 phút rồi cắm lại để khởi động lại (reset). Nếu lỗi vẫn tiếp tục hiển thị, cần liên hệ Trung tâm bảo hành LG để được kỹ thuật viên kiểm tra/thay thế linh kiện.",
+          "brand": "LG",
+          "device": "Tủ lạnh",
+          "error_code": "R",
+          "source_url": "https://www.lg.com/vn/tro-giup/ho-tro-san-pham/khac-phuc-su-co/",
+          "retrieval_source": "chroma"
+        }
+      ],
+      "latency_seconds": 22.344665100012207
+    },
+    {
+      "question_id": "Q0691",
+      "question": "LG Máy giặt không vào nước?",
+      "llm_status": "success",
+      "answer": "Nguyên nhân sự cố: Nguồn nước, vòi cấp, ống cấp hoặc lưới lọc có thể có vấn đề. Cách khắc phục: Kiểm tra vòi nước, ống cấp và lưới lọc đầu vào.\n\nNếu vẫn gặp vấn đề, vui lòng liên hệ với trung tâm hỗ trợ khách hàng của LG để được hỗ trợ thêm.\n\n[Nguồn đối chiếu: https://www.lg.com/vn/tro-giup/ho-tro-san-pham/]",
+      "context": "--- TÀI LIỆU THAM KHẢO 1 (Nguồn tìm kiếm: both) ---\n- Hãng: LG\n- Thiết bị: Máy giặt\n- Mã lỗi: LE1\n- Câu hỏi tham khảo: Máy giặt LG lỗi LE, LE1\n- Hướng dẫn xử lý: Mã lỗi LE và LE1 có thể xuất hiện khi động cơ bị kẹt.\n- Nguồn đối chiếu: https://www.lg.com/vn/tro-giup/ho-tro-san-pham/khac-phuc-su-co/\n\n--- TÀI LIỆU THAM KHẢO 2 (Nguồn tìm kiếm: both) ---\n- Hãng: LG\n- Thiết bị: Máy giặt\n- Mã lỗi: LE1\n- Câu hỏi tham khảo: Cách khắc phục lỗi LE, LE1 máy giặt LG\n- Hướng dẫn xử lý: Động cơ bị khóa/quá tải. Tắt máy, giảm bớt lượng quần áo quá nặng trong lồng giặt, rút điện nghỉ 30 phút rồi thử lại.\n- Nguồn đối chiếu: https://www.lg.com/vn/tro-giup/ho-tro-san-pham/khac-phuc-su-co/\n\n--- TÀI LIỆU THAM KHẢO 3 (Nguồn tìm kiếm: chroma) ---\n- Hãng: LG\n- Thiết bị: Máy giặt\n- Câu hỏi tham khảo: LG Máy giặt không vào nước?\n- Hướng dẫn xử lý: Nguyên nhân sự cố: Nguồn nước, vòi cấp, ống cấp hoặc lưới lọc có thể có vấn đề. Cách khắc phục: Kiểm tra vòi nước, ống cấp và lưới lọc đầu vào.\n- Nguồn đối chiếu: https://www.lg.com/vn/tro-giup/ho-tro-san-pham/\n\n--- TÀI LIỆU THAM KHẢO 4 (Nguồn tìm kiếm: chroma) ---\n- Hãng: LG\n- Thiết bị: Máy giặt\n- Câu hỏi tham khảo: LG Máy giặt không vào nước thì phải làm sao?\n- Hướng dẫn xử lý: Nguyên nhân sự cố: Nguồn nước, vòi cấp, ống cấp hoặc lưới lọc có thể có vấn đề. Cách khắc phục: Kiểm tra vòi nước, ống cấp và lưới lọc đầu vào.\n- Nguồn đối chiếu: https://www.lg.com/vn/tro-giup/ho-tro-san-pham/\n\n--- TÀI LIỆU THAM KHẢO 5 (Nguồn tìm kiếm: chroma) ---\n- Hãng: LG\n- Thiết bị: Máy giặt\n- Câu hỏi tham khảo: LG Máy giặt không vào nước xử lý thế nào?\n- Hướng dẫn xử lý: Nguyên nhân sự cố: Nguồn nước, vòi cấp, ống cấp hoặc lưới lọc có thể có vấn đề. Cách khắc phục: Kiểm tra vòi nước, ống cấp và lưới lọc đầu vào.\n- Nguồn đối chiếu: https://www.lg.com/vn/tro-giup/ho-tro-san-pham/",
+      "retrieved_documents": [
+        {
+          "question_id": "Q0082",
+          "question": "Máy giặt LG lỗi LE, LE1",
+          "answer": "Mã lỗi LE và LE1 có thể xuất hiện khi động cơ bị kẹt.",
+          "brand": "LG",
+          "device": "Máy giặt",
+          "error_code": "LE1",
+          "source_url": "https://www.lg.com/vn/tro-giup/ho-tro-san-pham/khac-phuc-su-co/",
+          "retrieval_source": "both"
+        },
+        {
+          "question_id": "Q0147",
+          "question": "Cách khắc phục lỗi LE, LE1 máy giặt LG",
+          "answer": "Động cơ bị khóa/quá tải. Tắt máy, giảm bớt lượng quần áo quá nặng trong lồng giặt, rút điện nghỉ 30 phút rồi thử lại.",
+          "brand": "LG",
+          "device": "Máy giặt",
+          "error_code": "LE1",
+          "source_url": "https://www.lg.com/vn/tro-giup/ho-tro-san-pham/khac-phuc-su-co/",
+          "retrieval_source": "both"
+        },
+        {
+          "question_id": "Q0691",
+          "question": "LG Máy giặt không vào nước?",
+          "answer": "Nguyên nhân sự cố: Nguồn nước, vòi cấp, ống cấp hoặc lưới lọc có thể có vấn đề. Cách khắc phục: Kiểm tra vòi nước, ống cấp và lưới lọc đầu vào.",
+          "brand": "LG",
+          "device": "Máy giặt",
+          "error_code": "",
+          "source_url": "https://www.lg.com/vn/tro-giup/ho-tro-san-pham/",
+          "retrieval_source": "chroma"
+        },
+        {
+          "question_id": "Q0696",
+          "question": "LG Máy giặt không vào nước thì phải làm sao?",
+          "answer": "Nguyên nhân sự cố: Nguồn nước, vòi cấp, ống cấp hoặc lưới lọc có thể có vấn đề. Cách khắc phục: Kiểm tra vòi nước, ống cấp và lưới lọc đầu vào.",
+          "brand": "LG",
+          "device": "Máy giặt",
+          "error_code": "",
+          "source_url": "https://www.lg.com/vn/tro-giup/ho-tro-san-pham/",
+          "retrieval_source": "chroma"
+        },
+        {
+          "question_id": "Q0701",
+          "question": "LG Máy giặt không vào nước xử lý thế nào?",
+          "answer": "Nguyên nhân sự cố: Nguồn nước, vòi cấp, ống cấp hoặc lưới lọc có thể có vấn đề. Cách khắc phục: Kiểm tra vòi nước, ống cấp và lưới lọc đầu vào.",
+          "brand": "LG",
+          "device": "Máy giặt",
+          "error_code": "",
+          "source_url": "https://www.lg.com/vn/tro-giup/ho-tro-san-pham/",
+          "retrieval_source": "chroma"
+        }
+      ],
+      "latency_seconds": 27.113440000000992
+    },
+    {
+      "question_id": "Q0692",
+      "question": "LG Máy sấy không sấy khô?",
+      "llm_status": "success",
+      "answer": "Nguyên nhân sự cố: Bộ lọc xơ vải, đường thoát khí hoặc lượng đồ có thể ảnh hưởng hiệu quả sấy. Cách khắc phục: Vệ sinh bộ lọc, kiểm tra đường thoát khí và tránh quá tải.",
+      "context": "--- TÀI LIỆU THAM KHẢO 1 (Nguồn tìm kiếm: chroma) ---\n- Hãng: LG\n- Thiết bị: Máy sấy\n- Câu hỏi tham khảo: LG Máy sấy không sấy khô?\n- Hướng dẫn xử lý: Nguyên nhân sự cố: Bộ lọc xơ vải, đường thoát khí hoặc lượng đồ có thể ảnh hưởng hiệu quả sấy. Cách khắc phục: Vệ sinh bộ lọc, kiểm tra đường thoát khí và tránh quá tải.\n- Nguồn đối chiếu: https://www.lg.com/vn/tro-giup/ho-tro-san-pham/khac-phuc-su-co/help-library/cs-CT20228029-20152942594119/\n\n--- TÀI LIỆU THAM KHẢO 2 (Nguồn tìm kiếm: chroma) ---\n- Hãng: LG\n- Thiết bị: Máy sấy\n- Câu hỏi tham khảo: LG Máy sấy không sấy khô thì phải làm sao?\n- Hướng dẫn xử lý: Nguyên nhân sự cố: Bộ lọc xơ vải, đường thoát khí hoặc lượng đồ có thể ảnh hưởng hiệu quả sấy. Cách khắc phục: Vệ sinh bộ lọc, kiểm tra đường thoát khí và tránh quá tải.\n- Nguồn đối chiếu: https://www.lg.com/vn/tro-giup/ho-tro-san-pham/khac-phuc-su-co/help-library/cs-CT20228029-20152942594119/\n\n--- TÀI LIỆU THAM KHẢO 3 (Nguồn tìm kiếm: chroma) ---\n- Hãng: LG\n- Thiết bị: Máy sấy\n- Câu hỏi tham khảo: LG Máy sấy không sấy khô xử lý thế nào?\n- Hướng dẫn xử lý: Nguyên nhân sự cố: Bộ lọc xơ vải, đường thoát khí hoặc lượng đồ có thể ảnh hưởng hiệu quả sấy. Cách khắc phục: Vệ sinh bộ lọc, kiểm tra đường thoát khí và tránh quá tải.\n- Nguồn đối chiếu: https://www.lg.com/vn/tro-giup/ho-tro-san-pham/khac-phuc-su-co/help-library/cs-CT20228029-20152942594119/\n\n--- TÀI LIỆU THAM KHẢO 4 (Nguồn tìm kiếm: chroma) ---\n- Hãng: LG\n- Thiết bị: Máy sấy\n- Câu hỏi tham khảo: LG Máy sấy sấy lâu khô?\n- Hướng dẫn xử lý: Nguyên nhân sự cố: Luồng khí có thể bị hạn chế hoặc lượng đồ quá nhiều. Cách khắc phục: Kiểm tra bộ lọc, đường thoát khí và giảm lượng đồ.\n- Nguồn đối chiếu: https://www.lg.com/vn/tro-giup/ho-tro-san-pham/khac-phuc-su-co/help-library/cs-CT20228029-20152942594119/\n\n--- TÀI LIỆU THAM KHẢO 5 (Nguồn tìm kiếm: chroma) ---\n- Hãng: LG\n- Thiết bị: Máy sấy\n- Câu hỏi tham khảo: LG Máy sấy sấy lâu khô thì phải làm sao?\n- Hướng dẫn xử lý: Nguyên nhân sự cố: Luồng khí có thể bị hạn chế hoặc lượng đồ quá nhiều. Cách khắc phục: Kiểm tra bộ lọc, đường thoát khí và giảm lượng đồ.\n- Nguồn đối chiếu: https://www.lg.com/vn/tro-giup/ho-tro-san-pham/khac-phuc-su-co/help-library/cs-CT20228029-20152942594119/",
+      "retrieved_documents": [
+        {
+          "question_id": "Q0692",
+          "question": "LG Máy sấy không sấy khô?",
+          "answer": "Nguyên nhân sự cố: Bộ lọc xơ vải, đường thoát khí hoặc lượng đồ có thể ảnh hưởng hiệu quả sấy. Cách khắc phục: Vệ sinh bộ lọc, kiểm tra đường thoát khí và tránh quá tải.",
+          "brand": "LG",
+          "device": "Máy sấy",
+          "error_code": "",
+          "source_url": "https://www.lg.com/vn/tro-giup/ho-tro-san-pham/khac-phuc-su-co/help-library/cs-CT20228029-20152942594119/",
+          "retrieval_source": "chroma"
+        },
+        {
+          "question_id": "Q0697",
+          "question": "LG Máy sấy không sấy khô thì phải làm sao?",
+          "answer": "Nguyên nhân sự cố: Bộ lọc xơ vải, đường thoát khí hoặc lượng đồ có thể ảnh hưởng hiệu quả sấy. Cách khắc phục: Vệ sinh bộ lọc, kiểm tra đường thoát khí và tránh quá tải.",
+          "brand": "LG",
+          "device": "Máy sấy",
+          "error_code": "",
+          "source_url": "https://www.lg.com/vn/tro-giup/ho-tro-san-pham/khac-phuc-su-co/help-library/cs-CT20228029-20152942594119/",
+          "retrieval_source": "chroma"
+        },
+        {
+          "question_id": "Q0702",
+          "question": "LG Máy sấy không sấy khô xử lý thế nào?",
+          "answer": "Nguyên nhân sự cố: Bộ lọc xơ vải, đường thoát khí hoặc lượng đồ có thể ảnh hưởng hiệu quả sấy. Cách khắc phục: Vệ sinh bộ lọc, kiểm tra đường thoát khí và tránh quá tải.",
+          "brand": "LG",
+          "device": "Máy sấy",
+          "error_code": "",
+          "source_url": "https://www.lg.com/vn/tro-giup/ho-tro-san-pham/khac-phuc-su-co/help-library/cs-CT20228029-20152942594119/",
+          "retrieval_source": "chroma"
+        },
+        {
+          "question_id": "Q0707",
+          "question": "LG Máy sấy sấy lâu khô?",
+          "answer": "Nguyên nhân sự cố: Luồng khí có thể bị hạn chế hoặc lượng đồ quá nhiều. Cách khắc phục: Kiểm tra bộ lọc, đường thoát khí và giảm lượng đồ.",
+          "brand": "LG",
+          "device": "Máy sấy",
+          "error_code": "",
+          "source_url": "https://www.lg.com/vn/tro-giup/ho-tro-san-pham/khac-phuc-su-co/help-library/cs-CT20228029-20152942594119/",
+          "retrieval_source": "chroma"
+        },
+        {
+          "question_id": "Q0712",
+          "question": "LG Máy sấy sấy lâu khô thì phải làm sao?",
+          "answer": "Nguyên nhân sự cố: Luồng khí có thể bị hạn chế hoặc lượng đồ quá nhiều. Cách khắc phục: Kiểm tra bộ lọc, đường thoát khí và giảm lượng đồ.",
+          "brand": "LG",
+          "device": "Máy sấy",
+          "error_code": "",
+          "source_url": "https://www.lg.com/vn/tro-giup/ho-tro-san-pham/khac-phuc-su-co/help-library/cs-CT20228029-20152942594119/",
+          "retrieval_source": "chroma"
+        }
+      ],
+      "latency_seconds": 22.21616549999453
+    },
+    {
+      "question_id": "Q0157",
+      "question": "Điều hoà panasonic bị lỗi F11",
+      "llm_status": "success",
+      "answer": "Lỗi F11 liên quan đến van 4 ngã (phần cơ - điện). Bạn nên kiểm tra van 4 ngã có bị kẹt, rắc cắm và dây của van 4 ngã có bị vấn đề gì không. Nếu không khắc phục được, vui lòng liên hệ trung tâm bảo hành máy lạnh Panasonic để sửa chữa kịp thời.\n\nNguồn tham khảo: <https://www.panasonic.com/vn/air-solutions/learn-more/ma-loi-may-lanh-panasonic.html>",
+      "context": "--- TÀI LIỆU THAM KHẢO 1 (Nguồn tìm kiếm: both) ---\n- Hãng: Panasonic\n- Thiết bị: Điều hòa\n- Mã lỗi: F11\n- Câu hỏi tham khảo: Điều hoà panasonic bị lỗi F11\n- Hướng dẫn xử lý: Lỗi liên quan đến van 4 ngã (phần cơ - điện)\n- Nguồn đối chiếu: https://www.panasonic.com/vn/air-solutions/learn-more/ma-loi-may-lanh-panasonic.html\n\n--- TÀI LIỆU THAM KHẢO 2 (Nguồn tìm kiếm: both) ---\n- Hãng: Panasonic\n- Thiết bị: Điều hòa\n- Mã lỗi: F11\n- Câu hỏi tham khảo: Điều hòa panasonic bị lỗi F11\n- Hướng dẫn xử lý: Kiểm tra van 4 ngã có bị kẹt, rắc cắm và dây của van 4 ngã. Sau đó liên hệ trung tâm bảo hành máy lạnh Panasonic để sửa chữa kịp thời.\n- Nguồn đối chiếu: https://www.panasonic.com/vn/air-solutions/learn-more/ma-loi-may-lanh-panasonic.html\n\n--- TÀI LIỆU THAM KHẢO 3 (Nguồn tìm kiếm: chroma) ---\n- Hãng: Panasonic\n- Thiết bị: Điều hòa\n- Mã lỗi: H11\n- Câu hỏi tham khảo: Điều hòa panasonic bị lỗi H11\n- Hướng dẫn xử lý: Kiểm tra dây kết nối, bo mạch dàn nóng hoặc dàn lạnh. Đồng thời cài đặt lại dữ liệu ở dàn lạnh điều hòa.\n- Nguồn đối chiếu: https://www.panasonic.com/vn/air-solutions/learn-more/ma-loi-may-lanh-panasonic.html\n\n--- TÀI LIỆU THAM KHẢO 4 (Nguồn tìm kiếm: chroma) ---\n- Hãng: Panasonic\n- Thiết bị: Điều hòa\n- Mã lỗi: H11\n- Câu hỏi tham khảo: Điều hòa panasonic bị lỗi H11\n- Hướng dẫn xử lý: Lỗi mất kết nối thông tin dàn nóng/dàn lạnh.\n- Nguồn đối chiếu: https://www.panasonic.com/vn/air-solutions/learn-more/ma-loi-may-lanh-panasonic.html\n\n--- TÀI LIỆU THAM KHẢO 5 (Nguồn tìm kiếm: chroma) ---\n- Hãng: Panasonic\n- Thiết bị: Điều hòa\n- Mã lỗi: F16\n- Câu hỏi tham khảo: Điều hòa panasonic bị lỗi F16\n- Hướng dẫn xử lý: Lỗi F16 liên quan đến mạch điện. Do đó, bạn có thể gọi thợ chuyên nghiệp để khắc phục.\n- Nguồn đối chiếu: https://www.panasonic.com/vn/air-solutions/learn-more/ma-loi-may-lanh-panasonic.html",
+      "retrieved_documents": [
+        {
+          "question_id": "Q0157",
+          "question": "Điều hoà panasonic bị lỗi F11",
+          "answer": "Lỗi liên quan đến van 4 ngã (phần cơ - điện)",
+          "brand": "Panasonic",
+          "device": "Điều hòa",
+          "error_code": "F11",
+          "source_url": "https://www.panasonic.com/vn/air-solutions/learn-more/ma-loi-may-lanh-panasonic.html",
+          "retrieval_source": "both"
+        },
+        {
+          "question_id": "Q0307",
+          "question": "Điều hòa panasonic bị lỗi F11",
+          "answer": "Kiểm tra van 4 ngã có bị kẹt, rắc cắm và dây của van 4 ngã. Sau đó liên hệ trung tâm bảo hành máy lạnh Panasonic để sửa chữa kịp thời.",
+          "brand": "Panasonic",
+          "device": "Điều hòa",
+          "error_code": "F11",
+          "source_url": "https://www.panasonic.com/vn/air-solutions/learn-more/ma-loi-may-lanh-panasonic.html",
+          "retrieval_source": "both"
+        },
+        {
+          "question_id": "Q0313",
+          "question": "Điều hòa panasonic bị lỗi H11",
+          "answer": "Kiểm tra dây kết nối, bo mạch dàn nóng hoặc dàn lạnh. Đồng thời cài đặt lại dữ liệu ở dàn lạnh điều hòa.",
+          "brand": "Panasonic",
+          "device": "Điều hòa",
+          "error_code": "H11",
+          "source_url": "https://www.panasonic.com/vn/air-solutions/learn-more/ma-loi-may-lanh-panasonic.html",
+          "retrieval_source": "chroma"
+        },
+        {
+          "question_id": "Q0229",
+          "question": "Điều hòa panasonic bị lỗi H11",
+          "answer": "Lỗi mất kết nối thông tin dàn nóng/dàn lạnh.",
+          "brand": "Panasonic",
+          "device": "Điều hòa",
+          "error_code": "H11",
+          "source_url": "https://www.panasonic.com/vn/air-solutions/learn-more/ma-loi-may-lanh-panasonic.html",
+          "retrieval_source": "chroma"
+        },
+        {
+          "question_id": "Q0308",
+          "question": "Điều hòa panasonic bị lỗi F16",
+          "answer": "Lỗi F16 liên quan đến mạch điện. Do đó, bạn có thể gọi thợ chuyên nghiệp để khắc phục.",
+          "brand": "Panasonic",
+          "device": "Điều hòa",
+          "error_code": "F16",
+          "source_url": "https://www.panasonic.com/vn/air-solutions/learn-more/ma-loi-may-lanh-panasonic.html",
+          "retrieval_source": "chroma"
+        }
+      ],
+      "latency_seconds": 32.08991919999244
+    },
+    {
+      "question_id": "Q0841",
+      "question": "Panasonic Máy giặt không vào nước?",
+      "llm_status": "success",
+      "answer": "Theo hướng dẫn kỹ thuật của Panasonic, nguyên nhân sự cố máy giặt không vào nước có thể là do vòi cấp, lưới lọc, áp lực nước, cửa hoặc điều khiển. Cách khắc phục là kiểm tra vòi nước, lưới lọc, áp lực nước và cửa máy.\n\nTham khảo: [https://www.panasonic.com/vn/consumer/home-appliances/washing-machine-learn/cham-soc-may-giat/may-giat-khong-vao-nuoc.html](https://www.panasonic.com/vn/consumer/home-appliances/washing-machine-learn/cham-soc-may-giat/may-giat-khong-vao-nuoc.html)",
+      "context": "--- TÀI LIỆU THAM KHẢO 1 (Nguồn tìm kiếm: chroma) ---\n- Hãng: Panasonic\n- Thiết bị: Máy giặt\n- Câu hỏi tham khảo: Panasonic Máy giặt không vào nước?\n- Hướng dẫn xử lý: Nguyên nhân sự cố: Vòi cấp, lưới lọc, áp lực nước, cửa hoặc điều khiển có thể là nguyên nhân. Cách khắc phục: Kiểm tra vòi nước, lưới lọc, áp lực nước và cửa máy.\n- Nguồn đối chiếu: https://www.panasonic.com/vn/consumer/home-appliances/washing-machine-learn/cham-soc-may-giat/may-giat-khong-vao-nuoc.html\n\n--- TÀI LIỆU THAM KHẢO 2 (Nguồn tìm kiếm: chroma) ---\n- Hãng: Panasonic\n- Thiết bị: Máy giặt\n- Câu hỏi tham khảo: Panasonic Máy giặt không vào nước thì phải làm sao?\n- Hướng dẫn xử lý: Nguyên nhân sự cố: Vòi cấp, lưới lọc, áp lực nước, cửa hoặc điều khiển có thể là nguyên nhân. Cách khắc phục: Kiểm tra vòi nước, lưới lọc, áp lực nước và cửa máy.\n- Nguồn đối chiếu: https://www.panasonic.com/vn/consumer/home-appliances/washing-machine-learn/cham-soc-may-giat/may-giat-khong-vao-nuoc.html\n\n--- TÀI LIỆU THAM KHẢO 3 (Nguồn tìm kiếm: chroma) ---\n- Hãng: Panasonic\n- Thiết bị: Máy giặt\n- Câu hỏi tham khảo: Panasonic Máy giặt không vào nước xử lý thế nào?\n- Hướng dẫn xử lý: Nguyên nhân sự cố: Vòi cấp, lưới lọc, áp lực nước, cửa hoặc điều khiển có thể là nguyên nhân. Cách khắc phục: Kiểm tra vòi nước, lưới lọc, áp lực nước và cửa máy.\n- Nguồn đối chiếu: https://www.panasonic.com/vn/consumer/home-appliances/washing-machine-learn/cham-soc-may-giat/may-giat-khong-vao-nuoc.html\n\n--- TÀI LIỆU THAM KHẢO 4 (Nguồn tìm kiếm: chroma) ---\n- Hãng: Panasonic\n- Thiết bị: Máy giặt\n- Câu hỏi tham khảo: Panasonic Máy giặt nước vào chậm?\n- Hướng dẫn xử lý: Nguyên nhân sự cố: Nguồn nước yếu hoặc lưới lọc van cấp bị bẩn. Cách khắc phục: Kiểm tra áp lực nước và vệ sinh lưới lọc.\n- Nguồn đối chiếu: https://www.panasonic.com/vn/consumer/home-appliances/washing-machine-learn/cham-soc-may-giat/may-giat-khong-vao-nuoc.html\n\n--- TÀI LIỆU THAM KHẢO 5 (Nguồn tìm kiếm: chroma) ---\n- Hãng: Panasonic\n- Thiết bị: Máy giặt\n- Câu hỏi tham khảo: Panasonic Máy giặt không xả nước?\n- Hướng dẫn xử lý: Nguyên nhân sự cố: Đường xả hoặc bộ lọc có thể bị tắc. Cách khắc phục: Kiểm tra và vệ sinh đường xả, bộ lọc.\n- Nguồn đối chiếu: https://www.panasonic.com/vn/consumer/home-appliances/washing-machine-learn/laundry-tips/a-basic-guide-to-laundry.html",
+      "retrieved_documents": [
+        {
+          "question_id": "Q0841",
+          "question": "Panasonic Máy giặt không vào nước?",
+          "answer": "Nguyên nhân sự cố: Vòi cấp, lưới lọc, áp lực nước, cửa hoặc điều khiển có thể là nguyên nhân. Cách khắc phục: Kiểm tra vòi nước, lưới lọc, áp lực nước và cửa máy.",
+          "brand": "Panasonic",
+          "device": "Máy giặt",
+          "error_code": "",
+          "source_url": "https://www.panasonic.com/vn/consumer/home-appliances/washing-machine-learn/cham-soc-may-giat/may-giat-khong-vao-nuoc.html",
+          "retrieval_source": "chroma"
+        },
+        {
+          "question_id": "Q0846",
+          "question": "Panasonic Máy giặt không vào nước thì phải làm sao?",
+          "answer": "Nguyên nhân sự cố: Vòi cấp, lưới lọc, áp lực nước, cửa hoặc điều khiển có thể là nguyên nhân. Cách khắc phục: Kiểm tra vòi nước, lưới lọc, áp lực nước và cửa máy.",
+          "brand": "Panasonic",
+          "device": "Máy giặt",
+          "error_code": "",
+          "source_url": "https://www.panasonic.com/vn/consumer/home-appliances/washing-machine-learn/cham-soc-may-giat/may-giat-khong-vao-nuoc.html",
+          "retrieval_source": "chroma"
+        },
+        {
+          "question_id": "Q0851",
+          "question": "Panasonic Máy giặt không vào nước xử lý thế nào?",
+          "answer": "Nguyên nhân sự cố: Vòi cấp, lưới lọc, áp lực nước, cửa hoặc điều khiển có thể là nguyên nhân. Cách khắc phục: Kiểm tra vòi nước, lưới lọc, áp lực nước và cửa máy.",
+          "brand": "Panasonic",
+          "device": "Máy giặt",
+          "error_code": "",
+          "source_url": "https://www.panasonic.com/vn/consumer/home-appliances/washing-machine-learn/cham-soc-may-giat/may-giat-khong-vao-nuoc.html",
+          "retrieval_source": "chroma"
+        },
+        {
+          "question_id": "Q0946",
+          "question": "Panasonic Máy giặt nước vào chậm?",
+          "answer": "Nguyên nhân sự cố: Nguồn nước yếu hoặc lưới lọc van cấp bị bẩn. Cách khắc phục: Kiểm tra áp lực nước và vệ sinh lưới lọc.",
+          "brand": "Panasonic",
+          "device": "Máy giặt",
+          "error_code": "",
+          "source_url": "https://www.panasonic.com/vn/consumer/home-appliances/washing-machine-learn/cham-soc-may-giat/may-giat-khong-vao-nuoc.html",
+          "retrieval_source": "chroma"
+        },
+        {
+          "question_id": "Q0856",
+          "question": "Panasonic Máy giặt không xả nước?",
+          "answer": "Nguyên nhân sự cố: Đường xả hoặc bộ lọc có thể bị tắc. Cách khắc phục: Kiểm tra và vệ sinh đường xả, bộ lọc.",
+          "brand": "Panasonic",
+          "device": "Máy giặt",
+          "error_code": "",
+          "source_url": "https://www.panasonic.com/vn/consumer/home-appliances/washing-machine-learn/laundry-tips/a-basic-guide-to-laundry.html",
+          "retrieval_source": "chroma"
+        }
+      ],
+      "latency_seconds": 39.288004499991075
+    },
+    {
+      "question_id": "Q0842",
+      "question": "Panasonic Tủ lạnh không lạnh?",
+      "llm_status": "success",
+      "answer": "Nguyên nhân sự cố: Nhiệt độ, luồng khí hoặc điều kiện lắp đặt có thể ảnh hưởng làm lạnh. Cách khắc phục: Kiểm tra nhiệt độ, cửa tủ và khoảng thông thoáng.\n\nBạn có thể tham khảo thêm thông tin tại: [https://www.panasonic.com/vn/consumer/home-appliances/refrigerator-learn/experience/refrigerator-information.html](https://www.panasonic.com/vn/consumer/home-appliances/refrigerator-learn/experience/refrigerator-information.html)",
+      "context": "--- TÀI LIỆU THAM KHẢO 1 (Nguồn tìm kiếm: chroma) ---\n- Hãng: Panasonic\n- Thiết bị: Tủ lạnh\n- Câu hỏi tham khảo: Panasonic Tủ lạnh không lạnh?\n- Hướng dẫn xử lý: Nguyên nhân sự cố: Nhiệt độ, luồng khí hoặc điều kiện lắp đặt có thể ảnh hưởng làm lạnh. Cách khắc phục: Kiểm tra nhiệt độ, cửa tủ và khoảng thông thoáng.\n- Nguồn đối chiếu: https://www.panasonic.com/vn/consumer/home-appliances/refrigerator-learn/experience/refrigerator-information.html\n\n--- TÀI LIỆU THAM KHẢO 2 (Nguồn tìm kiếm: chroma) ---\n- Hãng: Panasonic\n- Thiết bị: Tủ lạnh\n- Câu hỏi tham khảo: Panasonic Tủ lạnh không lạnh thì phải làm sao?\n- Hướng dẫn xử lý: Nguyên nhân sự cố: Nhiệt độ, luồng khí hoặc điều kiện lắp đặt có thể ảnh hưởng làm lạnh. Cách khắc phục: Kiểm tra nhiệt độ, cửa tủ và khoảng thông thoáng.\n- Nguồn đối chiếu: https://www.panasonic.com/vn/consumer/home-appliances/refrigerator-learn/experience/refrigerator-information.html\n\n--- TÀI LIỆU THAM KHẢO 3 (Nguồn tìm kiếm: chroma) ---\n- Hãng: Panasonic\n- Thiết bị: Tủ lạnh\n- Câu hỏi tham khảo: Panasonic Tủ lạnh không làm đá?\n- Hướng dẫn xử lý: Nguyên nhân sự cố: Nguồn nước, chức năng làm đá hoặc nhiệt độ có thể chưa phù hợp. Cách khắc phục: Kiểm tra nguồn nước, chức năng làm đá và nhiệt độ.\n- Nguồn đối chiếu: https://www.panasonic.com/vn/consumer/home-appliances/refrigerator-learn/experience/refrigerator-information.html\n\n--- TÀI LIỆU THAM KHẢO 4 (Nguồn tìm kiếm: chroma) ---\n- Hãng: Panasonic\n- Thiết bị: Tủ lạnh\n- Câu hỏi tham khảo: Panasonic Tủ lạnh không làm đá thì phải làm sao?\n- Hướng dẫn xử lý: Nguyên nhân sự cố: Nguồn nước, chức năng làm đá hoặc nhiệt độ có thể chưa phù hợp. Cách khắc phục: Kiểm tra nguồn nước, chức năng làm đá và nhiệt độ.\n- Nguồn đối chiếu: https://www.panasonic.com/vn/consumer/home-appliances/refrigerator-learn/experience/refrigerator-information.html\n\n--- TÀI LIỆU THAM KHẢO 5 (Nguồn tìm kiếm: chroma) ---\n- Hãng: Panasonic\n- Thiết bị: Tủ lạnh\n- Câu hỏi tham khảo: Panasonic Tủ lạnh ngăn đông không đông?\n- Hướng dẫn xử lý: Nguyên nhân sự cố: Nhiệt độ hoặc luồng khí ngăn đông có thể chưa phù hợp. Cách khắc phục: Kiểm tra cài đặt ngăn đông và cách sắp xếp thực phẩm.\n- Nguồn đối chiếu: https://www.panasonic.com/vn/consumer/home-appliances/refrigerator-learn/experience/refrigerator-information.html",
+      "retrieved_documents": [
+        {
+          "question_id": "Q0842",
+          "question": "Panasonic Tủ lạnh không lạnh?",
+          "answer": "Nguyên nhân sự cố: Nhiệt độ, luồng khí hoặc điều kiện lắp đặt có thể ảnh hưởng làm lạnh. Cách khắc phục: Kiểm tra nhiệt độ, cửa tủ và khoảng thông thoáng.",
+          "brand": "Panasonic",
+          "device": "Tủ lạnh",
+          "error_code": "",
+          "source_url": "https://www.panasonic.com/vn/consumer/home-appliances/refrigerator-learn/experience/refrigerator-information.html",
+          "retrieval_source": "chroma"
+        },
+        {
+          "question_id": "Q0847",
+          "question": "Panasonic Tủ lạnh không lạnh thì phải làm sao?",
+          "answer": "Nguyên nhân sự cố: Nhiệt độ, luồng khí hoặc điều kiện lắp đặt có thể ảnh hưởng làm lạnh. Cách khắc phục: Kiểm tra nhiệt độ, cửa tủ và khoảng thông thoáng.",
+          "brand": "Panasonic",
+          "device": "Tủ lạnh",
+          "error_code": "",
+          "source_url": "https://www.panasonic.com/vn/consumer/home-appliances/refrigerator-learn/experience/refrigerator-information.html",
+          "retrieval_source": "chroma"
+        },
+        {
+          "question_id": "Q0938",
+          "question": "Panasonic Tủ lạnh không làm đá?",
+          "answer": "Nguyên nhân sự cố: Nguồn nước, chức năng làm đá hoặc nhiệt độ có thể chưa phù hợp. Cách khắc phục: Kiểm tra nguồn nước, chức năng làm đá và nhiệt độ.",
+          "brand": "Panasonic",
+          "device": "Tủ lạnh",
+          "error_code": "",
+          "source_url": "https://www.panasonic.com/vn/consumer/home-appliances/refrigerator-learn/experience/refrigerator-information.html",
+          "retrieval_source": "chroma"
+        },
+        {
+          "question_id": "Q0941",
+          "question": "Panasonic Tủ lạnh không làm đá thì phải làm sao?",
+          "answer": "Nguyên nhân sự cố: Nguồn nước, chức năng làm đá hoặc nhiệt độ có thể chưa phù hợp. Cách khắc phục: Kiểm tra nguồn nước, chức năng làm đá và nhiệt độ.",
+          "brand": "Panasonic",
+          "device": "Tủ lạnh",
+          "error_code": "",
+          "source_url": "https://www.panasonic.com/vn/consumer/home-appliances/refrigerator-learn/experience/refrigerator-information.html",
+          "retrieval_source": "chroma"
+        },
+        {
+          "question_id": "Q0872",
+          "question": "Panasonic Tủ lạnh ngăn đông không đông?",
+          "answer": "Nguyên nhân sự cố: Nhiệt độ hoặc luồng khí ngăn đông có thể chưa phù hợp. Cách khắc phục: Kiểm tra cài đặt ngăn đông và cách sắp xếp thực phẩm.",
+          "brand": "Panasonic",
+          "device": "Tủ lạnh",
+          "error_code": "",
+          "source_url": "https://www.panasonic.com/vn/consumer/home-appliances/refrigerator-learn/experience/refrigerator-information.html",
+          "retrieval_source": "chroma"
+        }
+      ],
+      "latency_seconds": 30.454753099998925
+    },
+    {
+      "question_id": "Q0360",
+      "question": "Máy điều hòa Samsung lỗi E1",
+      "llm_status": "success",
+      "answer": "Nguyên nhân sự cố: Mã E1 cần đối chiếu đúng kiểu máy vì Samsung dùng E1 cùng các mã số để chỉ các nhóm lỗi khác nhau. Cách khắc phục: Đối chiếu hướng dẫn của đúng model; nếu mã vẫn xuất hiện, yêu cầu dịch vụ kiểm tra.\n- Nguồn đối chiếu: <https://www.samsung.com/vn/support/home-appliances/check-out-the-displayed-error-codes-on-the-indoor-unit-air-conditioner/>",
+      "context": "--- TÀI LIỆU THAM KHẢO 1 (Nguồn tìm kiếm: both) ---\n- Hãng: Samsung\n- Thiết bị: Điều hòa\n- Mã lỗi: E1\n- Câu hỏi tham khảo: Máy điều hòa Samsung lỗi E1\n- Hướng dẫn xử lý: Nguyên nhân sự cố: Mã E1 cần đối chiếu đúng kiểu máy vì Samsung dùng E1 cùng các mã số để chỉ các nhóm lỗi khác nhau. Cách khắc phục: Đối chiếu hướng dẫn của đúng model; nếu mã vẫn xuất hiện, yêu cầu dịch vụ kiểm tra.\n- Nguồn đối chiếu: https://www.samsung.com/vn/support/home-appliances/check-out-the-displayed-error-codes-on-the-indoor-unit-air-conditioner/\n\n--- TÀI LIỆU THAM KHẢO 2 (Nguồn tìm kiếm: chroma) ---\n- Hãng: Samsung\n- Thiết bị: Điều hòa\n- Mã lỗi: E5\n- Câu hỏi tham khảo: Máy điều hòa Samsung lỗi E5\n- Hướng dẫn xử lý: Nguyên nhân sự cố: Mã E5 liên quan cảm biến bộ trao đổi nhiệt dàn lạnh. Cách khắc phục: Kiểm tra cảm biến; có thể cần thay cảm biến.\n- Nguồn đối chiếu: https://www.samsung.com/vn/support/home-appliances/check-out-the-displayed-error-codes-on-the-indoor-unit-air-conditioner/\n\n--- TÀI LIỆU THAM KHẢO 3 (Nguồn tìm kiếm: chroma) ---\n- Hãng: Samsung\n- Thiết bị: Điều hòa\n- Mã lỗi: E6\n- Câu hỏi tham khảo: Máy điều hòa Samsung lỗi E6\n- Hướng dẫn xử lý: Nguyên nhân sự cố: Mã E6 liên quan cảm biến bộ trao đổi nhiệt dàn nóng. Cách khắc phục: Kiểm tra cảm biến; có thể cần thay cảm biến.\n- Nguồn đối chiếu: https://www.samsung.com/vn/support/home-appliances/check-out-the-displayed-error-codes-on-the-indoor-unit-air-conditioner/\n\n--- TÀI LIỆU THAM KHẢO 4 (Nguồn tìm kiếm: chroma) ---\n- Hãng: Samsung\n- Thiết bị: Điều hòa\n- Mã lỗi: E7\n- Câu hỏi tham khảo: Máy điều hòa Samsung lỗi E7\n- Hướng dẫn xử lý: Nguyên nhân sự cố: Mã E7 liên quan cảm biến nhiệt độ bộ gia nhiệt. Cách khắc phục: Kiểm tra cảm biến; có thể cần thay cảm biến.\n- Nguồn đối chiếu: https://www.samsung.com/vn/support/home-appliances/check-out-the-displayed-error-codes-on-the-indoor-unit-air-conditioner/\n\n--- TÀI LIỆU THAM KHẢO 5 (Nguồn tìm kiếm: chroma) ---\n- Hãng: Samsung\n- Thiết bị: Điều hòa\n- Mã lỗi: 63\n- Câu hỏi tham khảo: Máy điều hòa Samsung lỗi 63\n- Hướng dẫn xử lý: Nguyên nhân sự cố: Mã 63 liên quan EEPROM. Cách khắc phục: Nếu mã vẫn xuất hiện, hãy yêu cầu dịch vụ kiểm tra.\n- Nguồn đối chiếu: https://www.samsung.com/vn/support/home-appliances/check-out-the-displayed-error-codes-on-the-indoor-unit-air-conditioner/",
+      "retrieved_documents": [
+        {
+          "question_id": "Q0360",
+          "question": "Máy điều hòa Samsung lỗi E1",
+          "answer": "Nguyên nhân sự cố: Mã E1 cần đối chiếu đúng kiểu máy vì Samsung dùng E1 cùng các mã số để chỉ các nhóm lỗi khác nhau. Cách khắc phục: Đối chiếu hướng dẫn của đúng model; nếu mã vẫn xuất hiện, yêu cầu dịch vụ kiểm tra.",
+          "brand": "Samsung",
+          "device": "Điều hòa",
+          "error_code": "E1",
+          "source_url": "https://www.samsung.com/vn/support/home-appliances/check-out-the-displayed-error-codes-on-the-indoor-unit-air-conditioner/",
+          "retrieval_source": "both"
+        },
+        {
+          "question_id": "Q0365",
+          "question": "Máy điều hòa Samsung lỗi E5",
+          "answer": "Nguyên nhân sự cố: Mã E5 liên quan cảm biến bộ trao đổi nhiệt dàn lạnh. Cách khắc phục: Kiểm tra cảm biến; có thể cần thay cảm biến.",
+          "brand": "Samsung",
+          "device": "Điều hòa",
+          "error_code": "E5",
+          "source_url": "https://www.samsung.com/vn/support/home-appliances/check-out-the-displayed-error-codes-on-the-indoor-unit-air-conditioner/",
+          "retrieval_source": "chroma"
+        },
+        {
+          "question_id": "Q0366",
+          "question": "Máy điều hòa Samsung lỗi E6",
+          "answer": "Nguyên nhân sự cố: Mã E6 liên quan cảm biến bộ trao đổi nhiệt dàn nóng. Cách khắc phục: Kiểm tra cảm biến; có thể cần thay cảm biến.",
+          "brand": "Samsung",
+          "device": "Điều hòa",
+          "error_code": "E6",
+          "source_url": "https://www.samsung.com/vn/support/home-appliances/check-out-the-displayed-error-codes-on-the-indoor-unit-air-conditioner/",
+          "retrieval_source": "chroma"
+        },
+        {
+          "question_id": "Q0367",
+          "question": "Máy điều hòa Samsung lỗi E7",
+          "answer": "Nguyên nhân sự cố: Mã E7 liên quan cảm biến nhiệt độ bộ gia nhiệt. Cách khắc phục: Kiểm tra cảm biến; có thể cần thay cảm biến.",
+          "brand": "Samsung",
+          "device": "Điều hòa",
+          "error_code": "E7",
+          "source_url": "https://www.samsung.com/vn/support/home-appliances/check-out-the-displayed-error-codes-on-the-indoor-unit-air-conditioner/",
+          "retrieval_source": "chroma"
+        },
+        {
+          "question_id": "Q0364",
+          "question": "Máy điều hòa Samsung lỗi 63",
+          "answer": "Nguyên nhân sự cố: Mã 63 liên quan EEPROM. Cách khắc phục: Nếu mã vẫn xuất hiện, hãy yêu cầu dịch vụ kiểm tra.",
+          "brand": "Samsung",
+          "device": "Điều hòa",
+          "error_code": "63",
+          "source_url": "https://www.samsung.com/vn/support/home-appliances/check-out-the-displayed-error-codes-on-the-indoor-unit-air-conditioner/",
+          "retrieval_source": "chroma"
+        }
+      ],
+      "latency_seconds": 29.38869639999757
+    }
+  ]
+}
