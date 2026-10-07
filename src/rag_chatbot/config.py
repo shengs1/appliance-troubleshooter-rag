@@ -14,7 +14,7 @@ class Settings(BaseSettings):
     """Lop luu tru toan bo cau hinh cho he thong RAG."""
 
     # Cau hinh ung dung chung
-    app_name: str = "rag-chatbot"
+    app_name: str = "Electronics-Rag-Chatbot"
     app_env: str = "development"
     debug: bool = True
 

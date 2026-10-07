@@ -12,7 +12,7 @@ def test_default_settings():
     """Kiem tra cac gia tri mac dinh cua Settings."""
     settings = Settings()
 
-    assert settings.app_name == "rag-chatbot"
+    assert settings.app_name == "Electronics-Rag-Chatbot"
     assert settings.app_env == "development"
     assert settings.debug is True
     assert settings.neo4j_uri == "bolt://localhost:7687"

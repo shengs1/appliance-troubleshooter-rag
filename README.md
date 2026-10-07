@@ -1,576 +1,407 @@
-# RAG Chatbot - Hệ Thống Hỗ Trợ Khắc Phục Sự Cố Thiết Bị Điện Tử
+# Electronics-Rag-Chatbot
 
-Dự án học thuật xây dựng hệ thống **RAG Chatbot (Retrieval-Augmented Generation)** hỗ trợ chẩn đoán và hướng dẫn xử lý sự cố thiết bị điện tử gia dụng (Điều hòa, Tủ lạnh, Máy giặt, Máy sấy, Lò vi sóng, Máy lọc không khí...).
-
-Hệ thống kết hợp kỹ thuật **Hybrid Retrieval** giữa cơ sở dữ liệu vector (**ChromaDB**) và đồ thị tri thức (**Neo4j**), cùng mô hình ngôn ngữ lớn chạy cục bộ (**Local LLM - Qwen2.5:7B qua Ollama**) và giao diện lập trình ứng dụng REST API (**FastAPI**).
+Chatbot hỗ trợ tra cứu và hướng dẫn xử lý sự cố thiết bị điện tử gia dụng (điều hòa, tủ lạnh, máy giặt, máy sấy, lò vi sóng, máy lọc không khí) sử dụng kỹ thuật RAG (Retrieval-Augmented Generation).
 
 ---
 
-## 1. Quick Start (Khởi động nhanh trong 10 bước)
+## Giới thiệu
 
-1. **Sao chép mã nguồn (Clone repository)**:
-   ```powershell
-   git clone https://github.com/<USERNAME>/<REPOSITORY>.git
-   cd rag-chatbot
-   ```
+Đây là project xây dựng chatbot hỗ trợ tra cứu và hướng dẫn xử lý sự cố thiết bị điện tử gia dụng bằng kỹ thuật RAG.
 
-2. **Cài đặt môi trường và thư viện với `uv`**:
-   ```powershell
-   uv sync
-   ```
+Hệ thống giúp người dùng tìm kiếm nguyên nhân và cách khắc phục khi thiết bị gặp trục trặc hoặc báo mã lỗi, áp dụng cho 3 hãng phổ biến: Samsung, LG và Panasonic.
 
-3. **Cấu hình biến môi trường**:
-   ```powershell
-   Copy-Item .env.example .env
-   # Mở file .env và cập nhật NEO4J_PASSWORD theo mật khẩu CSDL của bạn
-   ```
-
-4. **Khởi động Neo4j Desktop / Server**:
-   Đảm bảo dịch vụ Neo4j đang hoạt động tại cổng `7687` (kiểm tra: `Test-NetConnection localhost -Port 7687`).
-
-5. **Nạp dữ liệu vào ChromaDB (Vector Store)**:
-   ```powershell
-   uv run python -m rag_chatbot.ingest
-   ```
-
-6. **Nạp dữ liệu vào Neo4j (Knowledge Graph)**:
-   ```powershell
-   uv run python -m rag_chatbot.neo4j_db
-   ```
-
-7. **Khởi động Ollama và tải mô hình Local LLM**:
-   ```powershell
-   ollama pull qwen2.5:7b
-   ```
-
-8. **Khởi chạy máy chủ FastAPI**:
-   ```powershell
-   uv run uvicorn rag_chatbot.main:app --reload --port 8000
-   ```
-
-9. **Mở tài liệu API tương tác (Swagger UI)**:
-   Truy cập trình duyệt: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
-
-10. **Gửi câu hỏi thử nghiệm qua API**:
-    Gửi request tới `POST /chat` với câu hỏi:
-    ```json
-    {
-      "question": "Máy điều hòa Samsung lỗi CF là gì?"
-    }
-    ```
+Để tránh hiện tượng mô hình ngôn ngữ tự bịa ra thông tin kỹ thuật sai lệch, chatbot áp dụng cơ chế truy vấn thông tin trước từ cơ sở dữ liệu (ChromaDB và Neo4j), sau đó mới đưa dữ liệu thực tế vào ngữ cảnh để mô hình ngôn ngữ cục bộ (Local LLM) tổng hợp câu trả lời cho người dùng.
 
 ---
 
-## 2. Mục tiêu dự án & Đặc thù đồ án học thuật
+## Công nghệ sử dụng
 
-Dự án này là một đồ án học thuật dành cho người mới bắt đầu tiếp cận RAG. Toàn bộ mã nguồn được thiết kế xoay quanh 5 tiêu chí cốt lõi:
-1. **Đơn giản (Simplicity)**: Viết mã nguồn Python thuần, dễ đọc, luồng điều khiển rõ ràng.
-2. **Dễ giải thích (Explainability)**: Từng module, hàm và truy vấn đều minh bạch, phục vụ tốt cho buổi thi vấn đáp (oral examination).
-3. **Độ chính xác & Chống ảo giác (Grounding)**: Mô hình chỉ trả lời dựa DUY NHẤT vào dữ liệu kỹ thuật truy vấn được, tuyệt đối không tự bịa đặt mã lỗi, nguyên nhân hay khuyến nghị ngoài tài liệu.
-4. **Kiểm thử đầy đủ (Testability)**: Toàn bộ các tầng (config, vector, graph, hybrid, rag, api, evaluation) đều có unit test tự động với `pytest`.
-5. **Không over-engineering**: Không sử dụng kiến trúc microservices phức tạp, không áp dụng dependency injection đa tầng, không dùng các giải thuật xếp hạng trừu tượng quá mức khi chưa cần thiết.
+- **Python 3.12**: Ngôn ngữ lập trình chính của dự án.
+- **ChromaDB**: Cơ sở dữ liệu vector (Vector Database) dùng để lưu trữ vector nhúng của các tài liệu kỹ thuật và thực hiện tìm kiếm tương đồng ngữ nghĩa (semantic search).
+- **BAAI/bge-m3**: Mô hình embedding đa ngữ hỗ trợ tốt tiếng Việt, chạy qua thư viện `sentence-transformers`.
+- **Neo4j**: Cơ sở dữ liệu đồ thị (Graph Database) lưu trữ các mối quan hệ có cấu trúc giữa Hãng, Thiết bị, Sự cố, Mã lỗi, Câu hỏi, Câu trả lời và Nguồn tài liệu.
+- **Ollama & Qwen2.5:7B**: Nền tảng chạy mô hình ngôn ngữ lớn cục bộ trên máy tính cá nhân, giúp xử lý và trả lời câu hỏi mà không cần gửi dữ liệu ra dịch vụ bên ngoài.
+- **FastAPI**: Web framework xây dựng REST API để cung cấp giao diện kết nối cho chatbot.
+- **uv & pytest**: Công cụ quản lý môi trường ảo, dependencies và thực thi unit tests.
 
 ---
 
-## 3. Kiến trúc tổng thể hệ thống
+## Kiến trúc hệ thống
 
-```
-+-------------------------------------------------------------+
-|                      Client / Người dùng                    |
-+-------------------------------------------------------------+
-                              |
-                     POST /chat (JSON)
-                              v
-+-------------------------------------------------------------+
-|                  FastAPI Application (main.py)              |
-+-------------------------------------------------------------+
-                              |
-                  generate_rag_answer(question)
-                              v
-+-------------------------------------------------------------+
-|                  RAG Pipeline (rag.py)                      |
-|  1. Nhận câu hỏi                                            |
-|  2. Điều phối Hybrid Retrieval                              |
-|  3. Xây dựng Context kỹ thuật có cấu trúc                   |
-|  4. Tạo Grounding Prompt nghiêm ngặt                        |
-|  5. Gọi Local LLM sinh câu trả lời                          |
-+-------------------------------------------------------------+
-                              |
-               search_hybrid(question, k=5)
-                              v
-+-------------------------------------------------------------+
-|              Hybrid Retrieval (retrieval.py)                |
-|  - Trích xuất thực thể: Hãng, Thiết bị, Mã lỗi              |
-|  - Hợp nhất kết quả từ 2 nguồn theo question_id             |
-|  - Đánh dấu tài liệu tìm thấy từ cả hai nguồn ('both')      |
-+-------------------------------------------------------------+
-             /                                   \
-            /                                     \
-           v                                       v
-+-----------------------+              +-----------------------+
-|  ChromaDB (chroma_db) |              |   Neo4j (neo4j_db)    |
-| - Vector Semantic     |              | - Cypher Graph Query  |
-| - Model: BAAI/bge-m3  |              | - Quan hệ thực thể    |
-| - 1.090 documents     |              | - 3.188 nodes         |
-|                       |              | - 4.391 relationships |
-+-----------------------+              +-----------------------+
-                              |
-                   Ngữ cảnh trích xuất (Context)
-                              v
-+-------------------------------------------------------------+
-|                 Grounding Prompt (rag.py)                   |
-+-------------------------------------------------------------+
-                              |
-                   POST /api/generate (HTTP)
-                              v
-+-------------------------------------------------------------+
-|              Local LLM Service (Ollama)                     |
-|              Mô hình: Qwen2.5:7B                            |
-+-------------------------------------------------------------+
-                              |
-                     Câu trả lời chuẩn hóa
-                              v
-+-------------------------------------------------------------+
-|                 Kết quả JSON trả về Client                  |
-+-------------------------------------------------------------+
+Quy trình xử lý một câu hỏi của người dùng diễn ra theo các bước:
+
+```text
+Người dùng / Client
+       │
+       ▼ (HTTP POST /chat)
+   FastAPI
+       │
+       ▼
+generate_rag_answer()
+       │
+       ├────────────────────────┬────────────────────────┐
+       ▼                        ▼                        ▼
+ChromaDB (Vector Search)   Neo4j (Graph Search)    Từ khóa mã lỗi/hãng
+       │                        │                        │
+       └────────────────────────┴────────────────────────┘
+                                │
+                                ▼
+                        Hybrid Retrieval
+                    (Gộp kết quả & xếp hạng)
+                                │
+                                ▼
+                          build_context()
+                     (Tạo ngữ cảnh kỹ thuật)
+                                │
+                                ▼
+                       Prompt bám sát dữ liệu
+                                │
+                                ▼
+                     Ollama (Qwen2.5:7B Local)
+                                │
+                                ▼
+                        Phản hồi JSON
 ```
 
----
-
-## 4. Công nghệ chính sử dụng
-
-- **Ngôn ngữ**: Python 3.12 (quản lý môi trường và gói thư viện bằng `uv`).
-- **Quản lý cấu hình**: `pydantic-settings` (đọc biến môi trường `.env`, cung cấp giá trị mặc định an toàn).
-- **Vector Database**: `ChromaDB` (`v1.5.9+`) lưu trữ vector embedding trên ổ đĩa cục bộ.
-- **Mô hình Embedding**: `BAAI/bge-m3` (qua `sentence-transformers`), hỗ trợ xuất sắc ngữ nghĩa tiếng Việt kỹ thuật.
-- **Knowledge Graph**: `Neo4j` (`v5.x / Community / Desktop` qua thư viện chính thức `neo4j` Python driver).
-- **Giao diện API**: `FastAPI` + `uvicorn` (cung cấp REST API và tài liệu tương tác Swagger).
-- **Mô hình Ngôn ngữ cục bộ (Local LLM)**: `Qwen2.5:7B` chạy thông qua `Ollama` qua cổng HTTP `11434`.
-- **Kiểm thử tự động**: `pytest` (toàn bộ 36 bài kiểm thử tự động).
+1. **Tiếp nhận câu hỏi**: Client gửi câu hỏi dạng JSON tới endpoint `POST /chat` của FastAPI.
+2. **Truy vấn đa nguồn (Hybrid Retrieval)**:
+   - ChromaDB tìm kiếm các đoạn văn bản có ý nghĩa gần nhất với câu hỏi.
+   - Neo4j trích xuất mã lỗi hoặc tên hãng để truy vấn các nút và mối quan hệ tương ứng trên đồ thị.
+3. **Tổng hợp ngữ cảnh**: Ghép các kết quả tìm thấy thành một đoạn ngữ cảnh rõ ràng, ưu tiên các bản ghi được cả hai nguồn xác nhận.
+4. **Sinh câu trả lời**: Đưa ngữ cảnh và câu hỏi vào prompt, gửi tới Ollama (Qwen2.5:7B) để mô hình sinh câu trả lời ngắn gọn, bám sát tài liệu.
+5. **Trả kết quả**: Trả về cho client câu trả lời kèm thông tin trích dẫn nguồn và trạng thái thực thi.
 
 ---
 
-## 5. Quy trình dữ liệu (Data Pipeline)
+## Dataset
 
-Dữ liệu nguồn được thu thập và làm sạch trong file Excel kỹ thuật `data/raw/dataset.xlsx`:
-- **Tổng số bản ghi**: **1.090 câu hỏi - đáp (Q&A)** kỹ thuật.
-- **3 Thương hiệu (Brands)**: LG, Panasonic, Samsung.
-- **10 Loại thiết bị (Devices)**: Điều hòa, Tủ lạnh, Máy giặt, Máy sấy, Lò nướng, Lò vi sóng, Máy rửa bát, Máy lọc không khí, Bếp, TV.
-- **632 Sự cố kỹ thuật (Issues)**.
-- **332 Mã lỗi (ErrorCodes)**.
-- **31 Nguồn tài liệu kỹ thuật (Sources)** từ các trang hỗ trợ chính hãng và bên thứ ba uy tín.
+Dữ liệu được lưu trong file `data/raw/dataset.xlsx` gồm 1.090 bản ghi hỏi đáp về sự cố thiết bị điện tử.
 
-### Các nguyên tắc bảo toàn dữ liệu nghiêm ngặt:
-- **Bảo tồn mã lỗi bị thiếu**: Nếu câu hỏi về triệu chứng thuần không có mã lỗi, trường `error_code` để trống, không tự ý gán bừa.
-- **Bảo tồn mã lỗi chưa xác định (`ERROR_CODE_UNKNOWN`)**: Giữ nguyên vẹn 16 bản ghi sự cố có đèn báo/âm thanh nhưng tài liệu gốc không đặt tên mã lỗi.
-- **Bảo tồn bản ghi nhiều mã lỗi (`MULTIPLE_ERROR_CODES`)**: Giữ nguyên danh sách các bản ghi chứa đồng thời nhiều mã lỗi (ví dụ: `ER CH, ER CL`).
-- **Bảo tồn các biến thể câu hỏi trùng lặp**: Giữ lại 118 bản ghi thuộc 59 nhóm biến thể nhằm đa dạng hóa mẫu câu hỏi thực tế từ người dùng.
-- **Bảo tồn cờ nguồn bên thứ ba**: Đánh dấu rõ nguồn chính thức (`official: YES`) và nguồn bên thứ ba (`official: NO`).
-- **Không tự bịa đặt Nguyên nhân / Cách khắc phục**: Với 357 bản ghi mang nhãn `Loại_câu_trả_lời = 'ANSWER'`, hệ thống giữ nguyên văn bản trả lời kỹ thuật gốc, không dùng AI để tự suy đoán tách rời cause/solution khi dữ liệu gốc không có nhãn.
+Cấu trúc các cột chính:
+- `ID`: Mã định danh bản ghi (ví dụ `Q0001`, `Q0358`).
+- `Hãng`: Samsung, LG, Panasonic.
+- `Thiết_bị`: Điều hòa, Tủ lạnh, Máy giặt, Máy sấy, Lò vi sóng, Máy lọc không khí,...
+- `Mã_lỗi`: Mã báo lỗi trên màn hình hoặc đèn tín hiệu (ví dụ: `CF`, `E1`, `dE`, `F11`).
+- `Sự_cố`: Mô tả ngắn về hiện tượng hoặc tên sự cố.
+- `Câu_hỏi_làm_sạch`: Câu hỏi chuẩn hóa của người dùng.
+- `Nguyên_nhân`: Nguyên nhân kỹ thuật gây ra lỗi.
+- `Cách_khắc_phục`: Các bước xử lý hoặc khuyến cáo khắc phục.
+- `Trả_lời`: Nội dung hướng dẫn chi tiết hoặc câu trả lời tổng hợp.
+- `Nguồn`: Đường dẫn trang hỗ trợ kỹ thuật chính hãng hoặc nguồn tài liệu tham khảo.
 
-*(Chi tiết ánh xạ dữ liệu xem tại [DATA_MODEL.md](DATA_MODEL.md)).*
+File Excel này được dùng làm nguồn để nạp dữ liệu vào cả ChromaDB và Neo4j.
 
 ---
 
-## 6. Cơ sở dữ liệu Vector (ChromaDB)
+## ChromaDB
 
-- **Collection**: `electronics_troubleshooting`
-- **Embedding Model**: `BAAI/bge-m3`
+ChromaDB đảm nhiệm việc tìm kiếm ngữ nghĩa theo nội dung câu hỏi.
+
+- **Collection name**: `electronics_troubleshooting`
 - **Thư mục lưu trữ**: `./chroma_data`
+- **Embedding model**: `BAAI/bge-m3`
+- **Cơ chế biểu diễn**: Mỗi dòng dữ liệu trong dataset tương ứng với 1 document trong ChromaDB. Nội dung document được ghép từ Hãng, Thiết bị, Mã lỗi, Sự cố, Câu hỏi, Nguyên nhân và Cách khắc phục.
+- **Metadata**: Lưu các thông tin phụ trợ như `question_id`, `brand`, `device`, `error_code`, `issue_type`, `url` để phục vụ lọc và trích xuất nguồn.
 
-### Chiến lược Chunking & Mapping:
-Trong dự án này, hệ thống áp dụng nguyên tắc thiết kế đơn giản, rõ ràng:
-$$\text{1 Bản ghi Q\&A} \longrightarrow \text{1 ChromaDB Document}$$
-Không sử dụng các thuật toán chia nhỏ văn bản (chunking) phức tạp vì mỗi dòng câu hỏi - giải pháp kỹ thuật đã là một đơn vị tri thức hoàn chỉnh và độc lập.
-
-- **Document Content (`page_content`)**: Đoạn văn bản tổng hợp chứa Hãng, Thiết bị, Mã lỗi, Câu hỏi đã làm sạch, Nguyên nhân, Cách khắc phục và Toàn văn câu trả lời. Đoạn văn bản này được mô hình `bge-m3` mã hóa thành vector không gian đa chiều.
-- **Metadata**: Lưu trữ các trường dữ liệu định danh vô hướng (scalar) phục vụ bộ lọc:
-  `question_id`, `brand`, `device`, `error_code`, `issue_type`, `issue_id`, `answer_type`, `source_id`, `source_url`, `domain`.
-- **Semantic Search**: Khi người dùng hỏi, câu hỏi được chuyển đổi thành vector embedding và tìm kiếm các tài liệu có khoảng cách cosine nhỏ nhất trong ChromaDB.
+Khi người dùng đặt câu hỏi bằng ngôn ngữ tự nhiên (kể cả khi không nhớ chính xác mã lỗi), ChromaDB tính toán khoảng cách vector và trả về top-k tài liệu liên quan nhất.
 
 ---
 
-## 7. Cơ sở dữ liệu Đồ thị (Neo4j)
+## Neo4j
 
-Neo4j lưu trữ tri thức dưới dạng đồ thị (Knowledge Graph) để thể hiện các mối quan hệ cấu trúc nhiều cấp:
+Neo4j đảm nhiệm việc truy vấn quan hệ có cấu trúc giữa các thực thể kỹ thuật.
 
-### Mô hình Đồ thị (Schema):
-```
-                       (:Brand)
-                          |
-                          | [:HAS_DEVICE]
-                          v
-                       (:Device)
-                          |
-                          | [:HAS_ISSUE]
-                          v
-                       (:Issue) --------[:HAS_ERROR_CODE]-------> (:ErrorCode)
-                          ^
-                          | [:ABOUT]
-                          |
-                      (:Question)
-                     /           \
-     [:ANSWERED_BY] /             \ [:SOURCED_FROM]
-                   v               v
-               (:Answer)       (:Source)
-```
+### Các loại Node trong đồ thị:
+- `Brand` (3 nodes): Samsung, LG, Panasonic.
+- `Device` (10 nodes): Điều hòa, Tủ lạnh, Máy giặt, Máy sấy, Máy lọc không khí, Lò vi sóng,...
+- `Issue` (632 nodes): Các vấn đề, sự cố kỹ thuật cụ thể.
+- `ErrorCode` (332 nodes): Các mã lỗi hiển thị trên thiết bị.
+- `Question` (1090 nodes): Nội dung câu hỏi.
+- `Answer` (1090 nodes): Chi tiết nguyên nhân và cách khắc phục.
+- `Source` (31 nodes): Nguồn trang web tài liệu tham khảo.
 
-### Số lượng đối tượng thực tế trên đồ thị:
-- **Node Labels**:
-  - `Brand`: 3 nodes
-  - `Device`: 10 nodes
-  - `Issue`: 632 nodes
-  - `ErrorCode`: 332 nodes
-  - `Question`: 1.090 nodes
-  - `Answer`: 1.090 nodes
-  - `Source`: 31 nodes
-  - **Tổng số nodes**: **3.188 nodes**
-- **Relationships**:
-  - `[:HAS_DEVICE]`: 20 cạnh
-  - `[:HAS_ISSUE]`: 632 cạnh
-  - `[:HAS_ERROR_CODE]`: 469 cạnh
-  - `[:ABOUT]`: 1.090 cạnh
-  - `[:ANSWERED_BY]`: 1.090 cạnh
-  - `[:SOURCED_FROM]`: 1.090 cạnh
-  - **Tổng số relationships**: **4.391 cạnh**
+### Các mối quan hệ (Relationships):
+- `(:Brand)-[:HAS_DEVICE]->(:Device)`
+- `(:Device)-[:HAS_ISSUE]->(:Issue)`
+- `(:Issue)-[:HAS_ERROR_CODE]->(:ErrorCode)`
+- `(:Question)-[:ABOUT]->(:Issue)`
+- `(:Question)-[:ANSWERED_BY]->(:Answer)`
+- `(:Answer)-[:SOURCED_FROM]->(:Source)`
+
+Tổng số nút trên đồ thị: **3.188 nodes** và **4.391 relationships**.
+
+Truy vấn được thực hiện bằng Cypher có truyền tham số để lọc nhanh theo mã lỗi hoặc tên thiết bị và hãng.
 
 ---
 
-## 8. Truy vấn kết hợp (Hybrid Retrieval)
+## Hybrid Retrieval
 
-Hệ thống kết hợp ưu điểm của cả hai phương pháp truy vấn:
-1. **ChromaDB**: Tìm kiếm ngữ nghĩa tương đồng (Semantic Similarity Search) dựa trên khoảng cách vector, rất mạnh với câu hỏi ngôn ngữ tự nhiên và miêu tả triệu chứng.
-2. **Neo4j**: Tìm kiếm theo thực thể đồ thị (Graph Entity Retrieval) sử dụng Cypher query có tham số, đạt độ chính xác 100% đối với các mã lỗi kỹ thuật tường minh.
+Hybrid Retrieval kết hợp điểm mạnh của cả ChromaDB và Neo4j:
 
-### Cơ chế kết hợp đơn giản, minh bạch:
-- Hệ thống trích xuất thực thể cơ bản từ câu hỏi: Hãng (`Brand`), Loại thiết bị (`Device`), Mã lỗi (`ErrorCode`).
-- Thực thi đồng thời truy vấn `search_similar_documents()` từ ChromaDB và `search_graph()` từ Neo4j.
-- Hợp nhất danh sách kết quả dựa trên khóa chính `question_id`:
-  - Nếu tài liệu được tìm thấy bởi **cả hai nguồn**: gán nhãn `retrieval_source = "both"` và **ưu tiên đưa lên đầu danh sách ngữ cảnh**.
-  - Nếu chỉ tìm thấy từ một nguồn: gán nhãn `chroma` hoặc `neo4j`.
+- **ChromaDB**: Hiệu quả với câu hỏi miêu tả triệu chứng tự nhiên, tìm kiếm theo ngữ nghĩa.
+- **Neo4j**: Hiệu quả với câu hỏi chứa mã lỗi cụ thể hoặc cần tra cứu chính xác quan hệ giữa hãng và thiết bị.
 
-> **Lưu ý học thuật**: Hệ thống **không** sử dụng Reciprocal Rank Fusion (RRF), cross-encoder hay các mô hình reranking phức tạp nhằm đảm bảo thuật toán dễ hiểu, dễ trình bày trước hội đồng thi.
+Quy trình kết hợp:
+1. Trích xuất mã lỗi và tên hãng từ câu hỏi của người dùng bằng biểu thức chính quy và từ khóa.
+2. Thực hiện song song truy vấn vector trên ChromaDB và truy vấn đồ thị trên Neo4j.
+3. Gộp danh sách kết quả, chuẩn hóa dữ liệu theo định dạng chung và loại bỏ trùng lặp dựa trên `question_id`.
+4. Nếu một tài liệu xuất hiện ở cả hai nguồn (`retrieval_source = "both"`), tài liệu đó sẽ được ưu tiên xếp lên đầu danh sách để đưa vào ngữ cảnh.
 
 ---
 
-## 9. Điều phối RAG & Local LLM
+## RAG + Local LLM
 
-### Luồng xử lý câu hỏi:
-$$\text{User Question} \longrightarrow \text{search\_hybrid()} \longrightarrow \text{build\_context()} \longrightarrow \text{create\_prompt()} \longrightarrow \text{call\_local\_llm()} \longrightarrow \text{generate\_rag\_answer()}$$
+Sau khi có danh sách tài liệu từ bước tìm kiếm kết hợp:
 
-- **Mô hình LLM**: `Qwen2.5:7B` chạy thông qua Ollama cục bộ.
-- **API Endpoint**: `http://localhost:11434/api/generate`
-
-### Grounding Prompt (Kỹ thuật khống chế chống ảo giác):
-Khi chạy trực tiếp mô hình ngôn ngữ không qua RAG, mô hình thường tự suy diễn thêm các chi tiết ngoài thực tế (như *"bộ lọc bị bẩn"*, *"cần vệ sinh bằng bàn chải mềm"*, *"liên hệ trung tâm kỹ thuật"*...). Để ngăn chặn điều này, hàm `create_prompt()` áp dụng các nguyên tắc bắt buộc:
-1. **Chỉ sử dụng thông tin kỹ thuật có trong ngữ cảnh**: Tuyệt đối không tự suy diễn nguyên nhân từ kiến thức phổ thông, không tự sáng tác sự kiện kỹ thuật mới, không thêm lời khuyên chung chung hay khuyến cáo an toàn nếu tài liệu không nhắc tới.
-2. **Trả lời ngắn gọn, trực tiếp**: Giữ nguyên đúng ý nghĩa của dữ liệu được cung cấp.
-3. **Từ chối thông minh khi thiếu dữ liệu**: Nếu ngữ cảnh không có thông tin hoặc không đủ dữ liệu, thông báo rõ ràng rằng cơ sở tri thức chưa có đủ thông tin xử lý cho trường hợp này.
-4. **Bảo tồn thực thể**: Giữ chính xác tên hãng, loại thiết bị và mã lỗi kỹ thuật.
-5. **Dẫn nguồn kiểm chứng**: Đính kèm đường link nguồn tham khảo chính thức ở cuối câu trả lời.
+1. **Tạo Context (`build_context`)**: Chuẩn hóa thông tin từng tài liệu gồm mã câu hỏi, hãng, thiết bị, mã lỗi/sự cố, nguyên nhân, cách khắc phục và đường dẫn nguồn.
+2. **Cấu hình Prompt**: Prompt yêu cầu mô hình:
+   - Chỉ sử dụng các thông tin có trong ngữ cảnh được cung cấp.
+   - Không tự ý suy diễn nguyên nhân kỹ thuật hoặc thêm các khuyến cáo chung chung khi tài liệu không đề cập.
+   - Trả lời rõ ràng, trực diện vào nguyên nhân và cách khắc phục.
+   - Nếu ngữ cảnh không có thông tin phù hợp, trả lời rõ ràng là cơ sở dữ liệu hiện chưa có thông tin này.
+3. **Gọi Ollama**: Gửi prompt tới mô hình `qwen2.5:7b` chạy qua Ollama API cục bộ (`http://localhost:11434/api/generate`).
 
 ---
 
-## 10. Giao diện REST API (FastAPI)
+## FastAPI
 
-FastAPI đóng vai trò là tầng giao diện API nhẹ nhàng kết nối người dùng với hệ thống RAG, không sao chép lại logic nghiệp vụ:
+Ứng dụng cung cấp API thông qua FastAPI tại file `src/rag_chatbot/main.py`.
 
-### Danh sách Endpoint:
-- `GET /`: Kiểm tra trạng thái hoạt động cơ bản của API (`{"message": "RAG Chatbot API is running"}`).
-- `GET /health`: Kiểm tra sức khỏe hệ thống nhanh chóng, không truy vấn database (`{"status": "ok"}`).
-- `POST /chat`: Tiếp nhận câu hỏi kỹ thuật, thực thi RAG và trả về kết quả JSON.
+### Các endpoints:
 
-### Ví dụ Request & Response:
+- `GET /`: Trả về thông tin cơ bản về dịch vụ.
+- `GET /health`: Kiểm tra trạng thái hoạt động của server.
+- `POST /chat`: Tiếp nhận câu hỏi và trả về kết quả RAG.
 
-**Request (`POST /chat`)**:
-```json
-{
-  "question": "Máy điều hòa Samsung lỗi CF là gì?"
-}
+### Ví dụ Request:
+
+```bash
+curl -X POST "http://localhost:8000/chat" \
+  -H "Content-Type: application/json" \
+  -d '{"question": "Máy điều hòa Samsung lỗi CF là gì?"}'
 ```
 
-**Response (`HTTP 200 OK`)**:
+### Ví dụ Response:
+
 ```json
 {
   "question": "Máy điều hòa Samsung lỗi CF là gì?",
-  "answer": "Máy điều hòa Samsung lỗi CF là mã lỗi cảnh báo bạn cần vệ sinh bộ lọc. Cách khắc phục là vệ sinh hoặc thay bộ lọc rồi đặt lại máy.",
+  "answer": "Mã lỗi CF trên điều hòa Samsung là nhắc vệ sinh bộ lọc.\n\nCách khắc phục: Hãy vệ sinh hoặc thay bộ lọc rồi đặt lại nhắc lọc.",
   "llm_status": "success",
   "retrieved_documents": [
     {
       "question_id": "Q0358",
-      "question": "Máy điều hòa Samsung lỗi CF",
-      "answer": "Nguyên nhân sự cố: Mã CF là nhắc vệ sinh bộ lọc. Cách khắc phục: Hãy vệ sinh hoặc thay bộ lọc rồi đặt lại nhắc lọc.",
       "brand": "Samsung",
-      "device": "Điều hòa",
+      "device": "Máy điều hòa",
       "error_code": "CF",
-      "source_url": "https://www.samsung.com/vn/support/home-appliances/check-out-the-displayed-error-codes-on-the-indoor-unit-air-conditioner/",
-      "retrieval_source": "both"
+      "cause": "Mã CF là nhắc vệ sinh bộ lọc.",
+      "solution": "Hãy vệ sinh hoặc thay bộ lọc rồi đặt lại nhắc lọc.",
+      "retrieval_source": "both",
+      "url": "https://www.samsung.com/vn/support/home-appliances/what-does-a-blinking-filter-light-or-cf-code-mean-on-my-room-air-conditioner/"
     }
   ],
   "sources": [
-    "https://www.samsung.com/vn/support/home-appliances/check-out-the-displayed-error-codes-on-the-indoor-unit-air-conditioner/"
+    "https://www.samsung.com/vn/support/home-appliances/what-does-a-blinking-filter-light-or-cf-code-mean-on-my-room-air-conditioner/"
   ]
 }
 ```
 
-- **Tài liệu Swagger UI**: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
+---
+
+## Cài đặt và chạy project
+
+### Yêu cầu môi trường:
+- Windows / Linux / macOS
+- Python 3.12
+- Công cụ quản lý gói `uv`
+- Neo4j Desktop hoặc Neo4j Community Server
+- Ollama đã cài đặt mô hình `qwen2.5:7b`
+
+### Các bước cài đặt:
+
+1. **Clone repository**:
+   ```powershell
+   git clone https://github.com/<USERNAME>/Electronics-Rag-Chatbot.git
+   cd Electronics-Rag-Chatbot
+   ```
+
+2. **Cài đặt thư viện với `uv`**:
+   ```powershell
+   uv sync
+   ```
+
+3. **Cấu hình file `.env`**:
+   Sao chép file mẫu:
+   ```powershell
+   Copy-Item .env.example .env
+   ```
+   Mở file `.env` và điền mật khẩu Neo4j thực tế của bạn:
+   ```ini
+   APP_NAME=Electronics-Rag-Chatbot
+   APP_ENV=development
+   DEBUG=True
+
+   NEO4J_URI=bolt://localhost:7687
+   NEO4J_USER=neo4j
+   NEO4J_PASSWORD=your_password_here
+
+   CHROMA_PERSIST_DIRECTORY=./chroma_data
+   CHROMA_COLLECTION_NAME=electronics_troubleshooting
+
+   EMBEDDING_MODEL_NAME=BAAI/bge-m3
+   OLLAMA_BASE_URL=http://localhost:11434
+   LLM_MODEL_NAME=qwen2.5:7b
+   ```
+
+4. **Khởi động dịch vụ hỗ trợ**:
+   - Mở Neo4j và khởi động database (port 7687).
+   - Mở Ollama và tải model:
+     ```powershell
+     ollama pull qwen2.5:7b
+     ```
+
+5. **Nạp dữ liệu vào cơ sở dữ liệu**:
+   - Nạp dữ liệu vào Neo4j:
+     ```powershell
+     uv run python -m rag_chatbot.neo4j_db
+     ```
+   - Nạp dữ liệu vào ChromaDB:
+     ```powershell
+     uv run python -m rag_chatbot.ingest
+     ```
+
+6. **Chạy thử nghiệm RAG từ terminal**:
+   ```powershell
+   $env:PYTHONIOENCODING="utf-8"; uv run python -m rag_chatbot.rag
+   ```
+
+7. **Chạy server FastAPI**:
+   ```powershell
+   uv run uvicorn rag_chatbot.main:app --reload --port 8000
+   ```
+   Xem tài liệu API tự động tại: `http://localhost:8000/docs`.
 
 ---
 
-## 11. Cấu trúc thư mục dự án (Project Structure)
+## Cấu trúc thư mục
 
 ```text
-rag-chatbot/
+Electronics-Rag-Chatbot/
 ├── .agents/
 │   └── skills/
 │       └── rag-engineering/
-│           └── SKILL.md                 # Chỉ dẫn quy trình kỹ thuật RAG
+│           └── SKILL.md                 # Chỉ dẫn quy trình kỹ thuật
+├── chroma_data/                         # Thư mục lưu trữ dữ liệu ChromaDB
 ├── data/
 │   ├── evaluation/
-│   │   ├── evaluation_set.json          # Tập 30 câu hỏi đánh giá chuẩn
+│   │   ├── evaluation_set.json          # Tập 30 câu hỏi kiểm thử
 │   │   └── rag_eval_results.json        # Kết quả chi tiết đánh giá RAG + LLM
-│   ├── processed/                       # Thư mục dữ liệu đã qua tiền xử lý
+│   ├── processed/                       # Dữ liệu qua xử lý trung gian
 │   ├── raw/
-│   │   └── dataset.xlsx                 # Bộ dữ liệu gốc 1.090 bản ghi Excel
-│   └── samples/                         # Dữ liệu mẫu kiểm thử
+│   │   └── dataset.xlsx                 # Bộ dữ liệu gốc 1.090 bản ghi
+│   └── samples/
 ├── scripts/                             # Các script tiện ích
 ├── src/
 │   └── rag_chatbot/
-│       ├── __init__.py                  # Khởi tạo package
-│       ├── config.py                    # Cấu hình Pydantic Settings
+│       ├── __init__.py
+│       ├── chroma_db.py                 # Kết nối và cấu hình ChromaDB
+│       ├── config.py                    # Quản lý cấu hình qua pydantic-settings
+│       ├── evaluation.py                # Đo lường và đánh giá hiệu năng
 │       ├── ingest.py                    # Nạp dữ liệu vào ChromaDB
-│       ├── chroma_db.py                 # Kết nối và truy vấn ChromaDB
-│       ├── neo4j_db.py                  # Kết nối, nạp dữ liệu và truy vấn Neo4j
-│       ├── retrieval.py                 # Module truy vấn kết hợp Hybrid Retrieval
-│       ├── rag.py                       # Điều phối Prompt, Context và gọi Local LLM
-│       ├── evaluation.py                # Module tính toán chỉ số đánh giá hệ thống
-│       └── main.py                      # Ứng dụng FastAPI phục vụ REST API
+│       ├── main.py                      # Ứng dụng FastAPI REST API
+│       ├── neo4j_db.py                  # Kết nối và nạp dữ liệu Neo4j
+│       ├── rag.py                       # Xử lý Prompt, Context và gọi LLM
+│       └── retrieval.py                 # Logic tìm kiếm ChromaDB, Neo4j, Hybrid
 ├── tests/
-│   ├── test_api.py                      # Kiểm thử tầng API FastAPI (7 tests)
-│   ├── test_chroma.py                   # Kiểm thử tầng ChromaDB (5 tests)
-│   ├── test_config.py                   # Kiểm thử tầng Cấu hình (3 tests)
-│   ├── test_evaluation.py               # Kiểm thử module Đánh giá (5 tests)
-│   ├── test_hybrid.py                   # Kiểm thử tầng Hybrid Retrieval (5 tests)
-│   ├── test_neo4j.py                    # Kiểm thử tầng Neo4j Graph (5 tests)
-│   └── test_rag.py                      # Kiểm thử tầng RAG & Grounding (6 tests)
-├── .env.example                         # File mẫu cấu hình biến môi trường
-├── .gitignore                           # Các tệp và thư mục loại trừ khỏi Git
-├── .python-version                      # Ghim phiên bản Python (3.12)
-├── AGENTS.md                            # Quy tắc và hướng dẫn đồ án học thuật
-├── DATA_MODEL.md                        # Đặc tả mô hình dữ liệu chi tiết
-├── EVALUATION.md                        # Báo cáo đánh giá chất lượng hệ thống
-├── pyproject.toml                       # Khai báo cấu hình dự án và dependencies
-├── README.md                            # Tài liệu hướng dẫn toàn diện dự án
-└── uv.lock                              # Khóa phiên bản dependencies chính xác
+│   ├── test_api.py                      # Test các API endpoints của FastAPI
+│   ├── test_chroma.py                   # Test kết nối và tìm kiếm ChromaDB
+│   ├── test_config.py                   # Test nạp biến môi trường
+│   ├── test_evaluation.py               # Test các hàm tính chỉ số đánh giá
+│   ├── test_hybrid.py                   # Test thuật toán tìm kiếm kết hợp
+│   ├── test_neo4j.py                    # Test kết nối và truy vấn Neo4j
+│   └── test_rag.py                      # Test prompt, context và luồng RAG
+├── .env.example                         # File mẫu cấu hình môi trường
+├── .gitignore                           # Danh sách bỏ qua của Git
+├── EVALUATION.md                        # Báo cáo chi tiết kết quả đánh giá
+├── pyproject.toml                       # Cấu hình dự án và dependencies
+├── README.md                            # Tài liệu hướng dẫn sử dụng dự án
+└── uv.lock                              # Khóa phiên bản thư viện chính xác
 ```
 
 ---
 
-## 12. Hướng dẫn cài đặt chi tiết trên Windows
+## Kiểm thử
 
-### Bước 1: Sao chép mã nguồn (Clone repository)
-Mở PowerShell và chạy lệnh:
-```powershell
-git clone https://github.com/<USERNAME>/<REPOSITORY>.git
-cd rag-chatbot
-```
+Dự án có 36 unit tests bao quát các thành phần từ cấu hình, truy vấn database, pipeline RAG cho tới các endpoint FastAPI.
 
-### Bước 2: Cài đặt Python 3.12
-Dự án được ghim cố định cho phiên bản **Python 3.12**. Đảm bảo máy tính đã cài đặt Python 3.12 (tải từ [python.org](https://www.python.org/downloads/)).
+Chạy toàn bộ kiểm thử bằng lệnh:
 
-### Bước 3: Cài đặt công cụ quản lý gói `uv`
-Nếu chưa có `uv`, cài đặt nhanh qua PowerShell:
-```powershell
-powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
-```
-
-### Bước 4: Đồng bộ môi trường và dependencies
-Chạy lệnh đồng bộ gói:
-```powershell
-uv sync
-```
-*Lệnh này sẽ tự động khởi tạo môi trường ảo `.venv`, cài đặt chính xác các thư viện cần thiết theo `pyproject.toml` và `uv.lock`.*
-
-### Bước 5: Cấu hình file môi trường `.env`
-Sao chép từ file mẫu `.env.example`:
-```powershell
-Copy-Item .env.example .env
-```
-Mở file `.env` bằng trình soạn thảo và cập nhật thông số kết nối:
-```ini
-APP_NAME=rag-chatbot
-APP_ENV=development
-DEBUG=True
-
-# Cấu hình Neo4j (Nhập mật khẩu bạn đã đặt trong Neo4j Desktop)
-NEO4J_URI=bolt://localhost:7687
-NEO4J_USER=neo4j
-NEO4J_PASSWORD=your_password_here
-
-# Cấu hình ChromaDB
-CHROMA_PERSIST_DIRECTORY=./chroma_data
-CHROMA_COLLECTION_NAME=electronics_troubleshooting
-
-# Cấu hình Embedding Model
-EMBEDDING_MODEL_NAME=BAAI/bge-m3
-
-# Cấu hình Local LLM (Ollama)
-OLLAMA_BASE_URL=http://localhost:11434
-LLM_MODEL_NAME=qwen2.5:7b
-```
-
----
-
-## 13. Cài đặt và Chuẩn bị Neo4j
-
-1. Tải và cài đặt **Neo4j Desktop** (hoặc Neo4j Community Server) từ [neo4j.com](https://neo4j.com/download/).
-2. Tạo một Database mới, đặt Username là `neo4j` và đặt mật khẩu (ghi nhớ mật khẩu này để điền vào `.env`).
-3. Khởi động (Start) cơ sở dữ liệu trên cổng mặc định `7687`.
-4. Kiểm tra cổng kết nối từ PowerShell:
-   ```powershell
-   Test-NetConnection localhost -Port 7687
-   ```
-   *Kết quả mong đợi: `TcpTestSucceeded : True`*.
-5. Truy cập Neo4j Browser để trực quan hóa đồ thị: [http://localhost:7474](http://localhost:7474).
-
----
-
-## 14. Nạp dữ liệu vào Hệ thống (Data Ingestion)
-
-### 14.1. Nạp dữ liệu vào ChromaDB
-Chạy module nạp dữ liệu vector từ `dataset.xlsx`:
-```powershell
-uv run python -m rag_chatbot.ingest
-```
-*Quy trình: Đọc sheet `DATA_CLEAN_TECH` $\rightarrow$ Chuẩn bị văn bản và metadata $\rightarrow$ Tính toán embedding vector $\rightarrow$ Nạp 1.090 documents vào thư mục `./chroma_data`.*
-
-### 14.2. Nạp dữ liệu vào Neo4j
-Chạy module nạp dữ liệu đồ thị:
-```powershell
-uv run python -m rag_chatbot.neo4j_db
-```
-*Quy trình: Khởi tạo ràng buộc duy nhất (Constraints) $\rightarrow$ Đọc các sheet thực thể và quan hệ $\rightarrow$ Thực thi các lệnh `MERGE` theo batch $\rightarrow$ Tạo đủ 3.188 nodes và 4.391 relationships.*
-
----
-
-## 15. Cài đặt và Chạy Ollama (Local LLM)
-
-1. Tải và cài đặt **Ollama** từ [ollama.com](https://ollama.com/).
-2. Kiểm tra phiên bản Ollama:
-   ```powershell
-   ollama --version
-   ```
-3. Tải mô hình mã nguồn mở `Qwen2.5:7B` (hỗ trợ tiếng Việt xuất sắc):
-   ```powershell
-   ollama pull qwen2.5:7b
-   ```
-4. Kiểm tra danh sách mô hình đã tải:
-   ```powershell
-   ollama list
-   ```
-5. Đảm bảo dịch vụ Ollama đang chạy tại địa chỉ: [http://localhost:11434](http://localhost:11434). Mô hình sẽ tự động tận dụng CPU hoặc GPU có sẵn của máy tính.
-
----
-
-## 16. Khởi chạy Ứng dụng
-
-### Kiểm tra thử nghiệm RAG qua CLI:
-Chạy trực tiếp module RAG để kiểm tra phản hồi mẫu với câu hỏi mã lỗi `CF`:
-```powershell
-$env:PYTHONIOENCODING="utf-8"; uv run python -m rag_chatbot.rag
-```
-
-### Khởi chạy máy chủ Web API (FastAPI):
-Khởi chạy dịch vụ API cục bộ:
-```powershell
-uv run uvicorn rag_chatbot.main:app --reload --port 8000
-```
-- API Root: [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
-- Health Check: [http://127.0.0.1:8000/health](http://127.0.0.1:8000/health)
-- Swagger UI: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
-
-*(Yêu cầu tiên quyết: Dịch vụ Neo4j và Ollama đã được bật, dữ liệu ChromaDB đã được nạp).*
-
----
-
-## 17. Kiểm thử tự động (Testing)
-
-Chạy toàn bộ bộ kiểm thử tự động của dự án:
 ```powershell
 uv run pytest
 ```
 
-### Kết quả kiểm thử thực tế:
-**36 / 36 tests PASSED (100%)** trên 7 nhóm kiểm thử:
-- `tests/test_api.py`: 7 tests (kiểm tra các endpoint `/`, `/health`, `/chat`, mã lỗi HTTP 400, 500 và trạng thái LLM).
-- `tests/test_chroma.py`: 5 tests (kiểm tra kết nối, tính embedding, tạo collection và tìm kiếm ngữ nghĩa).
-- `tests/test_config.py`: 3 tests (kiểm tra đọc biến môi trường và giá trị mặc định).
-- `tests/test_evaluation.py`: 5 tests (kiểm tra tập đánh giá, tính toán Hit@k và mock evaluation).
-- `tests/test_hybrid.py`: 5 tests (kiểm tra trích xuất thực thể và logic hợp nhất nguồn).
-- `tests/test_neo4j.py`: 5 tests (kiểm tra kết nối Cypher, ràng buộc duy nhất và số lượng đồ thị).
-- `tests/test_rag.py`: 6 tests (kiểm tra tạo context, grounding prompt, xử lý mất kết nối LLM và câu hỏi mẫu).
-
-*(Lưu ý: Một cảnh báo `StarletteDeprecationWarning` có thể xuất hiện do phiên bản `TestClient` của bên thứ ba, nhưng không ảnh hưởng đến tính đúng đắn và toàn bộ 36 tests đều vượt qua).*
+Kết quả:
+```text
+36 passed, 1 warning in ~2 phút
+```
 
 ---
 
-## 18. Kết quả Đánh giá Thực tế (Phase 8 Results)
+## Kết quả đánh giá
 
-Các chỉ số dưới đây được đo lường thực tế trên tập kiểm thử 30 câu hỏi đại diện từ dữ liệu gốc:
+Hệ thống được đánh giá trên tập dữ liệu chuẩn gồm **30 câu hỏi thực tế** trích xuất từ dataset, đại diện cho cả 3 hãng và 6 nhóm thiết bị khác nhau.
 
-| Thành phần đo lường | Chỉ số đo được | Ý nghĩa kết quả |
-| :--- | :---: | :--- |
-| **Quy mô tập test** | 30 câu hỏi | Trích xuất xác định từ dữ liệu gốc, bao phủ 3 hãng, 6 loại thiết bị. |
-| **ChromaDB Hit@1** | **73.3%** (22/30) | Tỷ lệ tìm đúng tài liệu ngay vị trí đầu tiên qua vector search. |
-| **ChromaDB Hit@5** | **96.7%** (29/30) | Tỷ lệ tài liệu chuẩn xuất hiện trong top 5 kết quả vector. |
-| **ChromaDB Latency** | **718.0 ms** | Tốc độ tìm kiếm ngữ nghĩa nhanh và ổn định. |
-| **Neo4j Hit@1 / Hit@5**| **50.0%** (15/30) | Đạt 100% đối với câu hỏi có mã lỗi kỹ thuật tường minh. |
-| **Neo4j Latency** | **2,067.8 ms** | Tốc độ thực thi truy vấn Cypher quan hệ. |
-| **Hybrid Hit@1** | **66.7%** (20/30) | Tỷ lệ tìm đúng vị trí đầu tiên sau khi hợp nhất. |
-| **Hybrid Hit@5** | **96.7%** (29/30) | Đạt độ phủ cao tương đương ChromaDB, đảm bảo có tài liệu đúng trong top 5. |
-| **Số tài liệu `both`**| **40 lượt** | Số tài liệu được đồng thời cả Vector và Graph bảo chứng tin cậy. |
-| **Tỷ lệ gọi LLM thành công** | **100%** (10/10) | Mô hình Qwen2.5:7B phản hồi ổn định qua Ollama. |
-| **Độ trễ sinh từ LLM**| **31.77 giây** | Thời gian sinh câu trả lời trung bình trên phần cứng cục bộ. |
-| **Đánh giá Grounding** | **10 / 10 (100%)** | Toàn bộ 10 câu trả lời rà soát đều bám sát 100% ngữ cảnh, không có ảo giác. |
+Chi tiết báo cáo được ghi nhận tại file `EVALUATION.md`.
 
-> **Lưu ý minh bạch học thuật**:
-> - Các số liệu trên là kết quả đo lường trên tập mẫu 30 câu hỏi đánh giá, không mang nghĩa toàn bộ hệ thống đạt độ chính xác 100% trên mọi trường hợp đời thực.
-> - Trong thử nghiệm này, `Hybrid Hit@1` (66.7%) thấp hơn `ChromaDB Hit@1` (73.3%) do cơ chế ưu tiên tài liệu tìm thấy từ cả hai nguồn (`both`) đôi khi đưa một tài liệu liên quan khác cùng mã lỗi lên trên tài liệu câu hỏi mục tiêu. Đây là một điểm đánh đổi thực tế giữa độ phủ tri thức và độ xếp hạng chính xác đơn lẻ.
+### 1. Hiệu năng truy vấn (Retrieval Metrics trên 30 câu hỏi, k = 5):
 
----
+| Phương pháp tìm kiếm | Hit@1 | Hit@5 | Độ trễ trung bình |
+| :--- | :---: | :---: | :---: |
+| **ChromaDB** (Semantic Search) | 22 / 30 (**73.3%**) | 29 / 30 (**96.7%**) | ~718 ms |
+| **Neo4j** (Graph Search) | 15 / 30 (**50.0%**) | 15 / 30 (**50.0%**) | ~2.068 ms |
+| **Hybrid Retrieval** (ChromaDB + Neo4j) | 20 / 30 (**66.7%**) | 29 / 30 (**96.7%**) | ~2.210 ms |
 
-## 19. Ví dụ Thực tế: Luồng Dữ liệu Q0358
+- **ChromaDB**: Hiểu tốt câu hỏi triệu chứng hư hỏng bằng ngôn ngữ tự nhiên.
+- **Neo4j**: Tìm kiếm chính xác với các câu hỏi có mã lỗi cụ thể (15/15 câu hỏi có mã lỗi đều tìm thấy), nhưng hạn chế hơn với các câu hỏi chỉ miêu tả triệu chứng chung.
+- **Hybrid Retrieval**: Giữ được độ bao phủ Hit@5 ở mức **96.7%**, đồng thời ưu tiên được 40 lượt tài liệu được xác thực bởi cả hai cơ sở dữ liệu (`both`).
 
-Xem xét bản ghi thực tế **Q0358** từ tập dữ liệu:
-- **Câu hỏi**: *"Máy điều hòa Samsung lỗi CF là gì?"*
-- **Hãng**: Samsung | **Thiết bị**: Điều hòa | **Mã lỗi**: CF
-- **Bản ghi đồ thị**: Node `Question` (`Q0358`) $\rightarrow$ Node `Issue` (`I0249`) $\rightarrow$ Node `Answer` (`A0358`)
-- **Nguyên nhân**: *"Mã CF là nhắc vệ sinh bộ lọc."*
-- **Cách khắc phục**: *"Hãy vệ sinh hoặc thay bộ lọc rồi đặt lại nhắc lọc."*
-- **Nguồn tài liệu**: [Trang hỗ trợ chính thức của Samsung](https://www.samsung.com/vn/support/home-appliances/check-out-the-displayed-error-codes-on-the-indoor-unit-air-conditioner/)
+### 2. Đánh giá sinh câu trả lời RAG + Local LLM (trên 10 câu hỏi):
 
-### Luồng xử lý qua hệ thống:
-1. **Excel $\rightarrow$ Databases**: Bản ghi được nạp thành 1 vector document trong ChromaDB và 7 nodes kết nối trên đồ thị Neo4j.
-2. **Hybrid Retrieval**: Trích xuất thực thể `Samsung`, `Điều hòa`, `CF`. Cả ChromaDB và Neo4j đều tìm thấy Q0358 $\rightarrow$ Gán nhãn `retrieval_source: "both"` và xếp vị trí số 1.
-3. **Context Construction**: Ghép dữ liệu thành đoạn văn bản kỹ thuật có cấu trúc rõ ràng.
-4. **Prompting & LLM**: Đưa vào Prompt với nguyên tắc cấm suy diễn. Mô hình `Qwen2.5:7B` sinh câu trả lời ngắn gọn:
-   > *"Máy điều hòa Samsung lỗi CF là mã lỗi cảnh báo bạn cần vệ sinh bộ lọc. Cách khắc phục là vệ sinh hoặc thay bộ lọc rồi đặt lại máy."*
-5. **API Response**: Trả về client qua endpoint `/chat` với đầy đủ câu trả lời, trạng thái LLM, danh sách tài liệu tham khảo và đường link dẫn chứng.
+- **Tỷ lệ gọi LLM thành công**: **10 / 10** (không có lượt nào bị ngắt kết nối hay lỗi timeout).
+- **Thời gian phản hồi sinh câu trả lời (Latency)**:
+  - Trung bình: **31.77 giây**.
+  - Nhanh nhất: **22.22 giây**.
+  - Lâu nhất: **55.21 giây**.
+
+### 3. Đánh giá tính bám sát ngữ cảnh (Grounding Review):
+
+Qua kiểm tra đối chiếu thủ công 10 câu trả lời sinh ra từ LLM so với ngữ cảnh tài liệu:
+- **10 / 10 câu trả lời** bám sát nội dung ngữ cảnh được trích xuất.
+- Mô hình không tự ý thêm các thao tác sửa chữa hoặc suy đoán ngoài phạm vi tài liệu.
+- Khi gặp câu hỏi chung chung không đủ thông tin, mô hình phản hồi rõ ràng rằng cơ sở tri thức hiện tại chưa đủ dữ liệu thay vì tự đưa ra giả định.
 
 ---
 
-## 20. Giới hạn của Hệ thống (Limitations)
+## Ví dụ Q0358
 
-1. **Độ trễ của mô hình ngôn ngữ lớn cục bộ**: Do chạy mô hình 7 tỷ tham số (`Qwen2.5:7B`) trực tiếp trên phần cứng máy tính cá nhân qua Ollama mà không dùng hạ tầng đám mây chuyên dụng, thời gian sinh câu trả lời dao động từ 20 đến 55 giây.
-2. **Kích thước tập mẫu đánh giá**: Tập kiểm thử gồm 30 câu hỏi được chọn lọc đại diện từ 1.090 bản ghi, phản ánh xu hướng chất lượng nhưng chưa thể bao quát hết toàn bộ các biến thể câu hỏi phức tạp trong thực tế.
-3. **Truy vấn triệu chứng trên Neo4j**: Bộ trích xuất thực thể hiện tại phát huy hiệu quả cao nhất với các câu hỏi có mã lỗi kỹ thuật cụ thể. Các câu hỏi miêu tả triệu chứng chung chưa có mã lỗi vẫn dựa nhiều vào khả năng so khớp ngữ nghĩa của ChromaDB.
-4. **Thuật toán Hybrid đơn giản**: Hệ thống sử dụng phép hợp nhất trực tiếp theo ID thay vì áp dụng thuật toán chấm điểm và tái xếp hạng nâng cao (reranking).
+Một ví dụ điển hình minh họa luồng xử lý của hệ thống:
+
+- **Câu hỏi**: `"Máy điều hòa Samsung lỗi CF là gì?"`
+- **Tài liệu truy vấn được**:
+  - Hãng: Samsung | Thiết bị: Máy điều hòa | Mã lỗi: CF
+  - Nguyên nhân: *Mã CF là nhắc vệ sinh bộ lọc.*
+  - Cách khắc phục: *Hãy vệ sinh hoặc thay bộ lọc rồi đặt lại nhắc lọc.*
+  - Nguồn: Trang hỗ trợ chính thức của Samsung.
+- **Câu trả lời từ Chatbot**:
+  > Mã lỗi CF trên điều hòa Samsung là nhắc vệ sinh bộ lọc.
+  >
+  > Cách khắc phục: Hãy vệ sinh hoặc thay bộ lọc rồi đặt lại nhắc lọc.
+- **Nhận xét**: Câu trả lời truyền đạt đúng bản chất sự cố và hướng xử lý theo tài liệu của nhà sản xuất, không thêm các chi tiết ngoài như "bộ lọc bị bẩn" hay "liên hệ thợ kỹ thuật".
 
 ---
 
-## 21. An toàn Dữ liệu & Bảo mật Git
+## Giới hạn
 
-- File `.env` chứa mật khẩu cục bộ được liệt kê trong `.gitignore` và **tuyệt đối không được commit lên kho mã nguồn**.
-- Sử dụng `.env.example` làm mẫu cấu hình với các giá trị placeholder an toàn (`your_password_here`).
-- Thư mục dữ liệu vector cục bộ `chroma_data/` được loại trừ trong `.gitignore`.
-- Tuyệt đối không lưu trữ khóa bí mật, token hay mật khẩu thực tế trong bất kỳ tệp tài liệu nào.
+- **Thời gian phản hồi của LLM**: Khi chạy mô hình 7B cục bộ trên phần cứng máy tính cá nhân thông thường, thời gian sinh câu trả lời trung bình khoảng 31.8 giây, chưa phù hợp cho các kịch bản cần phản hồi tức thì.
+- **Truy vấn triệu chứng trên Neo4j**: Tìm kiếm đồ thị hiện tại chủ yếu phụ thuộc vào việc bóc tách mã lỗi và tên hãng. Khi người dùng chỉ hỏi triệu chứng hư hỏng chung mà không có mã lỗi, Neo4j khó so khớp hơn so với tìm kiếm vector của ChromaDB.
+- **Phạm vi dữ liệu**: Tập dữ liệu hiện có 1.090 bản ghi tập trung vào 3 hãng sản xuất chính (Samsung, LG, Panasonic). Khi người dùng hỏi về các hãng khác hoặc model quá đặc thù chưa có trong dữ liệu, hệ thống sẽ thông báo chưa có thông tin.
