@@ -1,0 +1,902 @@
+[
+  {
+    "question_id": "Q0007",
+    "question": "Mã lỗi ER CH và ER CL có xuất hiện sau khi lắp đặt hoặc di dời tủ lạnh mới không?",
+    "brand": "LG",
+    "device": "Tủ lạnh",
+    "error_code": "ER CH, ER CL",
+    "issue_type": "ERROR_CODE",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0008",
+    "question": "Mã lỗi ER CH và ER CL có xuất hiện trong khi sử dụng sản phẩm không?",
+    "brand": "LG",
+    "device": "Tủ lạnh",
+    "error_code": "ER CH, ER CL",
+    "issue_type": "ERROR_CODE",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0009",
+    "question": "Mã Lỗi ECO xuất hiện trên màn hình hiển thị của bảng điều khiển tủ lạnh",
+    "brand": "LG",
+    "device": "Tủ lạnh",
+    "error_code": "ECO",
+    "issue_type": "ERROR_CODE",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0011",
+    "question": "Tôi có thể tiếp tục sử dụng tủ lạnh nếu xuất hiện mã lỗi Er D1",
+    "brand": "LG",
+    "device": "Tủ lạnh",
+    "error_code": "ER D1",
+    "issue_type": "ERROR_CODE",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0012",
+    "question": "Tôi có thể tiếp tục sử dụng tủ lạnh nếu xuất hiện mã lỗi Er D2",
+    "brand": "LG",
+    "device": "Tủ lạnh",
+    "error_code": "ER D2",
+    "issue_type": "ERROR_CODE",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0013",
+    "question": "Tôi có thể tiếp tục sử dụng tủ lạnh nếu xuất hiện mã lỗi Er D",
+    "brand": "LG",
+    "device": "Tủ lạnh",
+    "error_code": "ER D",
+    "issue_type": "ERROR_CODE",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0014",
+    "question": "Tôi có thể tiếp tục sử dụng tủ lạnh nếu xuất hiện mã lỗi Er H1",
+    "brand": "LG",
+    "device": "Tủ lạnh",
+    "error_code": "ER H1",
+    "issue_type": "ERROR_CODE",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0015",
+    "question": "Tôi có thể tiếp tục sử dụng tủ lạnh nếu xuất hiện mã lỗi Er H2",
+    "brand": "LG",
+    "device": "Tủ lạnh",
+    "error_code": "ER H2",
+    "issue_type": "ERROR_CODE",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0017",
+    "question": "Tủ lạnh LG bị lỗi SD",
+    "brand": "LG",
+    "device": "Tủ lạnh",
+    "error_code": "SD",
+    "issue_type": "ERROR_CODE",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0019",
+    "question": "Tủ lạnh LG bị lỗi IF",
+    "brand": "LG",
+    "device": "Tủ lạnh",
+    "error_code": "IF",
+    "issue_type": "ERROR_CODE",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0020",
+    "question": "Tủ lạnh LG bị lỗi CF",
+    "brand": "LG",
+    "device": "Tủ lạnh",
+    "error_code": "CF",
+    "issue_type": "ERROR_CODE",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0021",
+    "question": "Tủ lạnh LG bị lỗi IU",
+    "brand": "LG",
+    "device": "Tủ lạnh",
+    "error_code": "IU",
+    "issue_type": "ERROR_CODE",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0022",
+    "question": "Tủ lạnh LG bị lỗi FS",
+    "brand": "LG",
+    "device": "Tủ lạnh",
+    "error_code": "FS",
+    "issue_type": "ERROR_CODE",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0023",
+    "question": "Tôi có thể tiếp tục sử dụng tủ lạnh khi mã lỗi OD hiển thị không",
+    "brand": "LG",
+    "device": "Tủ lạnh",
+    "error_code": "OD",
+    "issue_type": "ERROR_CODE",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0024",
+    "question": "Tôi có thể tiếp tục sử dụng tủ lạnh khi mã lỗi SD hiển thị không",
+    "brand": "LG",
+    "device": "Tủ lạnh",
+    "error_code": "SD",
+    "issue_type": "ERROR_CODE",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0164",
+    "question": "Điều hòa panasonic bị lỗi H64",
+    "brand": "Panasonic",
+    "device": "Điều hòa",
+    "error_code": "H64",
+    "issue_type": "ERROR_CODE",
+    "duplicate_group": "DUP915FFC02"
+  },
+  {
+    "question_id": "Q0169",
+    "question": "Tủ lạnh panasonic bị lỗi H01",
+    "brand": "Panasonic",
+    "device": "Tủ lạnh",
+    "error_code": "H01",
+    "issue_type": "ERROR_CODE",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0170",
+    "question": "Tủ lạnh panasonic bị lỗi H02",
+    "brand": "Panasonic",
+    "device": "Tủ lạnh",
+    "error_code": "H02",
+    "issue_type": "ERROR_CODE",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0171",
+    "question": "Tủ lạnh panasonic bị lỗi H05",
+    "brand": "Panasonic",
+    "device": "Tủ lạnh",
+    "error_code": "H05",
+    "issue_type": "ERROR_CODE",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0172",
+    "question": "Tủ lạnh panasonic bị lỗi H07",
+    "brand": "Panasonic",
+    "device": "Tủ lạnh",
+    "error_code": "H07",
+    "issue_type": "ERROR_CODE",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0173",
+    "question": "Tủ lạnh panasonic bị lỗi H10",
+    "brand": "Panasonic",
+    "device": "Tủ lạnh",
+    "error_code": "H10",
+    "issue_type": "ERROR_CODE",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0174",
+    "question": "Tủ lạnh panasonic bị lỗi H12",
+    "brand": "Panasonic",
+    "device": "Tủ lạnh",
+    "error_code": "H12",
+    "issue_type": "ERROR_CODE",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0175",
+    "question": "Tủ lạnh panasonic bị lỗi H21",
+    "brand": "Panasonic",
+    "device": "Tủ lạnh",
+    "error_code": "H21",
+    "issue_type": "ERROR_CODE",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0177",
+    "question": "Tủ lạnh panasonic bị lỗi H28",
+    "brand": "Panasonic",
+    "device": "Tủ lạnh",
+    "error_code": "H28",
+    "issue_type": "ERROR_CODE",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0178",
+    "question": "Tủ lạnh panasonic bị lỗi H29",
+    "brand": "Panasonic",
+    "device": "Tủ lạnh",
+    "error_code": "H29",
+    "issue_type": "ERROR_CODE",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0179",
+    "question": "Tủ lạnh panasonic bị lỗi H30",
+    "brand": "Panasonic",
+    "device": "Tủ lạnh",
+    "error_code": "H30",
+    "issue_type": "ERROR_CODE",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0180",
+    "question": "Tủ lạnh panasonic bị lỗi H31",
+    "brand": "Panasonic",
+    "device": "Tủ lạnh",
+    "error_code": "H31",
+    "issue_type": "ERROR_CODE",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0181",
+    "question": "Tủ lạnh panasonic bị lỗi H32",
+    "brand": "Panasonic",
+    "device": "Tủ lạnh",
+    "error_code": "H32",
+    "issue_type": "ERROR_CODE",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0182",
+    "question": "Tủ lạnh panasonic bị lỗi H33",
+    "brand": "Panasonic",
+    "device": "Tủ lạnh",
+    "error_code": "H33",
+    "issue_type": "ERROR_CODE",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0183",
+    "question": "Tủ lạnh panasonic bị lỗi H34",
+    "brand": "Panasonic",
+    "device": "Tủ lạnh",
+    "error_code": "H34",
+    "issue_type": "ERROR_CODE",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0185",
+    "question": "Tủ lạnh panasonic bị lỗi H40",
+    "brand": "Panasonic",
+    "device": "Tủ lạnh",
+    "error_code": "H40",
+    "issue_type": "ERROR_CODE",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0187",
+    "question": "Tủ lạnh panasonic bị lỗi H51",
+    "brand": "Panasonic",
+    "device": "Tủ lạnh",
+    "error_code": "H51",
+    "issue_type": "ERROR_CODE",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0188",
+    "question": "Tủ lạnh panasonic bị lỗi H52",
+    "brand": "Panasonic",
+    "device": "Tủ lạnh",
+    "error_code": "H52",
+    "issue_type": "ERROR_CODE",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0363",
+    "question": "Máy điều hòa Samsung lỗi 54",
+    "brand": "Samsung",
+    "device": "Điều hòa",
+    "error_code": "54",
+    "issue_type": "ERROR_CODE",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0365",
+    "question": "Máy điều hòa Samsung lỗi E5",
+    "brand": "Samsung",
+    "device": "Điều hòa",
+    "error_code": "E5",
+    "issue_type": "ERROR_CODE",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0366",
+    "question": "Máy điều hòa Samsung lỗi E6",
+    "brand": "Samsung",
+    "device": "Điều hòa",
+    "error_code": "E6",
+    "issue_type": "ERROR_CODE",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0367",
+    "question": "Máy điều hòa Samsung lỗi E7",
+    "brand": "Samsung",
+    "device": "Điều hòa",
+    "error_code": "E7",
+    "issue_type": "ERROR_CODE",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0369",
+    "question": "Lò nướng Samsung lỗi S-01",
+    "brand": "Samsung",
+    "device": "Lò nướng",
+    "error_code": "S-01",
+    "issue_type": "ERROR_CODE",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0370",
+    "question": "Lò nướng Samsung lỗi dC",
+    "brand": "Samsung",
+    "device": "Lò nướng",
+    "error_code": "DC",
+    "issue_type": "ERROR_CODE",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0371",
+    "question": "Lò nướng Samsung lỗi dE",
+    "brand": "Samsung",
+    "device": "Lò nướng",
+    "error_code": "DE",
+    "issue_type": "ERROR_CODE",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0372",
+    "question": "Lò nướng Samsung lỗi C-d1",
+    "brand": "Samsung",
+    "device": "Lò nướng",
+    "error_code": "C-D1",
+    "issue_type": "ERROR_CODE",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0374",
+    "question": "Lò nướng Samsung lỗi C-21",
+    "brand": "Samsung",
+    "device": "Lò nướng",
+    "error_code": "C-21",
+    "issue_type": "ERROR_CODE",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0375",
+    "question": "Lò nướng Samsung lỗi C-22",
+    "brand": "Samsung",
+    "device": "Lò nướng",
+    "error_code": "C-22",
+    "issue_type": "ERROR_CODE",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0376",
+    "question": "Lò nướng Samsung lỗi C-F1",
+    "brand": "Samsung",
+    "device": "Lò nướng",
+    "error_code": "C-F1",
+    "issue_type": "ERROR_CODE",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0377",
+    "question": "Lò nướng Samsung lỗi C-F0",
+    "brand": "Samsung",
+    "device": "Lò nướng",
+    "error_code": "C-F0",
+    "issue_type": "ERROR_CODE",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0378",
+    "question": "Lò nướng Samsung lỗi C-F2",
+    "brand": "Samsung",
+    "device": "Lò nướng",
+    "error_code": "C-F2",
+    "issue_type": "ERROR_CODE",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0381",
+    "question": "Máy rửa bát Samsung lỗi 3C",
+    "brand": "Samsung",
+    "device": "Máy rửa bát",
+    "error_code": "3C",
+    "issue_type": "ERROR_CODE",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0382",
+    "question": "Máy rửa bát Samsung lỗi 3E",
+    "brand": "Samsung",
+    "device": "Máy rửa bát",
+    "error_code": "3E",
+    "issue_type": "ERROR_CODE",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0383",
+    "question": "Máy rửa bát Samsung lỗi 4C",
+    "brand": "Samsung",
+    "device": "Máy rửa bát",
+    "error_code": "4C",
+    "issue_type": "ERROR_CODE",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0384",
+    "question": "Máy rửa bát Samsung lỗi 4E",
+    "brand": "Samsung",
+    "device": "Máy rửa bát",
+    "error_code": "4E",
+    "issue_type": "ERROR_CODE",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0539",
+    "question": "Máy giặt bị rò nước ở dưới đáy thì kiểm tra gì?",
+    "brand": "Samsung",
+    "device": "Máy giặt",
+    "error_code": "",
+    "issue_type": "SYMPTOM",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0540",
+    "question": "Máy giặt đang chạy tự nhiên dừng thì sao?",
+    "brand": "Samsung",
+    "device": "Máy giặt",
+    "error_code": "",
+    "issue_type": "SYMPTOM",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0541",
+    "question": "Máy giặt giặt xong nhưng cửa chưa mở được thì làm sao?",
+    "brand": "Samsung",
+    "device": "Máy giặt",
+    "error_code": "",
+    "issue_type": "SYMPTOM",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0543",
+    "question": "Máy giặt có mùi hôi thì vệ sinh thế nào?",
+    "brand": "Samsung",
+    "device": "Máy giặt",
+    "error_code": "",
+    "issue_type": "SYMPTOM",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0544",
+    "question": "Máy lạnh không lạnh thì kiểm tra gì trước?",
+    "brand": "Samsung",
+    "device": "Điều hòa",
+    "error_code": "",
+    "issue_type": "SYMPTOM",
+    "duplicate_group": "DUP8A2AF31C"
+  },
+  {
+    "question_id": "Q0545",
+    "question": "Máy lạnh chảy nước trong nhà thì sao?",
+    "brand": "Samsung",
+    "device": "Điều hòa",
+    "error_code": "",
+    "issue_type": "SYMPTOM",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0546",
+    "question": "Máy lạnh tự nhiên ngừng chạy có phải bị hỏng không?",
+    "brand": "Samsung",
+    "device": "Điều hòa",
+    "error_code": "",
+    "issue_type": "SYMPTOM",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0547",
+    "question": "Điều hòa Samsung báo đèn nhấp nháy thì làm gì?",
+    "brand": "Samsung",
+    "device": "Điều hòa",
+    "error_code": "",
+    "issue_type": "SYMPTOM",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0550",
+    "question": "Tủ lạnh kêu to bất thường thì sao?",
+    "brand": "Samsung",
+    "device": "Tủ lạnh",
+    "error_code": "",
+    "issue_type": "SYMPTOM",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0551",
+    "question": "Tủ lạnh bị chảy nước bên trong thì xử lý thế nào?",
+    "brand": "Samsung",
+    "device": "Tủ lạnh",
+    "error_code": "",
+    "issue_type": "SYMPTOM",
+    "duplicate_group": "DUPE7F9C3D3"
+  },
+  {
+    "question_id": "Q0552",
+    "question": "Tủ lạnh không làm đá tự động thì kiểm tra gì?",
+    "brand": "Samsung",
+    "device": "Tủ lạnh",
+    "error_code": "",
+    "issue_type": "SYMPTOM",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0553",
+    "question": "Tủ lạnh nóng hai bên có bình thường không?",
+    "brand": "Samsung",
+    "device": "Tủ lạnh",
+    "error_code": "",
+    "issue_type": "SYMPTOM",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0556",
+    "question": "Lò nướng không nóng thì kiểm tra gì?",
+    "brand": "Samsung",
+    "device": "Lò nướng",
+    "error_code": "",
+    "issue_type": "SYMPTOM",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0557",
+    "question": "Máy rửa bát không cấp nước thì kiểm tra gì?",
+    "brand": "Samsung",
+    "device": "Máy rửa bát",
+    "error_code": "",
+    "issue_type": "SYMPTOM",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0561",
+    "question": "Máy sấy nóng nhưng quần áo vẫn ẩm thì sao?",
+    "brand": "Samsung",
+    "device": "Máy sấy",
+    "error_code": "",
+    "issue_type": "SYMPTOM",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0562",
+    "question": "Máy sấy không khởi động thì kiểm tra gì?",
+    "brand": "Samsung",
+    "device": "Máy sấy",
+    "error_code": "",
+    "issue_type": "SYMPTOM",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0565",
+    "question": "Máy giặt không vào nước thì kiểm tra gì trước phải làm sao?",
+    "brand": "Samsung",
+    "device": "Máy giặt",
+    "error_code": "",
+    "issue_type": "SYMPTOM",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0567",
+    "question": "Máy giặt không vắt được thì nguyên nhân thường là gì phải làm sao?",
+    "brand": "Samsung",
+    "device": "Máy giặt",
+    "error_code": "",
+    "issue_type": "SYMPTOM",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0696",
+    "question": "LG Máy giặt không vào nước thì phải làm sao?",
+    "brand": "LG",
+    "device": "Máy giặt",
+    "error_code": "",
+    "issue_type": "SYMPTOM",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0697",
+    "question": "LG Máy sấy không sấy khô thì phải làm sao?",
+    "brand": "LG",
+    "device": "Máy sấy",
+    "error_code": "",
+    "issue_type": "SYMPTOM",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0698",
+    "question": "LG Tủ lạnh không lạnh thì phải làm sao?",
+    "brand": "LG",
+    "device": "Tủ lạnh",
+    "error_code": "",
+    "issue_type": "SYMPTOM",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0699",
+    "question": "LG Điều hòa không mát thì phải làm sao?",
+    "brand": "LG",
+    "device": "Điều hòa",
+    "error_code": "",
+    "issue_type": "SYMPTOM",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0701",
+    "question": "LG Máy giặt không vào nước xử lý thế nào?",
+    "brand": "LG",
+    "device": "Máy giặt",
+    "error_code": "",
+    "issue_type": "SYMPTOM",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0702",
+    "question": "LG Máy sấy không sấy khô xử lý thế nào?",
+    "brand": "LG",
+    "device": "Máy sấy",
+    "error_code": "",
+    "issue_type": "SYMPTOM",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0703",
+    "question": "LG Tủ lạnh không lạnh xử lý thế nào?",
+    "brand": "LG",
+    "device": "Tủ lạnh",
+    "error_code": "",
+    "issue_type": "SYMPTOM",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0704",
+    "question": "LG Điều hòa không mát xử lý thế nào?",
+    "brand": "LG",
+    "device": "Điều hòa",
+    "error_code": "",
+    "issue_type": "SYMPTOM",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0705",
+    "question": "LG Lò vi sóng không nóng xử lý thế nào?",
+    "brand": "LG",
+    "device": "Lò vi sóng",
+    "error_code": "",
+    "issue_type": "SYMPTOM",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0706",
+    "question": "LG Máy giặt không xả nước?",
+    "brand": "LG",
+    "device": "Máy giặt",
+    "error_code": "",
+    "issue_type": "SYMPTOM",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0707",
+    "question": "LG Máy sấy sấy lâu khô?",
+    "brand": "LG",
+    "device": "Máy sấy",
+    "error_code": "",
+    "issue_type": "SYMPTOM",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0708",
+    "question": "LG Tủ lạnh ngăn mát không lạnh?",
+    "brand": "LG",
+    "device": "Tủ lạnh",
+    "error_code": "",
+    "issue_type": "SYMPTOM",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0709",
+    "question": "LG Điều hòa kém lạnh?",
+    "brand": "LG",
+    "device": "Điều hòa",
+    "error_code": "",
+    "issue_type": "SYMPTOM",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0710",
+    "question": "LG Lò vi sóng chạy nhưng không nóng?",
+    "brand": "LG",
+    "device": "Lò vi sóng",
+    "error_code": "",
+    "issue_type": "SYMPTOM",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0711",
+    "question": "LG Máy giặt không xả nước thì phải làm sao?",
+    "brand": "LG",
+    "device": "Máy giặt",
+    "error_code": "",
+    "issue_type": "SYMPTOM",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0846",
+    "question": "Panasonic Máy giặt không vào nước thì phải làm sao?",
+    "brand": "Panasonic",
+    "device": "Máy giặt",
+    "error_code": "",
+    "issue_type": "SYMPTOM",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0847",
+    "question": "Panasonic Tủ lạnh không lạnh thì phải làm sao?",
+    "brand": "Panasonic",
+    "device": "Tủ lạnh",
+    "error_code": "",
+    "issue_type": "SYMPTOM",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0848",
+    "question": "Panasonic Điều hòa không lạnh thì phải làm sao?",
+    "brand": "Panasonic",
+    "device": "Điều hòa",
+    "error_code": "",
+    "issue_type": "SYMPTOM",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0849",
+    "question": "Panasonic Lò vi sóng không nóng thì phải làm sao?",
+    "brand": "Panasonic",
+    "device": "Lò vi sóng",
+    "error_code": "",
+    "issue_type": "SYMPTOM",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0850",
+    "question": "Panasonic Máy lọc không khí có mùi thì phải làm sao?",
+    "brand": "Panasonic",
+    "device": "Máy lọc không khí",
+    "error_code": "",
+    "issue_type": "SYMPTOM",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0851",
+    "question": "Panasonic Máy giặt không vào nước xử lý thế nào?",
+    "brand": "Panasonic",
+    "device": "Máy giặt",
+    "error_code": "",
+    "issue_type": "SYMPTOM",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0852",
+    "question": "Panasonic Tủ lạnh không lạnh xử lý thế nào?",
+    "brand": "Panasonic",
+    "device": "Tủ lạnh",
+    "error_code": "",
+    "issue_type": "SYMPTOM",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0853",
+    "question": "Panasonic Điều hòa không lạnh xử lý thế nào?",
+    "brand": "Panasonic",
+    "device": "Điều hòa",
+    "error_code": "",
+    "issue_type": "SYMPTOM",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0856",
+    "question": "Panasonic Máy giặt không xả nước?",
+    "brand": "Panasonic",
+    "device": "Máy giặt",
+    "error_code": "",
+    "issue_type": "SYMPTOM",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0857",
+    "question": "Panasonic Tủ lạnh ngăn mát không đủ lạnh?",
+    "brand": "Panasonic",
+    "device": "Tủ lạnh",
+    "error_code": "",
+    "issue_type": "SYMPTOM",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0858",
+    "question": "Panasonic Điều hòa lạnh yếu?",
+    "brand": "Panasonic",
+    "device": "Điều hòa",
+    "error_code": "",
+    "issue_type": "SYMPTOM",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0859",
+    "question": "Panasonic Lò vi sóng nóng không đều?",
+    "brand": "Panasonic",
+    "device": "Lò vi sóng",
+    "error_code": "",
+    "issue_type": "SYMPTOM",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0860",
+    "question": "Panasonic Máy lọc không khí lọc yếu?",
+    "brand": "Panasonic",
+    "device": "Máy lọc không khí",
+    "error_code": "",
+    "issue_type": "SYMPTOM",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0861",
+    "question": "Panasonic Máy giặt không xả nước thì phải làm sao?",
+    "brand": "Panasonic",
+    "device": "Máy giặt",
+    "error_code": "",
+    "issue_type": "SYMPTOM",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0862",
+    "question": "Panasonic Tủ lạnh ngăn mát không đủ lạnh thì phải làm sao?",
+    "brand": "Panasonic",
+    "device": "Tủ lạnh",
+    "error_code": "",
+    "issue_type": "SYMPTOM",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0863",
+    "question": "Panasonic Điều hòa lạnh yếu thì phải làm sao?",
+    "brand": "Panasonic",
+    "device": "Điều hòa",
+    "error_code": "",
+    "issue_type": "SYMPTOM",
+    "duplicate_group": ""
+  },
+  {
+    "question_id": "Q0864",
+    "question": "Panasonic Lò vi sóng nóng không đều thì phải làm sao?",
+    "brand": "Panasonic",
+    "device": "Lò vi sóng",
+    "error_code": "",
+    "issue_type": "SYMPTOM",
+    "duplicate_group": ""
+  }
+]

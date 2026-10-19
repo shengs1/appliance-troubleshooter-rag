@@ -1,0 +1,152 @@
+[
+  {
+    "id": "OOS01",
+    "category": "out_of_scope_product",
+    "question": "Samsung có sản xuất ô tô không?"
+  },
+  {
+    "id": "OOS02",
+    "category": "out_of_scope_product",
+    "question": "LG có bán xe máy không?"
+  },
+  {
+    "id": "OOS03",
+    "category": "out_of_scope_product",
+    "question": "Panasonic có sản xuất máy bay không?"
+  },
+  {
+    "id": "OOS04",
+    "category": "opinion_recommendation",
+    "question": "Điều hòa Samsung có tốt không?"
+  },
+  {
+    "id": "OOS05",
+    "category": "opinion_recommendation",
+    "question": "Nên mua máy giặt LG hay Panasonic?"
+  },
+  {
+    "id": "OOS06",
+    "category": "pricing_commercial",
+    "question": "Tủ lạnh Panasonic giá bao nhiêu?"
+  },
+  {
+    "id": "OOS07",
+    "category": "consumer_tech",
+    "question": "Điện thoại Samsung Galaxy S24 giá bao nhiêu?"
+  },
+  {
+    "id": "OOS08",
+    "category": "consumer_tech",
+    "question": "iPhone 15 Pro Max có mấy màu?"
+  },
+  {
+    "id": "OOS09",
+    "category": "programming",
+    "question": "Python là gì?"
+  },
+  {
+    "id": "OOS10",
+    "category": "programming",
+    "question": "Cách viết hàm trong JavaScript?"
+  },
+  {
+    "id": "OOS11",
+    "category": "weather",
+    "question": "Thời tiết Hà Nội hôm nay thế nào?"
+  },
+  {
+    "id": "OOS12",
+    "category": "weather",
+    "question": "Thời tiết TP.HCM ngày mai có mưa không?"
+  },
+  {
+    "id": "OOS13",
+    "category": "finance",
+    "question": "Giá vàng 9999 hôm nay bao nhiêu?"
+  },
+  {
+    "id": "OOS14",
+    "category": "finance",
+    "question": "Tỷ giá USD sang VND hôm nay?"
+  },
+  {
+    "id": "OOS15",
+    "category": "finance",
+    "question": "Thị trường chứng khoán hôm nay tăng hay giảm?"
+  },
+  {
+    "id": "OOS16",
+    "category": "cooking",
+    "question": "Cách nấu phở bò truyền thống?"
+  },
+  {
+    "id": "OOS17",
+    "category": "cooking",
+    "question": "Công thức làm bánh pizza tại nhà?"
+  },
+  {
+    "id": "OOS18",
+    "category": "sports",
+    "question": "Đội tuyển bóng đá Việt Nam có đá tối nay không?"
+  },
+  {
+    "id": "OOS19",
+    "category": "sports",
+    "question": "Kết quả trận chung kết Champions League?"
+  },
+  {
+    "id": "OOS20",
+    "category": "general_knowledge",
+    "question": "Thủ đô của nước Pháp là gì?"
+  },
+  {
+    "id": "OOS21",
+    "category": "general_knowledge",
+    "question": "Dân số thế giới hiện nay là bao nhiêu?"
+  },
+  {
+    "id": "OOS22",
+    "category": "education",
+    "question": "Cách học tiếng Anh giao tiếp hiệu quả?"
+  },
+  {
+    "id": "OOS23",
+    "category": "fitness",
+    "question": "Phương pháp tập gym tăng cơ giảm mỡ?"
+  },
+  {
+    "id": "OOS24",
+    "category": "medical",
+    "question": "Triệu chứng của bệnh cảm cúm là gì?"
+  },
+  {
+    "id": "OOS25",
+    "category": "entertainment",
+    "question": "Lịch chiếu phim rạp tối nay?"
+  },
+  {
+    "id": "OOS26",
+    "category": "entertainment",
+    "question": "Bài hát nào đang hot trên TikTok?"
+  },
+  {
+    "id": "OOS27",
+    "category": "travel",
+    "question": "Mua vé máy bay đi Đà Nẵng ở đâu rẻ?"
+  },
+  {
+    "id": "OOS28",
+    "category": "legal",
+    "question": "Quy định tốc độ tối đa cho xe máy?"
+  },
+  {
+    "id": "OOS29",
+    "category": "gardening",
+    "question": "Cách chăm sóc cây hoa hồng ra hoa đẹp?"
+  },
+  {
+    "id": "OOS30",
+    "category": "chitchat",
+    "question": "Bạn có biết hát không?"
+  }
+]

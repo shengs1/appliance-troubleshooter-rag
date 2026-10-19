@@ -1,0 +1,393 @@
+{
+  "total_queries": 200,
+  "exact_id_metrics": {
+    "hit@1": 87.0,
+    "hit@3": 98.5,
+    "hit@5": 99.5,
+    "mrr": 0.9283
+  },
+  "knowledge_aware_metrics": {
+    "hit@1": 100.0,
+    "hit@3": 100.0,
+    "hit@5": 100.0,
+    "mrr": 1.0
+  },
+  "comparison_table": {
+    "hit@1": {
+      "exact_id": 87.0,
+      "knowledge_aware": 100.0,
+      "delta": 13.0
+    },
+    "hit@3": {
+      "exact_id": 98.5,
+      "knowledge_aware": 100.0,
+      "delta": 1.5
+    },
+    "hit@5": {
+      "exact_id": 99.5,
+      "knowledge_aware": 100.0,
+      "delta": 0.5
+    },
+    "mrr": {
+      "exact_id": 0.9283,
+      "knowledge_aware": 1.0,
+      "delta": 0.0717
+    }
+  },
+  "discrepancy_counts": {
+    "exact_miss_knowledge_hit_count": 26,
+    "true_retrieval_miss_count": 0,
+    "twin_duplicate_influence_count": 26,
+    "knowledge_aware_unresolved_count": 0
+  },
+  "failures_26_reclassification": {
+    "total_failures": 26,
+    "category_a_exact_miss_knowledge_hit": 26,
+    "category_b_true_retrieval_failure": 0,
+    "category_c_missed_retrieval": 0,
+    "cases": [
+      {
+        "question_id": "Q0002",
+        "question": "Tủ lạnh LG lỗi sb",
+        "issue_type": "ERROR_CODE",
+        "exact_rank": 2,
+        "knowledge_rank": 1,
+        "category": "CATEGORY_A: Exact-ID failure nhung Knowledge-aware success",
+        "top1_id": "Q0108"
+      },
+      {
+        "question_id": "Q0158",
+        "question": "Điều hoà panasonic bị lỗi F16",
+        "issue_type": "ERROR_CODE",
+        "exact_rank": 2,
+        "knowledge_rank": 1,
+        "category": "CATEGORY_A: Exact-ID failure nhung Knowledge-aware success",
+        "top1_id": "Q0308"
+      },
+      {
+        "question_id": "Q0159",
+        "question": "Điều hòa panasonic bị lỗi F93",
+        "issue_type": "ERROR_CODE",
+        "exact_rank": 2,
+        "knowledge_rank": 1,
+        "category": "CATEGORY_A: Exact-ID failure nhung Knowledge-aware success",
+        "top1_id": "Q0310"
+      },
+      {
+        "question_id": "Q0160",
+        "question": "Điều hòa panasonic bị lỗi F95",
+        "issue_type": "ERROR_CODE",
+        "exact_rank": 2,
+        "knowledge_rank": 1,
+        "category": "CATEGORY_A: Exact-ID failure nhung Knowledge-aware success",
+        "top1_id": "Q0311"
+      },
+      {
+        "question_id": "Q0161",
+        "question": "Điều hòa panasonic bị lỗi F97",
+        "issue_type": "ERROR_CODE",
+        "exact_rank": 2,
+        "knowledge_rank": 1,
+        "category": "CATEGORY_A: Exact-ID failure nhung Knowledge-aware success",
+        "top1_id": "Q0312"
+      },
+      {
+        "question_id": "Q0165",
+        "question": "Điều hòa panasonic bị lỗi H97",
+        "issue_type": "ERROR_CODE",
+        "exact_rank": 2,
+        "knowledge_rank": 1,
+        "category": "CATEGORY_A: Exact-ID failure nhung Knowledge-aware success",
+        "top1_id": "Q0326"
+      },
+      {
+        "question_id": "Q0167",
+        "question": "Điều hòa panasonic bị lỗi H99",
+        "issue_type": "ERROR_CODE",
+        "exact_rank": 2,
+        "knowledge_rank": 1,
+        "category": "CATEGORY_A: Exact-ID failure nhung Knowledge-aware success",
+        "top1_id": "Q0328"
+      },
+      {
+        "question_id": "Q0196",
+        "question": "Máy giặt panasonic bị lỗi H09",
+        "issue_type": "ERROR_CODE",
+        "exact_rank": 2,
+        "knowledge_rank": 1,
+        "category": "CATEGORY_A: Exact-ID failure nhung Knowledge-aware success",
+        "top1_id": "Q0333"
+      },
+      {
+        "question_id": "Q0214",
+        "question": "Bếp từ panasonic bị lỗi U04",
+        "issue_type": "ERROR_CODE",
+        "exact_rank": 2,
+        "knowledge_rank": 1,
+        "category": "CATEGORY_A: Exact-ID failure nhung Knowledge-aware success",
+        "top1_id": "Q0350"
+      },
+      {
+        "question_id": "Q0215",
+        "question": "Bếp từ panasonic bị lỗi U11*",
+        "issue_type": "ERROR_CODE",
+        "exact_rank": 2,
+        "knowledge_rank": 1,
+        "category": "CATEGORY_A: Exact-ID failure nhung Knowledge-aware success",
+        "top1_id": "Q0351"
+      },
+      {
+        "question_id": "Q0234",
+        "question": "Điều hòa panasonic bị lỗi H27",
+        "issue_type": "ERROR_CODE",
+        "exact_rank": 2,
+        "knowledge_rank": 1,
+        "category": "CATEGORY_A: Exact-ID failure nhung Knowledge-aware success",
+        "top1_id": "Q0318"
+      },
+      {
+        "question_id": "Q0535",
+        "question": "Máy giặt không xả nước phải làm sao?",
+        "issue_type": "SYMPTOM",
+        "exact_rank": null,
+        "knowledge_rank": 1,
+        "category": "CATEGORY_A: Exact-ID failure nhung Knowledge-aware success",
+        "top1_id": "Q0690"
+      },
+      {
+        "question_id": "Q0536",
+        "question": "Máy giặt không vắt được thì nguyên nhân thường là gì?",
+        "issue_type": "SYMPTOM",
+        "exact_rank": 2,
+        "knowledge_rank": 1,
+        "category": "CATEGORY_A: Exact-ID failure nhung Knowledge-aware success",
+        "top1_id": "Q0660"
+      },
+      {
+        "question_id": "Q0537",
+        "question": "Máy giặt rung mạnh khi vắt xử lý thế nào?",
+        "issue_type": "SYMPTOM",
+        "exact_rank": 2,
+        "knowledge_rank": 1,
+        "category": "CATEGORY_A: Exact-ID failure nhung Knowledge-aware success",
+        "top1_id": "Q0568"
+      },
+      {
+        "question_id": "Q0548",
+        "question": "Máy lạnh có mùi hôi thì xử lý thế nào?",
+        "issue_type": "SYMPTOM",
+        "exact_rank": 2,
+        "knowledge_rank": 1,
+        "category": "CATEGORY_A: Exact-ID failure nhung Knowledge-aware success",
+        "top1_id": "Q0579"
+      },
+      {
+        "question_id": "Q0554",
+        "question": "Tủ lạnh có mùi hôi thì vệ sinh thế nào?",
+        "issue_type": "SYMPTOM",
+        "exact_rank": 3,
+        "knowledge_rank": 1,
+        "category": "CATEGORY_A: Exact-ID failure nhung Knowledge-aware success",
+        "top1_id": "Q0585"
+      },
+      {
+        "question_id": "Q0558",
+        "question": "Máy rửa bát không thoát nước thì làm sao?",
+        "issue_type": "SYMPTOM",
+        "exact_rank": 4,
+        "knowledge_rank": 1,
+        "category": "CATEGORY_A: Exact-ID failure nhung Knowledge-aware success",
+        "top1_id": "Q0620"
+      },
+      {
+        "question_id": "Q0560",
+        "question": "Máy sấy không khô quần áo thì kiểm tra gì?",
+        "issue_type": "SYMPTOM",
+        "exact_rank": 2,
+        "knowledge_rank": 1,
+        "category": "CATEGORY_A: Exact-ID failure nhung Knowledge-aware success",
+        "top1_id": "Q0591"
+      },
+      {
+        "question_id": "Q0563",
+        "question": "Lò vi sóng không nóng nhưng vẫn chạy thì sao?",
+        "issue_type": "SYMPTOM",
+        "exact_rank": 2,
+        "knowledge_rank": 1,
+        "category": "CATEGORY_A: Exact-ID failure nhung Knowledge-aware success",
+        "top1_id": "Q0687"
+      },
+      {
+        "question_id": "Q0611",
+        "question": "Tủ lạnh không lạnh thì kiểm tra gì trước thì xử lý thế nào?",
+        "issue_type": "SYMPTOM",
+        "exact_rank": 4,
+        "knowledge_rank": 1,
+        "category": "CATEGORY_A: Exact-ID failure nhung Knowledge-aware success",
+        "top1_id": "Q0580"
+      },
+      {
+        "question_id": "Q0624",
+        "question": "Máy sấy không khởi động thì kiểm tra gì thì xử lý thế nào?",
+        "issue_type": "SYMPTOM",
+        "exact_rank": 3,
+        "knowledge_rank": 1,
+        "category": "CATEGORY_A: Exact-ID failure nhung Knowledge-aware success",
+        "top1_id": "Q0562"
+      },
+      {
+        "question_id": "Q0813",
+        "question": "LG Tủ lạnh không làm đá?",
+        "issue_type": "SYMPTOM",
+        "exact_rank": 2,
+        "knowledge_rank": 1,
+        "category": "CATEGORY_A: Exact-ID failure nhung Knowledge-aware success",
+        "top1_id": "Q0817"
+      },
+      {
+        "question_id": "Q0938",
+        "question": "Panasonic Tủ lạnh không làm đá?",
+        "issue_type": "SYMPTOM",
+        "exact_rank": 2,
+        "knowledge_rank": 1,
+        "category": "CATEGORY_A: Exact-ID failure nhung Knowledge-aware success",
+        "top1_id": "Q0941"
+      },
+      {
+        "question_id": "Q0983",
+        "question": "Panasonic Tủ lạnh muốn tiết kiệm điện?",
+        "issue_type": "SYMPTOM",
+        "exact_rank": 2,
+        "knowledge_rank": 1,
+        "category": "CATEGORY_A: Exact-ID failure nhung Knowledge-aware success",
+        "top1_id": "Q0986"
+      },
+      {
+        "question_id": "Q1061",
+        "question": "Samsung Tủ lạnh nước không đủ lạnh?",
+        "issue_type": "SYMPTOM",
+        "exact_rank": 2,
+        "knowledge_rank": 1,
+        "category": "CATEGORY_A: Exact-ID failure nhung Knowledge-aware success",
+        "top1_id": "Q1064"
+      },
+      {
+        "question_id": "Q1082",
+        "question": "Samsung Tủ lạnh để thực phẩm che cửa gió có sao không thì phải làm sao?",
+        "issue_type": "SYMPTOM",
+        "exact_rank": 2,
+        "knowledge_rank": 1,
+        "category": "CATEGORY_A: Exact-ID failure nhung Knowledge-aware success",
+        "top1_id": "Q1080"
+      }
+    ]
+  },
+  "by_issue_type": {
+    "ERROR_CODE": {
+      "sample_size": 98,
+      "exact_id": {
+        "hit@1": 88.78,
+        "hit@3": 100.0,
+        "hit@5": 100.0,
+        "mrr": 0.9439
+      },
+      "knowledge_aware": {
+        "hit@1": 100.0,
+        "hit@3": 100.0,
+        "hit@5": 100.0,
+        "mrr": 1.0
+      },
+      "gain_hit@1": 11.22
+    },
+    "SYMPTOM": {
+      "sample_size": 98,
+      "exact_id": {
+        "hit@1": 84.69,
+        "hit@3": 96.94,
+        "hit@5": 98.98,
+        "mrr": 0.9099
+      },
+      "knowledge_aware": {
+        "hit@1": 100.0,
+        "hit@3": 100.0,
+        "hit@5": 100.0,
+        "mrr": 1.0
+      },
+      "gain_hit@1": 15.31
+    },
+    "ERROR_CODE_UNKNOWN": {
+      "sample_size": 4,
+      "exact_id": {
+        "hit@1": 100.0,
+        "hit@3": 100.0,
+        "hit@5": 100.0,
+        "mrr": 1.0
+      },
+      "knowledge_aware": {
+        "hit@1": 100.0,
+        "hit@3": 100.0,
+        "hit@5": 100.0,
+        "mrr": 1.0
+      },
+      "gain_hit@1": 0.0
+    }
+  },
+  "by_brand": {
+    "Samsung": {
+      "sample_size": 80,
+      "exact_id": {
+        "hit@1": 85.0,
+        "hit@3": 96.25,
+        "hit@5": 98.75,
+        "mrr": 0.9083
+      },
+      "knowledge_aware": {
+        "hit@1": 100.0,
+        "hit@3": 100.0,
+        "hit@5": 100.0,
+        "mrr": 1.0
+      },
+      "gain_hit@1": 15.0
+    },
+    "Panasonic": {
+      "sample_size": 65,
+      "exact_id": {
+        "hit@1": 81.54,
+        "hit@3": 100.0,
+        "hit@5": 100.0,
+        "mrr": 0.9077
+      },
+      "knowledge_aware": {
+        "hit@1": 100.0,
+        "hit@3": 100.0,
+        "hit@5": 100.0,
+        "mrr": 1.0
+      },
+      "gain_hit@1": 18.46
+    },
+    "LG": {
+      "sample_size": 55,
+      "exact_id": {
+        "hit@1": 96.36,
+        "hit@3": 100.0,
+        "hit@5": 100.0,
+        "mrr": 0.9818
+      },
+      "knowledge_aware": {
+        "hit@1": 100.0,
+        "hit@3": 100.0,
+        "hit@5": 100.0,
+        "mrr": 1.0
+      },
+      "gain_hit@1": 3.64
+    }
+  },
+  "q0535_special_case": {
+    "question_id": "Q0535",
+    "question": "Máy giặt không xả nước phải làm sao?",
+    "exact_rank": null,
+    "knowledge_rank": 1,
+    "top1_id": "Q0690",
+    "explanation": "Q0535 khong xuat hien trong Top-5 cua Fixed (Exact-ID miss, exact_rank=None), nhung tai Rank 1 la Q0690 co 100% cung noi dung cau tra loi va cung van de ky thuat, nen o goc nhin Knowledge-aware dat Rank 1 thanh cong."
+  }
+}

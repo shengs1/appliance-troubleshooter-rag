@@ -37,6 +37,12 @@ class Settings(BaseSettings):
     # Cau hinh nguong phat hien cau hoi ngoai pham vi (Phase 10A)
     scope_distance_threshold: float = 0.40
 
+    # Cau hinh trong so Post-Retrieval Reranking
+    rerank_brand_bonus: float = 0.08
+    rerank_device_bonus: float = 0.08
+    rerank_exact_error_code_bonus: float = 0.20
+    rerank_both_bonus: float = 0.02
+
     # Cau hinh Pydantic Settings
     model_config = SettingsConfigDict(
         env_file=".env",

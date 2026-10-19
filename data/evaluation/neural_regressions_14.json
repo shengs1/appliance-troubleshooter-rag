@@ -1,0 +1,114 @@
+[
+  {
+    "question_id": "Q0036",
+    "question": "Tủ lạnh LG bị lỗi E2",
+    "issue_type": "ERROR_CODE",
+    "fixed_top1": "Q0036",
+    "neural_rank": 2,
+    "neural_top1": "Q0103"
+  },
+  {
+    "question_id": "Q0059",
+    "question": "Máy sấy LG lỗi d80, d90, d95",
+    "issue_type": "ERROR_CODE",
+    "fixed_top1": "Q0059",
+    "neural_rank": 2,
+    "neural_top1": "Q0138"
+  },
+  {
+    "question_id": "Q0157",
+    "question": "Điều hoà panasonic bị lỗi F11",
+    "issue_type": "ERROR_CODE",
+    "fixed_top1": "Q0157",
+    "neural_rank": 2,
+    "neural_top1": "Q0307"
+  },
+  {
+    "question_id": "Q0319",
+    "question": "Điều hòa panasonic bị lỗi H28",
+    "issue_type": "ERROR_CODE",
+    "fixed_top1": "Q0319",
+    "neural_rank": 2,
+    "neural_top1": "Q0235"
+  },
+  {
+    "question_id": "Q0323",
+    "question": "Điều hòa panasonic bị lỗi H38",
+    "issue_type": "ERROR_CODE",
+    "fixed_top1": "Q0323",
+    "neural_rank": 2,
+    "neural_top1": "Q0162"
+  },
+  {
+    "question_id": "Q0331",
+    "question": "Máy giặt panasonic bị lỗi H05",
+    "issue_type": "ERROR_CODE",
+    "fixed_top1": "Q0331",
+    "neural_rank": 2,
+    "neural_top1": "Q0194"
+  },
+  {
+    "question_id": "Q0332",
+    "question": "Máy giặt panasonic bị lỗi H07",
+    "issue_type": "ERROR_CODE",
+    "fixed_top1": "Q0332",
+    "neural_rank": 2,
+    "neural_top1": "Q0195"
+  },
+  {
+    "question_id": "Q0343",
+    "question": "Máy giặt panasonic bị lỗi H52",
+    "issue_type": "ERROR_CODE",
+    "fixed_top1": "Q0343",
+    "neural_rank": 2,
+    "neural_top1": "Q0206"
+  },
+  {
+    "question_id": "Q0346",
+    "question": "Máy giặt panasonic bị lỗi U12",
+    "issue_type": "ERROR_CODE",
+    "fixed_top1": "Q0346",
+    "neural_rank": 2,
+    "neural_top1": "Q0210"
+  },
+  {
+    "question_id": "Q0538",
+    "question": "Máy giặt phát tiếng ồn lớn khi chạy thì sao?",
+    "issue_type": "SYMPTOM",
+    "fixed_top1": "Q0538",
+    "neural_rank": 2,
+    "neural_top1": "Q0662"
+  },
+  {
+    "question_id": "Q0542",
+    "question": "Máy giặt dùng nhiều nước hơn bình thường có sao không?",
+    "issue_type": "SYMPTOM",
+    "fixed_top1": "Q0542",
+    "neural_rank": 3,
+    "neural_top1": "Q0666"
+  },
+  {
+    "question_id": "Q0700",
+    "question": "LG Lò vi sóng không nóng thì phải làm sao?",
+    "issue_type": "SYMPTOM",
+    "fixed_top1": "Q0700",
+    "neural_rank": 2,
+    "neural_top1": "Q0715"
+  },
+  {
+    "question_id": "Q1056",
+    "question": "Samsung Điều hòa nên vệ sinh bộ lọc không?",
+    "issue_type": "SYMPTOM",
+    "fixed_top1": "Q1056",
+    "neural_rank": 2,
+    "neural_top1": "Q1059"
+  },
+  {
+    "question_id": "Q1080",
+    "question": "Samsung Tủ lạnh để thực phẩm che cửa gió có sao không?",
+    "issue_type": "SYMPTOM",
+    "fixed_top1": "Q1080",
+    "neural_rank": 2,
+    "neural_top1": "Q1082"
+  }
+]

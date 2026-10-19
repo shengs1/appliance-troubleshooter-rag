@@ -1,0 +1,72 @@
+{
+  "subgroups": {
+    "ERROR_CODE": {
+      "count": 98,
+      "baseline": {
+        "hit@1": 87.76,
+        "hit@3": 98.98,
+        "hit@5": 100.0,
+        "mrr": 0.9362
+      },
+      "reranking": {
+        "hit@1": 88.78,
+        "hit@3": 100.0,
+        "hit@5": 100.0,
+        "mrr": 0.9439
+      }
+    },
+    "ERROR_CODE_UNKNOWN": {
+      "count": 4,
+      "baseline": {
+        "hit@1": 100.0,
+        "hit@3": 100.0,
+        "hit@5": 100.0,
+        "mrr": 1.0
+      },
+      "reranking": {
+        "hit@1": 100.0,
+        "hit@3": 100.0,
+        "hit@5": 100.0,
+        "mrr": 1.0
+      }
+    },
+    "SYMPTOM": {
+      "count": 98,
+      "baseline": {
+        "hit@1": 59.18,
+        "hit@3": 94.9,
+        "hit@5": 98.98,
+        "mrr": 0.7381
+      },
+      "reranking": {
+        "hit@1": 84.69,
+        "hit@3": 96.94,
+        "hit@5": 98.98,
+        "mrr": 0.9099
+      }
+    }
+  },
+  "error_code_analysis": {
+    "total_queries_with_code": 102,
+    "improved_count": 1,
+    "unchanged_count": 101,
+    "degraded_count": 0,
+    "details": [
+      {
+        "type": "IMPROVED",
+        "qid": "Q0463",
+        "q": "Máy sấy Samsung lỗi 1 AC7",
+        "code": "1",
+        "base_rank": 4,
+        "rerank_rank": 1
+      }
+    ]
+  },
+  "symptom_analysis": {
+    "total_symptom_queries": 98,
+    "improved_count": 27,
+    "unchanged_count": 71,
+    "degraded_count": 0,
+    "regressions": []
+  }
+}

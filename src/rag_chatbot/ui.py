@@ -5,6 +5,7 @@ from __future__ import annotations
 import gradio as gr
 
 from rag_chatbot.rag import generate_rag_answer
+from rag_chatbot.retrieval import extract_matching_sources
 
 
 SUGGESTIONS = [
@@ -167,20 +168,15 @@ def chat_fn(
     result = generate_rag_answer(clean_message)
     answer = result.get("answer", "")
 
-    # Trich xuat nguon tham khao tu tai lieu phu hop nhat (top 1) neu khong bi tu choi
+    # Trich xuat nguon tham khao tu tai lieu phu hop nhat neu khong bi tu choi
     sources: list[str] = []
     retrieved_docs = result.get("retrieved_documents", [])
     if result.get("llm_status") != "refused_scope" and retrieved_docs:
-        top_url = retrieved_docs[0].get("source_url")
-        if top_url:
-            sources.append(top_url)
-        else:
-            top_brand = retrieved_docs[0].get("brand")
-            for doc in retrieved_docs:
-                url = doc.get("source_url")
-                if url and (not top_brand or doc.get("brand") == top_brand):
-                    sources.append(url)
-                    break
+        sources = extract_matching_sources(retrieved_docs, clean_message)
+
+    validation = result.get("validation")
+    if validation and validation.get("status") == "pass" and result.get("llm_status") == "success":
+        answer += "\n\n*(Đã kiểm tra câu trả lời theo tài liệu nguồn)*"
 
     if sources:
         answer += "\n\n**Nguồn tham khảo:**\n" + "\n".join(

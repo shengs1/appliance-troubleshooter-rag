@@ -1,0 +1,325 @@
+[
+  {
+    "question_id": "Q0358",
+    "question": "Máy điều hòa Samsung lỗi CF",
+    "expected_brand": "Samsung",
+    "expected_device": "Điều hòa",
+    "expected_error_code": "CF",
+    "issue_type": "ERROR_CODE",
+    "validation_focus": [
+      "samsung_dieuhoa_cf",
+      "groundedness",
+      "brand_consistency"
+    ]
+  },
+  {
+    "question_id": "Q0083",
+    "question": "Máy giặt LG lỗi IE",
+    "expected_brand": "LG",
+    "expected_device": "Máy giặt",
+    "expected_error_code": "IE",
+    "issue_type": "ERROR_CODE",
+    "validation_focus": [
+      "lg_maygiat_ie",
+      "groundedness",
+      "error_code_consistency"
+    ]
+  },
+  {
+    "question_id": "Q0157",
+    "question": "Điều hoà panasonic bị lỗi F11",
+    "expected_brand": "Panasonic",
+    "expected_device": "Điều hòa",
+    "expected_error_code": "F11",
+    "issue_type": "ERROR_CODE",
+    "validation_focus": [
+      "panasonic_dieuhoa_f11",
+      "groundedness",
+      "device_consistency"
+    ]
+  },
+  {
+    "question_id": "Q0534",
+    "question": "Máy giặt không vào nước thì kiểm tra gì trước?",
+    "expected_brand": "Samsung",
+    "expected_device": "Máy giặt",
+    "expected_error_code": "",
+    "issue_type": "SYMPTOM",
+    "validation_focus": [
+      "samsung_maygiat_symptom",
+      "no_hallucinated_code",
+      "groundedness"
+    ]
+  },
+  {
+    "question_id": "Q0693",
+    "question": "LG Tủ lạnh không lạnh?",
+    "expected_brand": "LG",
+    "expected_device": "Tủ lạnh",
+    "expected_error_code": "",
+    "issue_type": "SYMPTOM",
+    "validation_focus": [
+      "lg_tulanh_symptom",
+      "groundedness",
+      "device_consistency"
+    ]
+  },
+  {
+    "question_id": "Q0196",
+    "question": "Máy giặt panasonic bị lỗi H09",
+    "expected_brand": "Panasonic",
+    "expected_device": "Máy giặt",
+    "expected_error_code": "H09",
+    "issue_type": "ERROR_CODE",
+    "validation_focus": [
+      "panasonic_maygiat_error_code",
+      "groundedness",
+      "error_code_consistency"
+    ]
+  },
+  {
+    "question_id": "Q0417",
+    "question": "Máy sấy Samsung lỗi do",
+    "expected_brand": "Samsung",
+    "expected_device": "Máy sấy",
+    "expected_error_code": "",
+    "issue_type": "ERROR_CODE_UNKNOWN",
+    "validation_focus": [
+      "error_code_unknown",
+      "safe_handling",
+      "groundedness"
+    ]
+  },
+  {
+    "question_id": "Q0586",
+    "question": "Lò nướng hiện mã lạ không có trong danh sách thì làm gì phải làm sao?",
+    "expected_brand": "Samsung",
+    "expected_device": "Lò nướng",
+    "expected_error_code": "",
+    "issue_type": "ERROR_CODE_UNKNOWN",
+    "validation_focus": [
+      "error_code_unknown",
+      "safe_handling",
+      "groundedness"
+    ]
+  },
+  {
+    "question_id": "Q0590",
+    "question": "Máy rửa bát báo lỗi liên tục sau khi khởi động lại thì sao phải làm sao?",
+    "expected_brand": "Samsung",
+    "expected_device": "Máy rửa bát",
+    "expected_error_code": "",
+    "issue_type": "ERROR_CODE_UNKNOWN",
+    "validation_focus": [
+      "error_code_unknown",
+      "safe_handling",
+      "groundedness"
+    ]
+  },
+  {
+    "question_id": "Q0595",
+    "question": "Lò vi sóng hiện mã lỗi thì tôi nên làm gì phải làm sao?",
+    "expected_brand": "Samsung",
+    "expected_device": "Lò vi sóng",
+    "expected_error_code": "",
+    "issue_type": "ERROR_CODE_UNKNOWN",
+    "validation_focus": [
+      "error_code_unknown",
+      "safe_handling",
+      "groundedness"
+    ]
+  },
+  {
+    "question_id": "Q0406",
+    "question": "Tủ lạnh Samsung lỗi 88 88",
+    "expected_brand": "Samsung",
+    "expected_device": "Tủ lạnh",
+    "expected_error_code": "88",
+    "issue_type": "ERROR_CODE",
+    "validation_focus": [
+      "samsung_tulanh_error_code",
+      "groundedness"
+    ]
+  },
+  {
+    "question_id": "Q0548",
+    "question": "Máy lạnh có mùi hôi thì xử lý thế nào?",
+    "expected_brand": "Samsung",
+    "expected_device": "Điều hòa",
+    "expected_error_code": "",
+    "issue_type": "SYMPTOM",
+    "validation_focus": [
+      "samsung_dieuhoa_symptom",
+      "paraphrase_grounding"
+    ]
+  },
+  {
+    "question_id": "Q0413",
+    "question": "Máy sấy Samsung lỗi 9E1",
+    "expected_brand": "Samsung",
+    "expected_device": "Máy sấy",
+    "expected_error_code": "9E1",
+    "issue_type": "ERROR_CODE",
+    "validation_focus": [
+      "samsung_maysay_error_code",
+      "device_consistency"
+    ]
+  },
+  {
+    "question_id": "Q0168",
+    "question": "Tủ lạnh panasonic bị lỗi U10",
+    "expected_brand": "Panasonic",
+    "expected_device": "Tủ lạnh",
+    "expected_error_code": "U10",
+    "issue_type": "ERROR_CODE",
+    "validation_focus": [
+      "panasonic_tulanh_error_code",
+      "groundedness"
+    ]
+  },
+  {
+    "question_id": "Q0843",
+    "question": "Panasonic Điều hòa không lạnh?",
+    "expected_brand": "Panasonic",
+    "expected_device": "Điều hòa",
+    "expected_error_code": "",
+    "issue_type": "SYMPTOM",
+    "validation_focus": [
+      "panasonic_dieuhoa_symptom",
+      "groundedness"
+    ]
+  },
+  {
+    "question_id": "Q0841",
+    "question": "Panasonic Máy giặt không vào nước?",
+    "expected_brand": "Panasonic",
+    "expected_device": "Máy giặt",
+    "expected_error_code": "",
+    "issue_type": "SYMPTOM",
+    "validation_focus": [
+      "panasonic_maygiat_symptom",
+      "groundedness"
+    ]
+  },
+  {
+    "question_id": "Q0845",
+    "question": "Panasonic Máy lọc không khí có mùi?",
+    "expected_brand": "Panasonic",
+    "expected_device": "Máy lọc không khí",
+    "expected_error_code": "",
+    "issue_type": "SYMPTOM",
+    "validation_focus": [
+      "panasonic_air_symptom",
+      "device_consistency"
+    ]
+  },
+  {
+    "question_id": "Q0842",
+    "question": "Panasonic Tủ lạnh không lạnh?",
+    "expected_brand": "Panasonic",
+    "expected_device": "Tủ lạnh",
+    "expected_error_code": "",
+    "issue_type": "SYMPTOM",
+    "validation_focus": [
+      "panasonic_tulanh_symptom",
+      "groundedness"
+    ]
+  },
+  {
+    "question_id": "Q0694",
+    "question": "LG Điều hòa không mát?",
+    "expected_brand": "LG",
+    "expected_device": "Điều hòa",
+    "expected_error_code": "",
+    "issue_type": "SYMPTOM",
+    "validation_focus": [
+      "lg_dieuhoa_symptom",
+      "groundedness"
+    ]
+  },
+  {
+    "question_id": "Q0001",
+    "question": "tủ lạnh LG Mã lỗi rS",
+    "expected_brand": "LG",
+    "expected_device": "Tủ lạnh",
+    "expected_error_code": "RS",
+    "issue_type": "ERROR_CODE",
+    "validation_focus": [
+      "lg_tulanh_error_code",
+      "groundedness"
+    ]
+  },
+  {
+    "question_id": "Q0691",
+    "question": "LG Máy giặt không vào nước?",
+    "expected_brand": "LG",
+    "expected_device": "Máy giặt",
+    "expected_error_code": "",
+    "issue_type": "SYMPTOM",
+    "validation_focus": [
+      "lg_maygiat_symptom",
+      "groundedness"
+    ]
+  },
+  {
+    "question_id": "Q0059",
+    "question": "Máy sấy LG lỗi d80, d90, d95",
+    "expected_brand": "LG",
+    "expected_device": "Máy sấy",
+    "expected_error_code": "D80, D90, D95",
+    "issue_type": "ERROR_CODE",
+    "validation_focus": [
+      "lg_maysay_error_code",
+      "device_consistency"
+    ]
+  },
+  {
+    "question_id": "Q0379",
+    "question": "Máy rửa bát Samsung lỗi 1E",
+    "expected_brand": "Samsung",
+    "expected_device": "Máy rửa bát",
+    "expected_error_code": "1E",
+    "issue_type": "ERROR_CODE",
+    "validation_focus": [
+      "samsung_mayruabat_error_code",
+      "device_consistency"
+    ]
+  },
+  {
+    "question_id": "Q0214",
+    "question": "Bếp từ panasonic bị lỗi U04",
+    "expected_brand": "Panasonic",
+    "expected_device": "Bếp",
+    "expected_error_code": "U04",
+    "issue_type": "ERROR_CODE",
+    "validation_focus": [
+      "bep_error_code",
+      "device_consistency",
+      "groundedness"
+    ]
+  },
+  {
+    "question_id": "Q0262",
+    "question": "Lò vi sóng panasonic bị lỗi H32",
+    "expected_brand": "Panasonic",
+    "expected_device": "Lò vi sóng",
+    "expected_error_code": "H32",
+    "issue_type": "ERROR_CODE",
+    "validation_focus": [
+      "lovisong_symptom",
+      "groundedness"
+    ]
+  },
+  {
+    "question_id": "Q0535",
+    "question": "Máy giặt không xả nước phải làm sao?",
+    "expected_brand": "Samsung",
+    "expected_device": "Máy giặt",
+    "expected_error_code": "",
+    "issue_type": "SYMPTOM",
+    "validation_focus": [
+      "samsung_symptom_paraphrase",
+      "groundedness"
+    ]
+  }
+]

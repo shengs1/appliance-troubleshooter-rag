@@ -1,0 +1,455 @@
+{
+  "dev_set_100": {
+    "fixed": {
+      "mode": "fixed",
+      "total_queries": 100,
+      "hit@1": 89.0,
+      "hit@3": 100.0,
+      "hit@5": 100.0,
+      "mrr": 0.94,
+      "latency": {
+        "retrieval_mean_ms": 167.53,
+        "retrieval_median_ms": 117.16,
+        "reranker_mean_ms": 0.03,
+        "reranker_median_ms": 0.03,
+        "total_mean_ms": 167.58,
+        "total_median_ms": 117.21
+      },
+      "subgroups": {
+        "ERROR_CODE": {
+          "total": 50,
+          "hit@1": 98.0,
+          "hit@3": 100.0,
+          "hit@5": 100.0,
+          "mrr": 0.99
+        },
+        "SYMPTOM": {
+          "total": 50,
+          "hit@1": 80.0,
+          "hit@3": 100.0,
+          "hit@5": 100.0,
+          "mrr": 0.89
+        }
+      }
+    },
+    "neural": {
+      "mode": "neural",
+      "total_queries": 100,
+      "hit@1": 84.0,
+      "hit@3": 93.0,
+      "hit@5": 100.0,
+      "mrr": 0.891,
+      "latency": {
+        "retrieval_mean_ms": 130.26,
+        "retrieval_median_ms": 126.25,
+        "reranker_mean_ms": 3905.36,
+        "reranker_median_ms": 3633.51,
+        "total_mean_ms": 4035.64,
+        "total_median_ms": 3765.71
+      },
+      "subgroups": {
+        "ERROR_CODE": {
+          "total": 50,
+          "hit@1": 96.0,
+          "hit@3": 100.0,
+          "hit@5": 100.0,
+          "mrr": 0.98
+        },
+        "SYMPTOM": {
+          "total": 50,
+          "hit@1": 72.0,
+          "hit@3": 86.0,
+          "hit@5": 100.0,
+          "mrr": 0.802
+        }
+      }
+    }
+  },
+  "evaluation_set_200": {
+    "baseline": {
+      "mode": "baseline",
+      "total_queries": 200,
+      "hit@1": 74.0,
+      "hit@3": 97.0,
+      "hit@5": 99.5,
+      "mrr": 0.8404,
+      "latency": {
+        "retrieval_mean_ms": 129.68,
+        "retrieval_median_ms": 127.08,
+        "reranker_mean_ms": 0.0,
+        "reranker_median_ms": 0.0,
+        "total_mean_ms": 129.71,
+        "total_median_ms": 127.1
+      },
+      "subgroups": {
+        "ERROR_CODE": {
+          "total": 98,
+          "hit@1": 87.76,
+          "hit@3": 98.98,
+          "hit@5": 100.0,
+          "mrr": 0.9362
+        },
+        "SYMPTOM": {
+          "total": 98,
+          "hit@1": 59.18,
+          "hit@3": 94.9,
+          "hit@5": 98.98,
+          "mrr": 0.7381
+        },
+        "ERROR_CODE_UNKNOWN": {
+          "total": 4,
+          "hit@1": 100.0,
+          "hit@3": 100.0,
+          "hit@5": 100.0,
+          "mrr": 1.0
+        }
+      }
+    },
+    "fixed": {
+      "mode": "fixed",
+      "total_queries": 200,
+      "hit@1": 87.0,
+      "hit@3": 98.5,
+      "hit@5": 99.5,
+      "mrr": 0.9283,
+      "latency": {
+        "retrieval_mean_ms": 127.19,
+        "retrieval_median_ms": 123.05,
+        "reranker_mean_ms": 0.03,
+        "reranker_median_ms": 0.03,
+        "total_mean_ms": 127.24,
+        "total_median_ms": 123.11
+      },
+      "subgroups": {
+        "ERROR_CODE": {
+          "total": 98,
+          "hit@1": 88.78,
+          "hit@3": 100.0,
+          "hit@5": 100.0,
+          "mrr": 0.9439
+        },
+        "SYMPTOM": {
+          "total": 98,
+          "hit@1": 84.69,
+          "hit@3": 96.94,
+          "hit@5": 98.98,
+          "mrr": 0.9099
+        },
+        "ERROR_CODE_UNKNOWN": {
+          "total": 4,
+          "hit@1": 100.0,
+          "hit@3": 100.0,
+          "hit@5": 100.0,
+          "mrr": 1.0
+        }
+      }
+    },
+    "neural": {
+      "mode": "neural",
+      "total_queries": 200,
+      "hit@1": 86.5,
+      "hit@3": 99.5,
+      "hit@5": 100.0,
+      "mrr": 0.9268,
+      "latency": {
+        "retrieval_mean_ms": 133.4,
+        "retrieval_median_ms": 119.56,
+        "reranker_mean_ms": 3794.56,
+        "reranker_median_ms": 3360.93,
+        "total_mean_ms": 3927.99,
+        "total_median_ms": 3494.7
+      },
+      "subgroups": {
+        "ERROR_CODE": {
+          "total": 98,
+          "hit@1": 84.69,
+          "hit@3": 100.0,
+          "hit@5": 100.0,
+          "mrr": 0.9235
+        },
+        "SYMPTOM": {
+          "total": 98,
+          "hit@1": 87.76,
+          "hit@3": 98.98,
+          "hit@5": 100.0,
+          "mrr": 0.9272
+        },
+        "ERROR_CODE_UNKNOWN": {
+          "total": 4,
+          "hit@1": 100.0,
+          "hit@3": 100.0,
+          "hit@5": 100.0,
+          "mrr": 1.0
+        }
+      }
+    }
+  },
+  "failure_cases_analysis_26": {
+    "total_fixed_failures": 26,
+    "neural_better_count": 14,
+    "fixed_better_count": 3,
+    "equal_count": 9,
+    "cases": [
+      {
+        "question_id": "Q0002",
+        "question": "Tủ lạnh LG lỗi sb",
+        "issue_type": "ERROR_CODE",
+        "fixed_rank": 2,
+        "fixed_top1": "Q0108",
+        "neural_rank": 1,
+        "neural_top1": "Q0002",
+        "status": "NEURAL_BETTER"
+      },
+      {
+        "question_id": "Q0158",
+        "question": "Điều hoà panasonic bị lỗi F16",
+        "issue_type": "ERROR_CODE",
+        "fixed_rank": 2,
+        "fixed_top1": "Q0308",
+        "neural_rank": 2,
+        "neural_top1": "Q0308",
+        "status": "EQUAL"
+      },
+      {
+        "question_id": "Q0159",
+        "question": "Điều hòa panasonic bị lỗi F93",
+        "issue_type": "ERROR_CODE",
+        "fixed_rank": 2,
+        "fixed_top1": "Q0310",
+        "neural_rank": 1,
+        "neural_top1": "Q0159",
+        "status": "NEURAL_BETTER"
+      },
+      {
+        "question_id": "Q0160",
+        "question": "Điều hòa panasonic bị lỗi F95",
+        "issue_type": "ERROR_CODE",
+        "fixed_rank": 2,
+        "fixed_top1": "Q0311",
+        "neural_rank": 2,
+        "neural_top1": "Q0311",
+        "status": "EQUAL"
+      },
+      {
+        "question_id": "Q0161",
+        "question": "Điều hòa panasonic bị lỗi F97",
+        "issue_type": "ERROR_CODE",
+        "fixed_rank": 2,
+        "fixed_top1": "Q0312",
+        "neural_rank": 2,
+        "neural_top1": "Q0312",
+        "status": "EQUAL"
+      },
+      {
+        "question_id": "Q0165",
+        "question": "Điều hòa panasonic bị lỗi H97",
+        "issue_type": "ERROR_CODE",
+        "fixed_rank": 2,
+        "fixed_top1": "Q0326",
+        "neural_rank": 1,
+        "neural_top1": "Q0165",
+        "status": "NEURAL_BETTER"
+      },
+      {
+        "question_id": "Q0167",
+        "question": "Điều hòa panasonic bị lỗi H99",
+        "issue_type": "ERROR_CODE",
+        "fixed_rank": 2,
+        "fixed_top1": "Q0328",
+        "neural_rank": 2,
+        "neural_top1": "Q0328",
+        "status": "EQUAL"
+      },
+      {
+        "question_id": "Q0196",
+        "question": "Máy giặt panasonic bị lỗi H09",
+        "issue_type": "ERROR_CODE",
+        "fixed_rank": 2,
+        "fixed_top1": "Q0333",
+        "neural_rank": 1,
+        "neural_top1": "Q0196",
+        "status": "NEURAL_BETTER"
+      },
+      {
+        "question_id": "Q0214",
+        "question": "Bếp từ panasonic bị lỗi U04",
+        "issue_type": "ERROR_CODE",
+        "fixed_rank": 2,
+        "fixed_top1": "Q0350",
+        "neural_rank": 1,
+        "neural_top1": "Q0214",
+        "status": "NEURAL_BETTER"
+      },
+      {
+        "question_id": "Q0215",
+        "question": "Bếp từ panasonic bị lỗi U11*",
+        "issue_type": "ERROR_CODE",
+        "fixed_rank": 2,
+        "fixed_top1": "Q0351",
+        "neural_rank": 2,
+        "neural_top1": "Q0351",
+        "status": "EQUAL"
+      },
+      {
+        "question_id": "Q0234",
+        "question": "Điều hòa panasonic bị lỗi H27",
+        "issue_type": "ERROR_CODE",
+        "fixed_rank": 2,
+        "fixed_top1": "Q0318",
+        "neural_rank": 2,
+        "neural_top1": "Q0318",
+        "status": "EQUAL"
+      },
+      {
+        "question_id": "Q0535",
+        "question": "Máy giặt không xả nước phải làm sao?",
+        "issue_type": "SYMPTOM",
+        "fixed_rank": null,
+        "fixed_top1": "Q0690",
+        "neural_rank": 3,
+        "neural_top1": "Q0659",
+        "status": "NEURAL_BETTER"
+      },
+      {
+        "question_id": "Q0536",
+        "question": "Máy giặt không vắt được thì nguyên nhân thường là gì?",
+        "issue_type": "SYMPTOM",
+        "fixed_rank": 2,
+        "fixed_top1": "Q0660",
+        "neural_rank": 3,
+        "neural_top1": "Q0660",
+        "status": "FIXED_BETTER"
+      },
+      {
+        "question_id": "Q0537",
+        "question": "Máy giặt rung mạnh khi vắt xử lý thế nào?",
+        "issue_type": "SYMPTOM",
+        "fixed_rank": 2,
+        "fixed_top1": "Q0568",
+        "neural_rank": 2,
+        "neural_top1": "Q0661",
+        "status": "EQUAL"
+      },
+      {
+        "question_id": "Q0548",
+        "question": "Máy lạnh có mùi hôi thì xử lý thế nào?",
+        "issue_type": "SYMPTOM",
+        "fixed_rank": 2,
+        "fixed_top1": "Q0579",
+        "neural_rank": 2,
+        "neural_top1": "Q0579",
+        "status": "EQUAL"
+      },
+      {
+        "question_id": "Q0554",
+        "question": "Tủ lạnh có mùi hôi thì vệ sinh thế nào?",
+        "issue_type": "SYMPTOM",
+        "fixed_rank": 3,
+        "fixed_top1": "Q0585",
+        "neural_rank": 3,
+        "neural_top1": "Q0616",
+        "status": "EQUAL"
+      },
+      {
+        "question_id": "Q0558",
+        "question": "Máy rửa bát không thoát nước thì làm sao?",
+        "issue_type": "SYMPTOM",
+        "fixed_rank": 4,
+        "fixed_top1": "Q0620",
+        "neural_rank": 1,
+        "neural_top1": "Q0558",
+        "status": "NEURAL_BETTER"
+      },
+      {
+        "question_id": "Q0560",
+        "question": "Máy sấy không khô quần áo thì kiểm tra gì?",
+        "issue_type": "SYMPTOM",
+        "fixed_rank": 2,
+        "fixed_top1": "Q0591",
+        "neural_rank": 5,
+        "neural_top1": "Q0653",
+        "status": "FIXED_BETTER"
+      },
+      {
+        "question_id": "Q0563",
+        "question": "Lò vi sóng không nóng nhưng vẫn chạy thì sao?",
+        "issue_type": "SYMPTOM",
+        "fixed_rank": 2,
+        "fixed_top1": "Q0687",
+        "neural_rank": 3,
+        "neural_top1": "Q0687",
+        "status": "FIXED_BETTER"
+      },
+      {
+        "question_id": "Q0611",
+        "question": "Tủ lạnh không lạnh thì kiểm tra gì trước thì xử lý thế nào?",
+        "issue_type": "SYMPTOM",
+        "fixed_rank": 4,
+        "fixed_top1": "Q0580",
+        "neural_rank": 1,
+        "neural_top1": "Q0611",
+        "status": "NEURAL_BETTER"
+      },
+      {
+        "question_id": "Q0624",
+        "question": "Máy sấy không khởi động thì kiểm tra gì thì xử lý thế nào?",
+        "issue_type": "SYMPTOM",
+        "fixed_rank": 3,
+        "fixed_top1": "Q0562",
+        "neural_rank": 1,
+        "neural_top1": "Q0624",
+        "status": "NEURAL_BETTER"
+      },
+      {
+        "question_id": "Q0813",
+        "question": "LG Tủ lạnh không làm đá?",
+        "issue_type": "SYMPTOM",
+        "fixed_rank": 2,
+        "fixed_top1": "Q0817",
+        "neural_rank": 1,
+        "neural_top1": "Q0813",
+        "status": "NEURAL_BETTER"
+      },
+      {
+        "question_id": "Q0938",
+        "question": "Panasonic Tủ lạnh không làm đá?",
+        "issue_type": "SYMPTOM",
+        "fixed_rank": 2,
+        "fixed_top1": "Q0941",
+        "neural_rank": 1,
+        "neural_top1": "Q0938",
+        "status": "NEURAL_BETTER"
+      },
+      {
+        "question_id": "Q0983",
+        "question": "Panasonic Tủ lạnh muốn tiết kiệm điện?",
+        "issue_type": "SYMPTOM",
+        "fixed_rank": 2,
+        "fixed_top1": "Q0986",
+        "neural_rank": 1,
+        "neural_top1": "Q0983",
+        "status": "NEURAL_BETTER"
+      },
+      {
+        "question_id": "Q1061",
+        "question": "Samsung Tủ lạnh nước không đủ lạnh?",
+        "issue_type": "SYMPTOM",
+        "fixed_rank": 2,
+        "fixed_top1": "Q1064",
+        "neural_rank": 1,
+        "neural_top1": "Q1061",
+        "status": "NEURAL_BETTER"
+      },
+      {
+        "question_id": "Q1082",
+        "question": "Samsung Tủ lạnh để thực phẩm che cửa gió có sao không thì phải làm sao?",
+        "issue_type": "SYMPTOM",
+        "fixed_rank": 2,
+        "fixed_top1": "Q1080",
+        "neural_rank": 1,
+        "neural_top1": "Q1082",
+        "status": "NEURAL_BETTER"
+      }
+    ]
+  }
+}

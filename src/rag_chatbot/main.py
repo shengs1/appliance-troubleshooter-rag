@@ -15,6 +15,7 @@ from pydantic import BaseModel, Field
 import gradio as gr
 
 from rag_chatbot.rag import generate_rag_answer
+from rag_chatbot.retrieval import extract_matching_sources
 from rag_chatbot.ui import CUSTOM_CSS, build_demo
 
 
@@ -39,6 +40,7 @@ class ChatResponse(BaseModel):
     llm_status: str
     retrieved_documents: list[dict[str, Any]]
     sources: list[str]
+    validation: dict[str, Any] | None = None
 
 
 # 3. Cac endpoint API
@@ -74,20 +76,11 @@ def chat(request: ChatRequest) -> ChatResponse:
         # Goi quy trinh RAG da hoan thien o Phase 6
         rag_result = generate_rag_answer(clean_question)
 
-        # Trich xuat nguon tham khao tu tai lieu phu hop nhat (top 1) neu khong bi tu choi
+        # Trich xuat nguon tham khao tu tai lieu phu hop nhat neu khong bi tu choi
         sources: list[str] = []
         retrieved_docs = rag_result.get("retrieved_documents", [])
         if rag_result.get("llm_status") != "refused_scope" and retrieved_docs:
-            top_url = retrieved_docs[0].get("source_url")
-            if top_url:
-                sources.append(top_url)
-            else:
-                top_brand = retrieved_docs[0].get("brand")
-                for doc in retrieved_docs:
-                    url = doc.get("source_url")
-                    if url and (not top_brand or doc.get("brand") == top_brand):
-                        sources.append(url)
-                        break
+            sources = extract_matching_sources(retrieved_docs, clean_question)
 
         return ChatResponse(
             question=rag_result["question"],
@@ -95,6 +88,7 @@ def chat(request: ChatRequest) -> ChatResponse:
             llm_status=rag_result["llm_status"],
             retrieved_documents=rag_result.get("retrieved_documents", []),
             sources=sources,
+            validation=rag_result.get("validation"),
         )
     except HTTPException:
         raise

@@ -1,0 +1,1359 @@
+[
+  {
+    "duplicate_group": "DUP15EB75FF",
+    "canonical_id": "Q0067",
+    "member_ids": [
+      "Q0048",
+      "Q0067"
+    ],
+    "merge_safe": true,
+    "reason": "Chon Q0067 vi co do day du du lieu cao nhat va ID on dinh",
+    "same_brand": true,
+    "same_device": true,
+    "same_error_code": true,
+    "same_issue": true,
+    "same_answer": false,
+    "canonical_summary": {
+      "id": "Q0067",
+      "brand": "LG",
+      "device": "Máy sấy",
+      "error_code": "TE2",
+      "issue_id": "I0037",
+      "question": "Máy sấy LG lỗi tE2"
+    }
+  },
+  {
+    "duplicate_group": "DUP6212F5CC",
+    "canonical_id": "Q0115",
+    "member_ids": [
+      "Q0115",
+      "Q0119"
+    ],
+    "merge_safe": false,
+    "reason": "Khong an toan de tu dong gop: Noi dung cau tra loi co do tuong dong thap (< 50%)",
+    "same_brand": true,
+    "same_device": true,
+    "same_error_code": true,
+    "same_issue": true,
+    "same_answer": false,
+    "canonical_summary": {
+      "id": "Q0115",
+      "brand": "LG",
+      "device": "Tủ lạnh",
+      "error_code": "ER D",
+      "issue_id": "I0009",
+      "question": "Cách khắc phục lỗi Er d tủ lạnh LG"
+    }
+  },
+  {
+    "duplicate_group": "DUP987302AA",
+    "canonical_id": "Q0307",
+    "member_ids": [
+      "Q0157",
+      "Q0307"
+    ],
+    "merge_safe": false,
+    "reason": "Khong an toan de tu dong gop: Noi dung cau tra loi co do tuong dong thap (< 50%)",
+    "same_brand": true,
+    "same_device": true,
+    "same_error_code": true,
+    "same_issue": true,
+    "same_answer": false,
+    "canonical_summary": {
+      "id": "Q0307",
+      "brand": "Panasonic",
+      "device": "Điều hòa",
+      "error_code": "F11",
+      "issue_id": "I0098",
+      "question": "Điều hòa panasonic bị lỗi F11"
+    }
+  },
+  {
+    "duplicate_group": "DUP79719DB9",
+    "canonical_id": "Q0308",
+    "member_ids": [
+      "Q0158",
+      "Q0308"
+    ],
+    "merge_safe": false,
+    "reason": "Khong an toan de tu dong gop: Noi dung cau tra loi co do tuong dong thap (< 50%)",
+    "same_brand": true,
+    "same_device": true,
+    "same_error_code": true,
+    "same_issue": true,
+    "same_answer": false,
+    "canonical_summary": {
+      "id": "Q0308",
+      "brand": "Panasonic",
+      "device": "Điều hòa",
+      "error_code": "F16",
+      "issue_id": "I0099",
+      "question": "Điều hòa panasonic bị lỗi F16"
+    }
+  },
+  {
+    "duplicate_group": "DUP44278C6B",
+    "canonical_id": "Q0310",
+    "member_ids": [
+      "Q0159",
+      "Q0310"
+    ],
+    "merge_safe": false,
+    "reason": "Khong an toan de tu dong gop: Noi dung cau tra loi co do tuong dong thap (< 50%)",
+    "same_brand": true,
+    "same_device": true,
+    "same_error_code": true,
+    "same_issue": true,
+    "same_answer": false,
+    "canonical_summary": {
+      "id": "Q0310",
+      "brand": "Panasonic",
+      "device": "Điều hòa",
+      "error_code": "F93",
+      "issue_id": "I0100",
+      "question": "Điều hòa panasonic bị lỗi F93"
+    }
+  },
+  {
+    "duplicate_group": "DUP9E57CFC6",
+    "canonical_id": "Q0311",
+    "member_ids": [
+      "Q0160",
+      "Q0311"
+    ],
+    "merge_safe": false,
+    "reason": "Khong an toan de tu dong gop: Noi dung cau tra loi co do tuong dong thap (< 50%)",
+    "same_brand": true,
+    "same_device": true,
+    "same_error_code": true,
+    "same_issue": true,
+    "same_answer": false,
+    "canonical_summary": {
+      "id": "Q0311",
+      "brand": "Panasonic",
+      "device": "Điều hòa",
+      "error_code": "F95",
+      "issue_id": "I0101",
+      "question": "Điều hòa panasonic bị lỗi F95"
+    }
+  },
+  {
+    "duplicate_group": "DUPC3E76538",
+    "canonical_id": "Q0312",
+    "member_ids": [
+      "Q0161",
+      "Q0312"
+    ],
+    "merge_safe": false,
+    "reason": "Khong an toan de tu dong gop: Noi dung cau tra loi co do tuong dong thap (< 50%)",
+    "same_brand": true,
+    "same_device": true,
+    "same_error_code": true,
+    "same_issue": true,
+    "same_answer": false,
+    "canonical_summary": {
+      "id": "Q0312",
+      "brand": "Panasonic",
+      "device": "Điều hòa",
+      "error_code": "F97",
+      "issue_id": "I0102",
+      "question": "Điều hòa panasonic bị lỗi F97"
+    }
+  },
+  {
+    "duplicate_group": "DUP31F9DBB1",
+    "canonical_id": "Q0323",
+    "member_ids": [
+      "Q0162",
+      "Q0323"
+    ],
+    "merge_safe": false,
+    "reason": "Khong an toan de tu dong gop: Noi dung cau tra loi co do tuong dong thap (< 50%)",
+    "same_brand": true,
+    "same_device": true,
+    "same_error_code": true,
+    "same_issue": true,
+    "same_answer": false,
+    "canonical_summary": {
+      "id": "Q0323",
+      "brand": "Panasonic",
+      "device": "Điều hòa",
+      "error_code": "H38",
+      "issue_id": "I0103",
+      "question": "Điều hòa panasonic bị lỗi H38"
+    }
+  },
+  {
+    "duplicate_group": "DUP8CE1A6CA",
+    "canonical_id": "Q0324",
+    "member_ids": [
+      "Q0163",
+      "Q0324"
+    ],
+    "merge_safe": false,
+    "reason": "Khong an toan de tu dong gop: Noi dung cau tra loi co do tuong dong thap (< 50%)",
+    "same_brand": true,
+    "same_device": true,
+    "same_error_code": true,
+    "same_issue": true,
+    "same_answer": false,
+    "canonical_summary": {
+      "id": "Q0324",
+      "brand": "Panasonic",
+      "device": "Điều hòa",
+      "error_code": "H58",
+      "issue_id": "I0104",
+      "question": "Điều hòa panasonic bị lỗi H58"
+    }
+  },
+  {
+    "duplicate_group": "DUP915FFC02",
+    "canonical_id": "Q0325",
+    "member_ids": [
+      "Q0164",
+      "Q0325"
+    ],
+    "merge_safe": false,
+    "reason": "Khong an toan de tu dong gop: Noi dung cau tra loi co do tuong dong thap (< 50%)",
+    "same_brand": true,
+    "same_device": true,
+    "same_error_code": true,
+    "same_issue": true,
+    "same_answer": false,
+    "canonical_summary": {
+      "id": "Q0325",
+      "brand": "Panasonic",
+      "device": "Điều hòa",
+      "error_code": "H64",
+      "issue_id": "I0105",
+      "question": "Điều hòa panasonic bị lỗi H64"
+    }
+  },
+  {
+    "duplicate_group": "DUPF2D57116",
+    "canonical_id": "Q0326",
+    "member_ids": [
+      "Q0165",
+      "Q0326"
+    ],
+    "merge_safe": false,
+    "reason": "Khong an toan de tu dong gop: Noi dung cau tra loi co do tuong dong thap (< 50%)",
+    "same_brand": true,
+    "same_device": true,
+    "same_error_code": true,
+    "same_issue": true,
+    "same_answer": false,
+    "canonical_summary": {
+      "id": "Q0326",
+      "brand": "Panasonic",
+      "device": "Điều hòa",
+      "error_code": "H97",
+      "issue_id": "I0106",
+      "question": "Điều hòa panasonic bị lỗi H97"
+    }
+  },
+  {
+    "duplicate_group": "DUP3899D57A",
+    "canonical_id": "Q0327",
+    "member_ids": [
+      "Q0166",
+      "Q0327"
+    ],
+    "merge_safe": false,
+    "reason": "Khong an toan de tu dong gop: Noi dung cau tra loi co do tuong dong thap (< 50%)",
+    "same_brand": true,
+    "same_device": true,
+    "same_error_code": true,
+    "same_issue": true,
+    "same_answer": false,
+    "canonical_summary": {
+      "id": "Q0327",
+      "brand": "Panasonic",
+      "device": "Điều hòa",
+      "error_code": "H98",
+      "issue_id": "I0107",
+      "question": "Điều hòa panasonic bị lỗi H98"
+    }
+  },
+  {
+    "duplicate_group": "DUP660C4236",
+    "canonical_id": "Q0328",
+    "member_ids": [
+      "Q0167",
+      "Q0328"
+    ],
+    "merge_safe": false,
+    "reason": "Khong an toan de tu dong gop: Noi dung cau tra loi co do tuong dong thap (< 50%)",
+    "same_brand": true,
+    "same_device": true,
+    "same_error_code": true,
+    "same_issue": true,
+    "same_answer": false,
+    "canonical_summary": {
+      "id": "Q0328",
+      "brand": "Panasonic",
+      "device": "Điều hòa",
+      "error_code": "H99",
+      "issue_id": "I0108",
+      "question": "Điều hòa panasonic bị lỗi H99"
+    }
+  },
+  {
+    "duplicate_group": "DUP678384D6",
+    "canonical_id": "Q0329",
+    "member_ids": [
+      "Q0192",
+      "Q0329"
+    ],
+    "merge_safe": false,
+    "reason": "Khong an toan de tu dong gop: Nguon du lieu ben thu ba (THIRD_PARTY_SOURCE); Noi dung cau tra loi co do tuong dong thap (< 50%)",
+    "same_brand": true,
+    "same_device": true,
+    "same_error_code": true,
+    "same_issue": true,
+    "same_answer": false,
+    "canonical_summary": {
+      "id": "Q0329",
+      "brand": "Panasonic",
+      "device": "Máy giặt",
+      "error_code": "H01",
+      "issue_id": "I0133",
+      "question": "Máy giặt panasonic bị lỗi H01"
+    }
+  },
+  {
+    "duplicate_group": "DUP704369C0",
+    "canonical_id": "Q0330",
+    "member_ids": [
+      "Q0193",
+      "Q0330"
+    ],
+    "merge_safe": false,
+    "reason": "Khong an toan de tu dong gop: Nguon du lieu ben thu ba (THIRD_PARTY_SOURCE); Noi dung cau tra loi co do tuong dong thap (< 50%)",
+    "same_brand": true,
+    "same_device": true,
+    "same_error_code": true,
+    "same_issue": true,
+    "same_answer": false,
+    "canonical_summary": {
+      "id": "Q0330",
+      "brand": "Panasonic",
+      "device": "Máy giặt",
+      "error_code": "H04",
+      "issue_id": "I0134",
+      "question": "Máy giặt panasonic bị lỗi H04"
+    }
+  },
+  {
+    "duplicate_group": "DUP0092A933",
+    "canonical_id": "Q0331",
+    "member_ids": [
+      "Q0194",
+      "Q0331"
+    ],
+    "merge_safe": false,
+    "reason": "Khong an toan de tu dong gop: Nguon du lieu ben thu ba (THIRD_PARTY_SOURCE); Noi dung cau tra loi co do tuong dong thap (< 50%)",
+    "same_brand": true,
+    "same_device": true,
+    "same_error_code": true,
+    "same_issue": true,
+    "same_answer": false,
+    "canonical_summary": {
+      "id": "Q0331",
+      "brand": "Panasonic",
+      "device": "Máy giặt",
+      "error_code": "H05",
+      "issue_id": "I0135",
+      "question": "Máy giặt panasonic bị lỗi H05"
+    }
+  },
+  {
+    "duplicate_group": "DUP9518F961",
+    "canonical_id": "Q0332",
+    "member_ids": [
+      "Q0195",
+      "Q0332"
+    ],
+    "merge_safe": false,
+    "reason": "Khong an toan de tu dong gop: Nguon du lieu ben thu ba (THIRD_PARTY_SOURCE); Noi dung cau tra loi co do tuong dong thap (< 50%)",
+    "same_brand": true,
+    "same_device": true,
+    "same_error_code": true,
+    "same_issue": true,
+    "same_answer": false,
+    "canonical_summary": {
+      "id": "Q0332",
+      "brand": "Panasonic",
+      "device": "Máy giặt",
+      "error_code": "H07",
+      "issue_id": "I0136",
+      "question": "Máy giặt panasonic bị lỗi H07"
+    }
+  },
+  {
+    "duplicate_group": "DUP11C6536F",
+    "canonical_id": "Q0333",
+    "member_ids": [
+      "Q0196",
+      "Q0333"
+    ],
+    "merge_safe": false,
+    "reason": "Khong an toan de tu dong gop: Nguon du lieu ben thu ba (THIRD_PARTY_SOURCE); Noi dung cau tra loi co do tuong dong thap (< 50%)",
+    "same_brand": true,
+    "same_device": true,
+    "same_error_code": true,
+    "same_issue": true,
+    "same_answer": false,
+    "canonical_summary": {
+      "id": "Q0333",
+      "brand": "Panasonic",
+      "device": "Máy giặt",
+      "error_code": "H09",
+      "issue_id": "I0137",
+      "question": "Máy giặt panasonic bị lỗi H09"
+    }
+  },
+  {
+    "duplicate_group": "DUPA0DEF64C",
+    "canonical_id": "Q0334",
+    "member_ids": [
+      "Q0197",
+      "Q0334"
+    ],
+    "merge_safe": false,
+    "reason": "Khong an toan de tu dong gop: Nguon du lieu ben thu ba (THIRD_PARTY_SOURCE); Noi dung cau tra loi co do tuong dong thap (< 50%)",
+    "same_brand": true,
+    "same_device": true,
+    "same_error_code": true,
+    "same_issue": true,
+    "same_answer": false,
+    "canonical_summary": {
+      "id": "Q0334",
+      "brand": "Panasonic",
+      "device": "Máy giặt",
+      "error_code": "H17",
+      "issue_id": "I0138",
+      "question": "Máy giặt panasonic bị lỗi H17"
+    }
+  },
+  {
+    "duplicate_group": "DUPF32E98D3",
+    "canonical_id": "Q0335",
+    "member_ids": [
+      "Q0198",
+      "Q0335"
+    ],
+    "merge_safe": false,
+    "reason": "Khong an toan de tu dong gop: Nguon du lieu ben thu ba (THIRD_PARTY_SOURCE); Noi dung cau tra loi co do tuong dong thap (< 50%)",
+    "same_brand": true,
+    "same_device": true,
+    "same_error_code": true,
+    "same_issue": true,
+    "same_answer": false,
+    "canonical_summary": {
+      "id": "Q0335",
+      "brand": "Panasonic",
+      "device": "Máy giặt",
+      "error_code": "H18",
+      "issue_id": "I0139",
+      "question": "Máy giặt panasonic bị lỗi H18"
+    }
+  },
+  {
+    "duplicate_group": "DUP3B58E55C",
+    "canonical_id": "Q0336",
+    "member_ids": [
+      "Q0199",
+      "Q0336"
+    ],
+    "merge_safe": false,
+    "reason": "Khong an toan de tu dong gop: Nguon du lieu ben thu ba (THIRD_PARTY_SOURCE); Noi dung cau tra loi co do tuong dong thap (< 50%)",
+    "same_brand": true,
+    "same_device": true,
+    "same_error_code": true,
+    "same_issue": true,
+    "same_answer": false,
+    "canonical_summary": {
+      "id": "Q0336",
+      "brand": "Panasonic",
+      "device": "Máy giặt",
+      "error_code": "H21",
+      "issue_id": "I0140",
+      "question": "Máy giặt panasonic bị lỗi H21"
+    }
+  },
+  {
+    "duplicate_group": "DUP37E44666",
+    "canonical_id": "Q0200",
+    "member_ids": [
+      "Q0200",
+      "Q0337"
+    ],
+    "merge_safe": false,
+    "reason": "Khong an toan de tu dong gop: Nguon du lieu ben thu ba (THIRD_PARTY_SOURCE); Noi dung cau tra loi co do tuong dong thap (< 50%)",
+    "same_brand": true,
+    "same_device": true,
+    "same_error_code": true,
+    "same_issue": true,
+    "same_answer": false,
+    "canonical_summary": {
+      "id": "Q0200",
+      "brand": "Panasonic",
+      "device": "Máy giặt",
+      "error_code": "H23",
+      "issue_id": "I0141",
+      "question": "Máy giặt panasonic bị lỗi H23"
+    }
+  },
+  {
+    "duplicate_group": "DUP911E522B",
+    "canonical_id": "Q0338",
+    "member_ids": [
+      "Q0201",
+      "Q0338"
+    ],
+    "merge_safe": false,
+    "reason": "Khong an toan de tu dong gop: Nguon du lieu ben thu ba (THIRD_PARTY_SOURCE); Noi dung cau tra loi co do tuong dong thap (< 50%)",
+    "same_brand": true,
+    "same_device": true,
+    "same_error_code": true,
+    "same_issue": true,
+    "same_answer": false,
+    "canonical_summary": {
+      "id": "Q0338",
+      "brand": "Panasonic",
+      "device": "Máy giặt",
+      "error_code": "H25",
+      "issue_id": "I0142",
+      "question": "Máy giặt panasonic bị lỗi H25"
+    }
+  },
+  {
+    "duplicate_group": "DUP06A1E23F",
+    "canonical_id": "Q0339",
+    "member_ids": [
+      "Q0202",
+      "Q0339"
+    ],
+    "merge_safe": false,
+    "reason": "Khong an toan de tu dong gop: Nguon du lieu ben thu ba (THIRD_PARTY_SOURCE); Noi dung cau tra loi co do tuong dong thap (< 50%)",
+    "same_brand": true,
+    "same_device": true,
+    "same_error_code": true,
+    "same_issue": true,
+    "same_answer": false,
+    "canonical_summary": {
+      "id": "Q0339",
+      "brand": "Panasonic",
+      "device": "Máy giặt",
+      "error_code": "H29",
+      "issue_id": "I0143",
+      "question": "Máy giặt panasonic bị lỗi H29"
+    }
+  },
+  {
+    "duplicate_group": "DUP3F7C35DC",
+    "canonical_id": "Q0340",
+    "member_ids": [
+      "Q0203",
+      "Q0340"
+    ],
+    "merge_safe": false,
+    "reason": "Khong an toan de tu dong gop: Nguon du lieu ben thu ba (THIRD_PARTY_SOURCE); Noi dung cau tra loi co do tuong dong thap (< 50%)",
+    "same_brand": true,
+    "same_device": true,
+    "same_error_code": true,
+    "same_issue": true,
+    "same_answer": false,
+    "canonical_summary": {
+      "id": "Q0340",
+      "brand": "Panasonic",
+      "device": "Máy giặt",
+      "error_code": "H43",
+      "issue_id": "I0144",
+      "question": "Máy giặt panasonic bị lỗi H43"
+    }
+  },
+  {
+    "duplicate_group": "DUPAD9EC6C7",
+    "canonical_id": "Q0341",
+    "member_ids": [
+      "Q0204",
+      "Q0341"
+    ],
+    "merge_safe": false,
+    "reason": "Khong an toan de tu dong gop: Nguon du lieu ben thu ba (THIRD_PARTY_SOURCE); Noi dung cau tra loi co do tuong dong thap (< 50%)",
+    "same_brand": true,
+    "same_device": true,
+    "same_error_code": true,
+    "same_issue": true,
+    "same_answer": false,
+    "canonical_summary": {
+      "id": "Q0341",
+      "brand": "Panasonic",
+      "device": "Máy giặt",
+      "error_code": "H46",
+      "issue_id": "I0145",
+      "question": "Máy giặt panasonic bị lỗi H46"
+    }
+  },
+  {
+    "duplicate_group": "DUPF3873D3F",
+    "canonical_id": "Q0342",
+    "member_ids": [
+      "Q0205",
+      "Q0342"
+    ],
+    "merge_safe": false,
+    "reason": "Khong an toan de tu dong gop: Nguon du lieu ben thu ba (THIRD_PARTY_SOURCE); Noi dung cau tra loi co do tuong dong thap (< 50%)",
+    "same_brand": true,
+    "same_device": true,
+    "same_error_code": true,
+    "same_issue": true,
+    "same_answer": false,
+    "canonical_summary": {
+      "id": "Q0342",
+      "brand": "Panasonic",
+      "device": "Máy giặt",
+      "error_code": "H51",
+      "issue_id": "I0146",
+      "question": "Máy giặt panasonic bị lỗi H51"
+    }
+  },
+  {
+    "duplicate_group": "DUPF9937C35",
+    "canonical_id": "Q0343",
+    "member_ids": [
+      "Q0206",
+      "Q0343"
+    ],
+    "merge_safe": false,
+    "reason": "Khong an toan de tu dong gop: Nguon du lieu ben thu ba (THIRD_PARTY_SOURCE); Noi dung cau tra loi co do tuong dong thap (< 50%)",
+    "same_brand": true,
+    "same_device": true,
+    "same_error_code": true,
+    "same_issue": true,
+    "same_answer": false,
+    "canonical_summary": {
+      "id": "Q0343",
+      "brand": "Panasonic",
+      "device": "Máy giặt",
+      "error_code": "H52",
+      "issue_id": "I0147",
+      "question": "Máy giặt panasonic bị lỗi H52"
+    }
+  },
+  {
+    "duplicate_group": "DUP09EE0B2E",
+    "canonical_id": "Q0344",
+    "member_ids": [
+      "Q0208",
+      "Q0344"
+    ],
+    "merge_safe": false,
+    "reason": "Khong an toan de tu dong gop: Nguon du lieu ben thu ba (THIRD_PARTY_SOURCE); Noi dung cau tra loi co do tuong dong thap (< 50%)",
+    "same_brand": true,
+    "same_device": true,
+    "same_error_code": true,
+    "same_issue": true,
+    "same_answer": false,
+    "canonical_summary": {
+      "id": "Q0344",
+      "brand": "Panasonic",
+      "device": "Máy giặt",
+      "error_code": "H55",
+      "issue_id": "I0149",
+      "question": "Máy giặt panasonic bị lỗi H55"
+    }
+  },
+  {
+    "duplicate_group": "DUPB684244F",
+    "canonical_id": "Q0345",
+    "member_ids": [
+      "Q0209",
+      "Q0345"
+    ],
+    "merge_safe": false,
+    "reason": "Khong an toan de tu dong gop: Nguon du lieu ben thu ba (THIRD_PARTY_SOURCE); Noi dung cau tra loi co do tuong dong thap (< 50%)",
+    "same_brand": true,
+    "same_device": true,
+    "same_error_code": true,
+    "same_issue": true,
+    "same_answer": false,
+    "canonical_summary": {
+      "id": "Q0345",
+      "brand": "Panasonic",
+      "device": "Máy giặt",
+      "error_code": "U11",
+      "issue_id": "I0150",
+      "question": "Máy giặt panasonic bị lỗi U11"
+    }
+  },
+  {
+    "duplicate_group": "DUP343F3EE4",
+    "canonical_id": "Q0346",
+    "member_ids": [
+      "Q0210",
+      "Q0346"
+    ],
+    "merge_safe": false,
+    "reason": "Khong an toan de tu dong gop: Nguon du lieu ben thu ba (THIRD_PARTY_SOURCE); Noi dung cau tra loi co do tuong dong thap (< 50%)",
+    "same_brand": true,
+    "same_device": true,
+    "same_error_code": true,
+    "same_issue": true,
+    "same_answer": false,
+    "canonical_summary": {
+      "id": "Q0346",
+      "brand": "Panasonic",
+      "device": "Máy giặt",
+      "error_code": "U12",
+      "issue_id": "I0151",
+      "question": "Máy giặt panasonic bị lỗi U12"
+    }
+  },
+  {
+    "duplicate_group": "DUPE4D87E58",
+    "canonical_id": "Q0347",
+    "member_ids": [
+      "Q0211",
+      "Q0347"
+    ],
+    "merge_safe": false,
+    "reason": "Khong an toan de tu dong gop: Nguon du lieu ben thu ba (THIRD_PARTY_SOURCE); Noi dung cau tra loi co do tuong dong thap (< 50%)",
+    "same_brand": true,
+    "same_device": true,
+    "same_error_code": true,
+    "same_issue": true,
+    "same_answer": false,
+    "canonical_summary": {
+      "id": "Q0347",
+      "brand": "Panasonic",
+      "device": "Máy giặt",
+      "error_code": "U13",
+      "issue_id": "I0152",
+      "question": "Máy giặt panasonic bị lỗi U13"
+    }
+  },
+  {
+    "duplicate_group": "DUP7A0A60C7",
+    "canonical_id": "Q0348",
+    "member_ids": [
+      "Q0212",
+      "Q0348"
+    ],
+    "merge_safe": false,
+    "reason": "Khong an toan de tu dong gop: Nguon du lieu ben thu ba (THIRD_PARTY_SOURCE); Noi dung cau tra loi co do tuong dong thap (< 50%)",
+    "same_brand": true,
+    "same_device": true,
+    "same_error_code": true,
+    "same_issue": true,
+    "same_answer": false,
+    "canonical_summary": {
+      "id": "Q0348",
+      "brand": "Panasonic",
+      "device": "Máy giặt",
+      "error_code": "U14",
+      "issue_id": "I0153",
+      "question": "Máy giặt panasonic bị lỗi U14"
+    }
+  },
+  {
+    "duplicate_group": "DUP0B4D52A4",
+    "canonical_id": "Q0213",
+    "member_ids": [
+      "Q0213",
+      "Q0349"
+    ],
+    "merge_safe": false,
+    "reason": "Khong an toan de tu dong gop: Nguon du lieu ben thu ba (THIRD_PARTY_SOURCE); Noi dung cau tra loi co do tuong dong thap (< 50%)",
+    "same_brand": true,
+    "same_device": true,
+    "same_error_code": true,
+    "same_issue": true,
+    "same_answer": false,
+    "canonical_summary": {
+      "id": "Q0213",
+      "brand": "Panasonic",
+      "device": "Máy giặt",
+      "error_code": "U18",
+      "issue_id": "I0154",
+      "question": "Máy giặt panasonic bị lỗi U18"
+    }
+  },
+  {
+    "duplicate_group": "DUPD0D40AC0",
+    "canonical_id": "Q0350",
+    "member_ids": [
+      "Q0214",
+      "Q0350"
+    ],
+    "merge_safe": false,
+    "reason": "Khong an toan de tu dong gop: Nguon du lieu ben thu ba (THIRD_PARTY_SOURCE); Noi dung cau tra loi co do tuong dong thap (< 50%)",
+    "same_brand": true,
+    "same_device": true,
+    "same_error_code": true,
+    "same_issue": true,
+    "same_answer": false,
+    "canonical_summary": {
+      "id": "Q0350",
+      "brand": "Panasonic",
+      "device": "Bếp",
+      "error_code": "U04",
+      "issue_id": "I0155",
+      "question": "Bếp từ panasonic bị lỗi U04"
+    }
+  },
+  {
+    "duplicate_group": "DUP8C02EB6E",
+    "canonical_id": "Q0215",
+    "member_ids": [
+      "Q0215",
+      "Q0351"
+    ],
+    "merge_safe": false,
+    "reason": "Khong an toan de tu dong gop: Nguon du lieu ben thu ba (THIRD_PARTY_SOURCE); Noi dung cau tra loi co do tuong dong thap (< 50%)",
+    "same_brand": true,
+    "same_device": true,
+    "same_error_code": true,
+    "same_issue": true,
+    "same_answer": false,
+    "canonical_summary": {
+      "id": "Q0215",
+      "brand": "Panasonic",
+      "device": "Bếp",
+      "error_code": "U11",
+      "issue_id": "I0156",
+      "question": "Bếp từ panasonic bị lỗi U11*"
+    }
+  },
+  {
+    "duplicate_group": "DUPCA8CC41F",
+    "canonical_id": "Q0352",
+    "member_ids": [
+      "Q0216",
+      "Q0352"
+    ],
+    "merge_safe": false,
+    "reason": "Khong an toan de tu dong gop: Nguon du lieu ben thu ba (THIRD_PARTY_SOURCE); Noi dung cau tra loi co do tuong dong thap (< 50%)",
+    "same_brand": true,
+    "same_device": true,
+    "same_error_code": true,
+    "same_issue": true,
+    "same_answer": false,
+    "canonical_summary": {
+      "id": "Q0352",
+      "brand": "Panasonic",
+      "device": "Bếp",
+      "error_code": "U12",
+      "issue_id": "I0157",
+      "question": "Bếp từ panasonic bị lỗi U12"
+    }
+  },
+  {
+    "duplicate_group": "DUP83DEACDF",
+    "canonical_id": "Q0353",
+    "member_ids": [
+      "Q0217",
+      "Q0353"
+    ],
+    "merge_safe": false,
+    "reason": "Khong an toan de tu dong gop: Nguon du lieu ben thu ba (THIRD_PARTY_SOURCE); Noi dung cau tra loi co do tuong dong thap (< 50%)",
+    "same_brand": true,
+    "same_device": true,
+    "same_error_code": true,
+    "same_issue": true,
+    "same_answer": false,
+    "canonical_summary": {
+      "id": "Q0353",
+      "brand": "Panasonic",
+      "device": "Bếp",
+      "error_code": "U15",
+      "issue_id": "I0158",
+      "question": "Bếp từ panasonic bị lỗi U15*"
+    }
+  },
+  {
+    "duplicate_group": "DUP3E30F87B",
+    "canonical_id": "Q0354",
+    "member_ids": [
+      "Q0218",
+      "Q0354"
+    ],
+    "merge_safe": false,
+    "reason": "Khong an toan de tu dong gop: Nguon du lieu ben thu ba (THIRD_PARTY_SOURCE); Noi dung cau tra loi co do tuong dong thap (< 50%)",
+    "same_brand": true,
+    "same_device": true,
+    "same_error_code": true,
+    "same_issue": true,
+    "same_answer": false,
+    "canonical_summary": {
+      "id": "Q0354",
+      "brand": "Panasonic",
+      "device": "Bếp",
+      "error_code": "U16",
+      "issue_id": "I0159",
+      "question": "Bếp từ panasonic bị lỗi U16"
+    }
+  },
+  {
+    "duplicate_group": "DUPE5619C20",
+    "canonical_id": "Q0219",
+    "member_ids": [
+      "Q0219",
+      "Q0355"
+    ],
+    "merge_safe": false,
+    "reason": "Khong an toan de tu dong gop: Nguon du lieu ben thu ba (THIRD_PARTY_SOURCE); Noi dung cau tra loi co do tuong dong thap (< 50%)",
+    "same_brand": true,
+    "same_device": true,
+    "same_error_code": true,
+    "same_issue": true,
+    "same_answer": false,
+    "canonical_summary": {
+      "id": "Q0219",
+      "brand": "Panasonic",
+      "device": "Bếp",
+      "error_code": "U19",
+      "issue_id": "I0160",
+      "question": "Bếp từ panasonic bị lỗi U19"
+    }
+  },
+  {
+    "duplicate_group": "DUP8677A925",
+    "canonical_id": "Q0220",
+    "member_ids": [
+      "Q0220",
+      "Q0356"
+    ],
+    "merge_safe": false,
+    "reason": "Khong an toan de tu dong gop: Nguon du lieu ben thu ba (THIRD_PARTY_SOURCE); Noi dung cau tra loi co do tuong dong thap (< 50%)",
+    "same_brand": true,
+    "same_device": true,
+    "same_error_code": true,
+    "same_issue": true,
+    "same_answer": false,
+    "canonical_summary": {
+      "id": "Q0220",
+      "brand": "Panasonic",
+      "device": "Bếp",
+      "error_code": "U20",
+      "issue_id": "I0161",
+      "question": "Bếp từ panasonic bị lỗi U20*"
+    }
+  },
+  {
+    "duplicate_group": "DUP2F9B0339",
+    "canonical_id": "Q0357",
+    "member_ids": [
+      "Q0221",
+      "Q0357"
+    ],
+    "merge_safe": false,
+    "reason": "Khong an toan de tu dong gop: Nguon du lieu ben thu ba (THIRD_PARTY_SOURCE); Noi dung cau tra loi co do tuong dong thap (< 50%)",
+    "same_brand": true,
+    "same_device": true,
+    "same_error_code": true,
+    "same_issue": true,
+    "same_answer": false,
+    "canonical_summary": {
+      "id": "Q0357",
+      "brand": "Panasonic",
+      "device": "Bếp",
+      "error_code": "U21",
+      "issue_id": "I0162",
+      "question": "Bếp từ panasonic bị lỗi U21*"
+    }
+  },
+  {
+    "duplicate_group": "DUPED15C65F",
+    "canonical_id": "Q0309",
+    "member_ids": [
+      "Q0228",
+      "Q0309"
+    ],
+    "merge_safe": false,
+    "reason": "Khong an toan de tu dong gop: Noi dung cau tra loi co do tuong dong thap (< 50%)",
+    "same_brand": true,
+    "same_device": true,
+    "same_error_code": true,
+    "same_issue": true,
+    "same_answer": false,
+    "canonical_summary": {
+      "id": "Q0309",
+      "brand": "Panasonic",
+      "device": "Điều hòa",
+      "error_code": "F91",
+      "issue_id": "I0169",
+      "question": "Điều hòa panasonic bị lỗi F91"
+    }
+  },
+  {
+    "duplicate_group": "DUP2DE4DCB6",
+    "canonical_id": "Q0313",
+    "member_ids": [
+      "Q0229",
+      "Q0313"
+    ],
+    "merge_safe": false,
+    "reason": "Khong an toan de tu dong gop: Noi dung cau tra loi co do tuong dong thap (< 50%)",
+    "same_brand": true,
+    "same_device": true,
+    "same_error_code": true,
+    "same_issue": true,
+    "same_answer": false,
+    "canonical_summary": {
+      "id": "Q0313",
+      "brand": "Panasonic",
+      "device": "Điều hòa",
+      "error_code": "H11",
+      "issue_id": "I0170",
+      "question": "Điều hòa panasonic bị lỗi H11"
+    }
+  },
+  {
+    "duplicate_group": "DUP9F642092",
+    "canonical_id": "Q0314",
+    "member_ids": [
+      "Q0230",
+      "Q0314"
+    ],
+    "merge_safe": false,
+    "reason": "Khong an toan de tu dong gop: Noi dung cau tra loi co do tuong dong thap (< 50%)",
+    "same_brand": true,
+    "same_device": true,
+    "same_error_code": true,
+    "same_issue": true,
+    "same_answer": false,
+    "canonical_summary": {
+      "id": "Q0314",
+      "brand": "Panasonic",
+      "device": "Điều hòa",
+      "error_code": "H12",
+      "issue_id": "I0171",
+      "question": "Điều hòa panasonic bị lỗi H12"
+    }
+  },
+  {
+    "duplicate_group": "DUPFF0C6BCE",
+    "canonical_id": "Q0315",
+    "member_ids": [
+      "Q0231",
+      "Q0315"
+    ],
+    "merge_safe": false,
+    "reason": "Khong an toan de tu dong gop: Noi dung cau tra loi co do tuong dong thap (< 50%)",
+    "same_brand": true,
+    "same_device": true,
+    "same_error_code": true,
+    "same_issue": true,
+    "same_answer": false,
+    "canonical_summary": {
+      "id": "Q0315",
+      "brand": "Panasonic",
+      "device": "Điều hòa",
+      "error_code": "H14",
+      "issue_id": "I0172",
+      "question": "Điều hòa panasonic bị lỗi H14"
+    }
+  },
+  {
+    "duplicate_group": "DUPA46A90D0",
+    "canonical_id": "Q0316",
+    "member_ids": [
+      "Q0232",
+      "Q0316"
+    ],
+    "merge_safe": false,
+    "reason": "Khong an toan de tu dong gop: Noi dung cau tra loi co do tuong dong thap (< 50%)",
+    "same_brand": true,
+    "same_device": true,
+    "same_error_code": true,
+    "same_issue": true,
+    "same_answer": false,
+    "canonical_summary": {
+      "id": "Q0316",
+      "brand": "Panasonic",
+      "device": "Điều hòa",
+      "error_code": "H15",
+      "issue_id": "I0173",
+      "question": "Điều hòa panasonic bị lỗi H15"
+    }
+  },
+  {
+    "duplicate_group": "DUP0927494D",
+    "canonical_id": "Q0317",
+    "member_ids": [
+      "Q0233",
+      "Q0317"
+    ],
+    "merge_safe": false,
+    "reason": "Khong an toan de tu dong gop: Noi dung cau tra loi co do tuong dong thap (< 50%)",
+    "same_brand": true,
+    "same_device": true,
+    "same_error_code": true,
+    "same_issue": true,
+    "same_answer": false,
+    "canonical_summary": {
+      "id": "Q0317",
+      "brand": "Panasonic",
+      "device": "Điều hòa",
+      "error_code": "H16",
+      "issue_id": "I0174",
+      "question": "Điều hòa panasonic bị lỗi H16"
+    }
+  },
+  {
+    "duplicate_group": "DUPF11FAC19",
+    "canonical_id": "Q0318",
+    "member_ids": [
+      "Q0234",
+      "Q0318"
+    ],
+    "merge_safe": false,
+    "reason": "Khong an toan de tu dong gop: Noi dung cau tra loi co do tuong dong thap (< 50%)",
+    "same_brand": true,
+    "same_device": true,
+    "same_error_code": true,
+    "same_issue": true,
+    "same_answer": false,
+    "canonical_summary": {
+      "id": "Q0318",
+      "brand": "Panasonic",
+      "device": "Điều hòa",
+      "error_code": "H27",
+      "issue_id": "I0175",
+      "question": "Điều hòa panasonic bị lỗi H27"
+    }
+  },
+  {
+    "duplicate_group": "DUP12A48C3C",
+    "canonical_id": "Q0319",
+    "member_ids": [
+      "Q0235",
+      "Q0319"
+    ],
+    "merge_safe": false,
+    "reason": "Khong an toan de tu dong gop: Noi dung cau tra loi co do tuong dong thap (< 50%)",
+    "same_brand": true,
+    "same_device": true,
+    "same_error_code": true,
+    "same_issue": true,
+    "same_answer": false,
+    "canonical_summary": {
+      "id": "Q0319",
+      "brand": "Panasonic",
+      "device": "Điều hòa",
+      "error_code": "H28",
+      "issue_id": "I0176",
+      "question": "Điều hòa panasonic bị lỗi H28"
+    }
+  },
+  {
+    "duplicate_group": "DUPA16D3AA0",
+    "canonical_id": "Q0320",
+    "member_ids": [
+      "Q0236",
+      "Q0320"
+    ],
+    "merge_safe": false,
+    "reason": "Khong an toan de tu dong gop: Noi dung cau tra loi co do tuong dong thap (< 50%)",
+    "same_brand": true,
+    "same_device": true,
+    "same_error_code": true,
+    "same_issue": true,
+    "same_answer": false,
+    "canonical_summary": {
+      "id": "Q0320",
+      "brand": "Panasonic",
+      "device": "Điều hòa",
+      "error_code": "H30",
+      "issue_id": "I0177",
+      "question": "Điều hòa panasonic bị lỗi H30"
+    }
+  },
+  {
+    "duplicate_group": "DUP49C9E630",
+    "canonical_id": "Q0321",
+    "member_ids": [
+      "Q0237",
+      "Q0321"
+    ],
+    "merge_safe": false,
+    "reason": "Khong an toan de tu dong gop: Noi dung cau tra loi co do tuong dong thap (< 50%)",
+    "same_brand": true,
+    "same_device": true,
+    "same_error_code": true,
+    "same_issue": true,
+    "same_answer": false,
+    "canonical_summary": {
+      "id": "Q0321",
+      "brand": "Panasonic",
+      "device": "Điều hòa",
+      "error_code": "H33",
+      "issue_id": "I0178",
+      "question": "Điều hòa panasonic bị lỗi H33"
+    }
+  },
+  {
+    "duplicate_group": "DUPE73A59AA",
+    "canonical_id": "Q0534",
+    "member_ids": [
+      "Q0534",
+      "Q0627"
+    ],
+    "merge_safe": true,
+    "reason": "Chon Q0534 vi co do day du du lieu cao nhat va ID on dinh",
+    "same_brand": true,
+    "same_device": true,
+    "same_error_code": true,
+    "same_issue": true,
+    "same_answer": true,
+    "canonical_summary": {
+      "id": "Q0534",
+      "brand": "Samsung",
+      "device": "Máy giặt",
+      "error_code": null,
+      "issue_id": "I0425",
+      "question": "Máy giặt không vào nước thì kiểm tra gì trước?"
+    }
+  },
+  {
+    "duplicate_group": "DUPF09E728E",
+    "canonical_id": "Q0535",
+    "member_ids": [
+      "Q0535",
+      "Q0566"
+    ],
+    "merge_safe": true,
+    "reason": "Chon Q0535 vi co do day du du lieu cao nhat va ID on dinh",
+    "same_brand": true,
+    "same_device": true,
+    "same_error_code": true,
+    "same_issue": true,
+    "same_answer": true,
+    "canonical_summary": {
+      "id": "Q0535",
+      "brand": "Samsung",
+      "device": "Máy giặt",
+      "error_code": null,
+      "issue_id": "I0426",
+      "question": "Máy giặt không xả nước phải làm sao?"
+    }
+  },
+  {
+    "duplicate_group": "DUP47EE896C",
+    "canonical_id": "Q0537",
+    "member_ids": [
+      "Q0537",
+      "Q0599"
+    ],
+    "merge_safe": true,
+    "reason": "Chon Q0537 vi co do day du du lieu cao nhat va ID on dinh",
+    "same_brand": true,
+    "same_device": true,
+    "same_error_code": true,
+    "same_issue": true,
+    "same_answer": true,
+    "canonical_summary": {
+      "id": "Q0537",
+      "brand": "Samsung",
+      "device": "Máy giặt",
+      "error_code": null,
+      "issue_id": "I0428",
+      "question": "Máy giặt rung mạnh khi vắt xử lý thế nào?"
+    }
+  },
+  {
+    "duplicate_group": "DUP8A2AF31C",
+    "canonical_id": "Q0544",
+    "member_ids": [
+      "Q0544",
+      "Q0637"
+    ],
+    "merge_safe": true,
+    "reason": "Chon Q0544 vi co do day du du lieu cao nhat va ID on dinh",
+    "same_brand": true,
+    "same_device": true,
+    "same_error_code": true,
+    "same_issue": true,
+    "same_answer": true,
+    "canonical_summary": {
+      "id": "Q0544",
+      "brand": "Samsung",
+      "device": "Điều hòa",
+      "error_code": null,
+      "issue_id": "I0435",
+      "question": "Máy lạnh không lạnh thì kiểm tra gì trước?"
+    }
+  },
+  {
+    "duplicate_group": "DUP88B7BA30",
+    "canonical_id": "Q0548",
+    "member_ids": [
+      "Q0548",
+      "Q0610"
+    ],
+    "merge_safe": true,
+    "reason": "Chon Q0548 vi co do day du du lieu cao nhat va ID on dinh",
+    "same_brand": true,
+    "same_device": true,
+    "same_error_code": true,
+    "same_issue": true,
+    "same_answer": true,
+    "canonical_summary": {
+      "id": "Q0548",
+      "brand": "Samsung",
+      "device": "Điều hòa",
+      "error_code": null,
+      "issue_id": "I0439",
+      "question": "Máy lạnh có mùi hôi thì xử lý thế nào?"
+    }
+  },
+  {
+    "duplicate_group": "DUP47EFEE49",
+    "canonical_id": "Q0549",
+    "member_ids": [
+      "Q0549",
+      "Q0642"
+    ],
+    "merge_safe": true,
+    "reason": "Chon Q0549 vi co do day du du lieu cao nhat va ID on dinh",
+    "same_brand": true,
+    "same_device": true,
+    "same_error_code": true,
+    "same_issue": true,
+    "same_answer": true,
+    "canonical_summary": {
+      "id": "Q0549",
+      "brand": "Samsung",
+      "device": "Tủ lạnh",
+      "error_code": null,
+      "issue_id": "I0440",
+      "question": "Tủ lạnh không lạnh thì kiểm tra gì trước?"
+    }
+  },
+  {
+    "duplicate_group": "DUPE7F9C3D3",
+    "canonical_id": "Q0551",
+    "member_ids": [
+      "Q0551",
+      "Q0613"
+    ],
+    "merge_safe": true,
+    "reason": "Chon Q0551 vi co do day du du lieu cao nhat va ID on dinh",
+    "same_brand": true,
+    "same_device": true,
+    "same_error_code": true,
+    "same_issue": true,
+    "same_answer": true,
+    "canonical_summary": {
+      "id": "Q0551",
+      "brand": "Samsung",
+      "device": "Tủ lạnh",
+      "error_code": null,
+      "issue_id": "I0442",
+      "question": "Tủ lạnh bị chảy nước bên trong thì xử lý thế nào?"
+    }
+  }
+]

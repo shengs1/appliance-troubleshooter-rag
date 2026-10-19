@@ -70,6 +70,38 @@ def test_should_not_refuse_valid_in_scope_document():
     assert should_refuse(docs, question="Samsung lỗi CF là gì?", threshold=0.40) is False
 
 
+def test_should_not_refuse_q0993_and_symptom_variations():
+    """Kiem tra Q0993 (Samsung Dieu hoa khong du mat?) va cac bien the trieu chung khong bi tu choi nham."""
+    mock_doc = {
+        "question_id": "Q0993",
+        "question": "Samsung Điều hòa không đủ mát?",
+        "answer": "Kiểm tra chế độ và bộ lọc.",
+        "distance": 0.164,
+        "error_code": "",
+        "brand": "Samsung",
+        "device": "Điều hòa",
+        "retrieval_source": "both",
+    }
+
+    # Cau hoi goc Q0993 phai duoc chap nhan (should_refuse = False)
+    assert should_refuse([mock_doc], question="Samsung Điều hòa không đủ mát?") is False
+    assert should_refuse([mock_doc], question="Máy lạnh Samsung của tôi không đủ mát") is False
+
+    # Cac bien the ngon ngu tu nhien cua cung mot trieu chung troubleshooting
+    variations = [
+        "Máy lạnh Samsung không đủ mát",
+        "Điều hòa LG không được mát",
+        "Tủ lạnh Panasonic không làm lạnh",
+        "Điều hòa Samsung làm lạnh kém",
+        "Máy lạnh LG lạnh yếu",
+        "Điều hòa Samsung không lạnh",
+        "Máy lạnh Samsung không mát",
+    ]
+    for q in variations:
+        assert has_troubleshooting_signal(q) is True
+        assert should_refuse([mock_doc], question=q) is False
+
+
 def test_refuse_tricky_out_of_scope_questions():
     """Kiem tra cac truong hop bien: co hang hoac thiet bi nhung khong phai troubleshooting."""
     mock_doc = {

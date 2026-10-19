@@ -1,0 +1,766 @@
+{
+  "summary": {
+    "total_failures": 26,
+    "same_named_duplicate_group": 10,
+    "twin_knowledge_cluster": 15,
+    "total_duplicate_related": 25,
+    "true_ranking_failure": 0,
+    "missed_retrieval": 1
+  },
+  "cases": [
+    {
+      "index": 1,
+      "failure_question_id": "Q0002",
+      "question": "Tủ lạnh LG lỗi sb",
+      "issue_type": "ERROR_CODE",
+      "expected_question_id": "Q0002",
+      "expected_rank": 2,
+      "retrieved_top1_id": "Q0108",
+      "expected_duplicate_group": null,
+      "top1_duplicate_group": null,
+      "category": "TWIN_KNOWLEDGE_CLUSTER",
+      "reason": "Expected (Q0002) va Top-1 (Q0108) la twin records: cung Hang (LG), Thiet bi (Tủ lạnh), cung Issue_ID (I0002)",
+      "expected_details": {
+        "brand": "LG",
+        "device": "Tủ lạnh",
+        "error_code": "SB",
+        "issue_id": "I0002",
+        "question": "Tủ lạnh LG lỗi sb",
+        "answer": "Chế độ Sabbath được thiết kế để người Do Thái Chính thống có thể tránh ánh sáng và âm thanh từ tủ lạnh và yêu cầu họ sử dụng lò nướng mà không cần phả"
+      },
+      "top1_details": {
+        "brand": "LG",
+        "device": "Tủ lạnh",
+        "error_code": "SB",
+        "issue_id": "I0002",
+        "question": "Cách khắc phục lỗi sb tủ lạnh LG",
+        "answer": "Chế độ nghỉ lễ/Sabbath đang bật. Nhấn và giữ kết hợp nút Wi-Fi + Freezer (hoặc nút Sabbath/Ice Plus) trong 3 giây để tắt chế độ này."
+      }
+    },
+    {
+      "index": 2,
+      "failure_question_id": "Q0158",
+      "question": "Điều hoà panasonic bị lỗi F16",
+      "issue_type": "ERROR_CODE",
+      "expected_question_id": "Q0158",
+      "expected_rank": 2,
+      "retrieved_top1_id": "Q0308",
+      "expected_duplicate_group": "DUP79719DB9",
+      "top1_duplicate_group": "DUP79719DB9",
+      "category": "SAME_NAMED_DUPLICATE_GROUP",
+      "reason": "Expected (Q0158) va Top-1 (Q0308) cung Duplicate_Group DUP79719DB9",
+      "expected_details": {
+        "brand": "Panasonic",
+        "device": "Điều hòa",
+        "error_code": "F16",
+        "issue_id": "I0099",
+        "question": "Điều hoà panasonic bị lỗi F16",
+        "answer": "Bảo vệ dòng điện chạy qua"
+      },
+      "top1_details": {
+        "brand": "Panasonic",
+        "device": "Điều hòa",
+        "error_code": "F16",
+        "issue_id": "I0099",
+        "question": "Điều hòa panasonic bị lỗi F16",
+        "answer": "Lỗi F16 liên quan đến mạch điện. Do đó, bạn có thể gọi thợ chuyên nghiệp để khắc phục."
+      }
+    },
+    {
+      "index": 3,
+      "failure_question_id": "Q0159",
+      "question": "Điều hòa panasonic bị lỗi F93",
+      "issue_type": "ERROR_CODE",
+      "expected_question_id": "Q0159",
+      "expected_rank": 2,
+      "retrieved_top1_id": "Q0310",
+      "expected_duplicate_group": "DUP44278C6B",
+      "top1_duplicate_group": "DUP44278C6B",
+      "category": "SAME_NAMED_DUPLICATE_GROUP",
+      "reason": "Expected (Q0159) va Top-1 (Q0310) cung Duplicate_Group DUP44278C6B",
+      "expected_details": {
+        "brand": "Panasonic",
+        "device": "Điều hòa",
+        "error_code": "F93",
+        "issue_id": "I0100",
+        "question": "Điều hòa panasonic bị lỗi F93",
+        "answer": "Lỗi tốc độ máy nén quay bất thường."
+      },
+      "top1_details": {
+        "brand": "Panasonic",
+        "device": "Điều hòa",
+        "error_code": "F93",
+        "issue_id": "I0100",
+        "question": "Điều hòa panasonic bị lỗi F93",
+        "answer": "Kiểm tra máy nén của máy lạnh. Sửa chữa hoặc thay thế máy nén điều hòa khi cần thiết"
+      }
+    },
+    {
+      "index": 4,
+      "failure_question_id": "Q0160",
+      "question": "Điều hòa panasonic bị lỗi F95",
+      "issue_type": "ERROR_CODE",
+      "expected_question_id": "Q0160",
+      "expected_rank": 2,
+      "retrieved_top1_id": "Q0311",
+      "expected_duplicate_group": "DUP9E57CFC6",
+      "top1_duplicate_group": "DUP9E57CFC6",
+      "category": "SAME_NAMED_DUPLICATE_GROUP",
+      "reason": "Expected (Q0160) va Top-1 (Q0311) cung Duplicate_Group DUP9E57CFC6",
+      "expected_details": {
+        "brand": "Panasonic",
+        "device": "Điều hòa",
+        "error_code": "F95",
+        "issue_id": "I0101",
+        "question": "Điều hòa panasonic bị lỗi F95",
+        "answer": "Nhiệt độ dàn nóng quá cao hơn mức cho phép"
+      },
+      "top1_details": {
+        "brand": "Panasonic",
+        "device": "Điều hòa",
+        "error_code": "F95",
+        "issue_id": "I0101",
+        "question": "Điều hòa panasonic bị lỗi F95",
+        "answer": "Kiểm tra máy vị trí dàn nóng, cảm biến nhiệt độ dàn nóng, kiểm tra hệ thống có dư gas, nghẹt tắc dàn nóng, kiểm tra quạt dàn nóng, bo dàn nóng có gặp "
+      }
+    },
+    {
+      "index": 5,
+      "failure_question_id": "Q0161",
+      "question": "Điều hòa panasonic bị lỗi F97",
+      "issue_type": "ERROR_CODE",
+      "expected_question_id": "Q0161",
+      "expected_rank": 2,
+      "retrieved_top1_id": "Q0312",
+      "expected_duplicate_group": "DUPC3E76538",
+      "top1_duplicate_group": "DUPC3E76538",
+      "category": "SAME_NAMED_DUPLICATE_GROUP",
+      "reason": "Expected (Q0161) va Top-1 (Q0312) cung Duplicate_Group DUPC3E76538",
+      "expected_details": {
+        "brand": "Panasonic",
+        "device": "Điều hòa",
+        "error_code": "F97",
+        "issue_id": "I0102",
+        "question": "Điều hòa panasonic bị lỗi F97",
+        "answer": "Nhiệt độ máy nén khá cao"
+      },
+      "top1_details": {
+        "brand": "Panasonic",
+        "device": "Điều hòa",
+        "error_code": "F97",
+        "issue_id": "I0102",
+        "question": "Điều hòa panasonic bị lỗi F97",
+        "answer": "Kiểm tra máy nén và máy lạnh. Nếu bị lỗi thì nên kiểm tra và sửa chữa."
+      }
+    },
+    {
+      "index": 6,
+      "failure_question_id": "Q0165",
+      "question": "Điều hòa panasonic bị lỗi H97",
+      "issue_type": "ERROR_CODE",
+      "expected_question_id": "Q0165",
+      "expected_rank": 2,
+      "retrieved_top1_id": "Q0326",
+      "expected_duplicate_group": "DUPF2D57116",
+      "top1_duplicate_group": "DUPF2D57116",
+      "category": "SAME_NAMED_DUPLICATE_GROUP",
+      "reason": "Expected (Q0165) va Top-1 (Q0326) cung Duplicate_Group DUPF2D57116",
+      "expected_details": {
+        "brand": "Panasonic",
+        "device": "Điều hòa",
+        "error_code": "H97",
+        "issue_id": "I0106",
+        "question": "Điều hòa panasonic bị lỗi H97",
+        "answer": "Lỗi quạt khối ngoài trời bị lỗi."
+      },
+      "top1_details": {
+        "brand": "Panasonic",
+        "device": "Điều hòa",
+        "error_code": "H97",
+        "issue_id": "I0106",
+        "question": "Điều hòa panasonic bị lỗi H97",
+        "answer": "Kiểm tra quạt của dàn nóng và sửa chữa thay mới nếu cần"
+      }
+    },
+    {
+      "index": 7,
+      "failure_question_id": "Q0167",
+      "question": "Điều hòa panasonic bị lỗi H99",
+      "issue_type": "ERROR_CODE",
+      "expected_question_id": "Q0167",
+      "expected_rank": 2,
+      "retrieved_top1_id": "Q0328",
+      "expected_duplicate_group": "DUP660C4236",
+      "top1_duplicate_group": "DUP660C4236",
+      "category": "SAME_NAMED_DUPLICATE_GROUP",
+      "reason": "Expected (Q0167) va Top-1 (Q0328) cung Duplicate_Group DUP660C4236",
+      "expected_details": {
+        "brand": "Panasonic",
+        "device": "Điều hòa",
+        "error_code": "H99",
+        "issue_id": "I0108",
+        "question": "Điều hòa panasonic bị lỗi H99",
+        "answer": "Nhiệt độ dàn nóng trong nhà giảm thấp hay đóng băng."
+      },
+      "top1_details": {
+        "brand": "Panasonic",
+        "device": "Điều hòa",
+        "error_code": "H99",
+        "issue_id": "I0108",
+        "question": "Điều hòa panasonic bị lỗi H99",
+        "answer": "Có thể máy lạnh bị thiếu gas/ Có thể liên hệ thợ sửa gần nhất để được kiểm tra và nạp gas vào."
+      }
+    },
+    {
+      "index": 8,
+      "failure_question_id": "Q0196",
+      "question": "Máy giặt panasonic bị lỗi H09",
+      "issue_type": "ERROR_CODE",
+      "expected_question_id": "Q0196",
+      "expected_rank": 2,
+      "retrieved_top1_id": "Q0333",
+      "expected_duplicate_group": "DUP11C6536F",
+      "top1_duplicate_group": "DUP11C6536F",
+      "category": "SAME_NAMED_DUPLICATE_GROUP",
+      "reason": "Expected (Q0196) va Top-1 (Q0333) cung Duplicate_Group DUP11C6536F",
+      "expected_details": {
+        "brand": "Panasonic",
+        "device": "Máy giặt",
+        "error_code": "H09",
+        "issue_id": "I0137",
+        "question": "Máy giặt panasonic bị lỗi H09",
+        "answer": "Lỗi giao tiếp giữa bo mạch hiển thị và bo mạch công suất (điều khiển động cơ)."
+      },
+      "top1_details": {
+        "brand": "Panasonic",
+        "device": "Máy giặt",
+        "error_code": "H09",
+        "issue_id": "I0137",
+        "question": "Máy giặt panasonic bị lỗi H09",
+        "answer": "Kiểm tra cẩn thận hệ thống dây điện kết nối giữa các bo mạch điện tử. Có thể cần thay mới bo mạch hiển thị, bo mạch công suất, hoặc cả hai."
+      }
+    },
+    {
+      "index": 9,
+      "failure_question_id": "Q0214",
+      "question": "Bếp từ panasonic bị lỗi U04",
+      "issue_type": "ERROR_CODE",
+      "expected_question_id": "Q0214",
+      "expected_rank": 2,
+      "retrieved_top1_id": "Q0350",
+      "expected_duplicate_group": "DUPD0D40AC0",
+      "top1_duplicate_group": "DUPD0D40AC0",
+      "category": "SAME_NAMED_DUPLICATE_GROUP",
+      "reason": "Expected (Q0214) va Top-1 (Q0350) cung Duplicate_Group DUPD0D40AC0",
+      "expected_details": {
+        "brand": "Panasonic",
+        "device": "Bếp",
+        "error_code": "U04",
+        "issue_id": "I0155",
+        "question": "Bếp từ panasonic bị lỗi U04",
+        "answer": "Bộ lọc hút/xả khí bị tắc hoặc che kín do bụi bẩn, vật cản."
+      },
+      "top1_details": {
+        "brand": "Panasonic",
+        "device": "Bếp",
+        "error_code": "U04",
+        "issue_id": "I0155",
+        "question": "Bếp từ panasonic bị lỗi U04",
+        "answer": "Lau sạch bộ lọc hút/xả khí ở phía sau bếp. Loại bỏ vật cản che chắn để đảm bảo thông thoáng."
+      }
+    },
+    {
+      "index": 10,
+      "failure_question_id": "Q0215",
+      "question": "Bếp từ panasonic bị lỗi U11*",
+      "issue_type": "ERROR_CODE",
+      "expected_question_id": "Q0215",
+      "expected_rank": 2,
+      "retrieved_top1_id": "Q0351",
+      "expected_duplicate_group": "DUP8C02EB6E",
+      "top1_duplicate_group": "DUP8C02EB6E",
+      "category": "SAME_NAMED_DUPLICATE_GROUP",
+      "reason": "Expected (Q0215) va Top-1 (Q0351) cung Duplicate_Group DUP8C02EB6E",
+      "expected_details": {
+        "brand": "Panasonic",
+        "device": "Bếp",
+        "error_code": "U11",
+        "issue_id": "I0156",
+        "question": "Bếp từ panasonic bị lỗi U11*",
+        "answer": "Khay không có nước hoặc nướng liên tục mà không ngắt nguồn."
+      },
+      "top1_details": {
+        "brand": "Panasonic",
+        "device": "Bếp",
+        "error_code": "U11",
+        "issue_id": "I0156",
+        "question": "Bếp từ panasonic bị lỗi U11*",
+        "answer": "Tắt nguồn lò nướng, đổ nước vào khay và khởi động lại."
+      }
+    },
+    {
+      "index": 11,
+      "failure_question_id": "Q0234",
+      "question": "Điều hòa panasonic bị lỗi H27",
+      "issue_type": "ERROR_CODE",
+      "expected_question_id": "Q0234",
+      "expected_rank": 2,
+      "retrieved_top1_id": "Q0318",
+      "expected_duplicate_group": "DUPF11FAC19",
+      "top1_duplicate_group": "DUPF11FAC19",
+      "category": "SAME_NAMED_DUPLICATE_GROUP",
+      "reason": "Expected (Q0234) va Top-1 (Q0318) cung Duplicate_Group DUPF11FAC19",
+      "expected_details": {
+        "brand": "Panasonic",
+        "device": "Điều hòa",
+        "error_code": "H27",
+        "issue_id": "I0175",
+        "question": "Điều hòa panasonic bị lỗi H27",
+        "answer": "Lỗi cảm biến nhiệt độ ngoài trời."
+      },
+      "top1_details": {
+        "brand": "Panasonic",
+        "device": "Điều hòa",
+        "error_code": "H27",
+        "issue_id": "I0175",
+        "question": "Điều hòa panasonic bị lỗi H27",
+        "answer": "Kiểm tra giá trị cảm biến hoặc rắc cắm lỏng."
+      }
+    },
+    {
+      "index": 12,
+      "failure_question_id": "Q0535",
+      "question": "Máy giặt không xả nước phải làm sao?",
+      "issue_type": "SYMPTOM",
+      "expected_question_id": "Q0535",
+      "expected_rank": "Not in Top-5",
+      "retrieved_top1_id": "Q0690",
+      "expected_duplicate_group": "DUPF09E728E",
+      "top1_duplicate_group": null,
+      "category": "MISSED_RETRIEVAL",
+      "reason": "Expected ID khong xuat hien trong Top-5 results (retrieval failure)",
+      "expected_details": {
+        "brand": "Samsung",
+        "device": "Máy giặt",
+        "error_code": null,
+        "issue_id": "I0426",
+        "question": "Máy giặt không xả nước phải làm sao?",
+        "answer": "Nguyên nhân sự cố: Ống xả hoặc bộ lọc có thể bị gấp hoặc tắc. Cách khắc phục: Kiểm tra và vệ sinh ống xả, bộ lọc."
+      },
+      "top1_details": {
+        "brand": "Samsung",
+        "device": "Máy giặt",
+        "error_code": null,
+        "issue_id": "I0476",
+        "question": "Máy giặt không xả nước phải làm sao có cách khắc phục nào không?",
+        "answer": "Nguyên nhân sự cố: Ống xả hoặc bộ lọc có thể bị gấp hoặc tắc. Cách khắc phục: Kiểm tra và vệ sinh ống xả, bộ lọc."
+      }
+    },
+    {
+      "index": 13,
+      "failure_question_id": "Q0536",
+      "question": "Máy giặt không vắt được thì nguyên nhân thường là gì?",
+      "issue_type": "SYMPTOM",
+      "expected_question_id": "Q0536",
+      "expected_rank": 2,
+      "retrieved_top1_id": "Q0660",
+      "expected_duplicate_group": null,
+      "top1_duplicate_group": null,
+      "category": "TWIN_KNOWLEDGE_CLUSTER",
+      "reason": "Expected (Q0536) va Top-1 (Q0660) la twin records: cung Hang (Samsung), Thiet bi (Máy giặt), cung cau tra loi 100%",
+      "expected_details": {
+        "brand": "Samsung",
+        "device": "Máy giặt",
+        "error_code": null,
+        "issue_id": "I0427",
+        "question": "Máy giặt không vắt được thì nguyên nhân thường là gì?",
+        "answer": "Nguyên nhân sự cố: Đồ giặt có thể quá tải, mất cân bằng hoặc máy chưa xả hết nước. Cách khắc phục: Giảm tải, phân bố lại đồ và kiểm tra quá trình xả."
+      },
+      "top1_details": {
+        "brand": "Samsung",
+        "device": "Máy giặt",
+        "error_code": null,
+        "issue_id": "I0427",
+        "question": "Máy giặt không vắt được thì nguyên nhân thường là gì nguyên nhân thường do đâu?",
+        "answer": "Nguyên nhân sự cố: Đồ giặt có thể quá tải, mất cân bằng hoặc máy chưa xả hết nước. Cách khắc phục: Giảm tải, phân bố lại đồ và kiểm tra quá trình xả."
+      }
+    },
+    {
+      "index": 14,
+      "failure_question_id": "Q0537",
+      "question": "Máy giặt rung mạnh khi vắt xử lý thế nào?",
+      "issue_type": "SYMPTOM",
+      "expected_question_id": "Q0537",
+      "expected_rank": 2,
+      "retrieved_top1_id": "Q0568",
+      "expected_duplicate_group": "DUP47EE896C",
+      "top1_duplicate_group": null,
+      "category": "TWIN_KNOWLEDGE_CLUSTER",
+      "reason": "Expected (Q0537) va Top-1 (Q0568) la twin records: cung Hang (Samsung), Thiet bi (Máy giặt), cung cau tra loi 100%",
+      "expected_details": {
+        "brand": "Samsung",
+        "device": "Máy giặt",
+        "error_code": null,
+        "issue_id": "I0428",
+        "question": "Máy giặt rung mạnh khi vắt xử lý thế nào?",
+        "answer": "Nguyên nhân sự cố: Máy có thể chưa được cân bằng hoặc đồ giặt bị dồn về một phía. Cách khắc phục: Cân bằng máy và phân bố lại đồ giặt."
+      },
+      "top1_details": {
+        "brand": "Samsung",
+        "device": "Máy giặt",
+        "error_code": null,
+        "issue_id": "I0428",
+        "question": "Máy giặt rung mạnh khi vắt xử lý thế nào phải làm sao?",
+        "answer": "Nguyên nhân sự cố: Máy có thể chưa được cân bằng hoặc đồ giặt bị dồn về một phía. Cách khắc phục: Cân bằng máy và phân bố lại đồ giặt."
+      }
+    },
+    {
+      "index": 15,
+      "failure_question_id": "Q0548",
+      "question": "Máy lạnh có mùi hôi thì xử lý thế nào?",
+      "issue_type": "SYMPTOM",
+      "expected_question_id": "Q0548",
+      "expected_rank": 2,
+      "retrieved_top1_id": "Q0579",
+      "expected_duplicate_group": "DUP88B7BA30",
+      "top1_duplicate_group": null,
+      "category": "TWIN_KNOWLEDGE_CLUSTER",
+      "reason": "Expected (Q0548) va Top-1 (Q0579) la twin records: cung Hang (Samsung), Thiet bi (Điều hòa), cung cau tra loi 100%",
+      "expected_details": {
+        "brand": "Samsung",
+        "device": "Điều hòa",
+        "error_code": null,
+        "issue_id": "I0439",
+        "question": "Máy lạnh có mùi hôi thì xử lý thế nào?",
+        "answer": "Nguyên nhân sự cố: Lồng giặt, gioăng cửa, ngăn nước giặt hoặc bộ lọc có thể tích tụ cặn và mùi. Cách khắc phục: Vệ sinh lồng giặt, gioăng cửa, ngăn nư"
+      },
+      "top1_details": {
+        "brand": "Samsung",
+        "device": "Điều hòa",
+        "error_code": null,
+        "issue_id": "I0439",
+        "question": "Máy lạnh có mùi hôi thì xử lý thế nào phải làm sao?",
+        "answer": "Nguyên nhân sự cố: Lồng giặt, gioăng cửa, ngăn nước giặt hoặc bộ lọc có thể tích tụ cặn và mùi. Cách khắc phục: Vệ sinh lồng giặt, gioăng cửa, ngăn nư"
+      }
+    },
+    {
+      "index": 16,
+      "failure_question_id": "Q0554",
+      "question": "Tủ lạnh có mùi hôi thì vệ sinh thế nào?",
+      "issue_type": "SYMPTOM",
+      "expected_question_id": "Q0554",
+      "expected_rank": 3,
+      "retrieved_top1_id": "Q0585",
+      "expected_duplicate_group": null,
+      "top1_duplicate_group": null,
+      "category": "TWIN_KNOWLEDGE_CLUSTER",
+      "reason": "Expected (Q0554) va Top-1 (Q0585) la twin records: cung Hang (Samsung), Thiet bi (Tủ lạnh), cung cau tra loi 100%",
+      "expected_details": {
+        "brand": "Samsung",
+        "device": "Tủ lạnh",
+        "error_code": null,
+        "issue_id": "I0445",
+        "question": "Tủ lạnh có mùi hôi thì vệ sinh thế nào?",
+        "answer": "Nguyên nhân sự cố: Lồng giặt, gioăng cửa, ngăn nước giặt hoặc bộ lọc có thể tích tụ cặn và mùi. Cách khắc phục: Vệ sinh lồng giặt, gioăng cửa, ngăn nư"
+      },
+      "top1_details": {
+        "brand": "Samsung",
+        "device": "Tủ lạnh",
+        "error_code": null,
+        "issue_id": "I0445",
+        "question": "Tủ lạnh có mùi hôi thì vệ sinh thế nào phải làm sao?",
+        "answer": "Nguyên nhân sự cố: Lồng giặt, gioăng cửa, ngăn nước giặt hoặc bộ lọc có thể tích tụ cặn và mùi. Cách khắc phục: Vệ sinh lồng giặt, gioăng cửa, ngăn nư"
+      }
+    },
+    {
+      "index": 17,
+      "failure_question_id": "Q0558",
+      "question": "Máy rửa bát không thoát nước thì làm sao?",
+      "issue_type": "SYMPTOM",
+      "expected_question_id": "Q0558",
+      "expected_rank": 4,
+      "retrieved_top1_id": "Q0620",
+      "expected_duplicate_group": null,
+      "top1_duplicate_group": null,
+      "category": "TWIN_KNOWLEDGE_CLUSTER",
+      "reason": "Expected (Q0558) va Top-1 (Q0620) la twin records: cung Hang (Samsung), Thiet bi (Máy rửa bát), cung cau tra loi 100%",
+      "expected_details": {
+        "brand": "Samsung",
+        "device": "Máy rửa bát",
+        "error_code": null,
+        "issue_id": "I0449",
+        "question": "Máy rửa bát không thoát nước thì làm sao?",
+        "answer": "Nguyên nhân sự cố: Ống xả hoặc bộ lọc có thể bị gấp hoặc tắc. Cách khắc phục: Kiểm tra và vệ sinh ống xả, bộ lọc."
+      },
+      "top1_details": {
+        "brand": "Samsung",
+        "device": "Máy rửa bát",
+        "error_code": null,
+        "issue_id": "I0472",
+        "question": "Máy rửa bát không thoát nước thì làm sao thì xử lý thế nào?",
+        "answer": "Nguyên nhân sự cố: Ống xả hoặc bộ lọc có thể bị gấp hoặc tắc. Cách khắc phục: Kiểm tra và vệ sinh ống xả, bộ lọc."
+      }
+    },
+    {
+      "index": 18,
+      "failure_question_id": "Q0560",
+      "question": "Máy sấy không khô quần áo thì kiểm tra gì?",
+      "issue_type": "SYMPTOM",
+      "expected_question_id": "Q0560",
+      "expected_rank": 2,
+      "retrieved_top1_id": "Q0591",
+      "expected_duplicate_group": null,
+      "top1_duplicate_group": null,
+      "category": "TWIN_KNOWLEDGE_CLUSTER",
+      "reason": "Expected (Q0560) va Top-1 (Q0591) la twin records: cung Hang (Samsung), Thiet bi (Máy sấy), cung cau tra loi 100%",
+      "expected_details": {
+        "brand": "Samsung",
+        "device": "Máy sấy",
+        "error_code": null,
+        "issue_id": "I0451",
+        "question": "Máy sấy không khô quần áo thì kiểm tra gì?",
+        "answer": "Nguyên nhân sự cố: Bộ lọc xơ vải, đường thoát khí hoặc lượng quần áo có thể làm giảm hiệu quả sấy. Cách khắc phục: Vệ sinh bộ lọc, kiểm tra đường thoá"
+      },
+      "top1_details": {
+        "brand": "Samsung",
+        "device": "Máy sấy",
+        "error_code": null,
+        "issue_id": "I0451",
+        "question": "Máy sấy không khô quần áo thì kiểm tra gì phải làm sao?",
+        "answer": "Nguyên nhân sự cố: Bộ lọc xơ vải, đường thoát khí hoặc lượng quần áo có thể làm giảm hiệu quả sấy. Cách khắc phục: Vệ sinh bộ lọc, kiểm tra đường thoá"
+      }
+    },
+    {
+      "index": 19,
+      "failure_question_id": "Q0563",
+      "question": "Lò vi sóng không nóng nhưng vẫn chạy thì sao?",
+      "issue_type": "SYMPTOM",
+      "expected_question_id": "Q0563",
+      "expected_rank": 2,
+      "retrieved_top1_id": "Q0687",
+      "expected_duplicate_group": null,
+      "top1_duplicate_group": null,
+      "category": "TWIN_KNOWLEDGE_CLUSTER",
+      "reason": "Expected (Q0563) va Top-1 (Q0687) la twin records: cung Hang (Samsung), Thiet bi (Lò vi sóng), cung cau tra loi 100%",
+      "expected_details": {
+        "brand": "Samsung",
+        "device": "Lò vi sóng",
+        "error_code": null,
+        "issue_id": "I0454",
+        "question": "Lò vi sóng không nóng nhưng vẫn chạy thì sao?",
+        "answer": "Nguyên nhân sự cố: Chế độ, nhiệt độ cài đặt hoặc nguồn điện có thể có vấn đề. Cách khắc phục: Kiểm tra chế độ, nhiệt độ và nguồn điện; nếu vẫn không n"
+      },
+      "top1_details": {
+        "brand": "Samsung",
+        "device": "Lò vi sóng",
+        "error_code": null,
+        "issue_id": "I0454",
+        "question": "Lò vi sóng không nóng nhưng vẫn chạy thì sao nguyên nhân thường do đâu?",
+        "answer": "Nguyên nhân sự cố: Chế độ, nhiệt độ cài đặt hoặc nguồn điện có thể có vấn đề. Cách khắc phục: Kiểm tra chế độ, nhiệt độ và nguồn điện; nếu vẫn không n"
+      }
+    },
+    {
+      "index": 20,
+      "failure_question_id": "Q0611",
+      "question": "Tủ lạnh không lạnh thì kiểm tra gì trước thì xử lý thế nào?",
+      "issue_type": "SYMPTOM",
+      "expected_question_id": "Q0611",
+      "expected_rank": 4,
+      "retrieved_top1_id": "Q0580",
+      "expected_duplicate_group": null,
+      "top1_duplicate_group": null,
+      "category": "TWIN_KNOWLEDGE_CLUSTER",
+      "reason": "Expected (Q0611) va Top-1 (Q0580) la twin records: cung Hang (Samsung), Thiet bi (Tủ lạnh), cung cau tra loi 100%",
+      "expected_details": {
+        "brand": "Samsung",
+        "device": "Tủ lạnh",
+        "error_code": null,
+        "issue_id": "I0465",
+        "question": "Tủ lạnh không lạnh thì kiểm tra gì trước thì xử lý thế nào?",
+        "answer": "Nguyên nhân sự cố: Chế độ, nhiệt độ cài đặt, bộ lọc hoặc luồng gió có thể ảnh hưởng khả năng làm lạnh. Cách khắc phục: Kiểm tra chế độ, nhiệt độ, bộ l"
+      },
+      "top1_details": {
+        "brand": "Samsung",
+        "device": "Tủ lạnh",
+        "error_code": null,
+        "issue_id": "I0440",
+        "question": "Tủ lạnh không lạnh thì kiểm tra gì trước phải làm sao?",
+        "answer": "Nguyên nhân sự cố: Chế độ, nhiệt độ cài đặt, bộ lọc hoặc luồng gió có thể ảnh hưởng khả năng làm lạnh. Cách khắc phục: Kiểm tra chế độ, nhiệt độ, bộ l"
+      }
+    },
+    {
+      "index": 21,
+      "failure_question_id": "Q0624",
+      "question": "Máy sấy không khởi động thì kiểm tra gì thì xử lý thế nào?",
+      "issue_type": "SYMPTOM",
+      "expected_question_id": "Q0624",
+      "expected_rank": 3,
+      "retrieved_top1_id": "Q0562",
+      "expected_duplicate_group": null,
+      "top1_duplicate_group": null,
+      "category": "TWIN_KNOWLEDGE_CLUSTER",
+      "reason": "Expected (Q0624) va Top-1 (Q0562) la twin records: cung Hang (Samsung), Thiet bi (Máy sấy), cung cau tra loi 100%",
+      "expected_details": {
+        "brand": "Samsung",
+        "device": "Máy sấy",
+        "error_code": null,
+        "issue_id": "I0474",
+        "question": "Máy sấy không khởi động thì kiểm tra gì thì xử lý thế nào?",
+        "answer": "Nguyên nhân sự cố: Nguồn điện, cửa máy hoặc khóa trẻ em có thể ngăn máy khởi động. Cách khắc phục: Kiểm tra nguồn điện, cửa máy và trạng thái khóa trẻ"
+      },
+      "top1_details": {
+        "brand": "Samsung",
+        "device": "Máy sấy",
+        "error_code": null,
+        "issue_id": "I0453",
+        "question": "Máy sấy không khởi động thì kiểm tra gì?",
+        "answer": "Nguyên nhân sự cố: Nguồn điện, cửa máy hoặc khóa trẻ em có thể ngăn máy khởi động. Cách khắc phục: Kiểm tra nguồn điện, cửa máy và trạng thái khóa trẻ"
+      }
+    },
+    {
+      "index": 22,
+      "failure_question_id": "Q0813",
+      "question": "LG Tủ lạnh không làm đá?",
+      "issue_type": "SYMPTOM",
+      "expected_question_id": "Q0813",
+      "expected_rank": 2,
+      "retrieved_top1_id": "Q0817",
+      "expected_duplicate_group": null,
+      "top1_duplicate_group": null,
+      "category": "TWIN_KNOWLEDGE_CLUSTER",
+      "reason": "Expected (Q0813) va Top-1 (Q0817) la twin records: cung Hang (LG), Thiet bi (Tủ lạnh), cung cau tra loi 100%",
+      "expected_details": {
+        "brand": "LG",
+        "device": "Tủ lạnh",
+        "error_code": null,
+        "issue_id": "I0519",
+        "question": "LG Tủ lạnh không làm đá?",
+        "answer": "Nguyên nhân sự cố: Nguồn nước, chức năng làm đá hoặc nhiệt độ có thể chưa phù hợp. Cách khắc phục: Kiểm tra nguồn nước, chức năng làm đá và nhiệt độ n"
+      },
+      "top1_details": {
+        "brand": "LG",
+        "device": "Tủ lạnh",
+        "error_code": null,
+        "issue_id": "I0519",
+        "question": "LG Tủ lạnh không làm đá thì phải làm sao?",
+        "answer": "Nguyên nhân sự cố: Nguồn nước, chức năng làm đá hoặc nhiệt độ có thể chưa phù hợp. Cách khắc phục: Kiểm tra nguồn nước, chức năng làm đá và nhiệt độ n"
+      }
+    },
+    {
+      "index": 23,
+      "failure_question_id": "Q0938",
+      "question": "Panasonic Tủ lạnh không làm đá?",
+      "issue_type": "SYMPTOM",
+      "expected_question_id": "Q0938",
+      "expected_rank": 2,
+      "retrieved_top1_id": "Q0941",
+      "expected_duplicate_group": null,
+      "top1_duplicate_group": null,
+      "category": "TWIN_KNOWLEDGE_CLUSTER",
+      "reason": "Expected (Q0938) va Top-1 (Q0941) la twin records: cung Hang (Panasonic), Thiet bi (Tủ lạnh), cung cau tra loi 100%",
+      "expected_details": {
+        "brand": "Panasonic",
+        "device": "Tủ lạnh",
+        "error_code": null,
+        "issue_id": "I0560",
+        "question": "Panasonic Tủ lạnh không làm đá?",
+        "answer": "Nguyên nhân sự cố: Nguồn nước, chức năng làm đá hoặc nhiệt độ có thể chưa phù hợp. Cách khắc phục: Kiểm tra nguồn nước, chức năng làm đá và nhiệt độ."
+      },
+      "top1_details": {
+        "brand": "Panasonic",
+        "device": "Tủ lạnh",
+        "error_code": null,
+        "issue_id": "I0560",
+        "question": "Panasonic Tủ lạnh không làm đá thì phải làm sao?",
+        "answer": "Nguyên nhân sự cố: Nguồn nước, chức năng làm đá hoặc nhiệt độ có thể chưa phù hợp. Cách khắc phục: Kiểm tra nguồn nước, chức năng làm đá và nhiệt độ."
+      }
+    },
+    {
+      "index": 24,
+      "failure_question_id": "Q0983",
+      "question": "Panasonic Tủ lạnh muốn tiết kiệm điện?",
+      "issue_type": "SYMPTOM",
+      "expected_question_id": "Q0983",
+      "expected_rank": 2,
+      "retrieved_top1_id": "Q0986",
+      "expected_duplicate_group": null,
+      "top1_duplicate_group": null,
+      "category": "TWIN_KNOWLEDGE_CLUSTER",
+      "reason": "Expected (Q0983) va Top-1 (Q0986) la twin records: cung Hang (Panasonic), Thiet bi (Tủ lạnh), cung cau tra loi 100%",
+      "expected_details": {
+        "brand": "Panasonic",
+        "device": "Tủ lạnh",
+        "error_code": null,
+        "issue_id": "I0577",
+        "question": "Panasonic Tủ lạnh muốn tiết kiệm điện?",
+        "answer": "Nguyên nhân sự cố: Cài đặt và thói quen sử dụng ảnh hưởng mức tiêu thụ điện. Cách khắc phục: Hạn chế mở cửa lâu và dùng cài đặt phù hợp."
+      },
+      "top1_details": {
+        "brand": "Panasonic",
+        "device": "Tủ lạnh",
+        "error_code": null,
+        "issue_id": "I0577",
+        "question": "Panasonic Tủ lạnh muốn tiết kiệm điện thì phải làm sao?",
+        "answer": "Nguyên nhân sự cố: Cài đặt và thói quen sử dụng ảnh hưởng mức tiêu thụ điện. Cách khắc phục: Hạn chế mở cửa lâu và dùng cài đặt phù hợp."
+      }
+    },
+    {
+      "index": 25,
+      "failure_question_id": "Q1061",
+      "question": "Samsung Tủ lạnh nước không đủ lạnh?",
+      "issue_type": "SYMPTOM",
+      "expected_question_id": "Q1061",
+      "expected_rank": 2,
+      "retrieved_top1_id": "Q1064",
+      "expected_duplicate_group": null,
+      "top1_duplicate_group": null,
+      "category": "TWIN_KNOWLEDGE_CLUSTER",
+      "reason": "Expected (Q1061) va Top-1 (Q1064) la twin records: cung Hang (Samsung), Thiet bi (Tủ lạnh), cung cau tra loi 100%",
+      "expected_details": {
+        "brand": "Samsung",
+        "device": "Tủ lạnh",
+        "error_code": null,
+        "issue_id": "I0614",
+        "question": "Samsung Tủ lạnh nước không đủ lạnh?",
+        "answer": "Nguyên nhân sự cố: Nhiệt độ cài đặt hoặc thời gian làm lạnh có thể chưa đủ. Cách khắc phục: Kiểm tra nhiệt độ và cho tủ đủ thời gian ổn định."
+      },
+      "top1_details": {
+        "brand": "Samsung",
+        "device": "Tủ lạnh",
+        "error_code": null,
+        "issue_id": "I0614",
+        "question": "Samsung Tủ lạnh nước không đủ lạnh thì phải làm sao?",
+        "answer": "Nguyên nhân sự cố: Nhiệt độ cài đặt hoặc thời gian làm lạnh có thể chưa đủ. Cách khắc phục: Kiểm tra nhiệt độ và cho tủ đủ thời gian ổn định."
+      }
+    },
+    {
+      "index": 26,
+      "failure_question_id": "Q1082",
+      "question": "Samsung Tủ lạnh để thực phẩm che cửa gió có sao không thì phải làm sao?",
+      "issue_type": "SYMPTOM",
+      "expected_question_id": "Q1082",
+      "expected_rank": 2,
+      "retrieved_top1_id": "Q1080",
+      "expected_duplicate_group": null,
+      "top1_duplicate_group": null,
+      "category": "TWIN_KNOWLEDGE_CLUSTER",
+      "reason": "Expected (Q1082) va Top-1 (Q1080) la twin records: cung Hang (Samsung), Thiet bi (Tủ lạnh), cung cau tra loi 100%",
+      "expected_details": {
+        "brand": "Samsung",
+        "device": "Tủ lạnh",
+        "error_code": null,
+        "issue_id": "I0626",
+        "question": "Samsung Tủ lạnh để thực phẩm che cửa gió có sao không thì phải làm sao?",
+        "answer": "Nguyên nhân sự cố: Thực phẩm che cửa gió có thể cản lưu thông khí lạnh. Cách khắc phục: Sắp xếp thực phẩm để không che các khe thông gió."
+      },
+      "top1_details": {
+        "brand": "Samsung",
+        "device": "Tủ lạnh",
+        "error_code": null,
+        "issue_id": "I0625",
+        "question": "Samsung Tủ lạnh để thực phẩm che cửa gió có sao không?",
+        "answer": "Nguyên nhân sự cố: Thực phẩm che cửa gió có thể cản lưu thông khí lạnh. Cách khắc phục: Sắp xếp thực phẩm để không che các khe thông gió."
+      }
+    }
+  ]
+}

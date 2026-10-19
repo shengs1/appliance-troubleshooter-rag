@@ -17,6 +17,7 @@ import pytest
 from rag_chatbot.evaluation import (
     load_evaluation_set,
     calculate_hit_at_k,
+    calculate_mrr,
     evaluate_chroma,
     evaluate_neo4j,
     evaluate_hybrid,
@@ -120,3 +121,37 @@ def test_evaluate_rag_with_mocks():
         assert rag_metrics["llm_unavailable_count"] == 1
         assert rag_metrics["avg_latency_seconds"] > 0
         assert len(rag_metrics["details"]) == 2
+
+
+def test_calculate_mrr():
+    """Kiem tra tinh toan Mean Reciprocal Rank (MRR)."""
+    docs = ["Q0001", "Q0002", "Q0003", "Q0004", "Q0005"]
+    assert calculate_mrr(docs, "Q0001", max_k=5) == 1.0
+    assert calculate_mrr(docs, "Q0002", max_k=5) == 0.5
+    assert calculate_mrr(docs, "Q0003", max_k=5) == pytest.approx(1.0 / 3.0)
+    assert calculate_mrr(docs, "Q0005", max_k=5) == 0.2
+    assert calculate_mrr(docs, "Q9999", max_k=5) == 0.0
+    assert calculate_mrr([], "Q0001", max_k=5) == 0.0
+
+
+def test_evaluation_set_200_validity():
+    """Kiem tra tap du lieu danh gia 200 cau in-scope co day du 200 cau va hop le."""
+    eval_200 = load_evaluation_set("data/evaluation/evaluation_set_200.json")
+    assert len(eval_200) == 200
+
+    required_fields = ["question_id", "question", "brand", "device", "issue_type"]
+    brands = set()
+    devices = set()
+    issue_types = set()
+
+    for item in eval_200:
+        for field in required_fields:
+            assert field in item, f"Trường {field} bị thiếu trong {item['question_id']}"
+        brands.add(item["brand"])
+        devices.add(item["device"])
+        issue_types.add(item["issue_type"])
+
+    # Kiem tra co du ca 3 brand va cac loai thiet bi / issue_type
+    assert {"Samsung", "Panasonic", "LG"}.issubset(brands)
+    assert len(devices) >= 5
+    assert {"ERROR_CODE", "SYMPTOM"}.issubset(issue_types)

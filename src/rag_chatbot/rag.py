@@ -13,8 +13,9 @@ import re
 from typing import Any
 import requests
 
+from rag_chatbot.answer_validator import SAFE_FALLBACK_MESSAGE, validate_answer
 from rag_chatbot.config import get_settings
-from rag_chatbot.retrieval import search_hybrid
+from rag_chatbot.retrieval import extract_question_entities, search_hybrid
 from rag_chatbot.scope import REFUSAL_MESSAGE, should_refuse
 
 
@@ -173,6 +174,16 @@ def generate_rag_answer(
             "prompt": "",
             "retrieved_documents": retrieved_docs,
             "llm_status": "refused_scope",
+            "validation": {
+                "status": "refused_scope",
+                "grounded": True,
+                "brand_consistent": True,
+                "device_consistent": True,
+                "error_code_consistent": True,
+                "hallucination_detected": False,
+                "source_consistent": True,
+                "reasons": ["Câu hỏi nằm ngoài phạm vi hỗ trợ (Out-of-Scope)."],
+            },
         }
 
     # 3. Xay dung ngu canh tu tai lieu
@@ -190,6 +201,30 @@ def generate_rag_answer(
         answer = f"[Thông báo dịch vụ Local LLM]: {err}"
         llm_status = "unavailable"
 
+    # 6. Kiem dinh va xac thuc cau tra loi (Phase Answer Validation)
+    if llm_status == "success":
+        entities = extract_question_entities(question)
+        validation = validate_answer(
+            question=question,
+            answer=answer,
+            retrieved_documents=retrieved_docs,
+            entities=entities,
+        )
+        # Neu validator FAIL: khong tra answer chua kiem chung ma dung thong bao an toan
+        if validation["status"] == "fail":
+            answer = SAFE_FALLBACK_MESSAGE
+    else:
+        validation = {
+            "status": "fail",
+            "grounded": False,
+            "brand_consistent": False,
+            "device_consistent": False,
+            "error_code_consistent": False,
+            "hallucination_detected": False,
+            "source_consistent": False,
+            "reasons": ["Dịch vụ Local LLM không khả dụng."],
+        }
+
     return {
         "question": question,
         "answer": answer,
@@ -197,6 +232,7 @@ def generate_rag_answer(
         "prompt": prompt,
         "retrieved_documents": retrieved_docs,
         "llm_status": llm_status,
+        "validation": validation,
     }
 
 

@@ -87,3 +87,44 @@ def test_health_and_root_endpoints_with_ui():
     res_root = client.get("/")
     assert res_root.status_code == 200
     assert "running" in res_root.json()["message"].lower()
+
+
+def test_source_attribution_rejects_mismatched_device():
+    """Kiem tra source attribution loai bo tai lieu sai loai thiet bi (Tu lanh khi hoi Dieu hoa)."""
+    from rag_chatbot.retrieval import extract_matching_sources
+
+    question = "Máy lạnh Samsung của tôi không lạnh"
+    docs_with_wrong_device = [
+        {
+            "question_id": "Q0997",
+            "brand": "Samsung",
+            "device": "Tủ lạnh",
+            "source_url": "https://www.samsung.com/vn/refrigerator-doc",
+        }
+    ]
+    # Phai tra ve rong vi thiet bi Tu lanh khong khop voi Dieu hoa
+    sources = extract_matching_sources(docs_with_wrong_device, question)
+    assert len(sources) == 0
+
+
+def test_source_attribution_selects_correct_device():
+    """Kiem tra source attribution chon dung link Dieu hoa khi co ca link Tu lanh va Dieu hoa."""
+    from rag_chatbot.retrieval import extract_matching_sources
+
+    question = "Máy lạnh Samsung của tôi không lạnh"
+    mixed_docs = [
+        {
+            "question_id": "Q0997",
+            "brand": "Samsung",
+            "device": "Tủ lạnh",
+            "source_url": "https://www.samsung.com/vn/refrigerator-doc",
+        },
+        {
+            "question_id": "Q0606",
+            "brand": "Samsung",
+            "device": "Điều hòa",
+            "source_url": "https://www.samsung.com/vn/air-conditioner-doc",
+        },
+    ]
+    sources = extract_matching_sources(mixed_docs, question)
+    assert sources == ["https://www.samsung.com/vn/air-conditioner-doc"]

@@ -1,0 +1,2614 @@
+{
+  "summary": {
+    "total_records": 1090,
+    "singleton_records": 972,
+    "total_duplicate_groups": 59,
+    "max_group_size": 2,
+    "average_group_size": 2.0,
+    "records_in_duplicate_groups": 118,
+    "exact_duplicate_count": 7,
+    "knowledge_duplicate_count": 1,
+    "related_but_different_count": 0,
+    "unsafe_duplicate_count": 51,
+    "merge_safe_groups": 8,
+    "unsafe_groups": 51
+  },
+  "groups": [
+    {
+      "group_id": "DUP15EB75FF",
+      "record_count": 2,
+      "member_ids": [
+        "Q0048",
+        "Q0067"
+      ],
+      "brand": "LG",
+      "device": "Máy sấy",
+      "error_code": "TE2",
+      "issue_id": "I0037",
+      "same_brand": true,
+      "same_device": true,
+      "same_error_code": true,
+      "same_issue": true,
+      "same_cause": true,
+      "same_solution": true,
+      "same_answer": false,
+      "answer_similarity": 0.6207,
+      "has_third_party_source": false,
+      "has_unsplit_cause_solution": true,
+      "category": "KNOWLEDGE_DUPLICATE",
+      "merge_safe": true,
+      "records": [
+        {
+          "id": "Q0048",
+          "question": "Máy sấy LG lỗi tE2",
+          "cause": null,
+          "solution": null,
+          "answer": "Lỗi tE2 trên màn hình của máy sấy cho biết sự cố đã được phát hiện với nhiệt điện trở của máy sấy.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION",
+          "source_url": "https://www.lg.com/vn/tro-giup/ho-tro-san-pham/khac-phuc-su-co/"
+        },
+        {
+          "id": "Q0067",
+          "question": "Máy sấy LG lỗi tE2",
+          "cause": null,
+          "solution": null,
+          "answer": "Mã lỗi trên màn hình cho biết sự cố đã được phát hiện với nhiệt điện trở của máy sấy, thường là trong điều kiện lạnh.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION",
+          "source_url": "https://www.lg.com/vn/tro-giup/ho-tro-san-pham/khac-phuc-su-co/"
+        }
+      ]
+    },
+    {
+      "group_id": "DUP6212F5CC",
+      "record_count": 2,
+      "member_ids": [
+        "Q0115",
+        "Q0119"
+      ],
+      "brand": "LG",
+      "device": "Tủ lạnh",
+      "error_code": "ER D",
+      "issue_id": "I0009",
+      "same_brand": true,
+      "same_device": true,
+      "same_error_code": true,
+      "same_issue": true,
+      "same_cause": true,
+      "same_solution": true,
+      "same_answer": false,
+      "answer_similarity": 0.082,
+      "has_third_party_source": false,
+      "has_unsplit_cause_solution": true,
+      "category": "UNSAFE_TO_MERGE",
+      "merge_safe": false,
+      "records": [
+        {
+          "id": "Q0115",
+          "question": "Cách khắc phục lỗi Er d tủ lạnh LG",
+          "cause": null,
+          "solution": null,
+          "answer": "Rút điện, xả đông thủ công (mở cửa 3-4 tiếng cho tan hết đá), sau đó cắm lại. Nếu mã lỗi lặp lại, hãy gọi thợ bảo hành kiểm tra thanh điện trở sưởi hoặc cầu chì nhiệt.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION",
+          "source_url": "https://www.lg.com/vn/tro-giup/ho-tro-san-pham/khac-phuc-su-co/"
+        },
+        {
+          "id": "Q0119",
+          "question": "Cách khắc phục lỗi Er D tủ lạnh LG",
+          "cause": null,
+          "solution": null,
+          "answer": "Lỗi cảm biến hoặc mô tơ xả đá. Không nên tiếp tục dùng vì tủ sẽ đóng tuyết và không lạnh. Tắt nguồn và gọi kỹ thuật viên kiểm tra.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION",
+          "source_url": "https://www.lg.com/vn/tro-giup/ho-tro-san-pham/khac-phuc-su-co/"
+        }
+      ]
+    },
+    {
+      "group_id": "DUP987302AA",
+      "record_count": 2,
+      "member_ids": [
+        "Q0157",
+        "Q0307"
+      ],
+      "brand": "Panasonic",
+      "device": "Điều hòa",
+      "error_code": "F11",
+      "issue_id": "I0098",
+      "same_brand": true,
+      "same_device": true,
+      "same_error_code": true,
+      "same_issue": true,
+      "same_cause": true,
+      "same_solution": true,
+      "same_answer": false,
+      "answer_similarity": 0.1081,
+      "has_third_party_source": false,
+      "has_unsplit_cause_solution": true,
+      "category": "UNSAFE_TO_MERGE",
+      "merge_safe": false,
+      "records": [
+        {
+          "id": "Q0157",
+          "question": "Điều hoà panasonic bị lỗi F11",
+          "cause": null,
+          "solution": null,
+          "answer": "Lỗi liên quan đến van 4 ngã (phần cơ - điện)",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION",
+          "source_url": "https://www.panasonic.com/vn/air-solutions/learn-more/ma-loi-may-lanh-panasonic.html"
+        },
+        {
+          "id": "Q0307",
+          "question": "Điều hòa panasonic bị lỗi F11",
+          "cause": null,
+          "solution": null,
+          "answer": "Kiểm tra van 4 ngã có bị kẹt, rắc cắm và dây của van 4 ngã. Sau đó liên hệ trung tâm bảo hành máy lạnh Panasonic để sửa chữa kịp thời.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION",
+          "source_url": "https://www.panasonic.com/vn/air-solutions/learn-more/ma-loi-may-lanh-panasonic.html"
+        }
+      ]
+    },
+    {
+      "group_id": "DUP79719DB9",
+      "record_count": 2,
+      "member_ids": [
+        "Q0158",
+        "Q0308"
+      ],
+      "brand": "Panasonic",
+      "device": "Điều hòa",
+      "error_code": "F16",
+      "issue_id": "I0099",
+      "same_brand": true,
+      "same_device": true,
+      "same_error_code": true,
+      "same_issue": true,
+      "same_cause": true,
+      "same_solution": true,
+      "same_answer": false,
+      "answer_similarity": 0.0,
+      "has_third_party_source": false,
+      "has_unsplit_cause_solution": true,
+      "category": "UNSAFE_TO_MERGE",
+      "merge_safe": false,
+      "records": [
+        {
+          "id": "Q0158",
+          "question": "Điều hoà panasonic bị lỗi F16",
+          "cause": null,
+          "solution": null,
+          "answer": "Bảo vệ dòng điện chạy qua",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION",
+          "source_url": "https://www.panasonic.com/vn/air-solutions/learn-more/ma-loi-may-lanh-panasonic.html"
+        },
+        {
+          "id": "Q0308",
+          "question": "Điều hòa panasonic bị lỗi F16",
+          "cause": null,
+          "solution": null,
+          "answer": "Lỗi F16 liên quan đến mạch điện. Do đó, bạn có thể gọi thợ chuyên nghiệp để khắc phục.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION",
+          "source_url": "https://www.panasonic.com/vn/air-solutions/learn-more/ma-loi-may-lanh-panasonic.html"
+        }
+      ]
+    },
+    {
+      "group_id": "DUP44278C6B",
+      "record_count": 2,
+      "member_ids": [
+        "Q0159",
+        "Q0310"
+      ],
+      "brand": "Panasonic",
+      "device": "Điều hòa",
+      "error_code": "F93",
+      "issue_id": "I0100",
+      "same_brand": true,
+      "same_device": true,
+      "same_error_code": true,
+      "same_issue": true,
+      "same_cause": true,
+      "same_solution": true,
+      "same_answer": false,
+      "answer_similarity": 0.0909,
+      "has_third_party_source": false,
+      "has_unsplit_cause_solution": true,
+      "category": "UNSAFE_TO_MERGE",
+      "merge_safe": false,
+      "records": [
+        {
+          "id": "Q0159",
+          "question": "Điều hòa panasonic bị lỗi F93",
+          "cause": null,
+          "solution": null,
+          "answer": "Lỗi tốc độ máy nén quay bất thường.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION",
+          "source_url": "https://www.panasonic.com/vn/air-solutions/learn-more/ma-loi-may-lanh-panasonic.html"
+        },
+        {
+          "id": "Q0310",
+          "question": "Điều hòa panasonic bị lỗi F93",
+          "cause": null,
+          "solution": null,
+          "answer": "Kiểm tra máy nén của máy lạnh. Sửa chữa hoặc thay thế máy nén điều hòa khi cần thiết",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION",
+          "source_url": "https://www.panasonic.com/vn/air-solutions/learn-more/ma-loi-may-lanh-panasonic.html"
+        }
+      ]
+    },
+    {
+      "group_id": "DUP9E57CFC6",
+      "record_count": 2,
+      "member_ids": [
+        "Q0160",
+        "Q0311"
+      ],
+      "brand": "Panasonic",
+      "device": "Điều hòa",
+      "error_code": "F95",
+      "issue_id": "I0101",
+      "same_brand": true,
+      "same_device": true,
+      "same_error_code": true,
+      "same_issue": true,
+      "same_cause": true,
+      "same_solution": true,
+      "same_answer": false,
+      "answer_similarity": 0.1026,
+      "has_third_party_source": false,
+      "has_unsplit_cause_solution": true,
+      "category": "UNSAFE_TO_MERGE",
+      "merge_safe": false,
+      "records": [
+        {
+          "id": "Q0160",
+          "question": "Điều hòa panasonic bị lỗi F95",
+          "cause": null,
+          "solution": null,
+          "answer": "Nhiệt độ dàn nóng quá cao hơn mức cho phép",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION",
+          "source_url": "https://www.panasonic.com/vn/air-solutions/learn-more/ma-loi-may-lanh-panasonic.html"
+        },
+        {
+          "id": "Q0311",
+          "question": "Điều hòa panasonic bị lỗi F95",
+          "cause": null,
+          "solution": null,
+          "answer": "Kiểm tra máy vị trí dàn nóng, cảm biến nhiệt độ dàn nóng, kiểm tra hệ thống có dư gas, nghẹt tắc dàn nóng, kiểm tra quạt dàn nóng, bo dàn nóng có gặp vấn đề không? Đồng thời nên vệ sinh dàn nóng máy lạnh định kỳ.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION",
+          "source_url": "https://www.panasonic.com/vn/air-solutions/learn-more/ma-loi-may-lanh-panasonic.html"
+        }
+      ]
+    },
+    {
+      "group_id": "DUPC3E76538",
+      "record_count": 2,
+      "member_ids": [
+        "Q0161",
+        "Q0312"
+      ],
+      "brand": "Panasonic",
+      "device": "Điều hòa",
+      "error_code": "F97",
+      "issue_id": "I0102",
+      "same_brand": true,
+      "same_device": true,
+      "same_error_code": true,
+      "same_issue": true,
+      "same_cause": true,
+      "same_solution": true,
+      "same_answer": false,
+      "answer_similarity": 0.1176,
+      "has_third_party_source": false,
+      "has_unsplit_cause_solution": true,
+      "category": "UNSAFE_TO_MERGE",
+      "merge_safe": false,
+      "records": [
+        {
+          "id": "Q0161",
+          "question": "Điều hòa panasonic bị lỗi F97",
+          "cause": null,
+          "solution": null,
+          "answer": "Nhiệt độ máy nén khá cao",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION",
+          "source_url": "https://www.panasonic.com/vn/air-solutions/learn-more/ma-loi-may-lanh-panasonic.html"
+        },
+        {
+          "id": "Q0312",
+          "question": "Điều hòa panasonic bị lỗi F97",
+          "cause": null,
+          "solution": null,
+          "answer": "Kiểm tra máy nén và máy lạnh. Nếu bị lỗi thì nên kiểm tra và sửa chữa.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION",
+          "source_url": "https://www.panasonic.com/vn/air-solutions/learn-more/ma-loi-may-lanh-panasonic.html"
+        }
+      ]
+    },
+    {
+      "group_id": "DUP31F9DBB1",
+      "record_count": 2,
+      "member_ids": [
+        "Q0162",
+        "Q0323"
+      ],
+      "brand": "Panasonic",
+      "device": "Điều hòa",
+      "error_code": "H38",
+      "issue_id": "I0103",
+      "same_brand": true,
+      "same_device": true,
+      "same_error_code": true,
+      "same_issue": true,
+      "same_cause": true,
+      "same_solution": true,
+      "same_answer": false,
+      "answer_similarity": 0.1579,
+      "has_third_party_source": false,
+      "has_unsplit_cause_solution": true,
+      "category": "UNSAFE_TO_MERGE",
+      "merge_safe": false,
+      "records": [
+        {
+          "id": "Q0162",
+          "question": "Điều hòa panasonic bị lỗi H38",
+          "cause": null,
+          "solution": null,
+          "answer": "Không đồng bộ được dàn nóng và dàn lạnh",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION",
+          "source_url": "https://www.panasonic.com/vn/air-solutions/learn-more/ma-loi-may-lanh-panasonic.html"
+        },
+        {
+          "id": "Q0323",
+          "question": "Điều hòa panasonic bị lỗi H38",
+          "cause": null,
+          "solution": null,
+          "answer": "Kiểm tra lại cài đặt của dàn nóng và dàn lạnh. Reset lại sao cho đúng.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION",
+          "source_url": "https://www.panasonic.com/vn/air-solutions/learn-more/ma-loi-may-lanh-panasonic.html"
+        }
+      ]
+    },
+    {
+      "group_id": "DUP8CE1A6CA",
+      "record_count": 2,
+      "member_ids": [
+        "Q0163",
+        "Q0324"
+      ],
+      "brand": "Panasonic",
+      "device": "Điều hòa",
+      "error_code": "H58",
+      "issue_id": "I0104",
+      "same_brand": true,
+      "same_device": true,
+      "same_error_code": true,
+      "same_issue": true,
+      "same_cause": true,
+      "same_solution": true,
+      "same_answer": false,
+      "answer_similarity": 0.087,
+      "has_third_party_source": false,
+      "has_unsplit_cause_solution": true,
+      "category": "UNSAFE_TO_MERGE",
+      "merge_safe": false,
+      "records": [
+        {
+          "id": "Q0163",
+          "question": "Điều hòa panasonic bị lỗi H58",
+          "cause": null,
+          "solution": null,
+          "answer": "Lỗi mạch Patrol",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION",
+          "source_url": "https://www.panasonic.com/vn/air-solutions/learn-more/ma-loi-may-lanh-panasonic.html"
+        },
+        {
+          "id": "Q0324",
+          "question": "Điều hòa panasonic bị lỗi H58",
+          "cause": null,
+          "solution": null,
+          "answer": "Lỗi liên quan đến mạch điện tử. Liên hệ ngay với trung tâm bảo hành và thợ sửa để kiểm tra và khắc phục.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION",
+          "source_url": "https://www.panasonic.com/vn/air-solutions/learn-more/ma-loi-may-lanh-panasonic.html"
+        }
+      ]
+    },
+    {
+      "group_id": "DUP915FFC02",
+      "record_count": 2,
+      "member_ids": [
+        "Q0164",
+        "Q0325"
+      ],
+      "brand": "Panasonic",
+      "device": "Điều hòa",
+      "error_code": "H64",
+      "issue_id": "I0105",
+      "same_brand": true,
+      "same_device": true,
+      "same_error_code": true,
+      "same_issue": true,
+      "same_cause": true,
+      "same_solution": true,
+      "same_answer": false,
+      "answer_similarity": 0.2105,
+      "has_third_party_source": false,
+      "has_unsplit_cause_solution": true,
+      "category": "UNSAFE_TO_MERGE",
+      "merge_safe": false,
+      "records": [
+        {
+          "id": "Q0164",
+          "question": "Điều hòa panasonic bị lỗi H64",
+          "cause": null,
+          "solution": null,
+          "answer": "Lỗi cảm biến áp suất cao bất thường.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION",
+          "source_url": "https://www.panasonic.com/vn/air-solutions/learn-more/ma-loi-may-lanh-panasonic.html"
+        },
+        {
+          "id": "Q0325",
+          "question": "Điều hòa panasonic bị lỗi H64",
+          "cause": null,
+          "solution": null,
+          "answer": "Kiểm tra cảm biến áp suất cao, rắc cắm lỏng, dây hoặc gas lẫn Ni-tơ.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION",
+          "source_url": "https://www.panasonic.com/vn/air-solutions/learn-more/ma-loi-may-lanh-panasonic.html"
+        }
+      ]
+    },
+    {
+      "group_id": "DUPF2D57116",
+      "record_count": 2,
+      "member_ids": [
+        "Q0165",
+        "Q0326"
+      ],
+      "brand": "Panasonic",
+      "device": "Điều hòa",
+      "error_code": "H97",
+      "issue_id": "I0106",
+      "same_brand": true,
+      "same_device": true,
+      "same_error_code": true,
+      "same_issue": true,
+      "same_cause": true,
+      "same_solution": true,
+      "same_answer": false,
+      "answer_similarity": 0.0526,
+      "has_third_party_source": false,
+      "has_unsplit_cause_solution": true,
+      "category": "UNSAFE_TO_MERGE",
+      "merge_safe": false,
+      "records": [
+        {
+          "id": "Q0165",
+          "question": "Điều hòa panasonic bị lỗi H97",
+          "cause": null,
+          "solution": null,
+          "answer": "Lỗi quạt khối ngoài trời bị lỗi.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION",
+          "source_url": "https://www.panasonic.com/vn/air-solutions/learn-more/ma-loi-may-lanh-panasonic.html"
+        },
+        {
+          "id": "Q0326",
+          "question": "Điều hòa panasonic bị lỗi H97",
+          "cause": null,
+          "solution": null,
+          "answer": "Kiểm tra quạt của dàn nóng và sửa chữa thay mới nếu cần",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION",
+          "source_url": "https://www.panasonic.com/vn/air-solutions/learn-more/ma-loi-may-lanh-panasonic.html"
+        }
+      ]
+    },
+    {
+      "group_id": "DUP3899D57A",
+      "record_count": 2,
+      "member_ids": [
+        "Q0166",
+        "Q0327"
+      ],
+      "brand": "Panasonic",
+      "device": "Điều hòa",
+      "error_code": "H98",
+      "issue_id": "I0107",
+      "same_brand": true,
+      "same_device": true,
+      "same_error_code": true,
+      "same_issue": true,
+      "same_cause": true,
+      "same_solution": true,
+      "same_answer": false,
+      "answer_similarity": 0.027,
+      "has_third_party_source": false,
+      "has_unsplit_cause_solution": true,
+      "category": "UNSAFE_TO_MERGE",
+      "merge_safe": false,
+      "records": [
+        {
+          "id": "Q0166",
+          "question": "Điều hòa panasonic bị lỗi H98",
+          "cause": null,
+          "solution": null,
+          "answer": "Nhiệt độ khối trong nhà bị tăng bất thường khi chạy sưởi.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION",
+          "source_url": "https://www.panasonic.com/vn/air-solutions/learn-more/ma-loi-may-lanh-panasonic.html"
+        },
+        {
+          "id": "Q0327",
+          "question": "Điều hòa panasonic bị lỗi H98",
+          "cause": null,
+          "solution": null,
+          "answer": "Kiểm tra đường ống dẫn gas có bị nghẹt không. Kiểm tra quạt dàn máy lạnh, nếu quạt hỏng cần được bảo dưỡng và vệ sinh định kỳ. ).",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION",
+          "source_url": "https://www.panasonic.com/vn/air-solutions/learn-more/ma-loi-may-lanh-panasonic.html"
+        }
+      ]
+    },
+    {
+      "group_id": "DUP660C4236",
+      "record_count": 2,
+      "member_ids": [
+        "Q0167",
+        "Q0328"
+      ],
+      "brand": "Panasonic",
+      "device": "Điều hòa",
+      "error_code": "H99",
+      "issue_id": "I0108",
+      "same_brand": true,
+      "same_device": true,
+      "same_error_code": true,
+      "same_issue": true,
+      "same_cause": true,
+      "same_solution": true,
+      "same_answer": false,
+      "answer_similarity": 0.0,
+      "has_third_party_source": false,
+      "has_unsplit_cause_solution": true,
+      "category": "UNSAFE_TO_MERGE",
+      "merge_safe": false,
+      "records": [
+        {
+          "id": "Q0167",
+          "question": "Điều hòa panasonic bị lỗi H99",
+          "cause": null,
+          "solution": null,
+          "answer": "Nhiệt độ dàn nóng trong nhà giảm thấp hay đóng băng.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION",
+          "source_url": "https://www.panasonic.com/vn/air-solutions/learn-more/ma-loi-may-lanh-panasonic.html"
+        },
+        {
+          "id": "Q0328",
+          "question": "Điều hòa panasonic bị lỗi H99",
+          "cause": null,
+          "solution": null,
+          "answer": "Có thể máy lạnh bị thiếu gas/ Có thể liên hệ thợ sửa gần nhất để được kiểm tra và nạp gas vào.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION",
+          "source_url": "https://www.panasonic.com/vn/air-solutions/learn-more/ma-loi-may-lanh-panasonic.html"
+        }
+      ]
+    },
+    {
+      "group_id": "DUP678384D6",
+      "record_count": 2,
+      "member_ids": [
+        "Q0192",
+        "Q0329"
+      ],
+      "brand": "Panasonic",
+      "device": "Máy giặt",
+      "error_code": "H01",
+      "issue_id": "I0133",
+      "same_brand": true,
+      "same_device": true,
+      "same_error_code": true,
+      "same_issue": true,
+      "same_cause": true,
+      "same_solution": true,
+      "same_answer": false,
+      "answer_similarity": 0.1111,
+      "has_third_party_source": true,
+      "has_unsplit_cause_solution": true,
+      "category": "UNSAFE_TO_MERGE",
+      "merge_safe": false,
+      "records": [
+        {
+          "id": "Q0192",
+          "question": "Máy giặt panasonic bị lỗi H01",
+          "cause": null,
+          "solution": null,
+          "answer": "Cảm biến áp suất (phao áp lực nước) hoặc công tắc chuyển đổi mức nước bị lỗi, hỏng.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION; THIRD_PARTY_SOURCE",
+          "source_url": "https://www.dienmayxanh.com/kinh-nghiem-hay/cac-ma-loi-thuong-gap-tren-may-giat-panasonic-1107064?srsltid=AU7gw4VsCftts62AUzCKn_STtayG8_gPNkZftuZ7mzscDqNuBud5RxGL"
+        },
+        {
+          "id": "Q0329",
+          "question": "Máy giặt panasonic bị lỗi H01",
+          "cause": null,
+          "solution": null,
+          "answer": "Kiểm tra dây điện kết nối đến cảm biến áp lực, đảm bảo không bị đứt hoặc lỏng. Nếu dây nối tốt, có thể cảm biến áp suất đã hỏng, cần thay thế. Trong trường hợp phức tạp, lỗi có thể do bo mạch điều khiển chính (PCB), cần thay thế PCB.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION; THIRD_PARTY_SOURCE",
+          "source_url": "https://www.dienmayxanh.com/kinh-nghiem-hay/cac-ma-loi-thuong-gap-tren-may-giat-panasonic-1107064?srsltid=AU7gw4VsCftts62AUzCKn_STtayG8_gPNkZftuZ7mzscDqNuBud5RxGL"
+        }
+      ]
+    },
+    {
+      "group_id": "DUP704369C0",
+      "record_count": 2,
+      "member_ids": [
+        "Q0193",
+        "Q0330"
+      ],
+      "brand": "Panasonic",
+      "device": "Máy giặt",
+      "error_code": "H04",
+      "issue_id": "I0134",
+      "same_brand": true,
+      "same_device": true,
+      "same_error_code": true,
+      "same_issue": true,
+      "same_cause": true,
+      "same_solution": true,
+      "same_answer": false,
+      "answer_similarity": 0.1176,
+      "has_third_party_source": true,
+      "has_unsplit_cause_solution": true,
+      "category": "UNSAFE_TO_MERGE",
+      "merge_safe": false,
+      "records": [
+        {
+          "id": "Q0193",
+          "question": "Máy giặt panasonic bị lỗi H04",
+          "cause": null,
+          "solution": null,
+          "answer": "Lỗi ngắn mạch ở rơ le điện trên bo mạch công suất, gây ra lỗi tín hiệu.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION; THIRD_PARTY_SOURCE",
+          "source_url": "https://www.dienmayxanh.com/kinh-nghiem-hay/cac-ma-loi-thuong-gap-tren-may-giat-panasonic-1107064?srsltid=AU7gw4VsCftts62AUzCKn_STtayG8_gPNkZftuZ7mzscDqNuBud5RxGL"
+        },
+        {
+          "id": "Q0330",
+          "question": "Máy giặt panasonic bị lỗi H04",
+          "cause": null,
+          "solution": null,
+          "answer": "Kiểm tra hệ thống đường dây điện kết nối. Thay thế bo mạch điều khiển điện tử (PCB) nếu xác định lỗi do bo mạch.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION; THIRD_PARTY_SOURCE",
+          "source_url": "https://www.dienmayxanh.com/kinh-nghiem-hay/cac-ma-loi-thuong-gap-tren-may-giat-panasonic-1107064?srsltid=AU7gw4VsCftts62AUzCKn_STtayG8_gPNkZftuZ7mzscDqNuBud5RxGL"
+        }
+      ]
+    },
+    {
+      "group_id": "DUP0092A933",
+      "record_count": 2,
+      "member_ids": [
+        "Q0194",
+        "Q0331"
+      ],
+      "brand": "Panasonic",
+      "device": "Máy giặt",
+      "error_code": "H05",
+      "issue_id": "I0135",
+      "same_brand": true,
+      "same_device": true,
+      "same_error_code": true,
+      "same_issue": true,
+      "same_cause": true,
+      "same_solution": true,
+      "same_answer": false,
+      "answer_similarity": 0.1795,
+      "has_third_party_source": true,
+      "has_unsplit_cause_solution": true,
+      "category": "UNSAFE_TO_MERGE",
+      "merge_safe": false,
+      "records": [
+        {
+          "id": "Q0194",
+          "question": "Máy giặt panasonic bị lỗi H05",
+          "cause": null,
+          "solution": null,
+          "answer": "Lỗi phần cứng, bo mạch điều khiển điện tử không thể lưu trữ dữ liệu chương trình giặt.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION; THIRD_PARTY_SOURCE",
+          "source_url": "https://www.dienmayxanh.com/kinh-nghiem-hay/cac-ma-loi-thuong-gap-tren-may-giat-panasonic-1107064?srsltid=AU7gw4VsCftts62AUzCKn_STtayG8_gPNkZftuZ7mzscDqNuBud5RxGL"
+        },
+        {
+          "id": "Q0331",
+          "question": "Máy giặt panasonic bị lỗi H05",
+          "cause": null,
+          "solution": null,
+          "answer": "Kiểm tra lại hệ thống dây điện và các cài đặt trên bảng điều khiển. Nếu không khắc phục được, cần thay thế bo mạch điều khiển điện tử (PCB).",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION; THIRD_PARTY_SOURCE",
+          "source_url": "https://www.dienmayxanh.com/kinh-nghiem-hay/cac-ma-loi-thuong-gap-tren-may-giat-panasonic-1107064?srsltid=AU7gw4VsCftts62AUzCKn_STtayG8_gPNkZftuZ7mzscDqNuBud5RxGL"
+        }
+      ]
+    },
+    {
+      "group_id": "DUP9518F961",
+      "record_count": 2,
+      "member_ids": [
+        "Q0195",
+        "Q0332"
+      ],
+      "brand": "Panasonic",
+      "device": "Máy giặt",
+      "error_code": "H07",
+      "issue_id": "I0136",
+      "same_brand": true,
+      "same_device": true,
+      "same_error_code": true,
+      "same_issue": true,
+      "same_cause": true,
+      "same_solution": true,
+      "same_answer": false,
+      "answer_similarity": 0.0741,
+      "has_third_party_source": true,
+      "has_unsplit_cause_solution": true,
+      "category": "UNSAFE_TO_MERGE",
+      "merge_safe": false,
+      "records": [
+        {
+          "id": "Q0195",
+          "question": "Máy giặt panasonic bị lỗi H07",
+          "cause": null,
+          "solution": null,
+          "answer": "Động cơ phát ra tín hiệu bất thường (thường gặp ở máy giặt Inverter). Lỗi có thể do cảm biến tốc độ động cơ (Tacho Generator) hoặc bản thân động cơ.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION; THIRD_PARTY_SOURCE",
+          "source_url": "https://www.dienmayxanh.com/kinh-nghiem-hay/cac-ma-loi-thuong-gap-tren-may-giat-panasonic-1107064?srsltid=AU7gw4VsCftts62AUzCKn_STtayG8_gPNkZftuZ7mzscDqNuBud5RxGL"
+        },
+        {
+          "id": "Q0332",
+          "question": "Máy giặt panasonic bị lỗi H07",
+          "cause": null,
+          "solution": null,
+          "answer": "Kiểm tra kỹ hệ thống dây điện kết nối đến động cơ. Kiểm tra và có thể cần thay mới động cơ. Nếu vẫn không được, cân nhắc thay mới bo mạch điều khiển điện tử (PCB).",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION; THIRD_PARTY_SOURCE",
+          "source_url": "https://www.dienmayxanh.com/kinh-nghiem-hay/cac-ma-loi-thuong-gap-tren-may-giat-panasonic-1107064?srsltid=AU7gw4VsCftts62AUzCKn_STtayG8_gPNkZftuZ7mzscDqNuBud5RxGL"
+        }
+      ]
+    },
+    {
+      "group_id": "DUP11C6536F",
+      "record_count": 2,
+      "member_ids": [
+        "Q0196",
+        "Q0333"
+      ],
+      "brand": "Panasonic",
+      "device": "Máy giặt",
+      "error_code": "H09",
+      "issue_id": "I0137",
+      "same_brand": true,
+      "same_device": true,
+      "same_error_code": true,
+      "same_issue": true,
+      "same_cause": true,
+      "same_solution": true,
+      "same_answer": false,
+      "answer_similarity": 0.1351,
+      "has_third_party_source": true,
+      "has_unsplit_cause_solution": true,
+      "category": "UNSAFE_TO_MERGE",
+      "merge_safe": false,
+      "records": [
+        {
+          "id": "Q0196",
+          "question": "Máy giặt panasonic bị lỗi H09",
+          "cause": null,
+          "solution": null,
+          "answer": "Lỗi giao tiếp giữa bo mạch hiển thị và bo mạch công suất (điều khiển động cơ).",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION; THIRD_PARTY_SOURCE",
+          "source_url": "https://www.dienmayxanh.com/kinh-nghiem-hay/cac-ma-loi-thuong-gap-tren-may-giat-panasonic-1107064?srsltid=AU7gw4VsCftts62AUzCKn_STtayG8_gPNkZftuZ7mzscDqNuBud5RxGL"
+        },
+        {
+          "id": "Q0333",
+          "question": "Máy giặt panasonic bị lỗi H09",
+          "cause": null,
+          "solution": null,
+          "answer": "Kiểm tra cẩn thận hệ thống dây điện kết nối giữa các bo mạch điện tử. Có thể cần thay mới bo mạch hiển thị, bo mạch công suất, hoặc cả hai.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION; THIRD_PARTY_SOURCE",
+          "source_url": "https://www.dienmayxanh.com/kinh-nghiem-hay/cac-ma-loi-thuong-gap-tren-may-giat-panasonic-1107064?srsltid=AU7gw4VsCftts62AUzCKn_STtayG8_gPNkZftuZ7mzscDqNuBud5RxGL"
+        }
+      ]
+    },
+    {
+      "group_id": "DUPA0DEF64C",
+      "record_count": 2,
+      "member_ids": [
+        "Q0197",
+        "Q0334"
+      ],
+      "brand": "Panasonic",
+      "device": "Máy giặt",
+      "error_code": "H17",
+      "issue_id": "I0138",
+      "same_brand": true,
+      "same_device": true,
+      "same_error_code": true,
+      "same_issue": true,
+      "same_cause": true,
+      "same_solution": true,
+      "same_answer": false,
+      "answer_similarity": 0.1429,
+      "has_third_party_source": true,
+      "has_unsplit_cause_solution": true,
+      "category": "UNSAFE_TO_MERGE",
+      "merge_safe": false,
+      "records": [
+        {
+          "id": "Q0197",
+          "question": "Máy giặt panasonic bị lỗi H17",
+          "cause": null,
+          "solution": null,
+          "answer": "Cảm biến nhiệt độ (Thermistor) hoặc cảm biến nhiệt độ nước báo tín hiệu bất thường.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION; THIRD_PARTY_SOURCE",
+          "source_url": "https://www.dienmayxanh.com/kinh-nghiem-hay/cac-ma-loi-thuong-gap-tren-may-giat-panasonic-1107064?srsltid=AU7gw4VsCftts62AUzCKn_STtayG8_gPNkZftuZ7mzscDqNuBud5RxGL"
+        },
+        {
+          "id": "Q0334",
+          "question": "Máy giặt panasonic bị lỗi H17",
+          "cause": null,
+          "solution": null,
+          "answer": "Kiểm tra dây điện kết nối tới cảm biến nhiệt độ và bản thân cảm biến. Thay mới cảm biến nhiệt độ nếu bị hỏng.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION; THIRD_PARTY_SOURCE",
+          "source_url": "https://www.dienmayxanh.com/kinh-nghiem-hay/cac-ma-loi-thuong-gap-tren-may-giat-panasonic-1107064?srsltid=AU7gw4VsCftts62AUzCKn_STtayG8_gPNkZftuZ7mzscDqNuBud5RxGL"
+        }
+      ]
+    },
+    {
+      "group_id": "DUPF32E98D3",
+      "record_count": 2,
+      "member_ids": [
+        "Q0198",
+        "Q0335"
+      ],
+      "brand": "Panasonic",
+      "device": "Máy giặt",
+      "error_code": "H18",
+      "issue_id": "I0139",
+      "same_brand": true,
+      "same_device": true,
+      "same_error_code": true,
+      "same_issue": true,
+      "same_cause": true,
+      "same_solution": true,
+      "same_answer": false,
+      "answer_similarity": 0.1538,
+      "has_third_party_source": true,
+      "has_unsplit_cause_solution": true,
+      "category": "UNSAFE_TO_MERGE",
+      "merge_safe": false,
+      "records": [
+        {
+          "id": "Q0198",
+          "question": "Máy giặt panasonic bị lỗi H18",
+          "cause": null,
+          "solution": null,
+          "answer": "Cảm biến nhiệt độ động cơ (Motor Thermistor) phát hiện tín hiệu bất thường hoặc nhiệt độ vượt quá giới hạn cho phép.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION; THIRD_PARTY_SOURCE",
+          "source_url": "https://www.dienmayxanh.com/kinh-nghiem-hay/cac-ma-loi-thuong-gap-tren-may-giat-panasonic-1107064?srsltid=AU7gw4VsCftts62AUzCKn_STtayG8_gPNkZftuZ7mzscDqNuBud5RxGL"
+        },
+        {
+          "id": "Q0335",
+          "question": "Máy giặt panasonic bị lỗi H18",
+          "cause": null,
+          "solution": null,
+          "answer": "Kiểm tra kết nối dây điện của cảm biến nhiệt động cơ. Kiểm tra động cơ, thay thế nếu cần thiết do quá nóng hoặc hư hỏng.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION; THIRD_PARTY_SOURCE",
+          "source_url": "https://www.dienmayxanh.com/kinh-nghiem-hay/cac-ma-loi-thuong-gap-tren-may-giat-panasonic-1107064?srsltid=AU7gw4VsCftts62AUzCKn_STtayG8_gPNkZftuZ7mzscDqNuBud5RxGL"
+        }
+      ]
+    },
+    {
+      "group_id": "DUP3B58E55C",
+      "record_count": 2,
+      "member_ids": [
+        "Q0199",
+        "Q0336"
+      ],
+      "brand": "Panasonic",
+      "device": "Máy giặt",
+      "error_code": "H21",
+      "issue_id": "I0140",
+      "same_brand": true,
+      "same_device": true,
+      "same_error_code": true,
+      "same_issue": true,
+      "same_cause": true,
+      "same_solution": true,
+      "same_answer": false,
+      "answer_similarity": 0.0513,
+      "has_third_party_source": true,
+      "has_unsplit_cause_solution": true,
+      "category": "UNSAFE_TO_MERGE",
+      "merge_safe": false,
+      "records": [
+        {
+          "id": "Q0199",
+          "question": "Máy giặt panasonic bị lỗi H21",
+          "cause": null,
+          "solution": null,
+          "answer": "Cảm biến áp suất phát hiện mực nước trong lồng giặt tăng đột ngột hoặc bất thường.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION; THIRD_PARTY_SOURCE",
+          "source_url": "https://www.dienmayxanh.com/kinh-nghiem-hay/cac-ma-loi-thuong-gap-tren-may-giat-panasonic-1107064?srsltid=AU7gw4VsCftts62AUzCKn_STtayG8_gPNkZftuZ7mzscDqNuBud5RxGL"
+        },
+        {
+          "id": "Q0336",
+          "question": "Máy giặt panasonic bị lỗi H21",
+          "cause": null,
+          "solution": null,
+          "answer": "Vệ sinh màng ngăn của van cấp nước đầu vào. Kiểm tra van cấp nước xem có bị kẹt mở hoặc hoạt động không đúng cách không.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION; THIRD_PARTY_SOURCE",
+          "source_url": "https://www.dienmayxanh.com/kinh-nghiem-hay/cac-ma-loi-thuong-gap-tren-may-giat-panasonic-1107064?srsltid=AU7gw4VsCftts62AUzCKn_STtayG8_gPNkZftuZ7mzscDqNuBud5RxGL"
+        }
+      ]
+    },
+    {
+      "group_id": "DUP37E44666",
+      "record_count": 2,
+      "member_ids": [
+        "Q0200",
+        "Q0337"
+      ],
+      "brand": "Panasonic",
+      "device": "Máy giặt",
+      "error_code": "H23",
+      "issue_id": "I0141",
+      "same_brand": true,
+      "same_device": true,
+      "same_error_code": true,
+      "same_issue": true,
+      "same_cause": true,
+      "same_solution": true,
+      "same_answer": false,
+      "answer_similarity": 0.1875,
+      "has_third_party_source": true,
+      "has_unsplit_cause_solution": true,
+      "category": "UNSAFE_TO_MERGE",
+      "merge_safe": false,
+      "records": [
+        {
+          "id": "Q0200",
+          "question": "Máy giặt panasonic bị lỗi H23",
+          "cause": null,
+          "solution": null,
+          "answer": "Rơ le trên bo mạch điều khiển chính (PCB) phát hiện nhiệt độ quá cao hoặc hoạt động ngoài phạm vi.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION; THIRD_PARTY_SOURCE",
+          "source_url": "https://www.dienmayxanh.com/kinh-nghiem-hay/cac-ma-loi-thuong-gap-tren-may-giat-panasonic-1107064?srsltid=AU7gw4VsCftts62AUzCKn_STtayG8_gPNkZftuZ7mzscDqNuBud5RxGL"
+        },
+        {
+          "id": "Q0337",
+          "question": "Máy giặt panasonic bị lỗi H23",
+          "cause": null,
+          "solution": null,
+          "answer": "Kiểm tra bo mạch điều khiển chính (PCB) và thay mới nếu xác định bị hư hỏng.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION; THIRD_PARTY_SOURCE",
+          "source_url": "https://www.dienmayxanh.com/kinh-nghiem-hay/cac-ma-loi-thuong-gap-tren-may-giat-panasonic-1107064?srsltid=AU7gw4VsCftts62AUzCKn_STtayG8_gPNkZftuZ7mzscDqNuBud5RxGL"
+        }
+      ]
+    },
+    {
+      "group_id": "DUP911E522B",
+      "record_count": 2,
+      "member_ids": [
+        "Q0201",
+        "Q0338"
+      ],
+      "brand": "Panasonic",
+      "device": "Máy giặt",
+      "error_code": "H25",
+      "issue_id": "I0142",
+      "same_brand": true,
+      "same_device": true,
+      "same_error_code": true,
+      "same_issue": true,
+      "same_cause": true,
+      "same_solution": true,
+      "same_answer": false,
+      "answer_similarity": 0.1053,
+      "has_third_party_source": true,
+      "has_unsplit_cause_solution": true,
+      "category": "UNSAFE_TO_MERGE",
+      "merge_safe": false,
+      "records": [
+        {
+          "id": "Q0201",
+          "question": "Máy giặt panasonic bị lỗi H25",
+          "cause": null,
+          "solution": null,
+          "answer": "Động cơ chính gặp sự cố, có thể do kẹt hoặc lỗi cơ khí.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION; THIRD_PARTY_SOURCE",
+          "source_url": "https://www.dienmayxanh.com/kinh-nghiem-hay/cac-ma-loi-thuong-gap-tren-may-giat-panasonic-1107064?srsltid=AU7gw4VsCftts62AUzCKn_STtayG8_gPNkZftuZ7mzscDqNuBud5RxGL"
+        },
+        {
+          "id": "Q0338",
+          "question": "Máy giặt panasonic bị lỗi H25",
+          "cause": null,
+          "solution": null,
+          "answer": "Kiểm tra hệ thống dây điện của động cơ. Kiểm tra xem động cơ có bị kẹt không. Thay mới động cơ nếu cần. Nếu tình trạng vẫn tiếp diễn, kiểm tra và thay thế bo mạch điện tử.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION; THIRD_PARTY_SOURCE",
+          "source_url": "https://www.dienmayxanh.com/kinh-nghiem-hay/cac-ma-loi-thuong-gap-tren-may-giat-panasonic-1107064?srsltid=AU7gw4VsCftts62AUzCKn_STtayG8_gPNkZftuZ7mzscDqNuBud5RxGL"
+        }
+      ]
+    },
+    {
+      "group_id": "DUP06A1E23F",
+      "record_count": 2,
+      "member_ids": [
+        "Q0202",
+        "Q0339"
+      ],
+      "brand": "Panasonic",
+      "device": "Máy giặt",
+      "error_code": "H29",
+      "issue_id": "I0143",
+      "same_brand": true,
+      "same_device": true,
+      "same_error_code": true,
+      "same_issue": true,
+      "same_cause": true,
+      "same_solution": true,
+      "same_answer": false,
+      "answer_similarity": 0.1591,
+      "has_third_party_source": true,
+      "has_unsplit_cause_solution": true,
+      "category": "UNSAFE_TO_MERGE",
+      "merge_safe": false,
+      "records": [
+        {
+          "id": "Q0202",
+          "question": "Máy giặt panasonic bị lỗi H29",
+          "cause": null,
+          "solution": null,
+          "answer": "Quạt làm mát (cooling fan) cho bo mạch công suất chạy chậm, không chạy, bị ngắn mạch hoặc hở mạch.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION; THIRD_PARTY_SOURCE",
+          "source_url": "https://www.dienmayxanh.com/kinh-nghiem-hay/cac-ma-loi-thuong-gap-tren-may-giat-panasonic-1107064?srsltid=AU7gw4VsCftts62AUzCKn_STtayG8_gPNkZftuZ7mzscDqNuBud5RxGL"
+        },
+        {
+          "id": "Q0339",
+          "question": "Máy giặt panasonic bị lỗi H29",
+          "cause": null,
+          "solution": null,
+          "answer": "Kiểm tra dây điện và các kết nối đến quạt làm mát. Thay mới quạt làm mát nếu bị hỏng. Nếu vẫn không được, có thể lỗi do bo mạch điều khiển chính, cần thay thế.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION; THIRD_PARTY_SOURCE",
+          "source_url": "https://www.dienmayxanh.com/kinh-nghiem-hay/cac-ma-loi-thuong-gap-tren-may-giat-panasonic-1107064?srsltid=AU7gw4VsCftts62AUzCKn_STtayG8_gPNkZftuZ7mzscDqNuBud5RxGL"
+        }
+      ]
+    },
+    {
+      "group_id": "DUP3F7C35DC",
+      "record_count": 2,
+      "member_ids": [
+        "Q0203",
+        "Q0340"
+      ],
+      "brand": "Panasonic",
+      "device": "Máy giặt",
+      "error_code": "H43",
+      "issue_id": "I0144",
+      "same_brand": true,
+      "same_device": true,
+      "same_error_code": true,
+      "same_issue": true,
+      "same_cause": true,
+      "same_solution": true,
+      "same_answer": false,
+      "answer_similarity": 0.0882,
+      "has_third_party_source": true,
+      "has_unsplit_cause_solution": true,
+      "category": "UNSAFE_TO_MERGE",
+      "merge_safe": false,
+      "records": [
+        {
+          "id": "Q0203",
+          "question": "Máy giặt panasonic bị lỗi H43",
+          "cause": null,
+          "solution": null,
+          "answer": "Hệ thống phát hiện có sự rò rỉ nước ở đáy máy giặt.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION; THIRD_PARTY_SOURCE",
+          "source_url": "https://www.dienmayxanh.com/kinh-nghiem-hay/cac-ma-loi-thuong-gap-tren-may-giat-panasonic-1107064?srsltid=AU7gw4VsCftts62AUzCKn_STtayG8_gPNkZftuZ7mzscDqNuBud5RxGL"
+        },
+        {
+          "id": "Q0340",
+          "question": "Máy giặt panasonic bị lỗi H43",
+          "cause": null,
+          "solution": null,
+          "answer": "Kiểm tra kỹ các đường ống dẫn nước, ống xả, gioăng cửa xem có bị hở hoặc rò rỉ không. Khắc phục vị trí rò rỉ.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION; THIRD_PARTY_SOURCE",
+          "source_url": "https://www.dienmayxanh.com/kinh-nghiem-hay/cac-ma-loi-thuong-gap-tren-may-giat-panasonic-1107064?srsltid=AU7gw4VsCftts62AUzCKn_STtayG8_gPNkZftuZ7mzscDqNuBud5RxGL"
+        }
+      ]
+    },
+    {
+      "group_id": "DUPAD9EC6C7",
+      "record_count": 2,
+      "member_ids": [
+        "Q0204",
+        "Q0341"
+      ],
+      "brand": "Panasonic",
+      "device": "Máy giặt",
+      "error_code": "H46",
+      "issue_id": "I0145",
+      "same_brand": true,
+      "same_device": true,
+      "same_error_code": true,
+      "same_issue": true,
+      "same_cause": true,
+      "same_solution": true,
+      "same_answer": false,
+      "answer_similarity": 0.125,
+      "has_third_party_source": true,
+      "has_unsplit_cause_solution": true,
+      "category": "UNSAFE_TO_MERGE",
+      "merge_safe": false,
+      "records": [
+        {
+          "id": "Q0204",
+          "question": "Máy giặt panasonic bị lỗi H46",
+          "cause": null,
+          "solution": null,
+          "answer": "Cảm biến phát hiện rò rỉ điện hoặc tín hiệu bất thường từ một cảm biến không xác định.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION; THIRD_PARTY_SOURCE",
+          "source_url": "https://www.dienmayxanh.com/kinh-nghiem-hay/cac-ma-loi-thuong-gap-tren-may-giat-panasonic-1107064?srsltid=AU7gw4VsCftts62AUzCKn_STtayG8_gPNkZftuZ7mzscDqNuBud5RxGL"
+        },
+        {
+          "id": "Q0341",
+          "question": "Máy giặt panasonic bị lỗi H46",
+          "cause": null,
+          "solution": null,
+          "answer": "Kiểm tra hệ thống dây điện và các cảm biến liên quan. Đây là lỗi phức tạp, nếu không tự xác định được, nên thay mới bo mạch điều khiển điện tử chính hoặc gọi kỹ thuật viên.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION; THIRD_PARTY_SOURCE",
+          "source_url": "https://www.dienmayxanh.com/kinh-nghiem-hay/cac-ma-loi-thuong-gap-tren-may-giat-panasonic-1107064?srsltid=AU7gw4VsCftts62AUzCKn_STtayG8_gPNkZftuZ7mzscDqNuBud5RxGL"
+        }
+      ]
+    },
+    {
+      "group_id": "DUPF3873D3F",
+      "record_count": 2,
+      "member_ids": [
+        "Q0205",
+        "Q0342"
+      ],
+      "brand": "Panasonic",
+      "device": "Máy giặt",
+      "error_code": "H51",
+      "issue_id": "I0146",
+      "same_brand": true,
+      "same_device": true,
+      "same_error_code": true,
+      "same_issue": true,
+      "same_cause": true,
+      "same_solution": true,
+      "same_answer": false,
+      "answer_similarity": 0.2174,
+      "has_third_party_source": true,
+      "has_unsplit_cause_solution": true,
+      "category": "UNSAFE_TO_MERGE",
+      "merge_safe": false,
+      "records": [
+        {
+          "id": "Q0205",
+          "question": "Máy giặt panasonic bị lỗi H51",
+          "cause": null,
+          "solution": null,
+          "answer": "Động cơ bị quá tải (thường do lượng đồ giặt quá nhiều hoặc kẹt lồng giặt). Lỗi có thể do bộ ly hợp (Clutch) trên một số model.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION; THIRD_PARTY_SOURCE",
+          "source_url": "https://www.dienmayxanh.com/kinh-nghiem-hay/cac-ma-loi-thuong-gap-tren-may-giat-panasonic-1107064?srsltid=AU7gw4VsCftts62AUzCKn_STtayG8_gPNkZftuZ7mzscDqNuBud5RxGL"
+        },
+        {
+          "id": "Q0342",
+          "question": "Máy giặt panasonic bị lỗi H51",
+          "cause": null,
+          "solution": null,
+          "answer": "Kiểm tra lượng đồ giặt, đảm bảo không vượt quá khối lượng cho phép. Kiểm tra xem lồng giặt có bị kẹt bởi vật lạ không. Kiểm tra động cơ và bo mạch điều khiển.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION; THIRD_PARTY_SOURCE",
+          "source_url": "https://www.dienmayxanh.com/kinh-nghiem-hay/cac-ma-loi-thuong-gap-tren-may-giat-panasonic-1107064?srsltid=AU7gw4VsCftts62AUzCKn_STtayG8_gPNkZftuZ7mzscDqNuBud5RxGL"
+        }
+      ]
+    },
+    {
+      "group_id": "DUPF9937C35",
+      "record_count": 2,
+      "member_ids": [
+        "Q0206",
+        "Q0343"
+      ],
+      "brand": "Panasonic",
+      "device": "Máy giặt",
+      "error_code": "H52",
+      "issue_id": "I0147",
+      "same_brand": true,
+      "same_device": true,
+      "same_error_code": true,
+      "same_issue": true,
+      "same_cause": true,
+      "same_solution": true,
+      "same_answer": false,
+      "answer_similarity": 0.2333,
+      "has_third_party_source": true,
+      "has_unsplit_cause_solution": true,
+      "category": "UNSAFE_TO_MERGE",
+      "merge_safe": false,
+      "records": [
+        {
+          "id": "Q0206",
+          "question": "Máy giặt panasonic bị lỗi H52",
+          "cause": null,
+          "solution": null,
+          "answer": "Điện áp đầu vào quá cao so với mức cho phép, nguồn điện không ổn định.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION; THIRD_PARTY_SOURCE",
+          "source_url": "https://www.dienmayxanh.com/kinh-nghiem-hay/cac-ma-loi-thuong-gap-tren-may-giat-panasonic-1107064?srsltid=AU7gw4VsCftts62AUzCKn_STtayG8_gPNkZftuZ7mzscDqNuBud5RxGL"
+        },
+        {
+          "id": "Q0343",
+          "question": "Máy giặt panasonic bị lỗi H52",
+          "cause": null,
+          "solution": null,
+          "answer": "Kiểm tra lại nguồn điện cung cấp cho máy giặt. Nên sử dụng ổn áp nếu điện áp khu vực nhà bạn không ổn định.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION; THIRD_PARTY_SOURCE",
+          "source_url": "https://www.dienmayxanh.com/kinh-nghiem-hay/cac-ma-loi-thuong-gap-tren-may-giat-panasonic-1107064?srsltid=AU7gw4VsCftts62AUzCKn_STtayG8_gPNkZftuZ7mzscDqNuBud5RxGL"
+        }
+      ]
+    },
+    {
+      "group_id": "DUP09EE0B2E",
+      "record_count": 2,
+      "member_ids": [
+        "Q0208",
+        "Q0344"
+      ],
+      "brand": "Panasonic",
+      "device": "Máy giặt",
+      "error_code": "H55",
+      "issue_id": "I0149",
+      "same_brand": true,
+      "same_device": true,
+      "same_error_code": true,
+      "same_issue": true,
+      "same_cause": true,
+      "same_solution": true,
+      "same_answer": false,
+      "answer_similarity": 0.0698,
+      "has_third_party_source": true,
+      "has_unsplit_cause_solution": true,
+      "category": "UNSAFE_TO_MERGE",
+      "merge_safe": false,
+      "records": [
+        {
+          "id": "Q0208",
+          "question": "Máy giặt panasonic bị lỗi H55",
+          "cause": null,
+          "solution": null,
+          "answer": "Lỗi động cơ truyền động chính (Direct Drive motor trên một số dòng máy Inverter).",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION; THIRD_PARTY_SOURCE",
+          "source_url": "https://www.dienmayxanh.com/kinh-nghiem-hay/cac-ma-loi-thuong-gap-tren-may-giat-panasonic-1107064?srsltid=AU7gw4VsCftts62AUzCKn_STtayG8_gPNkZftuZ7mzscDqNuBud5RxGL"
+        },
+        {
+          "id": "Q0344",
+          "question": "Máy giặt panasonic bị lỗi H55",
+          "cause": null,
+          "solution": null,
+          "answer": "Cần kiểm tra và có thể phải thay mới động cơ truyền động chính. Đây là công việc phức tạp, nên liên hệ trung tâm bảo hành hoặc thợ sửa chữa chuyên nghiệp.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION; THIRD_PARTY_SOURCE",
+          "source_url": "https://www.dienmayxanh.com/kinh-nghiem-hay/cac-ma-loi-thuong-gap-tren-may-giat-panasonic-1107064?srsltid=AU7gw4VsCftts62AUzCKn_STtayG8_gPNkZftuZ7mzscDqNuBud5RxGL"
+        }
+      ]
+    },
+    {
+      "group_id": "DUPB684244F",
+      "record_count": 2,
+      "member_ids": [
+        "Q0209",
+        "Q0345"
+      ],
+      "brand": "Panasonic",
+      "device": "Máy giặt",
+      "error_code": "U11",
+      "issue_id": "I0150",
+      "same_brand": true,
+      "same_device": true,
+      "same_error_code": true,
+      "same_issue": true,
+      "same_cause": true,
+      "same_solution": true,
+      "same_answer": false,
+      "answer_similarity": 0.0597,
+      "has_third_party_source": true,
+      "has_unsplit_cause_solution": true,
+      "category": "UNSAFE_TO_MERGE",
+      "merge_safe": false,
+      "records": [
+        {
+          "id": "Q0209",
+          "question": "Máy giặt panasonic bị lỗi U11",
+          "cause": null,
+          "solution": null,
+          "answer": "Máy giặt không thể xả nước ra ngoài sau một khoảng thời gian nhất định (thường là 15 phút).",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION; THIRD_PARTY_SOURCE",
+          "source_url": "https://www.dienmayxanh.com/kinh-nghiem-hay/cac-ma-loi-thuong-gap-tren-may-giat-panasonic-1107064?srsltid=AU7gw4VsCftts62AUzCKn_STtayG8_gPNkZftuZ7mzscDqNuBud5RxGL"
+        },
+        {
+          "id": "Q0345",
+          "question": "Máy giặt panasonic bị lỗi U11",
+          "cause": null,
+          "solution": null,
+          "answer": "Kiểm tra ống thoát nước xem có bị gấp khúc, tắc nghẽn hay đặt quá cao không. Kiểm tra và vệ sinh bộ lọc bơm xả (thường nằm ở góc dưới phía trước máy). Kiểm tra dây điện kết nối đến bơm xả. Kiểm tra bơm xả có hoạt động không, có thể cần thay thế nếu hỏng. Kiểm tra cảm biến mực nước và dây điện của nó.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION; THIRD_PARTY_SOURCE",
+          "source_url": "https://www.dienmayxanh.com/kinh-nghiem-hay/cac-ma-loi-thuong-gap-tren-may-giat-panasonic-1107064?srsltid=AU7gw4VsCftts62AUzCKn_STtayG8_gPNkZftuZ7mzscDqNuBud5RxGL"
+        }
+      ]
+    },
+    {
+      "group_id": "DUP343F3EE4",
+      "record_count": 2,
+      "member_ids": [
+        "Q0210",
+        "Q0346"
+      ],
+      "brand": "Panasonic",
+      "device": "Máy giặt",
+      "error_code": "U12",
+      "issue_id": "I0151",
+      "same_brand": true,
+      "same_device": true,
+      "same_error_code": true,
+      "same_issue": true,
+      "same_cause": true,
+      "same_solution": true,
+      "same_answer": false,
+      "answer_similarity": 0.1667,
+      "has_third_party_source": true,
+      "has_unsplit_cause_solution": true,
+      "category": "UNSAFE_TO_MERGE",
+      "merge_safe": false,
+      "records": [
+        {
+          "id": "Q0210",
+          "question": "Máy giặt panasonic bị lỗi U12",
+          "cause": null,
+          "solution": null,
+          "answer": "Cửa máy giặt chưa được đóng kín hoàn toàn hoặc công tắc cửa bị lỗi. Nắp máy giặt bị kẹt vật lạ.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION; THIRD_PARTY_SOURCE",
+          "source_url": "https://www.dienmayxanh.com/kinh-nghiem-hay/cac-ma-loi-thuong-gap-tren-may-giat-panasonic-1107064?srsltid=AU7gw4VsCftts62AUzCKn_STtayG8_gPNkZftuZ7mzscDqNuBud5RxGL"
+        },
+        {
+          "id": "Q0346",
+          "question": "Máy giặt panasonic bị lỗi U12",
+          "cause": null,
+          "solution": null,
+          "answer": "Đảm bảo cửa/nắp máy giặt đã được đóng chặt. Kiểm tra xem có quần áo hay vật gì kẹt ở cửa không. Kiểm tra công tắc cửa (khóa cửa), có thể cần thay thế nếu hỏng. Kiểm tra bo mạch điều khiển điện tử. Kiểm tra hệ thống dây điện liên quan đến công tắc cửa.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION; THIRD_PARTY_SOURCE",
+          "source_url": "https://www.dienmayxanh.com/kinh-nghiem-hay/cac-ma-loi-thuong-gap-tren-may-giat-panasonic-1107064?srsltid=AU7gw4VsCftts62AUzCKn_STtayG8_gPNkZftuZ7mzscDqNuBud5RxGL"
+        }
+      ]
+    },
+    {
+      "group_id": "DUPE4D87E58",
+      "record_count": 2,
+      "member_ids": [
+        "Q0211",
+        "Q0347"
+      ],
+      "brand": "Panasonic",
+      "device": "Máy giặt",
+      "error_code": "U13",
+      "issue_id": "I0152",
+      "same_brand": true,
+      "same_device": true,
+      "same_error_code": true,
+      "same_issue": true,
+      "same_cause": true,
+      "same_solution": true,
+      "same_answer": false,
+      "answer_similarity": 0.12,
+      "has_third_party_source": true,
+      "has_unsplit_cause_solution": true,
+      "category": "UNSAFE_TO_MERGE",
+      "merge_safe": false,
+      "records": [
+        {
+          "id": "Q0211",
+          "question": "Máy giặt panasonic bị lỗi U13",
+          "cause": null,
+          "solution": null,
+          "answer": "Máy giặt bị mất cân bằng trong quá trình vắt do đồ giặt bị dồn về một phía. Máy giặt đặt ở vị trí không bằng phẳng.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION; THIRD_PARTY_SOURCE",
+          "source_url": "https://www.dienmayxanh.com/kinh-nghiem-hay/cac-ma-loi-thuong-gap-tren-may-giat-panasonic-1107064?srsltid=AU7gw4VsCftts62AUzCKn_STtayG8_gPNkZftuZ7mzscDqNuBud5RxGL"
+        },
+        {
+          "id": "Q0347",
+          "question": "Máy giặt panasonic bị lỗi U13",
+          "cause": null,
+          "solution": null,
+          "answer": "Mở nắp và sắp xếp lại đồ giặt trong lồng cho đều. Không giặt quá ít hoặc quá nhiều đồ. Đảm bảo máy giặt được đặt trên một mặt phẳng vững chắc và cân bằng. Điều chỉnh lại chân đế của máy nếu cần. Kiểm tra áp lực nước, bộ lọc và van nước đầu vào (ít liên quan nhưng một số trường hợp có thể ảnh hưởng gián tiếp).",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION; THIRD_PARTY_SOURCE",
+          "source_url": "https://www.dienmayxanh.com/kinh-nghiem-hay/cac-ma-loi-thuong-gap-tren-may-giat-panasonic-1107064?srsltid=AU7gw4VsCftts62AUzCKn_STtayG8_gPNkZftuZ7mzscDqNuBud5RxGL"
+        }
+      ]
+    },
+    {
+      "group_id": "DUP7A0A60C7",
+      "record_count": 2,
+      "member_ids": [
+        "Q0212",
+        "Q0348"
+      ],
+      "brand": "Panasonic",
+      "device": "Máy giặt",
+      "error_code": "U14",
+      "issue_id": "I0153",
+      "same_brand": true,
+      "same_device": true,
+      "same_error_code": true,
+      "same_issue": true,
+      "same_cause": true,
+      "same_solution": true,
+      "same_answer": false,
+      "answer_similarity": 0.069,
+      "has_third_party_source": true,
+      "has_unsplit_cause_solution": true,
+      "category": "UNSAFE_TO_MERGE",
+      "merge_safe": false,
+      "records": [
+        {
+          "id": "Q0212",
+          "question": "Máy giặt panasonic bị lỗi U14",
+          "cause": null,
+          "solution": null,
+          "answer": "Máy giặt không được cấp đủ nước trong một khoảng thời gian nhất định (thường là 20 phút)",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION; THIRD_PARTY_SOURCE",
+          "source_url": "https://www.dienmayxanh.com/kinh-nghiem-hay/cac-ma-loi-thuong-gap-tren-may-giat-panasonic-1107064?srsltid=AU7gw4VsCftts62AUzCKn_STtayG8_gPNkZftuZ7mzscDqNuBud5RxGL"
+        },
+        {
+          "id": "Q0348",
+          "question": "Máy giặt panasonic bị lỗi U14",
+          "cause": null,
+          "solution": null,
+          "answer": "Kiểm tra nguồn nước: vòi nước đã mở chưa, áp lực nước có đủ mạnh không. Kiểm tra ống cấp nước xem có bị gấp khúc, tắc nghẽn không. Vệ sinh lưới lọc ở đầu van cấp nước của máy giặt. Kiểm tra van cấp nước điện tử có hoạt động không. Kiểm tra hệ thống dây điện liên quan đến van cấp nước.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION; THIRD_PARTY_SOURCE",
+          "source_url": "https://www.dienmayxanh.com/kinh-nghiem-hay/cac-ma-loi-thuong-gap-tren-may-giat-panasonic-1107064?srsltid=AU7gw4VsCftts62AUzCKn_STtayG8_gPNkZftuZ7mzscDqNuBud5RxGL"
+        }
+      ]
+    },
+    {
+      "group_id": "DUP0B4D52A4",
+      "record_count": 2,
+      "member_ids": [
+        "Q0213",
+        "Q0349"
+      ],
+      "brand": "Panasonic",
+      "device": "Máy giặt",
+      "error_code": "U18",
+      "issue_id": "I0154",
+      "same_brand": true,
+      "same_device": true,
+      "same_error_code": true,
+      "same_issue": true,
+      "same_cause": true,
+      "same_solution": true,
+      "same_answer": false,
+      "answer_similarity": 0.25,
+      "has_third_party_source": true,
+      "has_unsplit_cause_solution": true,
+      "category": "UNSAFE_TO_MERGE",
+      "merge_safe": false,
+      "records": [
+        {
+          "id": "Q0213",
+          "question": "Máy giặt panasonic bị lỗi U18",
+          "cause": null,
+          "solution": null,
+          "answer": "Lỗi liên quan đến bộ phận bơm xả hoặc hệ thống thoát nước không ổn định (thường gặp ở một số dòng máy giặt Panasonic đời cũ hoặc nội địa). Có thể do bộ lọc xả bị tắc hoặc bơm xả yếu.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION; THIRD_PARTY_SOURCE",
+          "source_url": "https://www.dienmayxanh.com/kinh-nghiem-hay/cac-ma-loi-thuong-gap-tren-may-giat-panasonic-1107064?srsltid=AU7gw4VsCftts62AUzCKn_STtayG8_gPNkZftuZ7mzscDqNuBud5RxGL"
+        },
+        {
+          "id": "Q0349",
+          "question": "Máy giặt panasonic bị lỗi U18",
+          "cause": null,
+          "solution": null,
+          "answer": "Kiểm tra và vệ sinh kỹ bộ lọc bơm xả. Kiểm tra ống thoát nước đảm bảo không bị tắc nghẽn. Nếu lỗi vẫn còn, kiểm tra bơm xả và hệ thống dây điện, có thể cần thay mới bơm.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION; THIRD_PARTY_SOURCE",
+          "source_url": "https://www.dienmayxanh.com/kinh-nghiem-hay/cac-ma-loi-thuong-gap-tren-may-giat-panasonic-1107064?srsltid=AU7gw4VsCftts62AUzCKn_STtayG8_gPNkZftuZ7mzscDqNuBud5RxGL"
+        }
+      ]
+    },
+    {
+      "group_id": "DUPD0D40AC0",
+      "record_count": 2,
+      "member_ids": [
+        "Q0214",
+        "Q0350"
+      ],
+      "brand": "Panasonic",
+      "device": "Bếp",
+      "error_code": "U04",
+      "issue_id": "I0155",
+      "same_brand": true,
+      "same_device": true,
+      "same_error_code": true,
+      "same_issue": true,
+      "same_cause": true,
+      "same_solution": true,
+      "same_answer": false,
+      "answer_similarity": 0.2069,
+      "has_third_party_source": true,
+      "has_unsplit_cause_solution": true,
+      "category": "UNSAFE_TO_MERGE",
+      "merge_safe": false,
+      "records": [
+        {
+          "id": "Q0214",
+          "question": "Bếp từ panasonic bị lỗi U04",
+          "cause": null,
+          "solution": null,
+          "answer": "Bộ lọc hút/xả khí bị tắc hoặc che kín do bụi bẩn, vật cản.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION; THIRD_PARTY_SOURCE",
+          "source_url": "https://www.kanto.vn/tong-hop-bang-ma-loi-bep-tu-panasonic-noi-dia-nhat-va-cach-sua-chua?srsltid=AU7gw4Vfj2QUBCV6eveZo17Wkbpl4YyKHd_RG7PwYqGzctIcfs0HPpK0"
+        },
+        {
+          "id": "Q0350",
+          "question": "Bếp từ panasonic bị lỗi U04",
+          "cause": null,
+          "solution": null,
+          "answer": "Lau sạch bộ lọc hút/xả khí ở phía sau bếp. Loại bỏ vật cản che chắn để đảm bảo thông thoáng.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION; THIRD_PARTY_SOURCE",
+          "source_url": "https://www.kanto.vn/tong-hop-bang-ma-loi-bep-tu-panasonic-noi-dia-nhat-va-cach-sua-chua?srsltid=AU7gw4Vfj2QUBCV6eveZo17Wkbpl4YyKHd_RG7PwYqGzctIcfs0HPpK0"
+        }
+      ]
+    },
+    {
+      "group_id": "DUP8C02EB6E",
+      "record_count": 2,
+      "member_ids": [
+        "Q0215",
+        "Q0351"
+      ],
+      "brand": "Panasonic",
+      "device": "Bếp",
+      "error_code": "U11",
+      "issue_id": "I0156",
+      "same_brand": true,
+      "same_device": true,
+      "same_error_code": true,
+      "same_issue": true,
+      "same_cause": true,
+      "same_solution": true,
+      "same_answer": false,
+      "answer_similarity": 0.0952,
+      "has_third_party_source": true,
+      "has_unsplit_cause_solution": true,
+      "category": "UNSAFE_TO_MERGE",
+      "merge_safe": false,
+      "records": [
+        {
+          "id": "Q0215",
+          "question": "Bếp từ panasonic bị lỗi U11*",
+          "cause": null,
+          "solution": null,
+          "answer": "Khay không có nước hoặc nướng liên tục mà không ngắt nguồn.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION; THIRD_PARTY_SOURCE",
+          "source_url": "https://www.kanto.vn/tong-hop-bang-ma-loi-bep-tu-panasonic-noi-dia-nhat-va-cach-sua-chua?srsltid=AU7gw4Vfj2QUBCV6eveZo17Wkbpl4YyKHd_RG7PwYqGzctIcfs0HPpK0"
+        },
+        {
+          "id": "Q0351",
+          "question": "Bếp từ panasonic bị lỗi U11*",
+          "cause": null,
+          "solution": null,
+          "answer": "Tắt nguồn lò nướng, đổ nước vào khay và khởi động lại.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION; THIRD_PARTY_SOURCE",
+          "source_url": "https://www.kanto.vn/tong-hop-bang-ma-loi-bep-tu-panasonic-noi-dia-nhat-va-cach-sua-chua?srsltid=AU7gw4Vfj2QUBCV6eveZo17Wkbpl4YyKHd_RG7PwYqGzctIcfs0HPpK0"
+        }
+      ]
+    },
+    {
+      "group_id": "DUPCA8CC41F",
+      "record_count": 2,
+      "member_ids": [
+        "Q0216",
+        "Q0352"
+      ],
+      "brand": "Panasonic",
+      "device": "Bếp",
+      "error_code": "U12",
+      "issue_id": "I0157",
+      "same_brand": true,
+      "same_device": true,
+      "same_error_code": true,
+      "same_issue": true,
+      "same_cause": true,
+      "same_solution": true,
+      "same_answer": false,
+      "answer_similarity": 0.0,
+      "has_third_party_source": true,
+      "has_unsplit_cause_solution": true,
+      "category": "UNSAFE_TO_MERGE",
+      "merge_safe": false,
+      "records": [
+        {
+          "id": "Q0216",
+          "question": "Bếp từ panasonic bị lỗi U12",
+          "cause": null,
+          "solution": null,
+          "answer": "Thực phẩm trong lò bốc cháy hoặc nhiệt độ tăng đột ngột.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION; THIRD_PARTY_SOURCE",
+          "source_url": "https://www.kanto.vn/tong-hop-bang-ma-loi-bep-tu-panasonic-noi-dia-nhat-va-cach-sua-chua?srsltid=AU7gw4Vfj2QUBCV6eveZo17Wkbpl4YyKHd_RG7PwYqGzctIcfs0HPpK0"
+        },
+        {
+          "id": "Q0352",
+          "question": "Bếp từ panasonic bị lỗi U12",
+          "cause": null,
+          "solution": null,
+          "answer": "Tắt nguồn ngay, dùng khăn ướt che kín lỗ hút/xả khí, ngắt cầu dao và chờ lửa tắt. Liên hệ kỹ thuật viên nếu cần.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION; THIRD_PARTY_SOURCE",
+          "source_url": "https://www.kanto.vn/tong-hop-bang-ma-loi-bep-tu-panasonic-noi-dia-nhat-va-cach-sua-chua?srsltid=AU7gw4Vfj2QUBCV6eveZo17Wkbpl4YyKHd_RG7PwYqGzctIcfs0HPpK0"
+        }
+      ]
+    },
+    {
+      "group_id": "DUP83DEACDF",
+      "record_count": 2,
+      "member_ids": [
+        "Q0217",
+        "Q0353"
+      ],
+      "brand": "Panasonic",
+      "device": "Bếp",
+      "error_code": "U15",
+      "issue_id": "I0158",
+      "same_brand": true,
+      "same_device": true,
+      "same_error_code": true,
+      "same_issue": true,
+      "same_cause": true,
+      "same_solution": true,
+      "same_answer": false,
+      "answer_similarity": 0.25,
+      "has_third_party_source": true,
+      "has_unsplit_cause_solution": true,
+      "category": "UNSAFE_TO_MERGE",
+      "merge_safe": false,
+      "records": [
+        {
+          "id": "Q0217",
+          "question": "Bếp từ panasonic bị lỗi U15*",
+          "cause": null,
+          "solution": null,
+          "answer": "Nồi có đáy cong vênh, biến dạng, hoặc sử dụng dầu nóng từ đầu để chiên.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION; THIRD_PARTY_SOURCE",
+          "source_url": "https://www.kanto.vn/tong-hop-bang-ma-loi-bep-tu-panasonic-noi-dia-nhat-va-cach-sua-chua?srsltid=AU7gw4Vfj2QUBCV6eveZo17Wkbpl4YyKHd_RG7PwYqGzctIcfs0HPpK0"
+        },
+        {
+          "id": "Q0353",
+          "question": "Bếp từ panasonic bị lỗi U15*",
+          "cause": null,
+          "solution": null,
+          "answer": "Thay nồi có đáy phẳng, không biến dạng. Sử dụng dầu ở nhiệt độ thường và để mặt bếp nguội trước khi nấu lại.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION; THIRD_PARTY_SOURCE",
+          "source_url": "https://www.kanto.vn/tong-hop-bang-ma-loi-bep-tu-panasonic-noi-dia-nhat-va-cach-sua-chua?srsltid=AU7gw4Vfj2QUBCV6eveZo17Wkbpl4YyKHd_RG7PwYqGzctIcfs0HPpK0"
+        }
+      ]
+    },
+    {
+      "group_id": "DUP3E30F87B",
+      "record_count": 2,
+      "member_ids": [
+        "Q0218",
+        "Q0354"
+      ],
+      "brand": "Panasonic",
+      "device": "Bếp",
+      "error_code": "U16",
+      "issue_id": "I0159",
+      "same_brand": true,
+      "same_device": true,
+      "same_error_code": true,
+      "same_issue": true,
+      "same_cause": true,
+      "same_solution": true,
+      "same_answer": false,
+      "answer_similarity": 0.1905,
+      "has_third_party_source": true,
+      "has_unsplit_cause_solution": true,
+      "category": "UNSAFE_TO_MERGE",
+      "merge_safe": false,
+      "records": [
+        {
+          "id": "Q0218",
+          "question": "Bếp từ panasonic bị lỗi U16",
+          "cause": null,
+          "solution": null,
+          "answer": "Nước, thức ăn hoặc vật thể bám trên khu vực điều khiển.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION; THIRD_PARTY_SOURCE",
+          "source_url": "https://www.kanto.vn/tong-hop-bang-ma-loi-bep-tu-panasonic-noi-dia-nhat-va-cach-sua-chua?srsltid=AU7gw4Vfj2QUBCV6eveZo17Wkbpl4YyKHd_RG7PwYqGzctIcfs0HPpK0"
+        },
+        {
+          "id": "Q0354",
+          "question": "Bếp từ panasonic bị lỗi U16",
+          "cause": null,
+          "solution": null,
+          "answer": "Lau sạch nước, vật lạ trên bảng điều khiển và khởi động lại.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION; THIRD_PARTY_SOURCE",
+          "source_url": "https://www.kanto.vn/tong-hop-bang-ma-loi-bep-tu-panasonic-noi-dia-nhat-va-cach-sua-chua?srsltid=AU7gw4Vfj2QUBCV6eveZo17Wkbpl4YyKHd_RG7PwYqGzctIcfs0HPpK0"
+        }
+      ]
+    },
+    {
+      "group_id": "DUPE5619C20",
+      "record_count": 2,
+      "member_ids": [
+        "Q0219",
+        "Q0355"
+      ],
+      "brand": "Panasonic",
+      "device": "Bếp",
+      "error_code": "U19",
+      "issue_id": "I0160",
+      "same_brand": true,
+      "same_device": true,
+      "same_error_code": true,
+      "same_issue": true,
+      "same_cause": true,
+      "same_solution": true,
+      "same_answer": false,
+      "answer_similarity": 0.1429,
+      "has_third_party_source": true,
+      "has_unsplit_cause_solution": true,
+      "category": "UNSAFE_TO_MERGE",
+      "merge_safe": false,
+      "records": [
+        {
+          "id": "Q0219",
+          "question": "Bếp từ panasonic bị lỗi U19",
+          "cause": null,
+          "solution": null,
+          "answer": "Chọn chế độ “Đun sôi” hoặc “Nấu cơm” khi mặt bếp còn nóng.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION; THIRD_PARTY_SOURCE",
+          "source_url": "https://www.kanto.vn/tong-hop-bang-ma-loi-bep-tu-panasonic-noi-dia-nhat-va-cach-sua-chua?srsltid=AU7gw4Vfj2QUBCV6eveZo17Wkbpl4YyKHd_RG7PwYqGzctIcfs0HPpK0"
+        },
+        {
+          "id": "Q0355",
+          "question": "Bếp từ panasonic bị lỗi U19",
+          "cause": null,
+          "solution": null,
+          "answer": "Chờ mặt bếp nguội hoàn toàn trước khi khởi động lại.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION; THIRD_PARTY_SOURCE",
+          "source_url": "https://www.kanto.vn/tong-hop-bang-ma-loi-bep-tu-panasonic-noi-dia-nhat-va-cach-sua-chua?srsltid=AU7gw4Vfj2QUBCV6eveZo17Wkbpl4YyKHd_RG7PwYqGzctIcfs0HPpK0"
+        }
+      ]
+    },
+    {
+      "group_id": "DUP8677A925",
+      "record_count": 2,
+      "member_ids": [
+        "Q0220",
+        "Q0356"
+      ],
+      "brand": "Panasonic",
+      "device": "Bếp",
+      "error_code": "U20",
+      "issue_id": "I0161",
+      "same_brand": true,
+      "same_device": true,
+      "same_error_code": true,
+      "same_issue": true,
+      "same_cause": true,
+      "same_solution": true,
+      "same_answer": false,
+      "answer_similarity": 0.1724,
+      "has_third_party_source": true,
+      "has_unsplit_cause_solution": true,
+      "category": "UNSAFE_TO_MERGE",
+      "merge_safe": false,
+      "records": [
+        {
+          "id": "Q0220",
+          "question": "Bếp từ panasonic bị lỗi U20*",
+          "cause": null,
+          "solution": null,
+          "answer": "Cảm biến ở trung tâm vùng nấu bị bẩn hoặc đun quá nhiều nước trong nồi sâu lòng.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION; THIRD_PARTY_SOURCE",
+          "source_url": "https://www.kanto.vn/tong-hop-bang-ma-loi-bep-tu-panasonic-noi-dia-nhat-va-cach-sua-chua?srsltid=AU7gw4Vfj2QUBCV6eveZo17Wkbpl4YyKHd_RG7PwYqGzctIcfs0HPpK0"
+        },
+        {
+          "id": "Q0356",
+          "question": "Bếp từ panasonic bị lỗi U20*",
+          "cause": null,
+          "solution": null,
+          "answer": "Lau sạch cảm biến vùng nấu. Giảm lượng nước khi đun sôi và khởi động lại.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION; THIRD_PARTY_SOURCE",
+          "source_url": "https://www.kanto.vn/tong-hop-bang-ma-loi-bep-tu-panasonic-noi-dia-nhat-va-cach-sua-chua?srsltid=AU7gw4Vfj2QUBCV6eveZo17Wkbpl4YyKHd_RG7PwYqGzctIcfs0HPpK0"
+        }
+      ]
+    },
+    {
+      "group_id": "DUP2F9B0339",
+      "record_count": 2,
+      "member_ids": [
+        "Q0221",
+        "Q0357"
+      ],
+      "brand": "Panasonic",
+      "device": "Bếp",
+      "error_code": "U21",
+      "issue_id": "I0162",
+      "same_brand": true,
+      "same_device": true,
+      "same_error_code": true,
+      "same_issue": true,
+      "same_cause": true,
+      "same_solution": true,
+      "same_answer": false,
+      "answer_similarity": 0.2759,
+      "has_third_party_source": true,
+      "has_unsplit_cause_solution": true,
+      "category": "UNSAFE_TO_MERGE",
+      "merge_safe": false,
+      "records": [
+        {
+          "id": "Q0221",
+          "question": "Bếp từ panasonic bị lỗi U21*",
+          "cause": null,
+          "solution": null,
+          "answer": "Cảm biến bị ảnh hưởng bởi ánh sáng từ thiết bị nấu khác hoặc ánh nắng trực tiếp.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION; THIRD_PARTY_SOURCE",
+          "source_url": "https://www.kanto.vn/tong-hop-bang-ma-loi-bep-tu-panasonic-noi-dia-nhat-va-cach-sua-chua?srsltid=AU7gw4Vfj2QUBCV6eveZo17Wkbpl4YyKHd_RG7PwYqGzctIcfs0HPpK0"
+        },
+        {
+          "id": "Q0357",
+          "question": "Bếp từ panasonic bị lỗi U21*",
+          "cause": null,
+          "solution": null,
+          "answer": "Đặt bếp từ xa các thiết bị phát ánh sáng hồng ngoại và tránh ánh nắng trực tiếp chiếu vào cảm biến.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION; THIRD_PARTY_SOURCE",
+          "source_url": "https://www.kanto.vn/tong-hop-bang-ma-loi-bep-tu-panasonic-noi-dia-nhat-va-cach-sua-chua?srsltid=AU7gw4Vfj2QUBCV6eveZo17Wkbpl4YyKHd_RG7PwYqGzctIcfs0HPpK0"
+        }
+      ]
+    },
+    {
+      "group_id": "DUPED15C65F",
+      "record_count": 2,
+      "member_ids": [
+        "Q0228",
+        "Q0309"
+      ],
+      "brand": "Panasonic",
+      "device": "Điều hòa",
+      "error_code": "F91",
+      "issue_id": "I0169",
+      "same_brand": true,
+      "same_device": true,
+      "same_error_code": true,
+      "same_issue": true,
+      "same_cause": true,
+      "same_solution": true,
+      "same_answer": false,
+      "answer_similarity": 0.0488,
+      "has_third_party_source": false,
+      "has_unsplit_cause_solution": true,
+      "category": "UNSAFE_TO_MERGE",
+      "merge_safe": false,
+      "records": [
+        {
+          "id": "Q0228",
+          "question": "Điều hòa panasonic bị lỗi F91",
+          "cause": null,
+          "solution": null,
+          "answer": "Dòng tải máy nén thấp hơn bình thường",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION",
+          "source_url": "https://www.panasonic.com/vn/air-solutions/learn-more/ma-loi-may-lanh-panasonic.html"
+        },
+        {
+          "id": "Q0309",
+          "question": "Điều hòa panasonic bị lỗi F91",
+          "cause": null,
+          "solution": null,
+          "answer": "Kiểm tra van hút của máy nén xem có mở hoàn toàn không? Kiểm tra thiết bị lọc khí đầu vào máy nén trục vít có bị tắc nghẽn không? Kiểm tra xem lọc khí trên đường ống óc bị tắc hay không? Nếu cần bạn có thể thay thế thiết bị mới..",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION",
+          "source_url": "https://www.panasonic.com/vn/air-solutions/learn-more/ma-loi-may-lanh-panasonic.html"
+        }
+      ]
+    },
+    {
+      "group_id": "DUP2DE4DCB6",
+      "record_count": 2,
+      "member_ids": [
+        "Q0229",
+        "Q0313"
+      ],
+      "brand": "Panasonic",
+      "device": "Điều hòa",
+      "error_code": "H11",
+      "issue_id": "I0170",
+      "same_brand": true,
+      "same_device": true,
+      "same_error_code": true,
+      "same_issue": true,
+      "same_cause": true,
+      "same_solution": true,
+      "same_answer": false,
+      "answer_similarity": 0.1071,
+      "has_third_party_source": false,
+      "has_unsplit_cause_solution": true,
+      "category": "UNSAFE_TO_MERGE",
+      "merge_safe": false,
+      "records": [
+        {
+          "id": "Q0229",
+          "question": "Điều hòa panasonic bị lỗi H11",
+          "cause": null,
+          "solution": null,
+          "answer": "Lỗi mất kết nối thông tin dàn nóng/dàn lạnh.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION",
+          "source_url": "https://www.panasonic.com/vn/air-solutions/learn-more/ma-loi-may-lanh-panasonic.html"
+        },
+        {
+          "id": "Q0313",
+          "question": "Điều hòa panasonic bị lỗi H11",
+          "cause": null,
+          "solution": null,
+          "answer": "Kiểm tra dây kết nối, bo mạch dàn nóng hoặc dàn lạnh. Đồng thời cài đặt lại dữ liệu ở dàn lạnh điều hòa.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION",
+          "source_url": "https://www.panasonic.com/vn/air-solutions/learn-more/ma-loi-may-lanh-panasonic.html"
+        }
+      ]
+    },
+    {
+      "group_id": "DUP9F642092",
+      "record_count": 2,
+      "member_ids": [
+        "Q0230",
+        "Q0314"
+      ],
+      "brand": "Panasonic",
+      "device": "Điều hòa",
+      "error_code": "H12",
+      "issue_id": "I0171",
+      "same_brand": true,
+      "same_device": true,
+      "same_error_code": true,
+      "same_issue": true,
+      "same_cause": true,
+      "same_solution": true,
+      "same_answer": false,
+      "answer_similarity": 0.1875,
+      "has_third_party_source": false,
+      "has_unsplit_cause_solution": true,
+      "category": "UNSAFE_TO_MERGE",
+      "merge_safe": false,
+      "records": [
+        {
+          "id": "Q0230",
+          "question": "Điều hòa panasonic bị lỗi H12",
+          "cause": null,
+          "solution": null,
+          "answer": "Dàn lạnh lỗi kết nối công suất với dàn nóng.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION",
+          "source_url": "https://www.panasonic.com/vn/air-solutions/learn-more/ma-loi-may-lanh-panasonic.html"
+        },
+        {
+          "id": "Q0314",
+          "question": "Điều hòa panasonic bị lỗi H12",
+          "cause": null,
+          "solution": null,
+          "answer": "Kiểm tra và điều chỉnh công suất dàn nóng và lạnh.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION",
+          "source_url": "https://www.panasonic.com/vn/air-solutions/learn-more/ma-loi-may-lanh-panasonic.html"
+        }
+      ]
+    },
+    {
+      "group_id": "DUPFF0C6BCE",
+      "record_count": 2,
+      "member_ids": [
+        "Q0231",
+        "Q0315"
+      ],
+      "brand": "Panasonic",
+      "device": "Điều hòa",
+      "error_code": "H14",
+      "issue_id": "I0172",
+      "same_brand": true,
+      "same_device": true,
+      "same_error_code": true,
+      "same_issue": true,
+      "same_cause": true,
+      "same_solution": true,
+      "same_answer": false,
+      "answer_similarity": 0.0714,
+      "has_third_party_source": false,
+      "has_unsplit_cause_solution": true,
+      "category": "UNSAFE_TO_MERGE",
+      "merge_safe": false,
+      "records": [
+        {
+          "id": "Q0231",
+          "question": "Điều hòa panasonic bị lỗi H14",
+          "cause": null,
+          "solution": null,
+          "answer": "Lỗi cảm biến nhiệt độ phòng",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION",
+          "source_url": "https://www.panasonic.com/vn/air-solutions/learn-more/ma-loi-may-lanh-panasonic.html"
+        },
+        {
+          "id": "Q0315",
+          "question": "Điều hòa panasonic bị lỗi H14",
+          "cause": null,
+          "solution": null,
+          "answer": "Cần kiểm tra jack cắm giữa board mạch với đầu nối cảm biến. Đo điện trở của cảm biến sau đó thay thế board mạch dàn lạnh.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION",
+          "source_url": "https://www.panasonic.com/vn/air-solutions/learn-more/ma-loi-may-lanh-panasonic.html"
+        }
+      ]
+    },
+    {
+      "group_id": "DUPA46A90D0",
+      "record_count": 2,
+      "member_ids": [
+        "Q0232",
+        "Q0316"
+      ],
+      "brand": "Panasonic",
+      "device": "Điều hòa",
+      "error_code": "H15",
+      "issue_id": "I0173",
+      "same_brand": true,
+      "same_device": true,
+      "same_error_code": true,
+      "same_issue": true,
+      "same_cause": true,
+      "same_solution": true,
+      "same_answer": false,
+      "answer_similarity": 0.2778,
+      "has_third_party_source": false,
+      "has_unsplit_cause_solution": true,
+      "category": "UNSAFE_TO_MERGE",
+      "merge_safe": false,
+      "records": [
+        {
+          "id": "Q0232",
+          "question": "Điều hòa panasonic bị lỗi H15",
+          "cause": null,
+          "solution": null,
+          "answer": "Lỗi cảm biến nhiệt độ máy nén.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION",
+          "source_url": "https://www.panasonic.com/vn/air-solutions/learn-more/ma-loi-may-lanh-panasonic.html"
+        },
+        {
+          "id": "Q0316",
+          "question": "Điều hòa panasonic bị lỗi H15",
+          "cause": null,
+          "solution": null,
+          "answer": "Kiểm tra ngay cảm biến nhiệt máy nén. Sửa chữa hoặc thay thế khi cần thiết.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION",
+          "source_url": "https://www.panasonic.com/vn/air-solutions/learn-more/ma-loi-may-lanh-panasonic.html"
+        }
+      ]
+    },
+    {
+      "group_id": "DUP0927494D",
+      "record_count": 2,
+      "member_ids": [
+        "Q0233",
+        "Q0317"
+      ],
+      "brand": "Panasonic",
+      "device": "Điều hòa",
+      "error_code": "H16",
+      "issue_id": "I0174",
+      "same_brand": true,
+      "same_device": true,
+      "same_error_code": true,
+      "same_issue": true,
+      "same_cause": true,
+      "same_solution": true,
+      "same_answer": false,
+      "answer_similarity": 0.0,
+      "has_third_party_source": false,
+      "has_unsplit_cause_solution": true,
+      "category": "UNSAFE_TO_MERGE",
+      "merge_safe": false,
+      "records": [
+        {
+          "id": "Q0233",
+          "question": "Điều hòa panasonic bị lỗi H16",
+          "cause": null,
+          "solution": null,
+          "answer": "Dòng tải máy nén quá thấp.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION",
+          "source_url": "https://www.panasonic.com/vn/air-solutions/learn-more/ma-loi-may-lanh-panasonic.html"
+        },
+        {
+          "id": "Q0317",
+          "question": "Điều hòa panasonic bị lỗi H16",
+          "cause": null,
+          "solution": null,
+          "answer": "Kiểm tra Block của điều hòa. Liên hệ với trung tâm bảo hành hay dịch vụ sửa chữa chuyên nghiệp.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION",
+          "source_url": "https://www.panasonic.com/vn/air-solutions/learn-more/ma-loi-may-lanh-panasonic.html"
+        }
+      ]
+    },
+    {
+      "group_id": "DUPF11FAC19",
+      "record_count": 2,
+      "member_ids": [
+        "Q0234",
+        "Q0318"
+      ],
+      "brand": "Panasonic",
+      "device": "Điều hòa",
+      "error_code": "H27",
+      "issue_id": "I0175",
+      "same_brand": true,
+      "same_device": true,
+      "same_error_code": true,
+      "same_issue": true,
+      "same_cause": true,
+      "same_solution": true,
+      "same_answer": false,
+      "answer_similarity": 0.1333,
+      "has_third_party_source": false,
+      "has_unsplit_cause_solution": true,
+      "category": "UNSAFE_TO_MERGE",
+      "merge_safe": false,
+      "records": [
+        {
+          "id": "Q0234",
+          "question": "Điều hòa panasonic bị lỗi H27",
+          "cause": null,
+          "solution": null,
+          "answer": "Lỗi cảm biến nhiệt độ ngoài trời.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION",
+          "source_url": "https://www.panasonic.com/vn/air-solutions/learn-more/ma-loi-may-lanh-panasonic.html"
+        },
+        {
+          "id": "Q0318",
+          "question": "Điều hòa panasonic bị lỗi H27",
+          "cause": null,
+          "solution": null,
+          "answer": "Kiểm tra giá trị cảm biến hoặc rắc cắm lỏng.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION",
+          "source_url": "https://www.panasonic.com/vn/air-solutions/learn-more/ma-loi-may-lanh-panasonic.html"
+        }
+      ]
+    },
+    {
+      "group_id": "DUP12A48C3C",
+      "record_count": 2,
+      "member_ids": [
+        "Q0235",
+        "Q0319"
+      ],
+      "brand": "Panasonic",
+      "device": "Điều hòa",
+      "error_code": "H28",
+      "issue_id": "I0176",
+      "same_brand": true,
+      "same_device": true,
+      "same_error_code": true,
+      "same_issue": true,
+      "same_cause": true,
+      "same_solution": true,
+      "same_answer": false,
+      "answer_similarity": 0.2632,
+      "has_third_party_source": false,
+      "has_unsplit_cause_solution": true,
+      "category": "UNSAFE_TO_MERGE",
+      "merge_safe": false,
+      "records": [
+        {
+          "id": "Q0235",
+          "question": "Điều hòa panasonic bị lỗi H28",
+          "cause": null,
+          "solution": null,
+          "answer": "Lỗi cảm biến nhiệt độ dàn ngoài trời bất thường.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION",
+          "source_url": "https://www.panasonic.com/vn/air-solutions/learn-more/ma-loi-may-lanh-panasonic.html"
+        },
+        {
+          "id": "Q0319",
+          "question": "Điều hòa panasonic bị lỗi H28",
+          "cause": null,
+          "solution": null,
+          "answer": "Kiểm tra nhiệt độ cảm biến của dàn nóng. Sửa chữa hoặc thay thế.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION",
+          "source_url": "https://www.panasonic.com/vn/air-solutions/learn-more/ma-loi-may-lanh-panasonic.html"
+        }
+      ]
+    },
+    {
+      "group_id": "DUPA16D3AA0",
+      "record_count": 2,
+      "member_ids": [
+        "Q0236",
+        "Q0320"
+      ],
+      "brand": "Panasonic",
+      "device": "Điều hòa",
+      "error_code": "H30",
+      "issue_id": "I0177",
+      "same_brand": true,
+      "same_device": true,
+      "same_error_code": true,
+      "same_issue": true,
+      "same_cause": true,
+      "same_solution": true,
+      "same_answer": false,
+      "answer_similarity": 0.0513,
+      "has_third_party_source": false,
+      "has_unsplit_cause_solution": true,
+      "category": "UNSAFE_TO_MERGE",
+      "merge_safe": false,
+      "records": [
+        {
+          "id": "Q0236",
+          "question": "Điều hòa panasonic bị lỗi H30",
+          "cause": null,
+          "solution": null,
+          "answer": "Lỗi cảm biến nhiệt độ đầu đẩy của máy nén có vấn đề.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION",
+          "source_url": "https://www.panasonic.com/vn/air-solutions/learn-more/ma-loi-may-lanh-panasonic.html"
+        },
+        {
+          "id": "Q0320",
+          "question": "Điều hòa panasonic bị lỗi H30",
+          "cause": null,
+          "solution": null,
+          "answer": "Kiểm tra máy nén và đường ống. Đồng thời liên hệ với trung tâm bảo hành hoặc thợ sửa chuyên nghiệp để được thay thế khi hư hỏng.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION",
+          "source_url": "https://www.panasonic.com/vn/air-solutions/learn-more/ma-loi-may-lanh-panasonic.html"
+        }
+      ]
+    },
+    {
+      "group_id": "DUP49C9E630",
+      "record_count": 2,
+      "member_ids": [
+        "Q0237",
+        "Q0321"
+      ],
+      "brand": "Panasonic",
+      "device": "Điều hòa",
+      "error_code": "H33",
+      "issue_id": "I0178",
+      "same_brand": true,
+      "same_device": true,
+      "same_error_code": true,
+      "same_issue": true,
+      "same_cause": true,
+      "same_solution": true,
+      "same_answer": false,
+      "answer_similarity": 0.25,
+      "has_third_party_source": false,
+      "has_unsplit_cause_solution": true,
+      "category": "UNSAFE_TO_MERGE",
+      "merge_safe": false,
+      "records": [
+        {
+          "id": "Q0237",
+          "question": "Điều hòa panasonic bị lỗi H33",
+          "cause": null,
+          "solution": null,
+          "answer": "Kết nối với dàn nóng và dàn lạnh gặp sự cố",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION",
+          "source_url": "https://www.panasonic.com/vn/air-solutions/learn-more/ma-loi-may-lanh-panasonic.html"
+        },
+        {
+          "id": "Q0321",
+          "question": "Điều hòa panasonic bị lỗi H33",
+          "cause": null,
+          "solution": null,
+          "answer": "Kiểm tra đường truyền tín hiệu, dây kết nối, nguồn giữa dàn nóng và dàn lạnh",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; ANSWER_NOT_SPLIT_CAUSE_SOLUTION",
+          "source_url": "https://www.panasonic.com/vn/air-solutions/learn-more/ma-loi-may-lanh-panasonic.html"
+        }
+      ]
+    },
+    {
+      "group_id": "DUPE73A59AA",
+      "record_count": 2,
+      "member_ids": [
+        "Q0534",
+        "Q0627"
+      ],
+      "brand": "Samsung",
+      "device": "Máy giặt",
+      "error_code": null,
+      "issue_id": "I0425",
+      "same_brand": true,
+      "same_device": true,
+      "same_error_code": true,
+      "same_issue": true,
+      "same_cause": true,
+      "same_solution": true,
+      "same_answer": true,
+      "answer_similarity": 1.0,
+      "has_third_party_source": false,
+      "has_unsplit_cause_solution": false,
+      "category": "EXACT_DUPLICATE",
+      "merge_safe": true,
+      "records": [
+        {
+          "id": "Q0534",
+          "question": "Máy giặt không vào nước thì kiểm tra gì trước?",
+          "cause": "Nguồn cấp nước, ống cấp hoặc lưới lọc đầu vào có thể có vấn đề.",
+          "solution": "Kiểm tra vòi nước, ống cấp và lưới lọc.",
+          "answer": "Nguyên nhân sự cố: Nguồn cấp nước, ống cấp hoặc lưới lọc đầu vào có thể có vấn đề. Cách khắc phục: Kiểm tra vòi nước, ống cấp và lưới lọc.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; BRAND_SOURCE",
+          "source_url": "https://www.samsung.com/vn/support/home-appliances/what-to-do-when-my-washing-machine-does-not-fill-up-or-drain/"
+        },
+        {
+          "id": "Q0627",
+          "question": "Máy giặt không vào nước thì kiểm tra gì trước?",
+          "cause": "Nguồn cấp nước, ống cấp hoặc lưới lọc đầu vào có thể có vấn đề.",
+          "solution": "Kiểm tra vòi nước, ống cấp và lưới lọc.",
+          "answer": "Nguyên nhân sự cố: Nguồn cấp nước, ống cấp hoặc lưới lọc đầu vào có thể có vấn đề. Cách khắc phục: Kiểm tra vòi nước, ống cấp và lưới lọc.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; BRAND_SOURCE; QUESTION_NORMALIZED; REPEATED_SUFFIX",
+          "source_url": "https://www.samsung.com/vn/support/home-appliances/what-to-do-when-my-washing-machine-does-not-fill-up-or-drain/"
+        }
+      ]
+    },
+    {
+      "group_id": "DUPF09E728E",
+      "record_count": 2,
+      "member_ids": [
+        "Q0535",
+        "Q0566"
+      ],
+      "brand": "Samsung",
+      "device": "Máy giặt",
+      "error_code": null,
+      "issue_id": "I0426",
+      "same_brand": true,
+      "same_device": true,
+      "same_error_code": true,
+      "same_issue": true,
+      "same_cause": true,
+      "same_solution": true,
+      "same_answer": true,
+      "answer_similarity": 1.0,
+      "has_third_party_source": false,
+      "has_unsplit_cause_solution": false,
+      "category": "EXACT_DUPLICATE",
+      "merge_safe": true,
+      "records": [
+        {
+          "id": "Q0535",
+          "question": "Máy giặt không xả nước phải làm sao?",
+          "cause": "Ống xả hoặc bộ lọc có thể bị gấp hoặc tắc.",
+          "solution": "Kiểm tra và vệ sinh ống xả, bộ lọc.",
+          "answer": "Nguyên nhân sự cố: Ống xả hoặc bộ lọc có thể bị gấp hoặc tắc. Cách khắc phục: Kiểm tra và vệ sinh ống xả, bộ lọc.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; BRAND_SOURCE",
+          "source_url": "https://www.samsung.com/vn/support/home-appliances/what-to-do-when-my-washing-machine-does-not-fill-up-or-drain/"
+        },
+        {
+          "id": "Q0566",
+          "question": "Máy giặt không xả nước phải làm sao?",
+          "cause": "Ống xả hoặc bộ lọc có thể bị gấp hoặc tắc.",
+          "solution": "Kiểm tra và vệ sinh ống xả, bộ lọc.",
+          "answer": "Nguyên nhân sự cố: Ống xả hoặc bộ lọc có thể bị gấp hoặc tắc. Cách khắc phục: Kiểm tra và vệ sinh ống xả, bộ lọc.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; BRAND_SOURCE; QUESTION_NORMALIZED; REPEATED_SUFFIX",
+          "source_url": "https://www.samsung.com/vn/support/home-appliances/what-to-do-when-my-washing-machine-does-not-fill-up-or-drain/"
+        }
+      ]
+    },
+    {
+      "group_id": "DUP47EE896C",
+      "record_count": 2,
+      "member_ids": [
+        "Q0537",
+        "Q0599"
+      ],
+      "brand": "Samsung",
+      "device": "Máy giặt",
+      "error_code": null,
+      "issue_id": "I0428",
+      "same_brand": true,
+      "same_device": true,
+      "same_error_code": true,
+      "same_issue": true,
+      "same_cause": true,
+      "same_solution": true,
+      "same_answer": true,
+      "answer_similarity": 1.0,
+      "has_third_party_source": false,
+      "has_unsplit_cause_solution": false,
+      "category": "EXACT_DUPLICATE",
+      "merge_safe": true,
+      "records": [
+        {
+          "id": "Q0537",
+          "question": "Máy giặt rung mạnh khi vắt xử lý thế nào?",
+          "cause": "Máy có thể chưa được cân bằng hoặc đồ giặt bị dồn về một phía.",
+          "solution": "Cân bằng máy và phân bố lại đồ giặt.",
+          "answer": "Nguyên nhân sự cố: Máy có thể chưa được cân bằng hoặc đồ giặt bị dồn về một phía. Cách khắc phục: Cân bằng máy và phân bố lại đồ giặt.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; BRAND_SOURCE",
+          "source_url": "https://www.samsung.com/vn/support/category/home-appliances/laundry/"
+        },
+        {
+          "id": "Q0599",
+          "question": "Máy giặt rung mạnh khi vắt xử lý thế nào?",
+          "cause": "Máy có thể chưa được cân bằng hoặc đồ giặt bị dồn về một phía.",
+          "solution": "Cân bằng máy và phân bố lại đồ giặt.",
+          "answer": "Nguyên nhân sự cố: Máy có thể chưa được cân bằng hoặc đồ giặt bị dồn về một phía. Cách khắc phục: Cân bằng máy và phân bố lại đồ giặt.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; BRAND_SOURCE; QUESTION_NORMALIZED; REPEATED_SUFFIX",
+          "source_url": "https://www.samsung.com/vn/support/category/home-appliances/laundry/"
+        }
+      ]
+    },
+    {
+      "group_id": "DUP8A2AF31C",
+      "record_count": 2,
+      "member_ids": [
+        "Q0544",
+        "Q0637"
+      ],
+      "brand": "Samsung",
+      "device": "Điều hòa",
+      "error_code": null,
+      "issue_id": "I0435",
+      "same_brand": true,
+      "same_device": true,
+      "same_error_code": true,
+      "same_issue": true,
+      "same_cause": true,
+      "same_solution": true,
+      "same_answer": true,
+      "answer_similarity": 1.0,
+      "has_third_party_source": false,
+      "has_unsplit_cause_solution": false,
+      "category": "EXACT_DUPLICATE",
+      "merge_safe": true,
+      "records": [
+        {
+          "id": "Q0544",
+          "question": "Máy lạnh không lạnh thì kiểm tra gì trước?",
+          "cause": "Chế độ, nhiệt độ cài đặt, bộ lọc hoặc luồng gió có thể ảnh hưởng khả năng làm lạnh.",
+          "solution": "Kiểm tra chế độ, nhiệt độ, bộ lọc và cửa gió.",
+          "answer": "Nguyên nhân sự cố: Chế độ, nhiệt độ cài đặt, bộ lọc hoặc luồng gió có thể ảnh hưởng khả năng làm lạnh. Cách khắc phục: Kiểm tra chế độ, nhiệt độ, bộ lọc và cửa gió.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; BRAND_SOURCE",
+          "source_url": "https://www.samsung.com/vn/support/home-appliances/check-out-the-displayed-error-codes-on-the-indoor-unit-air-conditioner/"
+        },
+        {
+          "id": "Q0637",
+          "question": "Máy lạnh không lạnh thì kiểm tra gì trước?",
+          "cause": "Chế độ, nhiệt độ cài đặt, bộ lọc hoặc luồng gió có thể ảnh hưởng khả năng làm lạnh.",
+          "solution": "Kiểm tra chế độ, nhiệt độ, bộ lọc và cửa gió.",
+          "answer": "Nguyên nhân sự cố: Chế độ, nhiệt độ cài đặt, bộ lọc hoặc luồng gió có thể ảnh hưởng khả năng làm lạnh. Cách khắc phục: Kiểm tra chế độ, nhiệt độ, bộ lọc và cửa gió.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; BRAND_SOURCE; QUESTION_NORMALIZED; REPEATED_SUFFIX",
+          "source_url": "https://www.samsung.com/vn/support/home-appliances/check-out-the-displayed-error-codes-on-the-indoor-unit-air-conditioner/"
+        }
+      ]
+    },
+    {
+      "group_id": "DUP88B7BA30",
+      "record_count": 2,
+      "member_ids": [
+        "Q0548",
+        "Q0610"
+      ],
+      "brand": "Samsung",
+      "device": "Điều hòa",
+      "error_code": null,
+      "issue_id": "I0439",
+      "same_brand": true,
+      "same_device": true,
+      "same_error_code": true,
+      "same_issue": true,
+      "same_cause": true,
+      "same_solution": true,
+      "same_answer": true,
+      "answer_similarity": 1.0,
+      "has_third_party_source": false,
+      "has_unsplit_cause_solution": false,
+      "category": "EXACT_DUPLICATE",
+      "merge_safe": true,
+      "records": [
+        {
+          "id": "Q0548",
+          "question": "Máy lạnh có mùi hôi thì xử lý thế nào?",
+          "cause": "Lồng giặt, gioăng cửa, ngăn nước giặt hoặc bộ lọc có thể tích tụ cặn và mùi.",
+          "solution": "Vệ sinh lồng giặt, gioăng cửa, ngăn nước giặt và bộ lọc định kỳ.",
+          "answer": "Nguyên nhân sự cố: Lồng giặt, gioăng cửa, ngăn nước giặt hoặc bộ lọc có thể tích tụ cặn và mùi. Cách khắc phục: Vệ sinh lồng giặt, gioăng cửa, ngăn nước giặt và bộ lọc định kỳ.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; BRAND_SOURCE",
+          "source_url": "https://www.samsung.com/vn/support/home-appliances/check-out-the-displayed-error-codes-on-the-indoor-unit-air-conditioner/"
+        },
+        {
+          "id": "Q0610",
+          "question": "Máy lạnh có mùi hôi thì xử lý thế nào?",
+          "cause": "Lồng giặt, gioăng cửa, ngăn nước giặt hoặc bộ lọc có thể tích tụ cặn và mùi.",
+          "solution": "Vệ sinh lồng giặt, gioăng cửa, ngăn nước giặt và bộ lọc định kỳ.",
+          "answer": "Nguyên nhân sự cố: Lồng giặt, gioăng cửa, ngăn nước giặt hoặc bộ lọc có thể tích tụ cặn và mùi. Cách khắc phục: Vệ sinh lồng giặt, gioăng cửa, ngăn nước giặt và bộ lọc định kỳ.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; BRAND_SOURCE; QUESTION_NORMALIZED; REPEATED_SUFFIX",
+          "source_url": "https://www.samsung.com/vn/support/home-appliances/check-out-the-displayed-error-codes-on-the-indoor-unit-air-conditioner/"
+        }
+      ]
+    },
+    {
+      "group_id": "DUP47EFEE49",
+      "record_count": 2,
+      "member_ids": [
+        "Q0549",
+        "Q0642"
+      ],
+      "brand": "Samsung",
+      "device": "Tủ lạnh",
+      "error_code": null,
+      "issue_id": "I0440",
+      "same_brand": true,
+      "same_device": true,
+      "same_error_code": true,
+      "same_issue": true,
+      "same_cause": true,
+      "same_solution": true,
+      "same_answer": true,
+      "answer_similarity": 1.0,
+      "has_third_party_source": false,
+      "has_unsplit_cause_solution": false,
+      "category": "EXACT_DUPLICATE",
+      "merge_safe": true,
+      "records": [
+        {
+          "id": "Q0549",
+          "question": "Tủ lạnh không lạnh thì kiểm tra gì trước?",
+          "cause": "Chế độ, nhiệt độ cài đặt, bộ lọc hoặc luồng gió có thể ảnh hưởng khả năng làm lạnh.",
+          "solution": "Kiểm tra chế độ, nhiệt độ, bộ lọc và cửa gió.",
+          "answer": "Nguyên nhân sự cố: Chế độ, nhiệt độ cài đặt, bộ lọc hoặc luồng gió có thể ảnh hưởng khả năng làm lạnh. Cách khắc phục: Kiểm tra chế độ, nhiệt độ, bộ lọc và cửa gió.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; BRAND_SOURCE",
+          "source_url": "https://www.samsung.com/us/support/troubleshoot/TSG10007315/"
+        },
+        {
+          "id": "Q0642",
+          "question": "Tủ lạnh không lạnh thì kiểm tra gì trước?",
+          "cause": "Chế độ, nhiệt độ cài đặt, bộ lọc hoặc luồng gió có thể ảnh hưởng khả năng làm lạnh.",
+          "solution": "Kiểm tra chế độ, nhiệt độ, bộ lọc và cửa gió.",
+          "answer": "Nguyên nhân sự cố: Chế độ, nhiệt độ cài đặt, bộ lọc hoặc luồng gió có thể ảnh hưởng khả năng làm lạnh. Cách khắc phục: Kiểm tra chế độ, nhiệt độ, bộ lọc và cửa gió.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; BRAND_SOURCE; QUESTION_NORMALIZED; REPEATED_SUFFIX",
+          "source_url": "https://www.samsung.com/us/support/troubleshoot/TSG10007315/"
+        }
+      ]
+    },
+    {
+      "group_id": "DUPE7F9C3D3",
+      "record_count": 2,
+      "member_ids": [
+        "Q0551",
+        "Q0613"
+      ],
+      "brand": "Samsung",
+      "device": "Tủ lạnh",
+      "error_code": null,
+      "issue_id": "I0442",
+      "same_brand": true,
+      "same_device": true,
+      "same_error_code": true,
+      "same_issue": true,
+      "same_cause": true,
+      "same_solution": true,
+      "same_answer": true,
+      "answer_similarity": 1.0,
+      "has_third_party_source": false,
+      "has_unsplit_cause_solution": false,
+      "category": "EXACT_DUPLICATE",
+      "merge_safe": true,
+      "records": [
+        {
+          "id": "Q0551",
+          "question": "Tủ lạnh bị chảy nước bên trong thì xử lý thế nào?",
+          "cause": "Đường thoát nước hoặc bộ lọc có thể bị tắc; tình trạng đóng tuyết cũng có thể ảnh hưởng thoát nước.",
+          "solution": "Kiểm tra bộ lọc và đường thoát nước.",
+          "answer": "Nguyên nhân sự cố: Đường thoát nước hoặc bộ lọc có thể bị tắc; tình trạng đóng tuyết cũng có thể ảnh hưởng thoát nước. Cách khắc phục: Kiểm tra bộ lọc và đường thoát nước.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; BRAND_SOURCE",
+          "source_url": "https://www.samsung.com/us/support/troubleshoot/TSG10007315/"
+        },
+        {
+          "id": "Q0613",
+          "question": "Tủ lạnh bị chảy nước bên trong thì xử lý thế nào?",
+          "cause": "Đường thoát nước hoặc bộ lọc có thể bị tắc; tình trạng đóng tuyết cũng có thể ảnh hưởng thoát nước.",
+          "solution": "Kiểm tra bộ lọc và đường thoát nước.",
+          "answer": "Nguyên nhân sự cố: Đường thoát nước hoặc bộ lọc có thể bị tắc; tình trạng đóng tuyết cũng có thể ảnh hưởng thoát nước. Cách khắc phục: Kiểm tra bộ lọc và đường thoát nước.",
+          "quality_flag": "EXACT_OR_NORMALIZED_DUPLICATE; BRAND_SOURCE; QUESTION_NORMALIZED; REPEATED_SUFFIX",
+          "source_url": "https://www.samsung.com/us/support/troubleshoot/TSG10007315/"
+        }
+      ]
+    }
+  ]
+}
