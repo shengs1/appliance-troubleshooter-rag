@@ -1,0 +1,320 @@
+{
+  "independent_60": {
+    "A_baseline": {
+      "name": "A. Baseline (Old Ext, No Q2Q)",
+      "strict_hit1": 15.0,
+      "cluster_hit1": 45.0,
+      "hit3": 61.67,
+      "hit5": 68.33,
+      "mrr": 0.5261,
+      "avg_latency_ms": 169.01,
+      "by_category": {
+        "ERROR_CODE_NATURAL": {
+          "total": 15,
+          "strict_h1": 3,
+          "cluster_h1": 6
+        },
+        "SYMPTOM_COLLOQUIAL": {
+          "total": 20,
+          "strict_h1": 2,
+          "cluster_h1": 7
+        },
+        "PARTIAL_INFO": {
+          "total": 13,
+          "strict_h1": 1,
+          "cluster_h1": 6
+        },
+        "TYPO_SYNONYM": {
+          "total": 12,
+          "strict_h1": 3,
+          "cluster_h1": 8
+        }
+      }
+    },
+    "B_new_extract": {
+      "name": "B. Baseline + New Extractor",
+      "strict_hit1": 15.0,
+      "cluster_hit1": 45.0,
+      "hit3": 61.67,
+      "hit5": 68.33,
+      "mrr": 0.5261,
+      "avg_latency_ms": 126.67,
+      "by_category": {
+        "ERROR_CODE_NATURAL": {
+          "total": 15,
+          "strict_h1": 3,
+          "cluster_h1": 6
+        },
+        "SYMPTOM_COLLOQUIAL": {
+          "total": 20,
+          "strict_h1": 2,
+          "cluster_h1": 7
+        },
+        "PARTIAL_INFO": {
+          "total": 13,
+          "strict_h1": 1,
+          "cluster_h1": 6
+        },
+        "TYPO_SYNONYM": {
+          "total": 12,
+          "strict_h1": 3,
+          "cluster_h1": 8
+        }
+      }
+    },
+    "C_old_ext_q2q": {
+      "name": "C. Baseline + Q2Q (w=0.04)",
+      "strict_hit1": 21.67,
+      "cluster_hit1": 41.67,
+      "hit3": 60.0,
+      "hit5": 68.33,
+      "mrr": 0.5081,
+      "avg_latency_ms": 136.55,
+      "by_category": {
+        "ERROR_CODE_NATURAL": {
+          "total": 15,
+          "strict_h1": 3,
+          "cluster_h1": 6
+        },
+        "SYMPTOM_COLLOQUIAL": {
+          "total": 20,
+          "strict_h1": 3,
+          "cluster_h1": 5
+        },
+        "PARTIAL_INFO": {
+          "total": 13,
+          "strict_h1": 4,
+          "cluster_h1": 6
+        },
+        "TYPO_SYNONYM": {
+          "total": 12,
+          "strict_h1": 3,
+          "cluster_h1": 8
+        }
+      }
+    },
+    "D_new_ext_q2q": {
+      "name": "D. New Extractor + Q2Q (w=0.04)",
+      "strict_hit1": 21.67,
+      "cluster_hit1": 41.67,
+      "hit3": 60.0,
+      "hit5": 68.33,
+      "mrr": 0.5081,
+      "avg_latency_ms": 136.59,
+      "by_category": {
+        "ERROR_CODE_NATURAL": {
+          "total": 15,
+          "strict_h1": 3,
+          "cluster_h1": 6
+        },
+        "SYMPTOM_COLLOQUIAL": {
+          "total": 20,
+          "strict_h1": 3,
+          "cluster_h1": 5
+        },
+        "PARTIAL_INFO": {
+          "total": 13,
+          "strict_h1": 4,
+          "cluster_h1": 6
+        },
+        "TYPO_SYNONYM": {
+          "total": 12,
+          "strict_h1": 3,
+          "cluster_h1": 8
+        }
+      }
+    }
+  },
+  "dev_100": {
+    "A_baseline": {
+      "name": "A. Baseline (Old Ext, No Q2Q)",
+      "strict_hit1": 89.0,
+      "cluster_hit1": 89.0,
+      "hit3": 100.0,
+      "hit5": 100.0,
+      "mrr": 0.94,
+      "avg_latency_ms": 121.97,
+      "by_category": {
+        "ERROR_CODE": {
+          "total": 50,
+          "strict_h1": 49,
+          "cluster_h1": 49
+        },
+        "SYMPTOM": {
+          "total": 50,
+          "strict_h1": 40,
+          "cluster_h1": 40
+        }
+      }
+    },
+    "B_new_extract": {
+      "name": "B. Baseline + New Extractor",
+      "strict_hit1": 89.0,
+      "cluster_hit1": 89.0,
+      "hit3": 100.0,
+      "hit5": 100.0,
+      "mrr": 0.94,
+      "avg_latency_ms": 127.04,
+      "by_category": {
+        "ERROR_CODE": {
+          "total": 50,
+          "strict_h1": 49,
+          "cluster_h1": 49
+        },
+        "SYMPTOM": {
+          "total": 50,
+          "strict_h1": 40,
+          "cluster_h1": 40
+        }
+      }
+    },
+    "C_old_ext_q2q": {
+      "name": "C. Baseline + Q2Q (w=0.04)",
+      "strict_hit1": 96.0,
+      "cluster_hit1": 96.0,
+      "hit3": 100.0,
+      "hit5": 100.0,
+      "mrr": 0.9783,
+      "avg_latency_ms": 123.33,
+      "by_category": {
+        "ERROR_CODE": {
+          "total": 50,
+          "strict_h1": 49,
+          "cluster_h1": 49
+        },
+        "SYMPTOM": {
+          "total": 50,
+          "strict_h1": 47,
+          "cluster_h1": 47
+        }
+      }
+    },
+    "D_new_ext_q2q": {
+      "name": "D. New Extractor + Q2Q (w=0.04)",
+      "strict_hit1": 96.0,
+      "cluster_hit1": 96.0,
+      "hit3": 100.0,
+      "hit5": 100.0,
+      "mrr": 0.9783,
+      "avg_latency_ms": 142.68,
+      "by_category": {
+        "ERROR_CODE": {
+          "total": 50,
+          "strict_h1": 49,
+          "cluster_h1": 49
+        },
+        "SYMPTOM": {
+          "total": 50,
+          "strict_h1": 47,
+          "cluster_h1": 47
+        }
+      }
+    }
+  },
+  "eval_200": {
+    "A_baseline": {
+      "name": "A. Baseline (Old Ext, No Q2Q)",
+      "strict_hit1": 87.0,
+      "cluster_hit1": 87.0,
+      "hit3": 98.5,
+      "hit5": 99.5,
+      "mrr": 0.9283,
+      "avg_latency_ms": 128.49,
+      "by_category": {
+        "ERROR_CODE": {
+          "total": 98,
+          "strict_h1": 87,
+          "cluster_h1": 87
+        },
+        "ERROR_CODE_UNKNOWN": {
+          "total": 4,
+          "strict_h1": 4,
+          "cluster_h1": 4
+        },
+        "SYMPTOM": {
+          "total": 98,
+          "strict_h1": 83,
+          "cluster_h1": 83
+        }
+      }
+    },
+    "B_new_extract": {
+      "name": "B. Baseline + New Extractor",
+      "strict_hit1": 87.0,
+      "cluster_hit1": 87.0,
+      "hit3": 98.5,
+      "hit5": 99.5,
+      "mrr": 0.9283,
+      "avg_latency_ms": 128.78,
+      "by_category": {
+        "ERROR_CODE": {
+          "total": 98,
+          "strict_h1": 87,
+          "cluster_h1": 87
+        },
+        "ERROR_CODE_UNKNOWN": {
+          "total": 4,
+          "strict_h1": 4,
+          "cluster_h1": 4
+        },
+        "SYMPTOM": {
+          "total": 98,
+          "strict_h1": 83,
+          "cluster_h1": 83
+        }
+      }
+    },
+    "C_old_ext_q2q": {
+      "name": "C. Baseline + Q2Q (w=0.04)",
+      "strict_hit1": 93.0,
+      "cluster_hit1": 93.0,
+      "hit3": 100.0,
+      "hit5": 100.0,
+      "mrr": 0.9642,
+      "avg_latency_ms": 136.16,
+      "by_category": {
+        "ERROR_CODE": {
+          "total": 98,
+          "strict_h1": 87,
+          "cluster_h1": 87
+        },
+        "ERROR_CODE_UNKNOWN": {
+          "total": 4,
+          "strict_h1": 4,
+          "cluster_h1": 4
+        },
+        "SYMPTOM": {
+          "total": 98,
+          "strict_h1": 95,
+          "cluster_h1": 95
+        }
+      }
+    },
+    "D_new_ext_q2q": {
+      "name": "D. New Extractor + Q2Q (w=0.04)",
+      "strict_hit1": 93.0,
+      "cluster_hit1": 93.0,
+      "hit3": 100.0,
+      "hit5": 100.0,
+      "mrr": 0.9642,
+      "avg_latency_ms": 138.3,
+      "by_category": {
+        "ERROR_CODE": {
+          "total": 98,
+          "strict_h1": 87,
+          "cluster_h1": 87
+        },
+        "ERROR_CODE_UNKNOWN": {
+          "total": 4,
+          "strict_h1": 4,
+          "cluster_h1": 4
+        },
+        "SYMPTOM": {
+          "total": 98,
+          "strict_h1": 95,
+          "cluster_h1": 95
+        }
+      }
+    }
+  }
+}

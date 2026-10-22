@@ -1,0 +1,971 @@
+{
+  "summary": {
+    "EXACT_MATCH": 13,
+    "EQUIVALENT_KNOWLEDGE_DIFFERENT_ID": 12,
+    "INSUFFICIENT_INFO_AMBIGUOUS": 7,
+    "WRONG_KNOWLEDGE": 19,
+    "MISSED_RETRIEVAL": 9
+  },
+  "cases": [
+    {
+      "id": "IND_01",
+      "query": "điều hoà pana báo f16 là bị làm sao thợ ơi",
+      "category": "ERROR_CODE_NATURAL",
+      "expected_primary_id": "Q0158",
+      "top1_id": "Q0308",
+      "classification": "EQUIVALENT_KNOWLEDGE_DIFFERENT_ID",
+      "reason": "Đúng tri thức nhưng khác ID (Top-1 là Q0308, thuộc danh sách tương đương)",
+      "top_5": [
+        "Q0308",
+        "Q0158",
+        "Q0317",
+        "Q0251",
+        "Q0233"
+      ]
+    },
+    {
+      "id": "IND_02",
+      "query": "máy lạnh panasonic báo lỗi f93 sửa hết bao nhiêu hoặc kiểm tra cái gì",
+      "category": "ERROR_CODE_NATURAL",
+      "expected_primary_id": "Q0159",
+      "top1_id": "Q0310",
+      "classification": "EQUIVALENT_KNOWLEDGE_DIFFERENT_ID",
+      "reason": "Đúng tri thức nhưng khác ID (Top-1 là Q0310, thuộc danh sách tương đương)",
+      "top_5": [
+        "Q0310",
+        "Q0159",
+        "Q0311",
+        "Q0312",
+        "Q0309"
+      ]
+    },
+    {
+      "id": "IND_03",
+      "query": "bếp từ pana nhấp nháy chữ U11 lúc đang nấu",
+      "category": "ERROR_CODE_NATURAL",
+      "expected_primary_id": "Q0215",
+      "top1_id": "Q0215",
+      "classification": "EXACT_MATCH",
+      "reason": "Khớp chính xác ground-truth ID",
+      "top_5": [
+        "Q0215",
+        "Q0351",
+        "Q0219",
+        "Q0216",
+        "Q0357"
+      ]
+    },
+    {
+      "id": "IND_04",
+      "query": "máy giặt panasonic hiện chữ H09",
+      "category": "ERROR_CODE_NATURAL",
+      "expected_primary_id": "Q0196",
+      "top1_id": "Q0333",
+      "classification": "EQUIVALENT_KNOWLEDGE_DIFFERENT_ID",
+      "reason": "Đúng tri thức nhưng khác ID (Top-1 là Q0333, thuộc danh sách tương đương)",
+      "top_5": [
+        "Q0333",
+        "Q0196",
+        "Q0331",
+        "Q0195",
+        "Q0332"
+      ]
+    },
+    {
+      "id": "IND_05",
+      "query": "tủ lạnh lg màn hình hiện chữ sb nghĩa là gì",
+      "category": "ERROR_CODE_NATURAL",
+      "expected_primary_id": "Q0002",
+      "top1_id": "Q0002",
+      "classification": "EXACT_MATCH",
+      "reason": "Khớp chính xác ground-truth ID",
+      "top_5": [
+        "Q0002",
+        "Q0108",
+        "Q0009",
+        "Q0017",
+        "Q0041"
+      ]
+    },
+    {
+      "id": "IND_06",
+      "query": "máy giặt lg báo lỗi CL không bấm được nút nào",
+      "category": "ERROR_CODE_NATURAL",
+      "expected_primary_id": "Q0020",
+      "top1_id": "Q0088",
+      "classification": "WRONG_KNOWLEDGE",
+      "reason": "Sai thiết bị: kỳ vọng Tủ lạnh, trả về Máy giặt",
+      "top_5": [
+        "Q0088",
+        "Q0838",
+        "Q0775",
+        "Q0839",
+        "Q0691"
+      ]
+    },
+    {
+      "id": "IND_07",
+      "query": "máy giặt lg kêu tít tít rồi hiện IE không vào nước",
+      "category": "ERROR_CODE_NATURAL",
+      "expected_primary_id": "Q0023",
+      "top1_id": "Q0148",
+      "classification": "WRONG_KNOWLEDGE",
+      "reason": "Sai thiết bị: kỳ vọng Tủ lạnh, trả về Máy giặt",
+      "top_5": [
+        "Q0148",
+        "Q0083",
+        "Q0696",
+        "Q0691",
+        "Q0701"
+      ]
+    },
+    {
+      "id": "IND_08",
+      "query": "máy giặt lg giặt xong không xả nước báo lỗi OE",
+      "category": "ERROR_CODE_NATURAL",
+      "expected_primary_id": "Q0024",
+      "top1_id": "Q0149",
+      "classification": "WRONG_KNOWLEDGE",
+      "reason": "Sai thiết bị: kỳ vọng Tủ lạnh, trả về Máy giặt",
+      "top_5": [
+        "Q0149",
+        "Q0084",
+        "Q0711",
+        "Q0706",
+        "Q0716"
+      ]
+    },
+    {
+      "id": "IND_09",
+      "query": "điều hòa samsung tự nhiên hiện mã lỗi CF",
+      "category": "ERROR_CODE_NATURAL",
+      "expected_primary_id": "Q0358",
+      "top1_id": "Q0358",
+      "classification": "EXACT_MATCH",
+      "reason": "Khớp chính xác ground-truth ID",
+      "top_5": [
+        "Q0358",
+        "Q0359",
+        "Q0362",
+        "Q0361",
+        "Q0360"
+      ]
+    },
+    {
+      "id": "IND_10",
+      "query": "máy điều hòa samsung bật lên báo E1 01",
+      "category": "ERROR_CODE_NATURAL",
+      "expected_primary_id": "Q0359",
+      "top1_id": "Q0360",
+      "classification": "MISSED_RETRIEVAL",
+      "reason": "Bản ghi kỳ vọng không nằm trong Top 5",
+      "top_5": [
+        "Q0360",
+        "Q0366",
+        "Q0365",
+        "Q0367",
+        "Q0364"
+      ]
+    },
+    {
+      "id": "IND_11",
+      "query": "máy giặt samsung hiện mã lỗi 4C có phải bị hỏng van cấp nước không",
+      "category": "ERROR_CODE_NATURAL",
+      "expected_primary_id": "Q0374",
+      "top1_id": "Q0528",
+      "classification": "WRONG_KNOWLEDGE",
+      "reason": "Sai thiết bị: kỳ vọng Lò nướng, trả về Máy giặt",
+      "top_5": [
+        "Q0528",
+        "Q0529",
+        "Q0533",
+        "Q0532",
+        "Q1039"
+      ]
+    },
+    {
+      "id": "IND_12",
+      "query": "máy giặt samsung báo lỗi DC cửa đóng rồi mà vẫn kêu",
+      "category": "ERROR_CODE_NATURAL",
+      "expected_primary_id": "Q0379",
+      "top1_id": "Q1075",
+      "classification": "WRONG_KNOWLEDGE",
+      "reason": "Sai thiết bị: kỳ vọng Máy rửa bát, trả về Máy giặt",
+      "top_5": [
+        "Q1075",
+        "Q1077",
+        "Q0541",
+        "Q0572",
+        "Q0634"
+      ]
+    },
+    {
+      "id": "IND_13",
+      "query": "máy giặt samsung đang vắt báo lỗi UB",
+      "category": "ERROR_CODE_NATURAL",
+      "expected_primary_id": "Q0381",
+      "top1_id": "Q0530",
+      "classification": "WRONG_KNOWLEDGE",
+      "reason": "Sai thiết bị: kỳ vọng Máy rửa bát, trả về Máy giặt",
+      "top_5": [
+        "Q0530",
+        "Q0531",
+        "Q1011",
+        "Q1016",
+        "Q1036"
+      ]
+    },
+    {
+      "id": "IND_14",
+      "query": "máy sấy quần áo samsung hiển thị mã lỗi tC",
+      "category": "ERROR_CODE_NATURAL",
+      "expected_primary_id": "Q0418",
+      "top1_id": "Q0423",
+      "classification": "MISSED_RETRIEVAL",
+      "reason": "Bản ghi kỳ vọng không nằm trong Top 5",
+      "top_5": [
+        "Q0423",
+        "Q0430",
+        "Q0429",
+        "Q0428",
+        "Q0432"
+      ]
+    },
+    {
+      "id": "IND_15",
+      "query": "tủ lạnh samsung bị lỗi 22E trên màn hình",
+      "category": "ERROR_CODE_NATURAL",
+      "expected_primary_id": "Q0400",
+      "top1_id": "Q0399",
+      "classification": "WRONG_KNOWLEDGE",
+      "reason": "Khác nội dung sự cố giữa Q0400 và Q0399",
+      "top_5": [
+        "Q0399",
+        "Q0398",
+        "Q0400",
+        "Q0407",
+        "Q0408"
+      ]
+    },
+    {
+      "id": "IND_16",
+      "query": "máy lạnh samsung bật cả ngày mà không phả ra tí hơi mát nào",
+      "category": "SYMPTOM_COLLOQUIAL",
+      "expected_primary_id": "Q0544",
+      "top1_id": "Q1050",
+      "classification": "MISSED_RETRIEVAL",
+      "reason": "Bản ghi kỳ vọng không nằm trong Top 5",
+      "top_5": [
+        "Q1050",
+        "Q1053",
+        "Q0993",
+        "Q0998",
+        "Q1041"
+      ]
+    },
+    {
+      "id": "IND_17",
+      "query": "cục lạnh điều hòa samsung đang chạy thì tự ngắt phụt một cái",
+      "category": "SYMPTOM_COLLOQUIAL",
+      "expected_primary_id": "Q0546",
+      "top1_id": "Q1047",
+      "classification": "WRONG_KNOWLEDGE",
+      "reason": "Khác nội dung sự cố giữa Q0546 và Q1047",
+      "top_5": [
+        "Q1047",
+        "Q0546",
+        "Q0577",
+        "Q0608",
+        "Q0639"
+      ]
+    },
+    {
+      "id": "IND_18",
+      "query": "máy điều hòa samsung phả ra mùi chua chua mốc mốc khó chịu",
+      "category": "SYMPTOM_COLLOQUIAL",
+      "expected_primary_id": "Q0548",
+      "top1_id": "Q1013",
+      "classification": "WRONG_KNOWLEDGE",
+      "reason": "Khác nội dung sự cố giữa Q0548 và Q1013",
+      "top_5": [
+        "Q1013",
+        "Q1018",
+        "Q0359",
+        "Q0610",
+        "Q0548"
+      ]
+    },
+    {
+      "id": "IND_19",
+      "query": "tủ lạnh samsung ngăn đông đá không chịu đông kem chảy hết ra",
+      "category": "SYMPTOM_COLLOQUIAL",
+      "expected_primary_id": "Q0550",
+      "top1_id": "Q1017",
+      "classification": "MISSED_RETRIEVAL",
+      "reason": "Bản ghi kỳ vọng không nằm trong Top 5",
+      "top_5": [
+        "Q1017",
+        "Q1012",
+        "Q1058",
+        "Q1055",
+        "Q0582"
+      ]
+    },
+    {
+      "id": "IND_20",
+      "query": "mở tủ lạnh samsung thấy nước rỉ đầy đáy tủ",
+      "category": "SYMPTOM_COLLOQUIAL",
+      "expected_primary_id": "Q0551",
+      "top1_id": "Q1022",
+      "classification": "WRONG_KNOWLEDGE",
+      "reason": "Khác nội dung sự cố giữa Q0551 và Q1022",
+      "top_5": [
+        "Q1022",
+        "Q1026",
+        "Q0644",
+        "Q0551",
+        "Q0613"
+      ]
+    },
+    {
+      "id": "IND_21",
+      "query": "tủ lạnh samsung nhà em không thấy rớt viên đá nào xuống khay",
+      "category": "SYMPTOM_COLLOQUIAL",
+      "expected_primary_id": "Q0552",
+      "top1_id": "Q1058",
+      "classification": "WRONG_KNOWLEDGE",
+      "reason": "Khác nội dung sự cố giữa Q0552 và Q1058",
+      "top_5": [
+        "Q1058",
+        "Q1055",
+        "Q0552",
+        "Q0583",
+        "Q0614"
+      ]
+    },
+    {
+      "id": "IND_22",
+      "query": "tủ lạnh samsung mở ra hôi rình dù đã dọn hết đồ ăn",
+      "category": "SYMPTOM_COLLOQUIAL",
+      "expected_primary_id": "Q0554",
+      "top1_id": "Q1034",
+      "classification": "WRONG_KNOWLEDGE",
+      "reason": "Khác nội dung sự cố giữa Q0554 và Q1034",
+      "top_5": [
+        "Q1034",
+        "Q0647",
+        "Q1030",
+        "Q0585",
+        "Q0554"
+      ]
+    },
+    {
+      "id": "IND_23",
+      "query": "máy giặt samsung bấm giặt xong mà lồng giặt ngập nước không chịu thoát",
+      "category": "SYMPTOM_COLLOQUIAL",
+      "expected_primary_id": "Q0535",
+      "top1_id": "Q0996",
+      "classification": "MISSED_RETRIEVAL",
+      "reason": "Bản ghi kỳ vọng không nằm trong Top 5",
+      "top_5": [
+        "Q0996",
+        "Q0991",
+        "Q0627",
+        "Q1001",
+        "Q1006"
+      ]
+    },
+    {
+      "id": "IND_24",
+      "query": "máy giặt samsung giặt xong đồ vẫn ướt sũng không chịu vắt khô",
+      "category": "SYMPTOM_COLLOQUIAL",
+      "expected_primary_id": "Q0536",
+      "top1_id": "Q1011",
+      "classification": "WRONG_KNOWLEDGE",
+      "reason": "Khác nội dung sự cố giữa Q0536 và Q1011",
+      "top_5": [
+        "Q1011",
+        "Q1016",
+        "Q0567",
+        "Q0536",
+        "Q0629"
+      ]
+    },
+    {
+      "id": "IND_25",
+      "query": "máy giặt samsung lúc vắt nhảy chồm chồm đập thình thình vào tường",
+      "category": "SYMPTOM_COLLOQUIAL",
+      "expected_primary_id": "Q0537",
+      "top1_id": "Q0568",
+      "classification": "EQUIVALENT_KNOWLEDGE_DIFFERENT_ID",
+      "reason": "Đúng tri thức nhưng khác ID (Top-1 là Q0568, thuộc danh sách tương đương)",
+      "top_5": [
+        "Q0568",
+        "Q0537",
+        "Q0599",
+        "Q0630",
+        "Q1025"
+      ]
+    },
+    {
+      "id": "IND_26",
+      "query": "máy sấy samsung sấy cả tiếng đồng hồ mà lôi đồ ra vẫn ẩm ẩm",
+      "category": "SYMPTOM_COLLOQUIAL",
+      "expected_primary_id": "Q0560",
+      "top1_id": "Q0561",
+      "classification": "MISSED_RETRIEVAL",
+      "reason": "Bản ghi kỳ vọng không nằm trong Top 5",
+      "top_5": [
+        "Q0561",
+        "Q0592",
+        "Q0685",
+        "Q0623",
+        "Q0654"
+      ]
+    },
+    {
+      "id": "IND_27",
+      "query": "máy sấy samsung cắm điện bấm nút nguồn im re không lên đèn",
+      "category": "SYMPTOM_COLLOQUIAL",
+      "expected_primary_id": "Q0562",
+      "top1_id": "Q0562",
+      "classification": "EXACT_MATCH",
+      "reason": "Khớp chính xác ground-truth ID",
+      "top_5": [
+        "Q0562",
+        "Q0624",
+        "Q0593",
+        "Q0655",
+        "Q0686"
+      ]
+    },
+    {
+      "id": "IND_28",
+      "query": "lò vi sóng samsung đèn vẫn sáng đĩa vẫn xoay mà đồ ăn bên trong nguội ngắt",
+      "category": "SYMPTOM_COLLOQUIAL",
+      "expected_primary_id": "Q0563",
+      "top1_id": "Q0563",
+      "classification": "EXACT_MATCH",
+      "reason": "Khớp chính xác ground-truth ID",
+      "top_5": [
+        "Q0563",
+        "Q0625",
+        "Q0687",
+        "Q0594",
+        "Q0656"
+      ]
+    },
+    {
+      "id": "IND_29",
+      "query": "máy rửa chén samsung rửa xong thấy đọng nước ở đáy khoang",
+      "category": "SYMPTOM_COLLOQUIAL",
+      "expected_primary_id": "Q0558",
+      "top1_id": "Q0388",
+      "classification": "WRONG_KNOWLEDGE",
+      "reason": "Khác nội dung sự cố giữa Q0558 và Q0388",
+      "top_5": [
+        "Q0388",
+        "Q0385",
+        "Q0588",
+        "Q0389",
+        "Q0558"
+      ]
+    },
+    {
+      "id": "IND_30",
+      "query": "tủ lạnh lg không chịu đông đá ngăn trên",
+      "category": "SYMPTOM_COLLOQUIAL",
+      "expected_primary_id": "Q0813",
+      "top1_id": "Q0728",
+      "classification": "MISSED_RETRIEVAL",
+      "reason": "Bản ghi kỳ vọng không nằm trong Top 5",
+      "top_5": [
+        "Q0728",
+        "Q0723",
+        "Q0733",
+        "Q0821",
+        "Q0817"
+      ]
+    },
+    {
+      "id": "IND_31",
+      "query": "tủ lạnh panasonic ngăn mát để rau củ bị thiu nhanh do không đủ độ lạnh",
+      "category": "SYMPTOM_COLLOQUIAL",
+      "expected_primary_id": "Q0857",
+      "top1_id": "Q0862",
+      "classification": "EQUIVALENT_KNOWLEDGE_DIFFERENT_ID",
+      "reason": "Đúng tri thức nhưng khác ID (Top-1 là Q0862, thuộc danh sách tương đương)",
+      "top_5": [
+        "Q0862",
+        "Q0857",
+        "Q0867",
+        "Q0872",
+        "Q0876"
+      ]
+    },
+    {
+      "id": "IND_32",
+      "query": "lò vi sóng pana hâm thức ăn bên nóng bên lạnh",
+      "category": "SYMPTOM_COLLOQUIAL",
+      "expected_primary_id": "Q0859",
+      "top1_id": "Q0258",
+      "classification": "WRONG_KNOWLEDGE",
+      "reason": "Khác nội dung sự cố giữa Q0859 và Q0258",
+      "top_5": [
+        "Q0258",
+        "Q0254",
+        "Q0859",
+        "Q0864",
+        "Q0869"
+      ]
+    },
+    {
+      "id": "IND_33",
+      "query": "tủ lạnh panasonic làm sao để chỉnh nhiệt độ cho đỡ tốn tiền điện",
+      "category": "SYMPTOM_COLLOQUIAL",
+      "expected_primary_id": "Q0983",
+      "top1_id": "Q0988",
+      "classification": "WRONG_KNOWLEDGE",
+      "reason": "Khác nội dung sự cố giữa Q0983 và Q0988",
+      "top_5": [
+        "Q0988",
+        "Q0986",
+        "Q0983",
+        "Q0867",
+        "Q0857"
+      ]
+    },
+    {
+      "id": "IND_34",
+      "query": "tủ lạnh samsung chỗ lấy nước bên ngoài rót ra nước chỉ âm ấm",
+      "category": "SYMPTOM_COLLOQUIAL",
+      "expected_primary_id": "Q1061",
+      "top1_id": "Q1022",
+      "classification": "MISSED_RETRIEVAL",
+      "reason": "Bản ghi kỳ vọng không nằm trong Top 5",
+      "top_5": [
+        "Q1022",
+        "Q1026",
+        "Q0584",
+        "Q0551",
+        "Q0613"
+      ]
+    },
+    {
+      "id": "IND_35",
+      "query": "xếp đồ ăn che kín họng gió tủ lạnh samsung có làm sao không",
+      "category": "SYMPTOM_COLLOQUIAL",
+      "expected_primary_id": "Q1080",
+      "top1_id": "Q1080",
+      "classification": "EXACT_MATCH",
+      "reason": "Khớp chính xác ground-truth ID",
+      "top_5": [
+        "Q1080",
+        "Q1082",
+        "Q1090",
+        "Q1070",
+        "Q1007"
+      ]
+    },
+    {
+      "id": "IND_36",
+      "query": "máy giặt không thoát nước",
+      "category": "PARTIAL_INFO",
+      "expected_primary_id": "Q0535",
+      "top1_id": "Q0689",
+      "classification": "INSUFFICIENT_INFO_AMBIGUOUS",
+      "reason": "Câu hỏi thiếu thông tin hãng/thiết bị, Top-1 chọn Samsung Máy giặt thay vì Samsung Máy giặt",
+      "top_5": [
+        "Q0689",
+        "Q0597",
+        "Q0690",
+        "Q0846",
+        "Q0596"
+      ]
+    },
+    {
+      "id": "IND_37",
+      "query": "máy giặt không chịu vắt",
+      "category": "PARTIAL_INFO",
+      "expected_primary_id": "Q0536",
+      "top1_id": "Q0536",
+      "classification": "EXACT_MATCH",
+      "reason": "Khớp chính xác ground-truth ID",
+      "top_5": [
+        "Q0536",
+        "Q0567",
+        "Q0598",
+        "Q0629",
+        "Q0660"
+      ]
+    },
+    {
+      "id": "IND_38",
+      "query": "máy giặt rung lắc dữ dội",
+      "category": "PARTIAL_INFO",
+      "expected_primary_id": "Q0537",
+      "top1_id": "Q0537",
+      "classification": "EXACT_MATCH",
+      "reason": "Khớp chính xác ground-truth ID",
+      "top_5": [
+        "Q0537",
+        "Q0599",
+        "Q0568",
+        "Q0630",
+        "Q0746"
+      ]
+    },
+    {
+      "id": "IND_39",
+      "query": "điều hoà không mát tí nào",
+      "category": "PARTIAL_INFO",
+      "expected_primary_id": "Q0544",
+      "top1_id": "Q0699",
+      "classification": "INSUFFICIENT_INFO_AMBIGUOUS",
+      "reason": "Câu hỏi thiếu thông tin hãng/thiết bị, Top-1 chọn LG Điều hòa thay vì Samsung Điều hòa",
+      "top_5": [
+        "Q0699",
+        "Q0694",
+        "Q0704",
+        "Q0998",
+        "Q0993"
+      ]
+    },
+    {
+      "id": "IND_40",
+      "query": "tủ lạnh bị chảy nước lênh láng",
+      "category": "PARTIAL_INFO",
+      "expected_primary_id": "Q0551",
+      "top1_id": "Q0551",
+      "classification": "EXACT_MATCH",
+      "reason": "Khớp chính xác ground-truth ID",
+      "top_5": [
+        "Q0551",
+        "Q0613",
+        "Q0582",
+        "Q0675",
+        "Q0644"
+      ]
+    },
+    {
+      "id": "IND_41",
+      "query": "tủ lạnh bốc mùi hôi thối",
+      "category": "PARTIAL_INFO",
+      "expected_primary_id": "Q0554",
+      "top1_id": "Q0743",
+      "classification": "INSUFFICIENT_INFO_AMBIGUOUS",
+      "reason": "Câu hỏi thiếu thông tin hãng/thiết bị, Top-1 chọn LG Tủ lạnh thay vì Samsung Tủ lạnh",
+      "top_5": [
+        "Q0743",
+        "Q0748",
+        "Q0738",
+        "Q0554",
+        "Q0616"
+      ]
+    },
+    {
+      "id": "IND_42",
+      "query": "máy sấy không khô đồ",
+      "category": "PARTIAL_INFO",
+      "expected_primary_id": "Q0560",
+      "top1_id": "Q0591",
+      "classification": "EQUIVALENT_KNOWLEDGE_DIFFERENT_ID",
+      "reason": "Đúng tri thức nhưng khác ID (Top-1 là Q0591, thuộc danh sách tương đương)",
+      "top_5": [
+        "Q0591",
+        "Q0560",
+        "Q0622",
+        "Q0684",
+        "Q0653"
+      ]
+    },
+    {
+      "id": "IND_43",
+      "query": "lò vi sóng không làm nóng được",
+      "category": "PARTIAL_INFO",
+      "expected_primary_id": "Q0563",
+      "top1_id": "Q1000",
+      "classification": "INSUFFICIENT_INFO_AMBIGUOUS",
+      "reason": "Câu hỏi thiếu thông tin hãng/thiết bị, Top-1 chọn Samsung Lò vi sóng thay vì Samsung Lò vi sóng",
+      "top_5": [
+        "Q1000",
+        "Q0995",
+        "Q0700",
+        "Q0695",
+        "Q0849"
+      ]
+    },
+    {
+      "id": "IND_44",
+      "query": "mã lỗi CF điều hòa",
+      "category": "PARTIAL_INFO",
+      "expected_primary_id": "Q0358",
+      "top1_id": "Q0358",
+      "classification": "EXACT_MATCH",
+      "reason": "Khớp chính xác ground-truth ID",
+      "top_5": [
+        "Q0358",
+        "Q0362",
+        "Q0359",
+        "Q0308",
+        "Q0159"
+      ]
+    },
+    {
+      "id": "IND_45",
+      "query": "lỗi CL máy giặt",
+      "category": "PARTIAL_INFO",
+      "expected_primary_id": "Q0020",
+      "top1_id": "Q0088",
+      "classification": "INSUFFICIENT_INFO_AMBIGUOUS",
+      "reason": "Câu hỏi thiếu thông tin hãng/thiết bị, Top-1 chọn LG Máy giặt thay vì LG Tủ lạnh",
+      "top_5": [
+        "Q0088",
+        "Q0151",
+        "Q0150",
+        "Q0148",
+        "Q0533"
+      ]
+    },
+    {
+      "id": "IND_46",
+      "query": "máy giặt lỗi 4C",
+      "category": "PARTIAL_INFO",
+      "expected_primary_id": "Q0374",
+      "top1_id": "Q0528",
+      "classification": "INSUFFICIENT_INFO_AMBIGUOUS",
+      "reason": "Câu hỏi thiếu thông tin hãng/thiết bị, Top-1 chọn Samsung Máy giặt thay vì Samsung Lò nướng",
+      "top_5": [
+        "Q0528",
+        "Q0533",
+        "Q0529",
+        "Q0532",
+        "Q0330"
+      ]
+    },
+    {
+      "id": "IND_47",
+      "query": "lỗi F95 điều hòa",
+      "category": "PARTIAL_INFO",
+      "expected_primary_id": "Q0160",
+      "top1_id": "Q0311",
+      "classification": "EQUIVALENT_KNOWLEDGE_DIFFERENT_ID",
+      "reason": "Đúng tri thức nhưng khác ID (Top-1 là Q0311, thuộc danh sách tương đương)",
+      "top_5": [
+        "Q0311",
+        "Q0160",
+        "Q0312",
+        "Q0159",
+        "Q0161"
+      ]
+    },
+    {
+      "id": "IND_48",
+      "query": "mã lỗi UB",
+      "category": "PARTIAL_INFO",
+      "expected_primary_id": "Q0381",
+      "top1_id": "Q0021",
+      "classification": "INSUFFICIENT_INFO_AMBIGUOUS",
+      "reason": "Câu hỏi thiếu thông tin hãng/thiết bị, Top-1 chọn LG Tủ lạnh thay vì Samsung Máy rửa bát",
+      "top_5": [
+        "Q0021",
+        "Q0218",
+        "Q0085",
+        "Q0214",
+        "Q0222"
+      ]
+    },
+    {
+      "id": "IND_49",
+      "query": "máy giặc samsung không xả được nước",
+      "category": "TYPO_SYNONYM",
+      "expected_primary_id": "Q0535",
+      "top1_id": "Q1001",
+      "classification": "WRONG_KNOWLEDGE",
+      "reason": "Khác nội dung sự cố giữa Q0535 và Q1001",
+      "top_5": [
+        "Q1001",
+        "Q1006",
+        "Q0690",
+        "Q0535",
+        "Q0566"
+      ]
+    },
+    {
+      "id": "IND_50",
+      "query": "máy làm lạnh samsung báo lỗi cf",
+      "category": "TYPO_SYNONYM",
+      "expected_primary_id": "Q0358",
+      "top1_id": "Q0358",
+      "classification": "EXACT_MATCH",
+      "reason": "Khớp chính xác ground-truth ID",
+      "top_5": [
+        "Q0358",
+        "Q0359",
+        "Q0362",
+        "Q0606",
+        "Q0544"
+      ]
+    },
+    {
+      "id": "IND_51",
+      "query": "lò vi ba samsung dĩa vẫn quay mà cơm canh không ấm",
+      "category": "TYPO_SYNONYM",
+      "expected_primary_id": "Q0563",
+      "top1_id": "Q0563",
+      "classification": "EXACT_MATCH",
+      "reason": "Khớp chính xác ground-truth ID",
+      "top_5": [
+        "Q0563",
+        "Q0625",
+        "Q0594",
+        "Q0995",
+        "Q0687"
+      ]
+    },
+    {
+      "id": "IND_52",
+      "query": "máy rửa chén bát samsung bị nghẹt nước",
+      "category": "TYPO_SYNONYM",
+      "expected_primary_id": "Q0558",
+      "top1_id": "Q0388",
+      "classification": "MISSED_RETRIEVAL",
+      "reason": "Bản ghi kỳ vọng không nằm trong Top 5",
+      "top_5": [
+        "Q0388",
+        "Q0395",
+        "Q0396",
+        "Q0383",
+        "Q0381"
+      ]
+    },
+    {
+      "id": "IND_53",
+      "query": "may lanh panasonic loi f16",
+      "category": "TYPO_SYNONYM",
+      "expected_primary_id": "Q0158",
+      "top1_id": "Q0308",
+      "classification": "EQUIVALENT_KNOWLEDGE_DIFFERENT_ID",
+      "reason": "Đúng tri thức nhưng khác ID (Top-1 là Q0308, thuộc danh sách tương đương)",
+      "top_5": [
+        "Q0308",
+        "Q0158",
+        "Q0233",
+        "Q0157",
+        "Q0251"
+      ]
+    },
+    {
+      "id": "IND_54",
+      "query": "tu lanh lg loi sb la gi",
+      "category": "TYPO_SYNONYM",
+      "expected_primary_id": "Q0002",
+      "top1_id": "Q0002",
+      "classification": "EXACT_MATCH",
+      "reason": "Khớp chính xác ground-truth ID",
+      "top_5": [
+        "Q0002",
+        "Q0108",
+        "Q0041",
+        "Q0075",
+        "Q0034"
+      ]
+    },
+    {
+      "id": "IND_55",
+      "query": "samsung may giat loi dc",
+      "category": "TYPO_SYNONYM",
+      "expected_primary_id": "Q0379",
+      "top1_id": "Q0414",
+      "classification": "WRONG_KNOWLEDGE",
+      "reason": "Sai thiết bị: kỳ vọng Máy rửa bát, trả về Máy sấy",
+      "top_5": [
+        "Q0414",
+        "Q0419",
+        "Q0370",
+        "Q0458",
+        "Q0416"
+      ]
+    },
+    {
+      "id": "IND_56",
+      "query": "máy xấy đồ samsung quay mà không khô",
+      "category": "TYPO_SYNONYM",
+      "expected_primary_id": "Q0560",
+      "top1_id": "Q0994",
+      "classification": "WRONG_KNOWLEDGE",
+      "reason": "Khác nội dung sự cố giữa Q0560 và Q0994",
+      "top_5": [
+        "Q0994",
+        "Q0999",
+        "Q0560",
+        "Q0591",
+        "Q0622"
+      ]
+    },
+    {
+      "id": "IND_57",
+      "query": "bếp điện từ panasonic báo u04",
+      "category": "TYPO_SYNONYM",
+      "expected_primary_id": "Q0214",
+      "top1_id": "Q0350",
+      "classification": "EQUIVALENT_KNOWLEDGE_DIFFERENT_ID",
+      "reason": "Đúng tri thức nhưng khác ID (Top-1 là Q0350, thuộc danh sách tương đương)",
+      "top_5": [
+        "Q0350",
+        "Q0214",
+        "Q0222",
+        "Q0357",
+        "Q0227"
+      ]
+    },
+    {
+      "id": "IND_58",
+      "query": "điều hòa panasonic bị lỗi h 97",
+      "category": "TYPO_SYNONYM",
+      "expected_primary_id": "Q0165",
+      "top1_id": "Q0326",
+      "classification": "EQUIVALENT_KNOWLEDGE_DIFFERENT_ID",
+      "reason": "Đúng tri thức nhưng khác ID (Top-1 là Q0326, thuộc danh sách tương đương)",
+      "top_5": [
+        "Q0326",
+        "Q0165",
+        "Q0312",
+        "Q0318",
+        "Q0234"
+      ]
+    },
+    {
+      "id": "IND_59",
+      "query": "điều hoà panasonic bị lỗi h 99",
+      "category": "TYPO_SYNONYM",
+      "expected_primary_id": "Q0167",
+      "top1_id": "Q0328",
+      "classification": "EQUIVALENT_KNOWLEDGE_DIFFERENT_ID",
+      "reason": "Đúng tri thức nhưng khác ID (Top-1 là Q0328, thuộc danh sách tương đương)",
+      "top_5": [
+        "Q0328",
+        "Q0167",
+        "Q0326",
+        "Q0327",
+        "Q0166"
+      ]
+    },
+    {
+      "id": "IND_60",
+      "query": "bếp từ panasonic lỗi u 11",
+      "category": "TYPO_SYNONYM",
+      "expected_primary_id": "Q0215",
+      "top1_id": "Q0351",
+      "classification": "EQUIVALENT_KNOWLEDGE_DIFFERENT_ID",
+      "reason": "Đúng tri thức nhưng khác ID (Top-1 là Q0351, thuộc danh sách tương đương)",
+      "top_5": [
+        "Q0351",
+        "Q0215",
+        "Q0222",
+        "Q0353",
+        "Q0352"
+      ]
+    }
+  ]
+}

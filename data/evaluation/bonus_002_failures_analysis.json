@@ -1,0 +1,523 @@
+{
+  "metrics": {
+    "0.0": {
+      "hit@1": 87.0,
+      "hit@1_count": 174,
+      "hit@3": 98.5,
+      "hit@3_count": 197,
+      "hit@5": 99.5,
+      "hit@5_count": 199,
+      "mrr": 0.9283,
+      "avg_latency_ms": 148.94,
+      "errors_count": 26
+    },
+    "0.02": {
+      "hit@1": 94.5,
+      "hit@1_count": 189,
+      "hit@3": 100.0,
+      "hit@3_count": 200,
+      "hit@5": 100.0,
+      "hit@5_count": 200,
+      "mrr": 0.9725,
+      "avg_latency_ms": 148.93,
+      "errors_count": 11
+    }
+  },
+  "total_failures": 11,
+  "failures": [
+    {
+      "expected_id": "Q0002",
+      "predicted_top1_id": "Q0108",
+      "query": "Tủ lạnh LG lỗi sb",
+      "expected_rank": 2,
+      "base_top1_id": "Q0108",
+      "exp_data": {
+        "question_clean": "Tủ lạnh LG lỗi sb",
+        "cause": "nan",
+        "fix": "nan",
+        "duplicate_group": "",
+        "issue_id": "I0002",
+        "error_code": "SB",
+        "score": 1.079,
+        "distance": 0.32102537155151367,
+        "bonuses": {
+          "semantic": 0.679,
+          "brand": 0.08,
+          "device": 0.08,
+          "error_code": 0.2,
+          "both": 0.02,
+          "exact_question": 0.02
+        },
+        "is_exact_match": true
+      },
+      "top1_data": {
+        "question_clean": "Cách khắc phục lỗi sb tủ lạnh LG",
+        "cause": "nan",
+        "fix": "nan",
+        "duplicate_group": "",
+        "issue_id": "I0002",
+        "error_code": "SB",
+        "score": 1.0979,
+        "distance": 0.2821378707885742,
+        "bonuses": {
+          "semantic": 0.7179,
+          "brand": 0.08,
+          "device": 0.08,
+          "error_code": 0.2,
+          "both": 0.02
+        },
+        "is_exact_match": false
+      }
+    },
+    {
+      "expected_id": "Q0158",
+      "predicted_top1_id": "Q0308",
+      "query": "Điều hoà panasonic bị lỗi F16",
+      "expected_rank": 2,
+      "base_top1_id": "Q0308",
+      "exp_data": {
+        "question_clean": "Điều hoà panasonic bị lỗi F16",
+        "cause": "nan",
+        "fix": "nan",
+        "duplicate_group": "DUP79719DB9",
+        "issue_id": "I0099",
+        "error_code": "F16",
+        "score": 1.1535,
+        "distance": 0.24652099609375,
+        "bonuses": {
+          "semantic": 0.7535,
+          "brand": 0.08,
+          "device": 0.08,
+          "error_code": 0.2,
+          "both": 0.02,
+          "exact_question": 0.02
+        },
+        "is_exact_match": true
+      },
+      "top1_data": {
+        "question_clean": "Điều hòa panasonic bị lỗi F16",
+        "cause": "nan",
+        "fix": "nan",
+        "duplicate_group": "DUP79719DB9",
+        "issue_id": "I0099",
+        "error_code": "F16",
+        "score": 1.198,
+        "distance": 0.20200592279434204,
+        "bonuses": {
+          "semantic": 0.798,
+          "brand": 0.08,
+          "device": 0.08,
+          "error_code": 0.2,
+          "both": 0.02,
+          "exact_question": 0.02
+        },
+        "is_exact_match": true
+      }
+    },
+    {
+      "expected_id": "Q0159",
+      "predicted_top1_id": "Q0310",
+      "query": "Điều hòa panasonic bị lỗi F93",
+      "expected_rank": 2,
+      "base_top1_id": "Q0310",
+      "exp_data": {
+        "question_clean": "Điều hòa panasonic bị lỗi F93",
+        "cause": "nan",
+        "fix": "nan",
+        "duplicate_group": "DUP44278C6B",
+        "issue_id": "I0100",
+        "error_code": "F93",
+        "score": 1.1609,
+        "distance": 0.23905140161514282,
+        "bonuses": {
+          "semantic": 0.7609,
+          "brand": 0.08,
+          "device": 0.08,
+          "error_code": 0.2,
+          "both": 0.02,
+          "exact_question": 0.02
+        },
+        "is_exact_match": true
+      },
+      "top1_data": {
+        "question_clean": "Điều hòa panasonic bị lỗi F93",
+        "cause": "nan",
+        "fix": "nan",
+        "duplicate_group": "DUP44278C6B",
+        "issue_id": "I0100",
+        "error_code": "F93",
+        "score": 1.1769,
+        "distance": 0.22310221195220947,
+        "bonuses": {
+          "semantic": 0.7769,
+          "brand": 0.08,
+          "device": 0.08,
+          "error_code": 0.2,
+          "both": 0.02,
+          "exact_question": 0.02
+        },
+        "is_exact_match": true
+      }
+    },
+    {
+      "expected_id": "Q0160",
+      "predicted_top1_id": "Q0311",
+      "query": "Điều hòa panasonic bị lỗi F95",
+      "expected_rank": 2,
+      "base_top1_id": "Q0311",
+      "exp_data": {
+        "question_clean": "Điều hòa panasonic bị lỗi F95",
+        "cause": "nan",
+        "fix": "nan",
+        "duplicate_group": "DUP9E57CFC6",
+        "issue_id": "I0101",
+        "error_code": "F95",
+        "score": 1.1581,
+        "distance": 0.24187827110290527,
+        "bonuses": {
+          "semantic": 0.7581,
+          "brand": 0.08,
+          "device": 0.08,
+          "error_code": 0.2,
+          "both": 0.02,
+          "exact_question": 0.02
+        },
+        "is_exact_match": true
+      },
+      "top1_data": {
+        "question_clean": "Điều hòa panasonic bị lỗi F95",
+        "cause": "nan",
+        "fix": "nan",
+        "duplicate_group": "DUP9E57CFC6",
+        "issue_id": "I0101",
+        "error_code": "F95",
+        "score": 1.1731,
+        "distance": 0.22685986757278442,
+        "bonuses": {
+          "semantic": 0.7731,
+          "brand": 0.08,
+          "device": 0.08,
+          "error_code": 0.2,
+          "both": 0.02,
+          "exact_question": 0.02
+        },
+        "is_exact_match": true
+      }
+    },
+    {
+      "expected_id": "Q0161",
+      "predicted_top1_id": "Q0312",
+      "query": "Điều hòa panasonic bị lỗi F97",
+      "expected_rank": 2,
+      "base_top1_id": "Q0312",
+      "exp_data": {
+        "question_clean": "Điều hòa panasonic bị lỗi F97",
+        "cause": "nan",
+        "fix": "nan",
+        "duplicate_group": "DUPC3E76538",
+        "issue_id": "I0102",
+        "error_code": "F97",
+        "score": 1.17,
+        "distance": 0.2299596667289734,
+        "bonuses": {
+          "semantic": 0.77,
+          "brand": 0.08,
+          "device": 0.08,
+          "error_code": 0.2,
+          "both": 0.02,
+          "exact_question": 0.02
+        },
+        "is_exact_match": true
+      },
+      "top1_data": {
+        "question_clean": "Điều hòa panasonic bị lỗi F97",
+        "cause": "nan",
+        "fix": "nan",
+        "duplicate_group": "DUPC3E76538",
+        "issue_id": "I0102",
+        "error_code": "F97",
+        "score": 1.1985,
+        "distance": 0.20149707794189453,
+        "bonuses": {
+          "semantic": 0.7985,
+          "brand": 0.08,
+          "device": 0.08,
+          "error_code": 0.2,
+          "both": 0.02,
+          "exact_question": 0.02
+        },
+        "is_exact_match": true
+      }
+    },
+    {
+      "expected_id": "Q0165",
+      "predicted_top1_id": "Q0326",
+      "query": "Điều hòa panasonic bị lỗi H97",
+      "expected_rank": 2,
+      "base_top1_id": "Q0326",
+      "exp_data": {
+        "question_clean": "Điều hòa panasonic bị lỗi H97",
+        "cause": "nan",
+        "fix": "nan",
+        "duplicate_group": "DUPF2D57116",
+        "issue_id": "I0106",
+        "error_code": "H97",
+        "score": 1.1657,
+        "distance": 0.23428618907928467,
+        "bonuses": {
+          "semantic": 0.7657,
+          "brand": 0.08,
+          "device": 0.08,
+          "error_code": 0.2,
+          "both": 0.02,
+          "exact_question": 0.02
+        },
+        "is_exact_match": true
+      },
+      "top1_data": {
+        "question_clean": "Điều hòa panasonic bị lỗi H97",
+        "cause": "nan",
+        "fix": "nan",
+        "duplicate_group": "DUPF2D57116",
+        "issue_id": "I0106",
+        "error_code": "H97",
+        "score": 1.2004,
+        "distance": 0.19960039854049683,
+        "bonuses": {
+          "semantic": 0.8004,
+          "brand": 0.08,
+          "device": 0.08,
+          "error_code": 0.2,
+          "both": 0.02,
+          "exact_question": 0.02
+        },
+        "is_exact_match": true
+      }
+    },
+    {
+      "expected_id": "Q0167",
+      "predicted_top1_id": "Q0328",
+      "query": "Điều hòa panasonic bị lỗi H99",
+      "expected_rank": 2,
+      "base_top1_id": "Q0328",
+      "exp_data": {
+        "question_clean": "Điều hòa panasonic bị lỗi H99",
+        "cause": "nan",
+        "fix": "nan",
+        "duplicate_group": "DUP660C4236",
+        "issue_id": "I0108",
+        "error_code": "H99",
+        "score": 1.1783,
+        "distance": 0.22171366214752197,
+        "bonuses": {
+          "semantic": 0.7783,
+          "brand": 0.08,
+          "device": 0.08,
+          "error_code": 0.2,
+          "both": 0.02,
+          "exact_question": 0.02
+        },
+        "is_exact_match": true
+      },
+      "top1_data": {
+        "question_clean": "Điều hòa panasonic bị lỗi H99",
+        "cause": "nan",
+        "fix": "nan",
+        "duplicate_group": "DUP660C4236",
+        "issue_id": "I0108",
+        "error_code": "H99",
+        "score": 1.1804,
+        "distance": 0.2195987105369568,
+        "bonuses": {
+          "semantic": 0.7804,
+          "brand": 0.08,
+          "device": 0.08,
+          "error_code": 0.2,
+          "both": 0.02,
+          "exact_question": 0.02
+        },
+        "is_exact_match": true
+      }
+    },
+    {
+      "expected_id": "Q0196",
+      "predicted_top1_id": "Q0333",
+      "query": "Máy giặt panasonic bị lỗi H09",
+      "expected_rank": 2,
+      "base_top1_id": "Q0333",
+      "exp_data": {
+        "question_clean": "Máy giặt panasonic bị lỗi H09",
+        "cause": "nan",
+        "fix": "nan",
+        "duplicate_group": "DUP11C6536F",
+        "issue_id": "I0137",
+        "error_code": "H09",
+        "score": 1.1701,
+        "distance": 0.22990214824676514,
+        "bonuses": {
+          "semantic": 0.7701,
+          "brand": 0.08,
+          "device": 0.08,
+          "error_code": 0.2,
+          "both": 0.02,
+          "exact_question": 0.02
+        },
+        "is_exact_match": true
+      },
+      "top1_data": {
+        "question_clean": "Máy giặt panasonic bị lỗi H09",
+        "cause": "nan",
+        "fix": "nan",
+        "duplicate_group": "DUP11C6536F",
+        "issue_id": "I0137",
+        "error_code": "H09",
+        "score": 1.1852,
+        "distance": 0.21476095914840698,
+        "bonuses": {
+          "semantic": 0.7852,
+          "brand": 0.08,
+          "device": 0.08,
+          "error_code": 0.2,
+          "both": 0.02,
+          "exact_question": 0.02
+        },
+        "is_exact_match": true
+      }
+    },
+    {
+      "expected_id": "Q0214",
+      "predicted_top1_id": "Q0350",
+      "query": "Bếp từ panasonic bị lỗi U04",
+      "expected_rank": 2,
+      "base_top1_id": "Q0350",
+      "exp_data": {
+        "question_clean": "Bếp từ panasonic bị lỗi U04",
+        "cause": "nan",
+        "fix": "nan",
+        "duplicate_group": "DUPD0D40AC0",
+        "issue_id": "I0155",
+        "error_code": "U04",
+        "score": 1.13,
+        "distance": 0.269950807094574,
+        "bonuses": {
+          "semantic": 0.73,
+          "brand": 0.08,
+          "device": 0.08,
+          "error_code": 0.2,
+          "both": 0.02,
+          "exact_question": 0.02
+        },
+        "is_exact_match": true
+      },
+      "top1_data": {
+        "question_clean": "Bếp từ panasonic bị lỗi U04",
+        "cause": "nan",
+        "fix": "nan",
+        "duplicate_group": "DUPD0D40AC0",
+        "issue_id": "I0155",
+        "error_code": "U04",
+        "score": 1.1405,
+        "distance": 0.25949907302856445,
+        "bonuses": {
+          "semantic": 0.7405,
+          "brand": 0.08,
+          "device": 0.08,
+          "error_code": 0.2,
+          "both": 0.02,
+          "exact_question": 0.02
+        },
+        "is_exact_match": true
+      }
+    },
+    {
+      "expected_id": "Q0215",
+      "predicted_top1_id": "Q0351",
+      "query": "Bếp từ panasonic bị lỗi U11*",
+      "expected_rank": 2,
+      "base_top1_id": "Q0351",
+      "exp_data": {
+        "question_clean": "Bếp từ panasonic bị lỗi U11*",
+        "cause": "nan",
+        "fix": "nan",
+        "duplicate_group": "DUP8C02EB6E",
+        "issue_id": "I0156",
+        "error_code": "U11",
+        "score": 1.1608,
+        "distance": 0.23924994468688965,
+        "bonuses": {
+          "semantic": 0.7608,
+          "brand": 0.08,
+          "device": 0.08,
+          "error_code": 0.2,
+          "both": 0.02,
+          "exact_question": 0.02
+        },
+        "is_exact_match": true
+      },
+      "top1_data": {
+        "question_clean": "Bếp từ panasonic bị lỗi U11*",
+        "cause": "nan",
+        "fix": "nan",
+        "duplicate_group": "DUP8C02EB6E",
+        "issue_id": "I0156",
+        "error_code": "U11",
+        "score": 1.1786,
+        "distance": 0.22138899564743042,
+        "bonuses": {
+          "semantic": 0.7786,
+          "brand": 0.08,
+          "device": 0.08,
+          "error_code": 0.2,
+          "both": 0.02,
+          "exact_question": 0.02
+        },
+        "is_exact_match": true
+      }
+    },
+    {
+      "expected_id": "Q0234",
+      "predicted_top1_id": "Q0318",
+      "query": "Điều hòa panasonic bị lỗi H27",
+      "expected_rank": 2,
+      "base_top1_id": "Q0318",
+      "exp_data": {
+        "question_clean": "Điều hòa panasonic bị lỗi H27",
+        "cause": "nan",
+        "fix": "nan",
+        "duplicate_group": "DUPF11FAC19",
+        "issue_id": "I0175",
+        "error_code": "H27",
+        "score": 1.1783,
+        "distance": 0.22174018621444702,
+        "bonuses": {
+          "semantic": 0.7783,
+          "brand": 0.08,
+          "device": 0.08,
+          "error_code": 0.2,
+          "both": 0.02,
+          "exact_question": 0.02
+        },
+        "is_exact_match": true
+      },
+      "top1_data": {
+        "question_clean": "Điều hòa panasonic bị lỗi H27",
+        "cause": "nan",
+        "fix": "nan",
+        "duplicate_group": "DUPF11FAC19",
+        "issue_id": "I0175",
+        "error_code": "H27",
+        "score": 1.1924,
+        "distance": 0.2075648307800293,
+        "bonuses": {
+          "semantic": 0.7924,
+          "brand": 0.08,
+          "device": 0.08,
+          "error_code": 0.2,
+          "both": 0.02,
+          "exact_question": 0.02
+        },
+        "is_exact_match": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,376 @@
+[
+  {
+    "w_q2q": 0.0,
+    "hit@1": 89.0,
+    "hit@3": 100.0,
+    "hit@5": 100.0,
+    "mrr": 0.94,
+    "err_hit@1": 98.0,
+    "sym_hit@1": 80.0,
+    "avg_latency_ms": 144.49,
+    "rescued_count": 0,
+    "regressed_count": 0,
+    "rescued_items": [],
+    "regressed_items": []
+  },
+  {
+    "w_q2q": 0.02,
+    "hit@1": 95.0,
+    "hit@3": 100.0,
+    "hit@5": 100.0,
+    "mrr": 0.9717,
+    "err_hit@1": 98.0,
+    "sym_hit@1": 92.0,
+    "avg_latency_ms": 145.1,
+    "rescued_count": 6,
+    "regressed_count": 0,
+    "rescued_items": [
+      {
+        "id": "Q0544",
+        "q": "Máy lạnh không lạnh thì kiểm tra gì trước?",
+        "old": "Q0575",
+        "new": "Q0544"
+      },
+      {
+        "id": "Q0546",
+        "q": "Máy lạnh tự nhiên ngừng chạy có phải bị hỏng không?",
+        "old": "Q0577",
+        "new": "Q0546"
+      },
+      {
+        "id": "Q0551",
+        "q": "Tủ lạnh bị chảy nước bên trong thì xử lý thế nào?",
+        "old": "Q0582",
+        "new": "Q0551"
+      },
+      {
+        "id": "Q0561",
+        "q": "Máy sấy nóng nhưng quần áo vẫn ẩm thì sao?",
+        "old": "Q0592",
+        "new": "Q0561"
+      },
+      {
+        "id": "Q0567",
+        "q": "Máy giặt không vắt được thì nguyên nhân thường là gì phải làm sao?",
+        "old": "Q0660",
+        "new": "Q0567"
+      },
+      {
+        "id": "Q0859",
+        "q": "Panasonic Lò vi sóng nóng không đều?",
+        "old": "Q0864",
+        "new": "Q0859"
+      }
+    ],
+    "regressed_items": []
+  },
+  {
+    "w_q2q": 0.03,
+    "hit@1": 96.0,
+    "hit@3": 100.0,
+    "hit@5": 100.0,
+    "mrr": 0.9783,
+    "err_hit@1": 98.0,
+    "sym_hit@1": 94.0,
+    "avg_latency_ms": 145.08,
+    "rescued_count": 7,
+    "regressed_count": 0,
+    "rescued_items": [
+      {
+        "id": "Q0544",
+        "q": "Máy lạnh không lạnh thì kiểm tra gì trước?",
+        "old": "Q0575",
+        "new": "Q0544"
+      },
+      {
+        "id": "Q0546",
+        "q": "Máy lạnh tự nhiên ngừng chạy có phải bị hỏng không?",
+        "old": "Q0577",
+        "new": "Q0546"
+      },
+      {
+        "id": "Q0551",
+        "q": "Tủ lạnh bị chảy nước bên trong thì xử lý thế nào?",
+        "old": "Q0582",
+        "new": "Q0551"
+      },
+      {
+        "id": "Q0561",
+        "q": "Máy sấy nóng nhưng quần áo vẫn ẩm thì sao?",
+        "old": "Q0592",
+        "new": "Q0561"
+      },
+      {
+        "id": "Q0567",
+        "q": "Máy giặt không vắt được thì nguyên nhân thường là gì phải làm sao?",
+        "old": "Q0660",
+        "new": "Q0567"
+      },
+      {
+        "id": "Q0857",
+        "q": "Panasonic Tủ lạnh ngăn mát không đủ lạnh?",
+        "old": "Q0862",
+        "new": "Q0857"
+      },
+      {
+        "id": "Q0859",
+        "q": "Panasonic Lò vi sóng nóng không đều?",
+        "old": "Q0864",
+        "new": "Q0859"
+      }
+    ],
+    "regressed_items": []
+  },
+  {
+    "w_q2q": 0.04,
+    "hit@1": 96.0,
+    "hit@3": 100.0,
+    "hit@5": 100.0,
+    "mrr": 0.9783,
+    "err_hit@1": 98.0,
+    "sym_hit@1": 94.0,
+    "avg_latency_ms": 145.12,
+    "rescued_count": 7,
+    "regressed_count": 0,
+    "rescued_items": [
+      {
+        "id": "Q0544",
+        "q": "Máy lạnh không lạnh thì kiểm tra gì trước?",
+        "old": "Q0575",
+        "new": "Q0544"
+      },
+      {
+        "id": "Q0546",
+        "q": "Máy lạnh tự nhiên ngừng chạy có phải bị hỏng không?",
+        "old": "Q0577",
+        "new": "Q0546"
+      },
+      {
+        "id": "Q0551",
+        "q": "Tủ lạnh bị chảy nước bên trong thì xử lý thế nào?",
+        "old": "Q0582",
+        "new": "Q0551"
+      },
+      {
+        "id": "Q0561",
+        "q": "Máy sấy nóng nhưng quần áo vẫn ẩm thì sao?",
+        "old": "Q0592",
+        "new": "Q0561"
+      },
+      {
+        "id": "Q0567",
+        "q": "Máy giặt không vắt được thì nguyên nhân thường là gì phải làm sao?",
+        "old": "Q0660",
+        "new": "Q0567"
+      },
+      {
+        "id": "Q0857",
+        "q": "Panasonic Tủ lạnh ngăn mát không đủ lạnh?",
+        "old": "Q0862",
+        "new": "Q0857"
+      },
+      {
+        "id": "Q0859",
+        "q": "Panasonic Lò vi sóng nóng không đều?",
+        "old": "Q0864",
+        "new": "Q0859"
+      }
+    ],
+    "regressed_items": []
+  },
+  {
+    "w_q2q": 0.05,
+    "hit@1": 96.0,
+    "hit@3": 100.0,
+    "hit@5": 100.0,
+    "mrr": 0.9783,
+    "err_hit@1": 98.0,
+    "sym_hit@1": 94.0,
+    "avg_latency_ms": 145.05,
+    "rescued_count": 7,
+    "regressed_count": 0,
+    "rescued_items": [
+      {
+        "id": "Q0544",
+        "q": "Máy lạnh không lạnh thì kiểm tra gì trước?",
+        "old": "Q0575",
+        "new": "Q0544"
+      },
+      {
+        "id": "Q0546",
+        "q": "Máy lạnh tự nhiên ngừng chạy có phải bị hỏng không?",
+        "old": "Q0577",
+        "new": "Q0546"
+      },
+      {
+        "id": "Q0551",
+        "q": "Tủ lạnh bị chảy nước bên trong thì xử lý thế nào?",
+        "old": "Q0582",
+        "new": "Q0551"
+      },
+      {
+        "id": "Q0561",
+        "q": "Máy sấy nóng nhưng quần áo vẫn ẩm thì sao?",
+        "old": "Q0592",
+        "new": "Q0561"
+      },
+      {
+        "id": "Q0567",
+        "q": "Máy giặt không vắt được thì nguyên nhân thường là gì phải làm sao?",
+        "old": "Q0660",
+        "new": "Q0567"
+      },
+      {
+        "id": "Q0857",
+        "q": "Panasonic Tủ lạnh ngăn mát không đủ lạnh?",
+        "old": "Q0862",
+        "new": "Q0857"
+      },
+      {
+        "id": "Q0859",
+        "q": "Panasonic Lò vi sóng nóng không đều?",
+        "old": "Q0864",
+        "new": "Q0859"
+      }
+    ],
+    "regressed_items": []
+  },
+  {
+    "w_q2q": 0.06,
+    "hit@1": 98.0,
+    "hit@3": 100.0,
+    "hit@5": 100.0,
+    "mrr": 0.99,
+    "err_hit@1": 98.0,
+    "sym_hit@1": 98.0,
+    "avg_latency_ms": 145.18,
+    "rescued_count": 9,
+    "regressed_count": 0,
+    "rescued_items": [
+      {
+        "id": "Q0543",
+        "q": "Máy giặt có mùi hôi thì vệ sinh thế nào?",
+        "old": "Q0574",
+        "new": "Q0543"
+      },
+      {
+        "id": "Q0544",
+        "q": "Máy lạnh không lạnh thì kiểm tra gì trước?",
+        "old": "Q0575",
+        "new": "Q0544"
+      },
+      {
+        "id": "Q0546",
+        "q": "Máy lạnh tự nhiên ngừng chạy có phải bị hỏng không?",
+        "old": "Q0577",
+        "new": "Q0546"
+      },
+      {
+        "id": "Q0551",
+        "q": "Tủ lạnh bị chảy nước bên trong thì xử lý thế nào?",
+        "old": "Q0582",
+        "new": "Q0551"
+      },
+      {
+        "id": "Q0552",
+        "q": "Tủ lạnh không làm đá tự động thì kiểm tra gì?",
+        "old": "Q0645",
+        "new": "Q0552"
+      },
+      {
+        "id": "Q0561",
+        "q": "Máy sấy nóng nhưng quần áo vẫn ẩm thì sao?",
+        "old": "Q0592",
+        "new": "Q0561"
+      },
+      {
+        "id": "Q0567",
+        "q": "Máy giặt không vắt được thì nguyên nhân thường là gì phải làm sao?",
+        "old": "Q0660",
+        "new": "Q0567"
+      },
+      {
+        "id": "Q0857",
+        "q": "Panasonic Tủ lạnh ngăn mát không đủ lạnh?",
+        "old": "Q0862",
+        "new": "Q0857"
+      },
+      {
+        "id": "Q0859",
+        "q": "Panasonic Lò vi sóng nóng không đều?",
+        "old": "Q0864",
+        "new": "Q0859"
+      }
+    ],
+    "regressed_items": []
+  },
+  {
+    "w_q2q": 0.08,
+    "hit@1": 98.0,
+    "hit@3": 100.0,
+    "hit@5": 100.0,
+    "mrr": 0.99,
+    "err_hit@1": 98.0,
+    "sym_hit@1": 98.0,
+    "avg_latency_ms": 145.07,
+    "rescued_count": 9,
+    "regressed_count": 0,
+    "rescued_items": [
+      {
+        "id": "Q0543",
+        "q": "Máy giặt có mùi hôi thì vệ sinh thế nào?",
+        "old": "Q0574",
+        "new": "Q0543"
+      },
+      {
+        "id": "Q0544",
+        "q": "Máy lạnh không lạnh thì kiểm tra gì trước?",
+        "old": "Q0575",
+        "new": "Q0544"
+      },
+      {
+        "id": "Q0546",
+        "q": "Máy lạnh tự nhiên ngừng chạy có phải bị hỏng không?",
+        "old": "Q0577",
+        "new": "Q0546"
+      },
+      {
+        "id": "Q0551",
+        "q": "Tủ lạnh bị chảy nước bên trong thì xử lý thế nào?",
+        "old": "Q0582",
+        "new": "Q0551"
+      },
+      {
+        "id": "Q0552",
+        "q": "Tủ lạnh không làm đá tự động thì kiểm tra gì?",
+        "old": "Q0645",
+        "new": "Q0552"
+      },
+      {
+        "id": "Q0561",
+        "q": "Máy sấy nóng nhưng quần áo vẫn ẩm thì sao?",
+        "old": "Q0592",
+        "new": "Q0561"
+      },
+      {
+        "id": "Q0567",
+        "q": "Máy giặt không vắt được thì nguyên nhân thường là gì phải làm sao?",
+        "old": "Q0660",
+        "new": "Q0567"
+      },
+      {
+        "id": "Q0857",
+        "q": "Panasonic Tủ lạnh ngăn mát không đủ lạnh?",
+        "old": "Q0862",
+        "new": "Q0857"
+      },
+      {
+        "id": "Q0859",
+        "q": "Panasonic Lò vi sóng nóng không đều?",
+        "old": "Q0864",
+        "new": "Q0859"
+      }
+    ],
+    "regressed_items": []
+  }
+]

@@ -42,6 +42,25 @@ class Settings(BaseSettings):
     rerank_device_bonus: float = 0.08
     rerank_exact_error_code_bonus: float = 0.20
     rerank_both_bonus: float = 0.02
+    rerank_exact_question_bonus: float = 0.02
+
+    # Cau hinh co so du lieu quan he SQLite & phien dang nhap
+    sqlite_db_path: str = "data/chat_history.db"
+    session_expire_days: int = 7
+    session_secret_key: str = "dev-secret-key-change-in-production"
+
+    # Cau hinh SMTP gui email & Dat lai mat khau
+    smtp_host: str = "localhost"
+    smtp_port: int = 587
+    smtp_username: str = ""
+    smtp_password: str = ""
+    smtp_from: str = "noreply@ragchatbot.local"
+    smtp_use_tls: bool = True
+    frontend_base_url: str = "http://localhost:8000"
+    password_reset_expire_minutes: int = 15
+    password_reset_rate_limit_count: int = 3
+    password_reset_rate_limit_minutes: int = 15
+    password_reset_cooldown_seconds: int = 15
 
     # Cau hinh Pydantic Settings
     model_config = SettingsConfigDict(

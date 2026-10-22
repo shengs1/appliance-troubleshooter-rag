@@ -1,0 +1,130 @@
+[
+  {
+    "weight": 0.0,
+    "label": "Baseline (w=0.00)",
+    "strict_hit1": 15.0,
+    "cluster_hit1": 45.0,
+    "hit3": 61.67,
+    "hit5": 68.33,
+    "mrr": 0.5261,
+    "avg_latency_ms": 159.6,
+    "by_category": {
+      "ERROR_CODE_NATURAL": {
+        "total": 15,
+        "strict_hit1_rate": 20.0,
+        "cluster_hit1_rate": 40.0
+      },
+      "SYMPTOM_COLLOQUIAL": {
+        "total": 20,
+        "strict_hit1_rate": 10.0,
+        "cluster_hit1_rate": 35.0
+      },
+      "PARTIAL_INFO": {
+        "total": 13,
+        "strict_hit1_rate": 7.7,
+        "cluster_hit1_rate": 46.2
+      },
+      "TYPO_SYNONYM": {
+        "total": 12,
+        "strict_hit1_rate": 25.0,
+        "cluster_hit1_rate": 66.7
+      }
+    }
+  },
+  {
+    "weight": 0.02,
+    "label": "Q2Q w=0.02",
+    "strict_hit1": 18.33,
+    "cluster_hit1": 43.33,
+    "hit3": 61.67,
+    "hit5": 70.0,
+    "mrr": 0.5211,
+    "avg_latency_ms": 160.41,
+    "by_category": {
+      "ERROR_CODE_NATURAL": {
+        "total": 15,
+        "strict_hit1_rate": 20.0,
+        "cluster_hit1_rate": 40.0
+      },
+      "SYMPTOM_COLLOQUIAL": {
+        "total": 20,
+        "strict_hit1_rate": 20.0,
+        "cluster_hit1_rate": 30.0
+      },
+      "PARTIAL_INFO": {
+        "total": 13,
+        "strict_hit1_rate": 7.7,
+        "cluster_hit1_rate": 46.2
+      },
+      "TYPO_SYNONYM": {
+        "total": 12,
+        "strict_hit1_rate": 25.0,
+        "cluster_hit1_rate": 66.7
+      }
+    }
+  },
+  {
+    "weight": 0.04,
+    "label": "Q2Q w=0.04",
+    "strict_hit1": 21.67,
+    "cluster_hit1": 41.67,
+    "hit3": 60.0,
+    "hit5": 68.33,
+    "mrr": 0.5081,
+    "avg_latency_ms": 160.43,
+    "by_category": {
+      "ERROR_CODE_NATURAL": {
+        "total": 15,
+        "strict_hit1_rate": 20.0,
+        "cluster_hit1_rate": 40.0
+      },
+      "SYMPTOM_COLLOQUIAL": {
+        "total": 20,
+        "strict_hit1_rate": 15.0,
+        "cluster_hit1_rate": 25.0
+      },
+      "PARTIAL_INFO": {
+        "total": 13,
+        "strict_hit1_rate": 30.8,
+        "cluster_hit1_rate": 46.2
+      },
+      "TYPO_SYNONYM": {
+        "total": 12,
+        "strict_hit1_rate": 25.0,
+        "cluster_hit1_rate": 66.7
+      }
+    }
+  },
+  {
+    "weight": 0.06,
+    "label": "Q2Q w=0.06",
+    "strict_hit1": 21.67,
+    "cluster_hit1": 43.33,
+    "hit3": 58.33,
+    "hit5": 68.33,
+    "mrr": 0.5167,
+    "avg_latency_ms": 160.39,
+    "by_category": {
+      "ERROR_CODE_NATURAL": {
+        "total": 15,
+        "strict_hit1_rate": 20.0,
+        "cluster_hit1_rate": 40.0
+      },
+      "SYMPTOM_COLLOQUIAL": {
+        "total": 20,
+        "strict_hit1_rate": 15.0,
+        "cluster_hit1_rate": 25.0
+      },
+      "PARTIAL_INFO": {
+        "total": 13,
+        "strict_hit1_rate": 30.8,
+        "cluster_hit1_rate": 53.8
+      },
+      "TYPO_SYNONYM": {
+        "total": 12,
+        "strict_hit1_rate": 25.0,
+        "cluster_hit1_rate": 66.7
+      }
+    }
+  }
+]

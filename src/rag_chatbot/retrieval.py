@@ -13,10 +13,44 @@ Nhiem vu trong Phase 5:
 from __future__ import annotations
 import re
 from typing import Any
+import unicodedata
 
 from rag_chatbot.chroma_db import query_similar_documents
 from rag_chatbot.config import get_settings
 from rag_chatbot.neo4j_db import run_query
+
+
+# Danh sach cac cap nguyen am chuan hoa vi tri dau thanh tieng Viet (kieu moi vs kieu cu)
+TONE_PAIRS = [
+    ("oà", "òa"), ("oá", "óa"), ("oả", "ỏa"), ("oã", "õa"), ("oạ", "ọa"),
+    ("uỳ", "ùy"), ("uý", "úy"), ("uỷ", "ủy"), ("uỹ", "ũy"), ("uỵ", "ụy"),
+    ("oè", "òe"), ("oé", "óe"), ("oẻ", "ỏe"), ("oẽ", "õe"), ("oẹ", "ọe"),
+]
+
+
+def normalize_question_text(text: str) -> str:
+    """Chuan hoa Unicode NFC, khoang trang va dau cau cho cau hoi.
+    
+    Quy trinh:
+    1. Chuyen ve chu thuong va chuan hoa Unicode NFC.
+    2. Dong nhat vi tri dau thanh tieng Viet (kieu cu -> kieu moi).
+    3. Loai bo ky tu dac biet, dau cau (chi giu chu cai, chu so, khoang trang, gach ngang).
+    4. Gom cac khoang trang thua thanh mot khoang trang duy nhat.
+    """
+    if not text:
+        return ""
+    t = unicodedata.normalize("NFC", text.lower())
+    for old, new in TONE_PAIRS:
+        t = t.replace(old, new)
+    t = re.sub(r"[^\w\s\-]", " ", t)
+    return " ".join(t.split())
+
+
+def is_exact_question_match(q1: str, q2: str) -> bool:
+    """Kiem tra hai cau hoi co trung khop hoan toan sau khi chuan hoa hay khong."""
+    n1 = normalize_question_text(q1)
+    n2 = normalize_question_text(q2)
+    return bool(n1 and n2 and n1 == n2)
 
 
 def extract_question_entities(text: str) -> dict[str, str | None]:
@@ -247,10 +281,12 @@ def rerank_results(
          + device_bonus = +0.08
          + exact_error_code_bonus = +0.20 (chi cong khi query thuc su co error_code)
          + both_bonus = +0.02
+         + exact_question_bonus = +0.02 (cong khi cau hoi khop chinh xac sau chuan hoa)
        - mode="adaptive" (thich ung theo loai truy van):
          + ERROR_CODE query: exact error code duoc uu tien cao nhat (+0.25), brand/device (+0.08), both (+0.02)
          + SYMPTOM query: semantic score chiem uu the tuyet doi, brand/device (+0.05), error_code bonus = 0.0, both (+0.01)
          + NO_ENTITY query: giu nguyen thu tu semantic, bonus thuc the = 0.0, both (+0.005)
+         + exact_question_bonus = +0.02 (cong khi cau hoi khop chinh xac sau chuan hoa)
     
     Bao dam:
     - Khong xoa candidate, khong lam mat bat ky field metadata nao.
@@ -266,6 +302,7 @@ def rerank_results(
     target_brand = entities.get("brand")
     target_device = entities.get("device")
     target_error_code = entities.get("error_code")
+    exact_question_bonus_val = settings.rerank_exact_question_bonus
 
     if mode == "adaptive":
         if target_error_code:
@@ -323,6 +360,11 @@ def rerank_results(
         # 5. Both source bonus (tin hieu phu nho)
         if item.get("retrieval_source") == "both":
             score += both_bonus_val
+
+        # 6. Exact question match bonus (chi cong khi cau hoi khop chinh xac sau chuan hoa)
+        item_q = item.get("question", "")
+        if exact_question_bonus_val > 0.0 and is_exact_question_match(query, item_q):
+            score += exact_question_bonus_val
 
         item_copy = dict(item)
         item_copy["rerank_score"] = round(score, 4)

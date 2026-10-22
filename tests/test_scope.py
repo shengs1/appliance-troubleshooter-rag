@@ -157,13 +157,28 @@ def test_in_scope_calls_local_llm():
 
 def test_api_chat_refusal_returns_200():
     """Kiem tra endpoint POST /chat xu ly tu choi tra ve HTTP 200 va dung format (khong loi 500)."""
-    response = client.post("/chat", json={"question": "Bitcoin hôm nay giá bao nhiêu?"})
+    import uuid
+    from rag_chatbot.auth import register_user
+    username = f"scope_tester_{uuid.uuid4().hex[:8]}"
+    created_user = register_user(username=username, password="password123", email=f"{username}@example.com")
 
-    assert response.status_code == 200
-    data = response.json()
-    assert data["llm_status"] == "refused_scope"
-    assert REFUSAL_MESSAGE in data["answer"]
-    assert data["sources"] == []
+    from rag_chatbot.auth import get_current_user
+    app.dependency_overrides[get_current_user] = lambda: {
+        "id": created_user["id"],
+        "username": created_user["username"],
+        "email": created_user["email"],
+        "role": "user",
+        "status": "active",
+    }
+    try:
+        response = client.post("/chat", json={"question": "Bitcoin hôm nay giá bao nhiêu?"})
+        assert response.status_code == 200
+        data = response.json()
+        assert data["llm_status"] == "refused_scope"
+        assert REFUSAL_MESSAGE in data["answer"]
+        assert data["sources"] == []
+    finally:
+        app.dependency_overrides.pop(get_current_user, None)
 
 
 def test_ui_chat_fn_refusal_display():

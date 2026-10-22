@@ -1,0 +1,2290 @@
+[
+  {
+    "index": 1,
+    "expected_id": "Q0002",
+    "query": "Tủ lạnh LG lỗi sb",
+    "expected_rank": 2,
+    "category": "TWIN_KNOWLEDGE_CLUSTER",
+    "classification_detail": "Cùng Hãng (LG), Thiết bị (Tủ lạnh), cùng Issue_ID (I0002), cùng Mã lỗi (SB), câu trả lời giống hệt nhau",
+    "expected_info": {
+      "id": "Q0002",
+      "brand": "LG",
+      "device": "Tủ lạnh",
+      "error_code": "SB",
+      "issue_id": "I0002",
+      "duplicate_group": "",
+      "question": "Tủ lạnh LG lỗi sb",
+      "answer_snippet": ""
+    },
+    "top1_info": {
+      "id": "Q0108",
+      "brand": "LG",
+      "device": "Tủ lạnh",
+      "error_code": "SB",
+      "issue_id": "I0002",
+      "duplicate_group": "",
+      "question": "Cách khắc phục lỗi sb tủ lạnh LG",
+      "answer_snippet": "",
+      "score": 1.0979,
+      "distance": 0.2821378707885742,
+      "source": "both"
+    },
+    "top_5_candidates": [
+      {
+        "rank": 1,
+        "id": "Q0108",
+        "score": 1.0979,
+        "distance": 0.2821378707885742,
+        "source": "both",
+        "brand": "LG",
+        "device": "Tủ lạnh",
+        "error_code": "SB",
+        "is_expected": false
+      },
+      {
+        "rank": 2,
+        "id": "Q0002",
+        "score": 1.059,
+        "distance": 0.32102537155151367,
+        "source": "both",
+        "brand": "LG",
+        "device": "Tủ lạnh",
+        "error_code": "SB",
+        "is_expected": true
+      },
+      {
+        "rank": 3,
+        "id": "Q0041",
+        "score": 0.8457,
+        "distance": 0.3142586946487427,
+        "source": "chroma",
+        "brand": "LG",
+        "device": "Tủ lạnh",
+        "error_code": "GS",
+        "is_expected": false
+      },
+      {
+        "rank": 4,
+        "id": "Q0017",
+        "score": 0.8414,
+        "distance": 0.318608820438385,
+        "source": "chroma",
+        "brand": "LG",
+        "device": "Tủ lạnh",
+        "error_code": "SD",
+        "is_expected": false
+      },
+      {
+        "rank": 5,
+        "id": "Q0034",
+        "score": 0.84,
+        "distance": 0.3200281262397766,
+        "source": "chroma",
+        "brand": "LG",
+        "device": "Tủ lạnh",
+        "error_code": "LS",
+        "is_expected": false
+      }
+    ]
+  },
+  {
+    "index": 2,
+    "expected_id": "Q0158",
+    "query": "Điều hoà panasonic bị lỗi F16",
+    "expected_rank": 2,
+    "category": "SAME_NAMED_DUPLICATE_GROUP",
+    "classification_detail": "Cả hai có cùng Duplicate_Group 'DUP79719DB9' trong dataset.xlsx",
+    "expected_info": {
+      "id": "Q0158",
+      "brand": "Panasonic",
+      "device": "Điều hòa",
+      "error_code": "F16",
+      "issue_id": "I0099",
+      "duplicate_group": "DUP79719DB9",
+      "question": "Điều hoà panasonic bị lỗi F16",
+      "answer_snippet": ""
+    },
+    "top1_info": {
+      "id": "Q0308",
+      "brand": "Panasonic",
+      "device": "Điều hòa",
+      "error_code": "F16",
+      "issue_id": "I0099",
+      "duplicate_group": "DUP79719DB9",
+      "question": "Điều hòa panasonic bị lỗi F16",
+      "answer_snippet": "",
+      "score": 1.178,
+      "distance": 0.20200592279434204,
+      "source": "both"
+    },
+    "top_5_candidates": [
+      {
+        "rank": 1,
+        "id": "Q0308",
+        "score": 1.178,
+        "distance": 0.20200592279434204,
+        "source": "both",
+        "brand": "Panasonic",
+        "device": "Điều hòa",
+        "error_code": "F16",
+        "is_expected": false
+      },
+      {
+        "rank": 2,
+        "id": "Q0158",
+        "score": 1.1335,
+        "distance": 0.24652099609375,
+        "source": "both",
+        "brand": "Panasonic",
+        "device": "Điều hòa",
+        "error_code": "F16",
+        "is_expected": true
+      },
+      {
+        "rank": 3,
+        "id": "Q0317",
+        "score": 0.8841,
+        "distance": 0.27585911750793457,
+        "source": "chroma",
+        "brand": "Panasonic",
+        "device": "Điều hòa",
+        "error_code": "H16",
+        "is_expected": false
+      },
+      {
+        "rank": 4,
+        "id": "Q0233",
+        "score": 0.8769,
+        "distance": 0.28311169147491455,
+        "source": "chroma",
+        "brand": "Panasonic",
+        "device": "Điều hòa",
+        "error_code": "H16",
+        "is_expected": false
+      },
+      {
+        "rank": 5,
+        "id": "Q0251",
+        "score": 0.8691,
+        "distance": 0.2908827066421509,
+        "source": "chroma",
+        "brand": "Panasonic",
+        "device": "Điều hòa",
+        "error_code": "E16",
+        "is_expected": false
+      }
+    ]
+  },
+  {
+    "index": 3,
+    "expected_id": "Q0159",
+    "query": "Điều hòa panasonic bị lỗi F93",
+    "expected_rank": 2,
+    "category": "SAME_NAMED_DUPLICATE_GROUP",
+    "classification_detail": "Cả hai có cùng Duplicate_Group 'DUP44278C6B' trong dataset.xlsx",
+    "expected_info": {
+      "id": "Q0159",
+      "brand": "Panasonic",
+      "device": "Điều hòa",
+      "error_code": "F93",
+      "issue_id": "I0100",
+      "duplicate_group": "DUP44278C6B",
+      "question": "Điều hòa panasonic bị lỗi F93",
+      "answer_snippet": ""
+    },
+    "top1_info": {
+      "id": "Q0310",
+      "brand": "Panasonic",
+      "device": "Điều hòa",
+      "error_code": "F93",
+      "issue_id": "I0100",
+      "duplicate_group": "DUP44278C6B",
+      "question": "Điều hòa panasonic bị lỗi F93",
+      "answer_snippet": "",
+      "score": 1.1569,
+      "distance": 0.22310221195220947,
+      "source": "both"
+    },
+    "top_5_candidates": [
+      {
+        "rank": 1,
+        "id": "Q0310",
+        "score": 1.1569,
+        "distance": 0.22310221195220947,
+        "source": "both",
+        "brand": "Panasonic",
+        "device": "Điều hòa",
+        "error_code": "F93",
+        "is_expected": false
+      },
+      {
+        "rank": 2,
+        "id": "Q0159",
+        "score": 1.1409,
+        "distance": 0.23905140161514282,
+        "source": "both",
+        "brand": "Panasonic",
+        "device": "Điều hòa",
+        "error_code": "F93",
+        "is_expected": true
+      },
+      {
+        "rank": 3,
+        "id": "Q0312",
+        "score": 0.8832,
+        "distance": 0.2767702341079712,
+        "source": "chroma",
+        "brand": "Panasonic",
+        "device": "Điều hòa",
+        "error_code": "F97",
+        "is_expected": false
+      },
+      {
+        "rank": 4,
+        "id": "Q0311",
+        "score": 0.8809,
+        "distance": 0.2790687084197998,
+        "source": "chroma",
+        "brand": "Panasonic",
+        "device": "Điều hòa",
+        "error_code": "F95",
+        "is_expected": false
+      },
+      {
+        "rank": 5,
+        "id": "Q0309",
+        "score": 0.8595,
+        "distance": 0.3004649877548218,
+        "source": "chroma",
+        "brand": "Panasonic",
+        "device": "Điều hòa",
+        "error_code": "F91",
+        "is_expected": false
+      }
+    ]
+  },
+  {
+    "index": 4,
+    "expected_id": "Q0160",
+    "query": "Điều hòa panasonic bị lỗi F95",
+    "expected_rank": 2,
+    "category": "SAME_NAMED_DUPLICATE_GROUP",
+    "classification_detail": "Cả hai có cùng Duplicate_Group 'DUP9E57CFC6' trong dataset.xlsx",
+    "expected_info": {
+      "id": "Q0160",
+      "brand": "Panasonic",
+      "device": "Điều hòa",
+      "error_code": "F95",
+      "issue_id": "I0101",
+      "duplicate_group": "DUP9E57CFC6",
+      "question": "Điều hòa panasonic bị lỗi F95",
+      "answer_snippet": ""
+    },
+    "top1_info": {
+      "id": "Q0311",
+      "brand": "Panasonic",
+      "device": "Điều hòa",
+      "error_code": "F95",
+      "issue_id": "I0101",
+      "duplicate_group": "DUP9E57CFC6",
+      "question": "Điều hòa panasonic bị lỗi F95",
+      "answer_snippet": "",
+      "score": 1.1531,
+      "distance": 0.22685986757278442,
+      "source": "both"
+    },
+    "top_5_candidates": [
+      {
+        "rank": 1,
+        "id": "Q0311",
+        "score": 1.1531,
+        "distance": 0.22685986757278442,
+        "source": "both",
+        "brand": "Panasonic",
+        "device": "Điều hòa",
+        "error_code": "F95",
+        "is_expected": false
+      },
+      {
+        "rank": 2,
+        "id": "Q0160",
+        "score": 1.1381,
+        "distance": 0.24187827110290527,
+        "source": "both",
+        "brand": "Panasonic",
+        "device": "Điều hòa",
+        "error_code": "F95",
+        "is_expected": true
+      },
+      {
+        "rank": 3,
+        "id": "Q0312",
+        "score": 0.884,
+        "distance": 0.2759801149368286,
+        "source": "chroma",
+        "brand": "Panasonic",
+        "device": "Điều hòa",
+        "error_code": "F97",
+        "is_expected": false
+      },
+      {
+        "rank": 4,
+        "id": "Q0310",
+        "score": 0.8517,
+        "distance": 0.30834901332855225,
+        "source": "chroma",
+        "brand": "Panasonic",
+        "device": "Điều hòa",
+        "error_code": "F93",
+        "is_expected": false
+      },
+      {
+        "rank": 5,
+        "id": "Q0326",
+        "score": 0.8442,
+        "distance": 0.3158224821090698,
+        "source": "chroma",
+        "brand": "Panasonic",
+        "device": "Điều hòa",
+        "error_code": "H97",
+        "is_expected": false
+      }
+    ]
+  },
+  {
+    "index": 5,
+    "expected_id": "Q0161",
+    "query": "Điều hòa panasonic bị lỗi F97",
+    "expected_rank": 2,
+    "category": "SAME_NAMED_DUPLICATE_GROUP",
+    "classification_detail": "Cả hai có cùng Duplicate_Group 'DUPC3E76538' trong dataset.xlsx",
+    "expected_info": {
+      "id": "Q0161",
+      "brand": "Panasonic",
+      "device": "Điều hòa",
+      "error_code": "F97",
+      "issue_id": "I0102",
+      "duplicate_group": "DUPC3E76538",
+      "question": "Điều hòa panasonic bị lỗi F97",
+      "answer_snippet": ""
+    },
+    "top1_info": {
+      "id": "Q0312",
+      "brand": "Panasonic",
+      "device": "Điều hòa",
+      "error_code": "F97",
+      "issue_id": "I0102",
+      "duplicate_group": "DUPC3E76538",
+      "question": "Điều hòa panasonic bị lỗi F97",
+      "answer_snippet": "",
+      "score": 1.1785,
+      "distance": 0.20149707794189453,
+      "source": "both"
+    },
+    "top_5_candidates": [
+      {
+        "rank": 1,
+        "id": "Q0312",
+        "score": 1.1785,
+        "distance": 0.20149707794189453,
+        "source": "both",
+        "brand": "Panasonic",
+        "device": "Điều hòa",
+        "error_code": "F97",
+        "is_expected": false
+      },
+      {
+        "rank": 2,
+        "id": "Q0161",
+        "score": 1.15,
+        "distance": 0.2299596667289734,
+        "source": "both",
+        "brand": "Panasonic",
+        "device": "Điều hòa",
+        "error_code": "F97",
+        "is_expected": true
+      },
+      {
+        "rank": 3,
+        "id": "Q0326",
+        "score": 0.9148,
+        "distance": 0.24519598484039307,
+        "source": "chroma",
+        "brand": "Panasonic",
+        "device": "Điều hòa",
+        "error_code": "H97",
+        "is_expected": false
+      },
+      {
+        "rank": 4,
+        "id": "Q0165",
+        "score": 0.8852,
+        "distance": 0.2747887372970581,
+        "source": "chroma",
+        "brand": "Panasonic",
+        "device": "Điều hòa",
+        "error_code": "H97",
+        "is_expected": false
+      },
+      {
+        "rank": 5,
+        "id": "Q0311",
+        "score": 0.8804,
+        "distance": 0.27957046031951904,
+        "source": "chroma",
+        "brand": "Panasonic",
+        "device": "Điều hòa",
+        "error_code": "F95",
+        "is_expected": false
+      }
+    ]
+  },
+  {
+    "index": 6,
+    "expected_id": "Q0165",
+    "query": "Điều hòa panasonic bị lỗi H97",
+    "expected_rank": 2,
+    "category": "SAME_NAMED_DUPLICATE_GROUP",
+    "classification_detail": "Cả hai có cùng Duplicate_Group 'DUPF2D57116' trong dataset.xlsx",
+    "expected_info": {
+      "id": "Q0165",
+      "brand": "Panasonic",
+      "device": "Điều hòa",
+      "error_code": "H97",
+      "issue_id": "I0106",
+      "duplicate_group": "DUPF2D57116",
+      "question": "Điều hòa panasonic bị lỗi H97",
+      "answer_snippet": ""
+    },
+    "top1_info": {
+      "id": "Q0326",
+      "brand": "Panasonic",
+      "device": "Điều hòa",
+      "error_code": "H97",
+      "issue_id": "I0106",
+      "duplicate_group": "DUPF2D57116",
+      "question": "Điều hòa panasonic bị lỗi H97",
+      "answer_snippet": "",
+      "score": 1.1804,
+      "distance": 0.19960039854049683,
+      "source": "both"
+    },
+    "top_5_candidates": [
+      {
+        "rank": 1,
+        "id": "Q0326",
+        "score": 1.1804,
+        "distance": 0.19960039854049683,
+        "source": "both",
+        "brand": "Panasonic",
+        "device": "Điều hòa",
+        "error_code": "H97",
+        "is_expected": false
+      },
+      {
+        "rank": 2,
+        "id": "Q0165",
+        "score": 1.1457,
+        "distance": 0.23428618907928467,
+        "source": "both",
+        "brand": "Panasonic",
+        "device": "Điều hòa",
+        "error_code": "H97",
+        "is_expected": true
+      },
+      {
+        "rank": 3,
+        "id": "Q0312",
+        "score": 0.9377,
+        "distance": 0.22231560945510864,
+        "source": "chroma",
+        "brand": "Panasonic",
+        "device": "Điều hòa",
+        "error_code": "F97",
+        "is_expected": false
+      },
+      {
+        "rank": 4,
+        "id": "Q0161",
+        "score": 0.9049,
+        "distance": 0.25508278608322144,
+        "source": "chroma",
+        "brand": "Panasonic",
+        "device": "Điều hòa",
+        "error_code": "F97",
+        "is_expected": false
+      },
+      {
+        "rank": 5,
+        "id": "Q0327",
+        "score": 0.8901,
+        "distance": 0.2699238657951355,
+        "source": "chroma",
+        "brand": "Panasonic",
+        "device": "Điều hòa",
+        "error_code": "H98",
+        "is_expected": false
+      }
+    ]
+  },
+  {
+    "index": 7,
+    "expected_id": "Q0167",
+    "query": "Điều hòa panasonic bị lỗi H99",
+    "expected_rank": 2,
+    "category": "SAME_NAMED_DUPLICATE_GROUP",
+    "classification_detail": "Cả hai có cùng Duplicate_Group 'DUP660C4236' trong dataset.xlsx",
+    "expected_info": {
+      "id": "Q0167",
+      "brand": "Panasonic",
+      "device": "Điều hòa",
+      "error_code": "H99",
+      "issue_id": "I0108",
+      "duplicate_group": "DUP660C4236",
+      "question": "Điều hòa panasonic bị lỗi H99",
+      "answer_snippet": ""
+    },
+    "top1_info": {
+      "id": "Q0328",
+      "brand": "Panasonic",
+      "device": "Điều hòa",
+      "error_code": "H99",
+      "issue_id": "I0108",
+      "duplicate_group": "DUP660C4236",
+      "question": "Điều hòa panasonic bị lỗi H99",
+      "answer_snippet": "",
+      "score": 1.1604,
+      "distance": 0.2195987105369568,
+      "source": "both"
+    },
+    "top_5_candidates": [
+      {
+        "rank": 1,
+        "id": "Q0328",
+        "score": 1.1604,
+        "distance": 0.2195987105369568,
+        "source": "both",
+        "brand": "Panasonic",
+        "device": "Điều hòa",
+        "error_code": "H99",
+        "is_expected": false
+      },
+      {
+        "rank": 2,
+        "id": "Q0167",
+        "score": 1.1583,
+        "distance": 0.22171366214752197,
+        "source": "both",
+        "brand": "Panasonic",
+        "device": "Điều hòa",
+        "error_code": "H99",
+        "is_expected": true
+      },
+      {
+        "rank": 3,
+        "id": "Q0326",
+        "score": 0.8963,
+        "distance": 0.26371628046035767,
+        "source": "chroma",
+        "brand": "Panasonic",
+        "device": "Điều hòa",
+        "error_code": "H97",
+        "is_expected": false
+      },
+      {
+        "rank": 4,
+        "id": "Q0327",
+        "score": 0.8884,
+        "distance": 0.2716178894042969,
+        "source": "chroma",
+        "brand": "Panasonic",
+        "device": "Điều hòa",
+        "error_code": "H98",
+        "is_expected": false
+      },
+      {
+        "rank": 5,
+        "id": "Q0312",
+        "score": 0.8737,
+        "distance": 0.286257266998291,
+        "source": "chroma",
+        "brand": "Panasonic",
+        "device": "Điều hòa",
+        "error_code": "F97",
+        "is_expected": false
+      }
+    ]
+  },
+  {
+    "index": 8,
+    "expected_id": "Q0196",
+    "query": "Máy giặt panasonic bị lỗi H09",
+    "expected_rank": 2,
+    "category": "SAME_NAMED_DUPLICATE_GROUP",
+    "classification_detail": "Cả hai có cùng Duplicate_Group 'DUP11C6536F' trong dataset.xlsx",
+    "expected_info": {
+      "id": "Q0196",
+      "brand": "Panasonic",
+      "device": "Máy giặt",
+      "error_code": "H09",
+      "issue_id": "I0137",
+      "duplicate_group": "DUP11C6536F",
+      "question": "Máy giặt panasonic bị lỗi H09",
+      "answer_snippet": ""
+    },
+    "top1_info": {
+      "id": "Q0333",
+      "brand": "Panasonic",
+      "device": "Máy giặt",
+      "error_code": "H09",
+      "issue_id": "I0137",
+      "duplicate_group": "DUP11C6536F",
+      "question": "Máy giặt panasonic bị lỗi H09",
+      "answer_snippet": "",
+      "score": 1.1652,
+      "distance": 0.21476095914840698,
+      "source": "both"
+    },
+    "top_5_candidates": [
+      {
+        "rank": 1,
+        "id": "Q0333",
+        "score": 1.1652,
+        "distance": 0.21476095914840698,
+        "source": "both",
+        "brand": "Panasonic",
+        "device": "Máy giặt",
+        "error_code": "H09",
+        "is_expected": false
+      },
+      {
+        "rank": 2,
+        "id": "Q0196",
+        "score": 1.1501,
+        "distance": 0.22990214824676514,
+        "source": "both",
+        "brand": "Panasonic",
+        "device": "Máy giặt",
+        "error_code": "H09",
+        "is_expected": true
+      },
+      {
+        "rank": 3,
+        "id": "Q0331",
+        "score": 0.8915,
+        "distance": 0.2685021162033081,
+        "source": "chroma",
+        "brand": "Panasonic",
+        "device": "Máy giặt",
+        "error_code": "H05",
+        "is_expected": false
+      },
+      {
+        "rank": 4,
+        "id": "Q0332",
+        "score": 0.8834,
+        "distance": 0.2766449451446533,
+        "source": "chroma",
+        "brand": "Panasonic",
+        "device": "Máy giặt",
+        "error_code": "H07",
+        "is_expected": false
+      },
+      {
+        "rank": 5,
+        "id": "Q0330",
+        "score": 0.8762,
+        "distance": 0.28379762172698975,
+        "source": "chroma",
+        "brand": "Panasonic",
+        "device": "Máy giặt",
+        "error_code": "H04",
+        "is_expected": false
+      }
+    ]
+  },
+  {
+    "index": 9,
+    "expected_id": "Q0214",
+    "query": "Bếp từ panasonic bị lỗi U04",
+    "expected_rank": 2,
+    "category": "SAME_NAMED_DUPLICATE_GROUP",
+    "classification_detail": "Cả hai có cùng Duplicate_Group 'DUPD0D40AC0' trong dataset.xlsx",
+    "expected_info": {
+      "id": "Q0214",
+      "brand": "Panasonic",
+      "device": "Bếp",
+      "error_code": "U04",
+      "issue_id": "I0155",
+      "duplicate_group": "DUPD0D40AC0",
+      "question": "Bếp từ panasonic bị lỗi U04",
+      "answer_snippet": ""
+    },
+    "top1_info": {
+      "id": "Q0350",
+      "brand": "Panasonic",
+      "device": "Bếp",
+      "error_code": "U04",
+      "issue_id": "I0155",
+      "duplicate_group": "DUPD0D40AC0",
+      "question": "Bếp từ panasonic bị lỗi U04",
+      "answer_snippet": "",
+      "score": 1.1205,
+      "distance": 0.25949907302856445,
+      "source": "both"
+    },
+    "top_5_candidates": [
+      {
+        "rank": 1,
+        "id": "Q0350",
+        "score": 1.1205,
+        "distance": 0.25949907302856445,
+        "source": "both",
+        "brand": "Panasonic",
+        "device": "Bếp",
+        "error_code": "U04",
+        "is_expected": false
+      },
+      {
+        "rank": 2,
+        "id": "Q0214",
+        "score": 1.11,
+        "distance": 0.269950807094574,
+        "source": "both",
+        "brand": "Panasonic",
+        "device": "Bếp",
+        "error_code": "U04",
+        "is_expected": true
+      },
+      {
+        "rank": 3,
+        "id": "Q0227",
+        "score": 0.8441,
+        "distance": 0.3159055709838867,
+        "source": "chroma",
+        "brand": "Panasonic",
+        "device": "Bếp",
+        "error_code": "U34",
+        "is_expected": false
+      },
+      {
+        "rank": 4,
+        "id": "Q0222",
+        "score": 0.8397,
+        "distance": 0.320285439491272,
+        "source": "chroma",
+        "brand": "Panasonic",
+        "device": "Bếp",
+        "error_code": "U22",
+        "is_expected": false
+      },
+      {
+        "rank": 5,
+        "id": "Q0351",
+        "score": 0.8369,
+        "distance": 0.32310980558395386,
+        "source": "chroma",
+        "brand": "Panasonic",
+        "device": "Bếp",
+        "error_code": "U11",
+        "is_expected": false
+      }
+    ]
+  },
+  {
+    "index": 10,
+    "expected_id": "Q0215",
+    "query": "Bếp từ panasonic bị lỗi U11*",
+    "expected_rank": 2,
+    "category": "SAME_NAMED_DUPLICATE_GROUP",
+    "classification_detail": "Cả hai có cùng Duplicate_Group 'DUP8C02EB6E' trong dataset.xlsx",
+    "expected_info": {
+      "id": "Q0215",
+      "brand": "Panasonic",
+      "device": "Bếp",
+      "error_code": "U11",
+      "issue_id": "I0156",
+      "duplicate_group": "DUP8C02EB6E",
+      "question": "Bếp từ panasonic bị lỗi U11*",
+      "answer_snippet": ""
+    },
+    "top1_info": {
+      "id": "Q0351",
+      "brand": "Panasonic",
+      "device": "Bếp",
+      "error_code": "U11",
+      "issue_id": "I0156",
+      "duplicate_group": "DUP8C02EB6E",
+      "question": "Bếp từ panasonic bị lỗi U11*",
+      "answer_snippet": "",
+      "score": 1.1586,
+      "distance": 0.22138899564743042,
+      "source": "both"
+    },
+    "top_5_candidates": [
+      {
+        "rank": 1,
+        "id": "Q0351",
+        "score": 1.1586,
+        "distance": 0.22138899564743042,
+        "source": "both",
+        "brand": "Panasonic",
+        "device": "Bếp",
+        "error_code": "U11",
+        "is_expected": false
+      },
+      {
+        "rank": 2,
+        "id": "Q0215",
+        "score": 1.1408,
+        "distance": 0.23924994468688965,
+        "source": "both",
+        "brand": "Panasonic",
+        "device": "Bếp",
+        "error_code": "U11",
+        "is_expected": true
+      },
+      {
+        "rank": 3,
+        "id": "Q0352",
+        "score": 0.8586,
+        "distance": 0.3014318346977234,
+        "source": "chroma",
+        "brand": "Panasonic",
+        "device": "Bếp",
+        "error_code": "U12",
+        "is_expected": false
+      },
+      {
+        "rank": 4,
+        "id": "Q0216",
+        "score": 0.8554,
+        "distance": 0.3046061396598816,
+        "source": "chroma",
+        "brand": "Panasonic",
+        "device": "Bếp",
+        "error_code": "U12",
+        "is_expected": false
+      },
+      {
+        "rank": 5,
+        "id": "Q0354",
+        "score": 0.8533,
+        "distance": 0.30669623613357544,
+        "source": "chroma",
+        "brand": "Panasonic",
+        "device": "Bếp",
+        "error_code": "U16",
+        "is_expected": false
+      }
+    ]
+  },
+  {
+    "index": 11,
+    "expected_id": "Q0234",
+    "query": "Điều hòa panasonic bị lỗi H27",
+    "expected_rank": 2,
+    "category": "SAME_NAMED_DUPLICATE_GROUP",
+    "classification_detail": "Cả hai có cùng Duplicate_Group 'DUPF11FAC19' trong dataset.xlsx",
+    "expected_info": {
+      "id": "Q0234",
+      "brand": "Panasonic",
+      "device": "Điều hòa",
+      "error_code": "H27",
+      "issue_id": "I0175",
+      "duplicate_group": "DUPF11FAC19",
+      "question": "Điều hòa panasonic bị lỗi H27",
+      "answer_snippet": ""
+    },
+    "top1_info": {
+      "id": "Q0318",
+      "brand": "Panasonic",
+      "device": "Điều hòa",
+      "error_code": "H27",
+      "issue_id": "I0175",
+      "duplicate_group": "DUPF11FAC19",
+      "question": "Điều hòa panasonic bị lỗi H27",
+      "answer_snippet": "",
+      "score": 1.1724,
+      "distance": 0.2075648307800293,
+      "source": "both"
+    },
+    "top_5_candidates": [
+      {
+        "rank": 1,
+        "id": "Q0318",
+        "score": 1.1724,
+        "distance": 0.2075648307800293,
+        "source": "both",
+        "brand": "Panasonic",
+        "device": "Điều hòa",
+        "error_code": "H27",
+        "is_expected": false
+      },
+      {
+        "rank": 2,
+        "id": "Q0234",
+        "score": 1.1583,
+        "distance": 0.22174018621444702,
+        "source": "both",
+        "brand": "Panasonic",
+        "device": "Điều hòa",
+        "error_code": "H27",
+        "is_expected": true
+      },
+      {
+        "rank": 3,
+        "id": "Q0319",
+        "score": 0.8786,
+        "distance": 0.2814425230026245,
+        "source": "chroma",
+        "brand": "Panasonic",
+        "device": "Điều hòa",
+        "error_code": "H28",
+        "is_expected": false
+      },
+      {
+        "rank": 4,
+        "id": "Q0235",
+        "score": 0.8694,
+        "distance": 0.29058247804641724,
+        "source": "chroma",
+        "brand": "Panasonic",
+        "device": "Điều hòa",
+        "error_code": "H28",
+        "is_expected": false
+      },
+      {
+        "rank": 5,
+        "id": "Q0326",
+        "score": 0.8604,
+        "distance": 0.2995845675468445,
+        "source": "chroma",
+        "brand": "Panasonic",
+        "device": "Điều hòa",
+        "error_code": "H97",
+        "is_expected": false
+      }
+    ]
+  },
+  {
+    "index": 12,
+    "expected_id": "Q0535",
+    "query": "Máy giặt không xả nước phải làm sao?",
+    "expected_rank": null,
+    "category": "TWIN_KNOWLEDGE_CLUSTER",
+    "classification_detail": "Cùng Hãng (Samsung), Thiết bị (Máy giặt), câu trả lời giống hệt nhau",
+    "expected_info": {
+      "id": "Q0535",
+      "brand": "Samsung",
+      "device": "Máy giặt",
+      "error_code": "",
+      "issue_id": "I0426",
+      "duplicate_group": "DUPF09E728E",
+      "question": "Máy giặt không xả nước phải làm sao?",
+      "answer_snippet": ""
+    },
+    "top1_info": {
+      "id": "Q0690",
+      "brand": "Samsung",
+      "device": "Máy giặt",
+      "error_code": "",
+      "issue_id": "I0476",
+      "duplicate_group": "",
+      "question": "Máy giặt không xả nước phải làm sao có cách khắc phục nào không?",
+      "answer_snippet": "",
+      "score": 0.8719,
+      "distance": 0.2081373929977417,
+      "source": "chroma"
+    },
+    "top_5_candidates": [
+      {
+        "rank": 1,
+        "id": "Q0690",
+        "score": 0.8719,
+        "distance": 0.2081373929977417,
+        "source": "chroma",
+        "brand": "Samsung",
+        "device": "Máy giặt",
+        "error_code": "",
+        "is_expected": false
+      },
+      {
+        "rank": 2,
+        "id": "Q0597",
+        "score": 0.8703,
+        "distance": 0.20973628759384155,
+        "source": "chroma",
+        "brand": "Samsung",
+        "device": "Máy giặt",
+        "error_code": "",
+        "is_expected": false
+      },
+      {
+        "rank": 3,
+        "id": "Q0659",
+        "score": 0.8655,
+        "distance": 0.21445661783218384,
+        "source": "chroma",
+        "brand": "Samsung",
+        "device": "Máy giặt",
+        "error_code": "",
+        "is_expected": false
+      },
+      {
+        "rank": 4,
+        "id": "Q1006",
+        "score": 0.8636,
+        "distance": 0.21642959117889404,
+        "source": "chroma",
+        "brand": "Samsung",
+        "device": "Máy giặt",
+        "error_code": "",
+        "is_expected": false
+      },
+      {
+        "rank": 5,
+        "id": "Q0628",
+        "score": 0.8626,
+        "distance": 0.21741890907287598,
+        "source": "chroma",
+        "brand": "Samsung",
+        "device": "Máy giặt",
+        "error_code": "",
+        "is_expected": false
+      }
+    ]
+  },
+  {
+    "index": 13,
+    "expected_id": "Q0536",
+    "query": "Máy giặt không vắt được thì nguyên nhân thường là gì?",
+    "expected_rank": 2,
+    "category": "TWIN_KNOWLEDGE_CLUSTER",
+    "classification_detail": "Cùng Hãng (Samsung), Thiết bị (Máy giặt), cùng Issue_ID (I0427), câu trả lời giống hệt nhau",
+    "expected_info": {
+      "id": "Q0536",
+      "brand": "Samsung",
+      "device": "Máy giặt",
+      "error_code": "",
+      "issue_id": "I0427",
+      "duplicate_group": "",
+      "question": "Máy giặt không vắt được thì nguyên nhân thường là gì?",
+      "answer_snippet": ""
+    },
+    "top1_info": {
+      "id": "Q0660",
+      "brand": "Samsung",
+      "device": "Máy giặt",
+      "error_code": "",
+      "issue_id": "I0427",
+      "duplicate_group": "",
+      "question": "Máy giặt không vắt được thì nguyên nhân thường là gì nguyên nhân thường do đâu?",
+      "answer_snippet": "",
+      "score": 0.8921,
+      "distance": 0.18788492679595947,
+      "source": "chroma"
+    },
+    "top_5_candidates": [
+      {
+        "rank": 1,
+        "id": "Q0660",
+        "score": 0.8921,
+        "distance": 0.18788492679595947,
+        "source": "chroma",
+        "brand": "Samsung",
+        "device": "Máy giặt",
+        "error_code": "",
+        "is_expected": false
+      },
+      {
+        "rank": 2,
+        "id": "Q0536",
+        "score": 0.8863,
+        "distance": 0.19370794296264648,
+        "source": "chroma",
+        "brand": "Samsung",
+        "device": "Máy giặt",
+        "error_code": "",
+        "is_expected": true
+      },
+      {
+        "rank": 3,
+        "id": "Q0567",
+        "score": 0.8822,
+        "distance": 0.19775116443634033,
+        "source": "chroma",
+        "brand": "Samsung",
+        "device": "Máy giặt",
+        "error_code": "",
+        "is_expected": false
+      },
+      {
+        "rank": 4,
+        "id": "Q0598",
+        "score": 0.8819,
+        "distance": 0.1981128454208374,
+        "source": "chroma",
+        "brand": "Samsung",
+        "device": "Máy giặt",
+        "error_code": "",
+        "is_expected": false
+      },
+      {
+        "rank": 5,
+        "id": "Q0629",
+        "score": 0.8807,
+        "distance": 0.199260413646698,
+        "source": "chroma",
+        "brand": "Samsung",
+        "device": "Máy giặt",
+        "error_code": "",
+        "is_expected": false
+      }
+    ]
+  },
+  {
+    "index": 14,
+    "expected_id": "Q0537",
+    "query": "Máy giặt rung mạnh khi vắt xử lý thế nào?",
+    "expected_rank": 2,
+    "category": "TWIN_KNOWLEDGE_CLUSTER",
+    "classification_detail": "Cùng Hãng (Samsung), Thiết bị (Máy giặt), cùng Issue_ID (I0428), câu trả lời giống hệt nhau",
+    "expected_info": {
+      "id": "Q0537",
+      "brand": "Samsung",
+      "device": "Máy giặt",
+      "error_code": "",
+      "issue_id": "I0428",
+      "duplicate_group": "DUP47EE896C",
+      "question": "Máy giặt rung mạnh khi vắt xử lý thế nào?",
+      "answer_snippet": ""
+    },
+    "top1_info": {
+      "id": "Q0568",
+      "brand": "Samsung",
+      "device": "Máy giặt",
+      "error_code": "",
+      "issue_id": "I0428",
+      "duplicate_group": "",
+      "question": "Máy giặt rung mạnh khi vắt xử lý thế nào phải làm sao?",
+      "answer_snippet": "",
+      "score": 0.8718,
+      "distance": 0.20824873447418213,
+      "source": "chroma"
+    },
+    "top_5_candidates": [
+      {
+        "rank": 1,
+        "id": "Q0568",
+        "score": 0.8718,
+        "distance": 0.20824873447418213,
+        "source": "chroma",
+        "brand": "Samsung",
+        "device": "Máy giặt",
+        "error_code": "",
+        "is_expected": false
+      },
+      {
+        "rank": 2,
+        "id": "Q0537",
+        "score": 0.8704,
+        "distance": 0.2096240520477295,
+        "source": "chroma",
+        "brand": "Samsung",
+        "device": "Máy giặt",
+        "error_code": "",
+        "is_expected": true
+      },
+      {
+        "rank": 3,
+        "id": "Q0599",
+        "score": 0.8704,
+        "distance": 0.2096240520477295,
+        "source": "chroma",
+        "brand": "Samsung",
+        "device": "Máy giặt",
+        "error_code": "",
+        "is_expected": false
+      },
+      {
+        "rank": 4,
+        "id": "Q0661",
+        "score": 0.8673,
+        "distance": 0.21271628141403198,
+        "source": "chroma",
+        "brand": "Samsung",
+        "device": "Máy giặt",
+        "error_code": "",
+        "is_expected": false
+      },
+      {
+        "rank": 5,
+        "id": "Q0746",
+        "score": 0.8636,
+        "distance": 0.21642065048217773,
+        "source": "chroma",
+        "brand": "LG",
+        "device": "Máy giặt",
+        "error_code": "",
+        "is_expected": false
+      }
+    ]
+  },
+  {
+    "index": 15,
+    "expected_id": "Q0548",
+    "query": "Máy lạnh có mùi hôi thì xử lý thế nào?",
+    "expected_rank": 2,
+    "category": "TWIN_KNOWLEDGE_CLUSTER",
+    "classification_detail": "Cùng Hãng (Samsung), Thiết bị (Điều hòa), cùng Issue_ID (I0439), câu trả lời giống hệt nhau",
+    "expected_info": {
+      "id": "Q0548",
+      "brand": "Samsung",
+      "device": "Điều hòa",
+      "error_code": "",
+      "issue_id": "I0439",
+      "duplicate_group": "DUP88B7BA30",
+      "question": "Máy lạnh có mùi hôi thì xử lý thế nào?",
+      "answer_snippet": ""
+    },
+    "top1_info": {
+      "id": "Q0579",
+      "brand": "Samsung",
+      "device": "Điều hòa",
+      "error_code": "",
+      "issue_id": "I0439",
+      "duplicate_group": "",
+      "question": "Máy lạnh có mùi hôi thì xử lý thế nào phải làm sao?",
+      "answer_snippet": "",
+      "score": 0.8412,
+      "distance": 0.238808274269104,
+      "source": "chroma"
+    },
+    "top_5_candidates": [
+      {
+        "rank": 1,
+        "id": "Q0579",
+        "score": 0.8412,
+        "distance": 0.238808274269104,
+        "source": "chroma",
+        "brand": "Samsung",
+        "device": "Điều hòa",
+        "error_code": "",
+        "is_expected": false
+      },
+      {
+        "rank": 2,
+        "id": "Q0548",
+        "score": 0.8339,
+        "distance": 0.246132493019104,
+        "source": "chroma",
+        "brand": "Samsung",
+        "device": "Điều hòa",
+        "error_code": "",
+        "is_expected": true
+      },
+      {
+        "rank": 3,
+        "id": "Q0610",
+        "score": 0.8339,
+        "distance": 0.246132493019104,
+        "source": "chroma",
+        "brand": "Samsung",
+        "device": "Điều hòa",
+        "error_code": "",
+        "is_expected": false
+      },
+      {
+        "rank": 4,
+        "id": "Q0641",
+        "score": 0.8309,
+        "distance": 0.24912190437316895,
+        "source": "chroma",
+        "brand": "Samsung",
+        "device": "Điều hòa",
+        "error_code": "",
+        "is_expected": false
+      },
+      {
+        "rank": 5,
+        "id": "Q0672",
+        "score": 0.829,
+        "distance": 0.25099241733551025,
+        "source": "chroma",
+        "brand": "Samsung",
+        "device": "Điều hòa",
+        "error_code": "",
+        "is_expected": false
+      }
+    ]
+  },
+  {
+    "index": 16,
+    "expected_id": "Q0554",
+    "query": "Tủ lạnh có mùi hôi thì vệ sinh thế nào?",
+    "expected_rank": 3,
+    "category": "TWIN_KNOWLEDGE_CLUSTER",
+    "classification_detail": "Cùng Hãng (Samsung), Thiết bị (Tủ lạnh), cùng Issue_ID (I0445), câu trả lời giống hệt nhau",
+    "expected_info": {
+      "id": "Q0554",
+      "brand": "Samsung",
+      "device": "Tủ lạnh",
+      "error_code": "",
+      "issue_id": "I0445",
+      "duplicate_group": "",
+      "question": "Tủ lạnh có mùi hôi thì vệ sinh thế nào?",
+      "answer_snippet": ""
+    },
+    "top1_info": {
+      "id": "Q0585",
+      "brand": "Samsung",
+      "device": "Tủ lạnh",
+      "error_code": "",
+      "issue_id": "I0445",
+      "duplicate_group": "",
+      "question": "Tủ lạnh có mùi hôi thì vệ sinh thế nào phải làm sao?",
+      "answer_snippet": "",
+      "score": 0.8414,
+      "distance": 0.23855817317962646,
+      "source": "chroma"
+    },
+    "top_5_candidates": [
+      {
+        "rank": 1,
+        "id": "Q0585",
+        "score": 0.8414,
+        "distance": 0.23855817317962646,
+        "source": "chroma",
+        "brand": "Samsung",
+        "device": "Tủ lạnh",
+        "error_code": "",
+        "is_expected": false
+      },
+      {
+        "rank": 2,
+        "id": "Q0616",
+        "score": 0.8407,
+        "distance": 0.2393406629562378,
+        "source": "chroma",
+        "brand": "Samsung",
+        "device": "Tủ lạnh",
+        "error_code": "",
+        "is_expected": false
+      },
+      {
+        "rank": 3,
+        "id": "Q0554",
+        "score": 0.8343,
+        "distance": 0.2457486391067505,
+        "source": "chroma",
+        "brand": "Samsung",
+        "device": "Tủ lạnh",
+        "error_code": "",
+        "is_expected": true
+      },
+      {
+        "rank": 4,
+        "id": "Q0647",
+        "score": 0.8284,
+        "distance": 0.25164151191711426,
+        "source": "chroma",
+        "brand": "Samsung",
+        "device": "Tủ lạnh",
+        "error_code": "",
+        "is_expected": false
+      },
+      {
+        "rank": 5,
+        "id": "Q0678",
+        "score": 0.8267,
+        "distance": 0.2532981038093567,
+        "source": "chroma",
+        "brand": "Samsung",
+        "device": "Tủ lạnh",
+        "error_code": "",
+        "is_expected": false
+      }
+    ]
+  },
+  {
+    "index": 17,
+    "expected_id": "Q0558",
+    "query": "Máy rửa bát không thoát nước thì làm sao?",
+    "expected_rank": 4,
+    "category": "TWIN_KNOWLEDGE_CLUSTER",
+    "classification_detail": "Cùng Hãng (Samsung), Thiết bị (Máy rửa bát), câu trả lời giống hệt nhau",
+    "expected_info": {
+      "id": "Q0558",
+      "brand": "Samsung",
+      "device": "Máy rửa bát",
+      "error_code": "",
+      "issue_id": "I0449",
+      "duplicate_group": "",
+      "question": "Máy rửa bát không thoát nước thì làm sao?",
+      "answer_snippet": ""
+    },
+    "top1_info": {
+      "id": "Q0620",
+      "brand": "Samsung",
+      "device": "Máy rửa bát",
+      "error_code": "",
+      "issue_id": "I0472",
+      "duplicate_group": "",
+      "question": "Máy rửa bát không thoát nước thì làm sao thì xử lý thế nào?",
+      "answer_snippet": "",
+      "score": 0.8743,
+      "distance": 0.2057325839996338,
+      "source": "chroma"
+    },
+    "top_5_candidates": [
+      {
+        "rank": 1,
+        "id": "Q0620",
+        "score": 0.8743,
+        "distance": 0.2057325839996338,
+        "source": "chroma",
+        "brand": "Samsung",
+        "device": "Máy rửa bát",
+        "error_code": "",
+        "is_expected": false
+      },
+      {
+        "rank": 2,
+        "id": "Q0589",
+        "score": 0.8731,
+        "distance": 0.2068631649017334,
+        "source": "chroma",
+        "brand": "Samsung",
+        "device": "Máy rửa bát",
+        "error_code": "",
+        "is_expected": false
+      },
+      {
+        "rank": 3,
+        "id": "Q0682",
+        "score": 0.8671,
+        "distance": 0.21287095546722412,
+        "source": "chroma",
+        "brand": "Samsung",
+        "device": "Máy rửa bát",
+        "error_code": "",
+        "is_expected": false
+      },
+      {
+        "rank": 4,
+        "id": "Q0558",
+        "score": 0.8668,
+        "distance": 0.21315217018127441,
+        "source": "chroma",
+        "brand": "Samsung",
+        "device": "Máy rửa bát",
+        "error_code": "",
+        "is_expected": true
+      },
+      {
+        "rank": 5,
+        "id": "Q0651",
+        "score": 0.8575,
+        "distance": 0.22249698638916016,
+        "source": "chroma",
+        "brand": "Samsung",
+        "device": "Máy rửa bát",
+        "error_code": "",
+        "is_expected": false
+      }
+    ]
+  },
+  {
+    "index": 18,
+    "expected_id": "Q0560",
+    "query": "Máy sấy không khô quần áo thì kiểm tra gì?",
+    "expected_rank": 2,
+    "category": "TWIN_KNOWLEDGE_CLUSTER",
+    "classification_detail": "Cùng Hãng (Samsung), Thiết bị (Máy sấy), cùng Issue_ID (I0451), câu trả lời giống hệt nhau",
+    "expected_info": {
+      "id": "Q0560",
+      "brand": "Samsung",
+      "device": "Máy sấy",
+      "error_code": "",
+      "issue_id": "I0451",
+      "duplicate_group": "",
+      "question": "Máy sấy không khô quần áo thì kiểm tra gì?",
+      "answer_snippet": ""
+    },
+    "top1_info": {
+      "id": "Q0591",
+      "brand": "Samsung",
+      "device": "Máy sấy",
+      "error_code": "",
+      "issue_id": "I0451",
+      "duplicate_group": "",
+      "question": "Máy sấy không khô quần áo thì kiểm tra gì phải làm sao?",
+      "answer_snippet": "",
+      "score": 0.8646,
+      "distance": 0.2154250144958496,
+      "source": "chroma"
+    },
+    "top_5_candidates": [
+      {
+        "rank": 1,
+        "id": "Q0591",
+        "score": 0.8646,
+        "distance": 0.2154250144958496,
+        "source": "chroma",
+        "brand": "Samsung",
+        "device": "Máy sấy",
+        "error_code": "",
+        "is_expected": false
+      },
+      {
+        "rank": 2,
+        "id": "Q0560",
+        "score": 0.8626,
+        "distance": 0.21744072437286377,
+        "source": "chroma",
+        "brand": "Samsung",
+        "device": "Máy sấy",
+        "error_code": "",
+        "is_expected": true
+      },
+      {
+        "rank": 3,
+        "id": "Q0653",
+        "score": 0.8564,
+        "distance": 0.22364509105682373,
+        "source": "chroma",
+        "brand": "Samsung",
+        "device": "Máy sấy",
+        "error_code": "",
+        "is_expected": false
+      },
+      {
+        "rank": 4,
+        "id": "Q0622",
+        "score": 0.8539,
+        "distance": 0.2260717749595642,
+        "source": "chroma",
+        "brand": "Samsung",
+        "device": "Máy sấy",
+        "error_code": "",
+        "is_expected": false
+      },
+      {
+        "rank": 5,
+        "id": "Q0684",
+        "score": 0.8538,
+        "distance": 0.22619014978408813,
+        "source": "chroma",
+        "brand": "Samsung",
+        "device": "Máy sấy",
+        "error_code": "",
+        "is_expected": false
+      }
+    ]
+  },
+  {
+    "index": 19,
+    "expected_id": "Q0563",
+    "query": "Lò vi sóng không nóng nhưng vẫn chạy thì sao?",
+    "expected_rank": 2,
+    "category": "TWIN_KNOWLEDGE_CLUSTER",
+    "classification_detail": "Cùng Hãng (Samsung), Thiết bị (Lò vi sóng), cùng Issue_ID (I0454), câu trả lời giống hệt nhau",
+    "expected_info": {
+      "id": "Q0563",
+      "brand": "Samsung",
+      "device": "Lò vi sóng",
+      "error_code": "",
+      "issue_id": "I0454",
+      "duplicate_group": "",
+      "question": "Lò vi sóng không nóng nhưng vẫn chạy thì sao?",
+      "answer_snippet": ""
+    },
+    "top1_info": {
+      "id": "Q0687",
+      "brand": "Samsung",
+      "device": "Lò vi sóng",
+      "error_code": "",
+      "issue_id": "I0454",
+      "duplicate_group": "",
+      "question": "Lò vi sóng không nóng nhưng vẫn chạy thì sao nguyên nhân thường do đâu?",
+      "answer_snippet": "",
+      "score": 0.8692,
+      "distance": 0.21081876754760742,
+      "source": "chroma"
+    },
+    "top_5_candidates": [
+      {
+        "rank": 1,
+        "id": "Q0687",
+        "score": 0.8692,
+        "distance": 0.21081876754760742,
+        "source": "chroma",
+        "brand": "Samsung",
+        "device": "Lò vi sóng",
+        "error_code": "",
+        "is_expected": false
+      },
+      {
+        "rank": 2,
+        "id": "Q0563",
+        "score": 0.8677,
+        "distance": 0.21227407455444336,
+        "source": "chroma",
+        "brand": "Samsung",
+        "device": "Lò vi sóng",
+        "error_code": "",
+        "is_expected": true
+      },
+      {
+        "rank": 3,
+        "id": "Q0594",
+        "score": 0.8677,
+        "distance": 0.21228265762329102,
+        "source": "chroma",
+        "brand": "Samsung",
+        "device": "Lò vi sóng",
+        "error_code": "",
+        "is_expected": false
+      },
+      {
+        "rank": 4,
+        "id": "Q0625",
+        "score": 0.8661,
+        "distance": 0.2139052152633667,
+        "source": "chroma",
+        "brand": "Samsung",
+        "device": "Lò vi sóng",
+        "error_code": "",
+        "is_expected": false
+      },
+      {
+        "rank": 5,
+        "id": "Q0656",
+        "score": 0.8604,
+        "distance": 0.21960902214050293,
+        "source": "chroma",
+        "brand": "Samsung",
+        "device": "Lò vi sóng",
+        "error_code": "",
+        "is_expected": false
+      }
+    ]
+  },
+  {
+    "index": 20,
+    "expected_id": "Q0611",
+    "query": "Tủ lạnh không lạnh thì kiểm tra gì trước thì xử lý thế nào?",
+    "expected_rank": 4,
+    "category": "TWIN_KNOWLEDGE_CLUSTER",
+    "classification_detail": "Cùng Hãng (Samsung), Thiết bị (Tủ lạnh), câu trả lời giống hệt nhau",
+    "expected_info": {
+      "id": "Q0611",
+      "brand": "Samsung",
+      "device": "Tủ lạnh",
+      "error_code": "",
+      "issue_id": "I0465",
+      "duplicate_group": "",
+      "question": "Tủ lạnh không lạnh thì kiểm tra gì trước thì xử lý thế nào?",
+      "answer_snippet": ""
+    },
+    "top1_info": {
+      "id": "Q0580",
+      "brand": "Samsung",
+      "device": "Tủ lạnh",
+      "error_code": "",
+      "issue_id": "I0440",
+      "duplicate_group": "",
+      "question": "Tủ lạnh không lạnh thì kiểm tra gì trước phải làm sao?",
+      "answer_snippet": "",
+      "score": 0.8643,
+      "distance": 0.21569621562957764,
+      "source": "chroma"
+    },
+    "top_5_candidates": [
+      {
+        "rank": 1,
+        "id": "Q0580",
+        "score": 0.8643,
+        "distance": 0.21569621562957764,
+        "source": "chroma",
+        "brand": "Samsung",
+        "device": "Tủ lạnh",
+        "error_code": "",
+        "is_expected": false
+      },
+      {
+        "rank": 2,
+        "id": "Q0549",
+        "score": 0.8625,
+        "distance": 0.21749889850616455,
+        "source": "chroma",
+        "brand": "Samsung",
+        "device": "Tủ lạnh",
+        "error_code": "",
+        "is_expected": false
+      },
+      {
+        "rank": 3,
+        "id": "Q0642",
+        "score": 0.8625,
+        "distance": 0.2174990177154541,
+        "source": "chroma",
+        "brand": "Samsung",
+        "device": "Tủ lạnh",
+        "error_code": "",
+        "is_expected": false
+      },
+      {
+        "rank": 4,
+        "id": "Q0611",
+        "score": 0.8606,
+        "distance": 0.21940410137176514,
+        "source": "chroma",
+        "brand": "Samsung",
+        "device": "Tủ lạnh",
+        "error_code": "",
+        "is_expected": true
+      },
+      {
+        "rank": 5,
+        "id": "Q0673",
+        "score": 0.8539,
+        "distance": 0.22609812021255493,
+        "source": "chroma",
+        "brand": "Samsung",
+        "device": "Tủ lạnh",
+        "error_code": "",
+        "is_expected": false
+      }
+    ]
+  },
+  {
+    "index": 21,
+    "expected_id": "Q0624",
+    "query": "Máy sấy không khởi động thì kiểm tra gì thì xử lý thế nào?",
+    "expected_rank": 3,
+    "category": "TWIN_KNOWLEDGE_CLUSTER",
+    "classification_detail": "Cùng Hãng (Samsung), Thiết bị (Máy sấy), câu trả lời giống hệt nhau",
+    "expected_info": {
+      "id": "Q0624",
+      "brand": "Samsung",
+      "device": "Máy sấy",
+      "error_code": "",
+      "issue_id": "I0474",
+      "duplicate_group": "",
+      "question": "Máy sấy không khởi động thì kiểm tra gì thì xử lý thế nào?",
+      "answer_snippet": ""
+    },
+    "top1_info": {
+      "id": "Q0562",
+      "brand": "Samsung",
+      "device": "Máy sấy",
+      "error_code": "",
+      "issue_id": "I0453",
+      "duplicate_group": "",
+      "question": "Máy sấy không khởi động thì kiểm tra gì?",
+      "answer_snippet": "",
+      "score": 0.864,
+      "distance": 0.21595656871795654,
+      "source": "chroma"
+    },
+    "top_5_candidates": [
+      {
+        "rank": 1,
+        "id": "Q0562",
+        "score": 0.864,
+        "distance": 0.21595656871795654,
+        "source": "chroma",
+        "brand": "Samsung",
+        "device": "Máy sấy",
+        "error_code": "",
+        "is_expected": false
+      },
+      {
+        "rank": 2,
+        "id": "Q0593",
+        "score": 0.864,
+        "distance": 0.21602284908294678,
+        "source": "chroma",
+        "brand": "Samsung",
+        "device": "Máy sấy",
+        "error_code": "",
+        "is_expected": false
+      },
+      {
+        "rank": 3,
+        "id": "Q0624",
+        "score": 0.8631,
+        "distance": 0.21688801050186157,
+        "source": "chroma",
+        "brand": "Samsung",
+        "device": "Máy sấy",
+        "error_code": "",
+        "is_expected": true
+      },
+      {
+        "rank": 4,
+        "id": "Q0655",
+        "score": 0.8606,
+        "distance": 0.21935248374938965,
+        "source": "chroma",
+        "brand": "Samsung",
+        "device": "Máy sấy",
+        "error_code": "",
+        "is_expected": false
+      },
+      {
+        "rank": 5,
+        "id": "Q0686",
+        "score": 0.8522,
+        "distance": 0.22778069972991943,
+        "source": "chroma",
+        "brand": "Samsung",
+        "device": "Máy sấy",
+        "error_code": "",
+        "is_expected": false
+      }
+    ]
+  },
+  {
+    "index": 22,
+    "expected_id": "Q0813",
+    "query": "LG Tủ lạnh không làm đá?",
+    "expected_rank": 2,
+    "category": "TWIN_KNOWLEDGE_CLUSTER",
+    "classification_detail": "Cùng Hãng (LG), Thiết bị (Tủ lạnh), cùng Issue_ID (I0519), câu trả lời giống hệt nhau",
+    "expected_info": {
+      "id": "Q0813",
+      "brand": "LG",
+      "device": "Tủ lạnh",
+      "error_code": "",
+      "issue_id": "I0519",
+      "duplicate_group": "",
+      "question": "LG Tủ lạnh không làm đá?",
+      "answer_snippet": ""
+    },
+    "top1_info": {
+      "id": "Q0817",
+      "brand": "LG",
+      "device": "Tủ lạnh",
+      "error_code": "",
+      "issue_id": "I0519",
+      "duplicate_group": "",
+      "question": "LG Tủ lạnh không làm đá thì phải làm sao?",
+      "answer_snippet": "",
+      "score": 0.921,
+      "distance": 0.23898053169250488,
+      "source": "chroma"
+    },
+    "top_5_candidates": [
+      {
+        "rank": 1,
+        "id": "Q0817",
+        "score": 0.921,
+        "distance": 0.23898053169250488,
+        "source": "chroma",
+        "brand": "LG",
+        "device": "Tủ lạnh",
+        "error_code": "",
+        "is_expected": false
+      },
+      {
+        "rank": 2,
+        "id": "Q0813",
+        "score": 0.914,
+        "distance": 0.2460048794746399,
+        "source": "chroma",
+        "brand": "LG",
+        "device": "Tủ lạnh",
+        "error_code": "",
+        "is_expected": true
+      },
+      {
+        "rank": 3,
+        "id": "Q0821",
+        "score": 0.911,
+        "distance": 0.24895095825195312,
+        "source": "chroma",
+        "brand": "LG",
+        "device": "Tủ lạnh",
+        "error_code": "",
+        "is_expected": false
+      },
+      {
+        "rank": 4,
+        "id": "Q0728",
+        "score": 0.8598,
+        "distance": 0.30017173290252686,
+        "source": "chroma",
+        "brand": "LG",
+        "device": "Tủ lạnh",
+        "error_code": "",
+        "is_expected": false
+      },
+      {
+        "rank": 5,
+        "id": "Q0723",
+        "score": 0.8527,
+        "distance": 0.30727076530456543,
+        "source": "chroma",
+        "brand": "LG",
+        "device": "Tủ lạnh",
+        "error_code": "",
+        "is_expected": false
+      }
+    ]
+  },
+  {
+    "index": 23,
+    "expected_id": "Q0938",
+    "query": "Panasonic Tủ lạnh không làm đá?",
+    "expected_rank": 2,
+    "category": "TWIN_KNOWLEDGE_CLUSTER",
+    "classification_detail": "Cùng Hãng (Panasonic), Thiết bị (Tủ lạnh), cùng Issue_ID (I0560), câu trả lời giống hệt nhau",
+    "expected_info": {
+      "id": "Q0938",
+      "brand": "Panasonic",
+      "device": "Tủ lạnh",
+      "error_code": "",
+      "issue_id": "I0560",
+      "duplicate_group": "",
+      "question": "Panasonic Tủ lạnh không làm đá?",
+      "answer_snippet": ""
+    },
+    "top1_info": {
+      "id": "Q0941",
+      "brand": "Panasonic",
+      "device": "Tủ lạnh",
+      "error_code": "",
+      "issue_id": "I0560",
+      "duplicate_group": "",
+      "question": "Panasonic Tủ lạnh không làm đá thì phải làm sao?",
+      "answer_snippet": "",
+      "score": 0.9323,
+      "distance": 0.22771477699279785,
+      "source": "chroma"
+    },
+    "top_5_candidates": [
+      {
+        "rank": 1,
+        "id": "Q0941",
+        "score": 0.9323,
+        "distance": 0.22771477699279785,
+        "source": "chroma",
+        "brand": "Panasonic",
+        "device": "Tủ lạnh",
+        "error_code": "",
+        "is_expected": false
+      },
+      {
+        "rank": 2,
+        "id": "Q0938",
+        "score": 0.9268,
+        "distance": 0.23320335149765015,
+        "source": "chroma",
+        "brand": "Panasonic",
+        "device": "Tủ lạnh",
+        "error_code": "",
+        "is_expected": true
+      },
+      {
+        "rank": 3,
+        "id": "Q0944",
+        "score": 0.9243,
+        "distance": 0.23566114902496338,
+        "source": "chroma",
+        "brand": "Panasonic",
+        "device": "Tủ lạnh",
+        "error_code": "",
+        "is_expected": false
+      },
+      {
+        "rank": 4,
+        "id": "Q0876",
+        "score": 0.8553,
+        "distance": 0.30468255281448364,
+        "source": "chroma",
+        "brand": "Panasonic",
+        "device": "Tủ lạnh",
+        "error_code": "",
+        "is_expected": false
+      },
+      {
+        "rank": 5,
+        "id": "Q0872",
+        "score": 0.8476,
+        "distance": 0.31242191791534424,
+        "source": "chroma",
+        "brand": "Panasonic",
+        "device": "Tủ lạnh",
+        "error_code": "",
+        "is_expected": false
+      }
+    ]
+  },
+  {
+    "index": 24,
+    "expected_id": "Q0983",
+    "query": "Panasonic Tủ lạnh muốn tiết kiệm điện?",
+    "expected_rank": 2,
+    "category": "TWIN_KNOWLEDGE_CLUSTER",
+    "classification_detail": "Cùng Hãng (Panasonic), Thiết bị (Tủ lạnh), cùng Issue_ID (I0577), câu trả lời giống hệt nhau",
+    "expected_info": {
+      "id": "Q0983",
+      "brand": "Panasonic",
+      "device": "Tủ lạnh",
+      "error_code": "",
+      "issue_id": "I0577",
+      "duplicate_group": "",
+      "question": "Panasonic Tủ lạnh muốn tiết kiệm điện?",
+      "answer_snippet": ""
+    },
+    "top1_info": {
+      "id": "Q0986",
+      "brand": "Panasonic",
+      "device": "Tủ lạnh",
+      "error_code": "",
+      "issue_id": "I0577",
+      "duplicate_group": "",
+      "question": "Panasonic Tủ lạnh muốn tiết kiệm điện thì phải làm sao?",
+      "answer_snippet": "",
+      "score": 0.948,
+      "distance": 0.21198344230651855,
+      "source": "chroma"
+    },
+    "top_5_candidates": [
+      {
+        "rank": 1,
+        "id": "Q0986",
+        "score": 0.948,
+        "distance": 0.21198344230651855,
+        "source": "chroma",
+        "brand": "Panasonic",
+        "device": "Tủ lạnh",
+        "error_code": "",
+        "is_expected": false
+      },
+      {
+        "rank": 2,
+        "id": "Q0983",
+        "score": 0.9441,
+        "distance": 0.21587491035461426,
+        "source": "chroma",
+        "brand": "Panasonic",
+        "device": "Tủ lạnh",
+        "error_code": "",
+        "is_expected": true
+      },
+      {
+        "rank": 3,
+        "id": "Q0988",
+        "score": 0.9397,
+        "distance": 0.2202674150466919,
+        "source": "chroma",
+        "brand": "Panasonic",
+        "device": "Tủ lạnh",
+        "error_code": "",
+        "is_expected": false
+      },
+      {
+        "rank": 4,
+        "id": "Q0842",
+        "score": 0.8176,
+        "distance": 0.34241944551467896,
+        "source": "chroma",
+        "brand": "Panasonic",
+        "device": "Tủ lạnh",
+        "error_code": "",
+        "is_expected": false
+      },
+      {
+        "rank": 5,
+        "id": "Q0857",
+        "score": 0.8174,
+        "distance": 0.34263521432876587,
+        "source": "chroma",
+        "brand": "Panasonic",
+        "device": "Tủ lạnh",
+        "error_code": "",
+        "is_expected": false
+      }
+    ]
+  },
+  {
+    "index": 25,
+    "expected_id": "Q1061",
+    "query": "Samsung Tủ lạnh nước không đủ lạnh?",
+    "expected_rank": 2,
+    "category": "TWIN_KNOWLEDGE_CLUSTER",
+    "classification_detail": "Cùng Hãng (Samsung), Thiết bị (Tủ lạnh), cùng Issue_ID (I0614), câu trả lời giống hệt nhau",
+    "expected_info": {
+      "id": "Q1061",
+      "brand": "Samsung",
+      "device": "Tủ lạnh",
+      "error_code": "",
+      "issue_id": "I0614",
+      "duplicate_group": "",
+      "question": "Samsung Tủ lạnh nước không đủ lạnh?",
+      "answer_snippet": ""
+    },
+    "top1_info": {
+      "id": "Q1064",
+      "brand": "Samsung",
+      "device": "Tủ lạnh",
+      "error_code": "",
+      "issue_id": "I0614",
+      "duplicate_group": "",
+      "question": "Samsung Tủ lạnh nước không đủ lạnh thì phải làm sao?",
+      "answer_snippet": "",
+      "score": 0.9921,
+      "distance": 0.16794168949127197,
+      "source": "chroma"
+    },
+    "top_5_candidates": [
+      {
+        "rank": 1,
+        "id": "Q1064",
+        "score": 0.9921,
+        "distance": 0.16794168949127197,
+        "source": "chroma",
+        "brand": "Samsung",
+        "device": "Tủ lạnh",
+        "error_code": "",
+        "is_expected": false
+      },
+      {
+        "rank": 2,
+        "id": "Q1061",
+        "score": 0.9905,
+        "distance": 0.16947788000106812,
+        "source": "chroma",
+        "brand": "Samsung",
+        "device": "Tủ lạnh",
+        "error_code": "",
+        "is_expected": true
+      },
+      {
+        "rank": 3,
+        "id": "Q1002",
+        "score": 0.9093,
+        "distance": 0.25067901611328125,
+        "source": "chroma",
+        "brand": "Samsung",
+        "device": "Tủ lạnh",
+        "error_code": "",
+        "is_expected": false
+      },
+      {
+        "rank": 4,
+        "id": "Q1012",
+        "score": 0.9078,
+        "distance": 0.25219738483428955,
+        "source": "chroma",
+        "brand": "Samsung",
+        "device": "Tủ lạnh",
+        "error_code": "",
+        "is_expected": false
+      },
+      {
+        "rank": 5,
+        "id": "Q1007",
+        "score": 0.9058,
+        "distance": 0.254183292388916,
+        "source": "chroma",
+        "brand": "Samsung",
+        "device": "Tủ lạnh",
+        "error_code": "",
+        "is_expected": false
+      }
+    ]
+  },
+  {
+    "index": 26,
+    "expected_id": "Q1082",
+    "query": "Samsung Tủ lạnh để thực phẩm che cửa gió có sao không thì phải làm sao?",
+    "expected_rank": 2,
+    "category": "TWIN_KNOWLEDGE_CLUSTER",
+    "classification_detail": "Cùng Hãng (Samsung), Thiết bị (Tủ lạnh), câu trả lời giống hệt nhau",
+    "expected_info": {
+      "id": "Q1082",
+      "brand": "Samsung",
+      "device": "Tủ lạnh",
+      "error_code": "",
+      "issue_id": "I0626",
+      "duplicate_group": "",
+      "question": "Samsung Tủ lạnh để thực phẩm che cửa gió có sao không thì phải làm sao?",
+      "answer_snippet": ""
+    },
+    "top1_info": {
+      "id": "Q1080",
+      "brand": "Samsung",
+      "device": "Tủ lạnh",
+      "error_code": "",
+      "issue_id": "I0625",
+      "duplicate_group": "",
+      "question": "Samsung Tủ lạnh để thực phẩm che cửa gió có sao không?",
+      "answer_snippet": "",
+      "score": 0.9838,
+      "distance": 0.17623579502105713,
+      "source": "chroma"
+    },
+    "top_5_candidates": [
+      {
+        "rank": 1,
+        "id": "Q1080",
+        "score": 0.9838,
+        "distance": 0.17623579502105713,
+        "source": "chroma",
+        "brand": "Samsung",
+        "device": "Tủ lạnh",
+        "error_code": "",
+        "is_expected": false
+      },
+      {
+        "rank": 2,
+        "id": "Q1082",
+        "score": 0.9829,
+        "distance": 0.1771312952041626,
+        "source": "chroma",
+        "brand": "Samsung",
+        "device": "Tủ lạnh",
+        "error_code": "",
+        "is_expected": true
+      },
+      {
+        "rank": 3,
+        "id": "Q1090",
+        "score": 0.8674,
+        "distance": 0.29261523485183716,
+        "source": "chroma",
+        "brand": "Samsung",
+        "device": "Tủ lạnh",
+        "error_code": "",
+        "is_expected": false
+      },
+      {
+        "rank": 4,
+        "id": "Q1088",
+        "score": 0.8389,
+        "distance": 0.3210667371749878,
+        "source": "chroma",
+        "brand": "Samsung",
+        "device": "Tủ lạnh",
+        "error_code": "",
+        "is_expected": false
+      },
+      {
+        "rank": 5,
+        "id": "Q1070",
+        "score": 0.8345,
+        "distance": 0.3255358934402466,
+        "source": "chroma",
+        "brand": "Samsung",
+        "device": "Tủ lạnh",
+        "error_code": "",
+        "is_expected": false
+      }
+    ]
+  }
+]

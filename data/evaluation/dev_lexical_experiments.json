@@ -1,0 +1,98 @@
+[
+  {
+    "config_name": "baseline",
+    "method": "baseline",
+    "weights": null,
+    "hit@1": 89.0,
+    "hit@3": 100.0,
+    "hit@5": 100.0,
+    "mrr": 0.94,
+    "avg_latency_ms": 160.92
+  },
+  {
+    "config_name": "exp_A (w_overlap=0.02)",
+    "method": "exp_A",
+    "weights": {
+      "w_overlap": 0.02
+    },
+    "hit@1": 89.0,
+    "hit@3": 100.0,
+    "hit@5": 100.0,
+    "mrr": 0.94,
+    "avg_latency_ms": 161.03
+  },
+  {
+    "config_name": "exp_A (w_overlap=0.04)",
+    "method": "exp_A",
+    "weights": {
+      "w_overlap": 0.04
+    },
+    "hit@1": 89.0,
+    "hit@3": 100.0,
+    "hit@5": 100.0,
+    "mrr": 0.94,
+    "avg_latency_ms": 161.01
+  },
+  {
+    "config_name": "exp_A (w_overlap=0.06)",
+    "method": "exp_A",
+    "weights": {
+      "w_overlap": 0.06
+    },
+    "hit@1": 89.0,
+    "hit@3": 100.0,
+    "hit@5": 100.0,
+    "mrr": 0.94,
+    "avg_latency_ms": 160.98
+  },
+  {
+    "config_name": "exp_B (w_q2q=0.02)",
+    "method": "exp_B",
+    "weights": {
+      "w_q2q": 0.02
+    },
+    "hit@1": 95.0,
+    "hit@3": 100.0,
+    "hit@5": 100.0,
+    "mrr": 0.9717,
+    "avg_latency_ms": 161.51
+  },
+  {
+    "config_name": "exp_B (w_q2q=0.04)",
+    "method": "exp_B",
+    "weights": {
+      "w_q2q": 0.04
+    },
+    "hit@1": 96.0,
+    "hit@3": 100.0,
+    "hit@5": 100.0,
+    "mrr": 0.9783,
+    "avg_latency_ms": 161.51
+  },
+  {
+    "config_name": "exp_C (overlap=0.03, q2q=0.02)",
+    "method": "exp_C",
+    "weights": {
+      "w_overlap": 0.03,
+      "w_q2q": 0.02
+    },
+    "hit@1": 95.0,
+    "hit@3": 100.0,
+    "hit@5": 100.0,
+    "mrr": 0.9717,
+    "avg_latency_ms": 161.54
+  },
+  {
+    "config_name": "exp_C (overlap=0.02, q2q=0.03)",
+    "method": "exp_C",
+    "weights": {
+      "w_overlap": 0.02,
+      "w_q2q": 0.03
+    },
+    "hit@1": 96.0,
+    "hit@3": 100.0,
+    "hit@5": 100.0,
+    "mrr": 0.9783,
+    "avg_latency_ms": 161.54
+  }
+]
