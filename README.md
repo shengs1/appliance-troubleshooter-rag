@@ -61,7 +61,7 @@ flowchart TD
 
 | Công nghệ | Vai trò trong hệ thống |
 | :--- | :--- |
-| **Python 3.12+** | Ngôn ngữ lập trình cốt lõi của toàn bộ ứng dụng. |
+| **Python 3.12** | Ngôn ngữ lập trình cốt lõi của toàn bộ ứng dụng (yêu cầu `>=3.12,<3.13` theo `pyproject.toml`). |
 | **Chainlit** | Nền tảng giao diện người dùng duy nhất (port 8001), hỗ trợ streaming câu trả lời, prompt starters, chat history sidebar và xác thực người dùng. |
 | **FastAPI** | Backend API phục vụ các endpoint RESTful (port 8000), quản lý phiên, xác thực và các API dành cho Quản trị viên (Admin). |
 | **SQLite** | Cơ sở dữ liệu quan hệ cục bộ (`data/chat_history.db`) lưu trữ tài khoản, phân quyền, token đặt lại mật khẩu và lịch sử hội thoại bền vững. |
@@ -217,7 +217,7 @@ RETURN b, d, i, e, q, a;
 
 ### 1. Chuẩn bị môi trường
 - Hệ điều hành: Windows, macOS hoặc Linux.
-- Đã cài đặt **Python 3.12+** và công cụ [uv](https://github.com/astral-sh/uv).
+- Đã cài đặt **Python 3.12** (khai báo hỗ trợ `>=3.12,<3.13` theo `pyproject.toml`) và công cụ [uv](https://github.com/astral-sh/uv).
 - Đã cài đặt và khởi chạy **Neo4j** (port 7687) và **Ollama** (với model `qwen2.5:7b`).
 
 ### 2. Cài đặt thư viện dependencies
@@ -252,6 +252,7 @@ LLM_MODEL_NAME=qwen2.5:7b
 
 # Cấu hình CSDL SQLite & URL cổng dịch vụ
 SQLITE_DB_PATH=data/chat_history.db
+# URL giao diện người dùng Chainlit (bắt buộc đặt http://localhost:8001 để đường dẫn đặt lại mật khẩu trong email trỏ chính xác về cổng giao diện 8001)
 FRONTEND_BASE_URL=http://localhost:8001
 CHAINLIT_PORT=8001
 API_PORT=8000
@@ -353,6 +354,7 @@ appliance-troubleshooter-rag/
 │   └── view_data.py                     # Script xem nhanh dữ liệu các CSDL (SQLite, Chroma, Neo4j)
 ├── src/
 │   └── rag_chatbot/
+│       ├── answer_validator.py          # Bộ kiểm tra tính chính xác và an toàn câu trả lời LLM
 │       ├── auth.py                      # Xác thực, băm Argon2id, quản lý phiên và token reset
 │       ├── chainlit_app.py              # Ứng dụng giao diện Chainlit chính & token bridge
 │       ├── chainlit_data_layer.py       # SQLiteDataLayer lưu lịch sử chat Chainlit vào SQLite
@@ -361,9 +363,13 @@ appliance-troubleshooter-rag/
 │       ├── config.py                    # Quản lý cấu hình tập trung qua Pydantic Settings
 │       ├── database.py                  # Thao tác CSDL SQLite (bảng users, chat, audit logs)
 │       ├── email_service.py             # Dịch vụ gửi email khôi phục mật khẩu qua SMTP / Dev Mock
+│       ├── evaluation.py                # Đo lường và đánh giá chất lượng hệ thống RAG (Hit Rate, MRR)
+│       ├── ingest.py                    # Nạp dữ liệu sự cố từ dataset.xlsx vào ChromaDB & Neo4j
+│       ├── knowledge_eval.py            # Đánh giá độ phủ tri thức thiết bị, mã lỗi và giải pháp
 │       ├── main.py                      # Ứng dụng FastAPI REST API & Admin API endpoints
 │       ├── neo4j_db.py                  # Kết nối và nạp dữ liệu đồ thị Neo4j
 │       ├── rag.py                       # Luồng tổng hợp prompt, context và gọi Ollama LLM
+│       ├── reranker.py                  # Module xếp hạng lại kết quả truy vấn (Neural/Cross-encoder)
 │       ├── retrieval.py                 # Truy vấn kết hợp Hybrid Retrieval (ChromaDB + Neo4j)
 │       ├── scope.py                     # Bộ lọc phát hiện và chặn câu hỏi ngoài phạm vi
 │       └── vietnamese.py                # Xử lý tiếng Việt (bỏ dấu, alias, tách khoảng trắng mã lỗi)

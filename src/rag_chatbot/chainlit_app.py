@@ -246,12 +246,42 @@ async def on_chat_start():
     await cl.Message(content=welcome_text, actions=quick_actions).send()
 
 
+@cl.on_chat_resume
+async def on_chat_resume(thread: cl.types.ThreadDict):
+    """Kich hoat tiep tuc tro chuyen khi nguoi dung mo lai mot cuoc hoi thoai cu tu lich su."""
+    # Khi nguoi dung truy cap lai thread cu, hook nay giu khung chat composer mo
+    # va cho phep nguoi dung tiep tuc gui tin nhan hoi tiep trong cuoc hoi thoai do.
+    pass
+
+
 @cl.action_callback("quick_sample_question")
 async def on_quick_sample_question(action: cl.Action):
     """Callback xu ly khi nguoi dung bam vao mot trong cac cau hoi goi y mau."""
     query = action.payload.get("query", "")
     if query:
-        msg = cl.Message(content=query)
+        # Dong bo cap nhat tieu de cuoc hoi thoai thanh dung cau hoi mau tieng Viet trong sidebar
+        try:
+            from chainlit.data import get_data_layer
+            data_layer = get_data_layer()
+            if data_layer and cl.context.session.thread_id:
+                clean_title = query.strip().splitlines()[0][:45]
+                await data_layer.update_thread(
+                    thread_id=cl.context.session.thread_id,
+                    name=clean_title,
+                )
+                await cl.context.emitter.emit(
+                    "first_interaction",
+                    {
+                        "interaction": clean_title,
+                        "thread_id": cl.context.session.thread_id,
+                    },
+                )
+        except Exception:
+            pass
+
+        current_user: Optional[User] = cl.user_session.get("user")
+        user_ident = current_user.identifier if current_user else "User"
+        msg = cl.Message(content=query, author=user_ident, type="user_message")
         await msg.send()
         await on_message(msg)
 
@@ -286,9 +316,29 @@ async def on_message(message: cl.Message):
         ).send()
         return
 
-    # 2. Xu ly hoi dap RAG
-    response_msg = cl.Message(content="")
+    # 2. Xu ly hoi dap RAG - hien thi trang thai dong "..." ngay lap tuc
+    response_msg = cl.Message(content=".")
     await response_msg.send()
+
+    stop_anim = False
+
+    async def animate_dots():
+        dots = [".", "..", "..."]
+        idx = 0
+        while not stop_anim:
+            try:
+                await asyncio.sleep(0.35)
+                if stop_anim:
+                    break
+                idx = (idx + 1) % len(dots)
+                response_msg.content = dots[idx]
+                await response_msg.update()
+            except asyncio.CancelledError:
+                break
+            except Exception:
+                break
+
+    anim_task = asyncio.create_task(animate_dots())
 
     loop = asyncio.get_running_loop()
     try:
@@ -304,6 +354,13 @@ async def on_message(message: cl.Message):
         )
         await response_msg.update()
         return
+    finally:
+        stop_anim = True
+        anim_task.cancel()
+        try:
+            await anim_task
+        except (asyncio.CancelledError, Exception):
+            pass
 
     raw_answer = rag_result.get("answer", "")
     retrieved_docs = rag_result.get("retrieved_documents", [])
@@ -316,6 +373,10 @@ async def on_message(message: cl.Message):
         source_section = f"\n\n---\n**📚 Nguồn tham khảo chính thức:**\n{source_links}"
 
     full_response = f"{raw_answer}{source_section}"
+
+    # Xoa thong bao trang thai cho truoc khi streaming noi dung cau tra loi
+    response_msg.content = ""
+    await response_msg.update()
 
     # Streaming cau tra loi tung tu / cum tu
     words = full_response.split(" ")

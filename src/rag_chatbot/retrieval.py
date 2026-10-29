@@ -398,6 +398,15 @@ def rerank_results(
         dist = item.get("distance")
         if dist is not None:
             semantic_score = max(0.0, 1.0 - float(dist))
+        elif item.get("retrieval_source") in ("neo4j", "both"):
+            # Ket qua tu Neo4j qua Graph Traversal khop chinh xac thuc the
+            item_code = item.get("error_code", "")
+            if target_error_code and item_code and target_error_code.lower() == item_code.lower():
+                semantic_score = 0.85
+                item["distance"] = 0.15
+            else:
+                semantic_score = 0.60
+                item["distance"] = 0.40
         else:
             semantic_score = 0.0
 

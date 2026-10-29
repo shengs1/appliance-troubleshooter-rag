@@ -204,9 +204,26 @@
         }
     }
 
+    // 5. Việt hóa watermark và các nhãn tiếng Anh sót lại
+    function translateWatermarkAndLabels() {
+        const textNodes = document.querySelectorAll("p, span, div");
+        textNodes.forEach(function (el) {
+            if (el.children.length === 0 && el.innerText) {
+                if (el.innerText.includes("LLMs can make mistakes. Check important info") || el.innerText.includes("LLMs can make mistakes")) {
+                    el.innerText = "Trợ lý AI có thể nhầm lẫn. Vui lòng kiểm tra lại thông tin quan trọng.";
+                } else if (el.innerText.trim() === "quick_sample_question") {
+                    el.innerText = "Câu hỏi gợi ý mẫu";
+                } else if (el.innerText.trim() === "admin_open_panel") {
+                    el.innerText = "Bảng điều khiển quản trị";
+                }
+            }
+        });
+    }
+
     function runAllEnhancements() {
         enhanceLoginPage();
         enhanceComposer();
+        translateWatermarkAndLabels();
         if (!currentUserChecked) {
             checkCurrentUser();
         } else if (currentUserRole === "admin") {

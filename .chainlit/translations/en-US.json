@@ -132,25 +132,25 @@
             "title": "Settings panel",
             "customize": "Customize your chat settings here"
         },
-        "watermark": "LLMs can make mistakes. Check important info."
+        "watermark": "Trợ lý AI có thể nhầm lẫn. Vui lòng kiểm tra lại thông tin quan trọng."
     },
     "threadHistory": {
         "sidebar": {
-            "title": "Past Chats",
+            "title": "Lịch sử trò chuyện",
             "filters": {
-                "search": "Search",
-                "placeholder": "Search conversations..."
+                "search": "Tìm kiếm",
+                "placeholder": "Tìm kiếm cuộc trò chuyện..."
             },
             "timeframes": {
-                "today": "Today",
-                "yesterday": "Yesterday",
-                "previous7days": "Previous 7 days",
-                "previous30days": "Previous 30 days"
+                "today": "Hôm nay",
+                "yesterday": "Hôm qua",
+                "previous7days": "7 ngày qua",
+                "previous30days": "30 ngày qua"
             },
-            "empty": "No threads found",
+            "empty": "Không tìm thấy cuộc trò chuyện nào",
             "actions": {
-                "close": "Close sidebar",
-                "open": "Open sidebar"
+                "close": "Đóng thanh bên",
+                "open": "Mở thanh bên"
             }
         },
         "thread": {

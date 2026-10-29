@@ -88,7 +88,7 @@ Write-Host "====================================================================
 $prevDebug = $env:DEBUG
 $env:DEBUG = "false"
 $fastApiProcess = Start-Process -FilePath "uv" -ArgumentList "run uvicorn rag_chatbot.main:app --host $apiHost --port $apiPort" -PassThru -NoNewWindow
-$chainlitProcess = Start-Process -FilePath "uv" -ArgumentList "run chainlit run src/rag_chatbot/chainlit_app.py --host $chainlitHost --port $chainlitPort -h" -PassThru -NoNewWindow
+$chainlitProcess = Start-Process -FilePath "uv" -ArgumentList "run chainlit run src/rag_chatbot/chainlit_app.py --host $chainlitHost --port $chainlitPort -h -w" -PassThru -NoNewWindow
 $env:DEBUG = $prevDebug
 
 try {

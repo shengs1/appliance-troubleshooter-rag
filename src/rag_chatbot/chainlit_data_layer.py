@@ -186,8 +186,11 @@ class SQLiteDataLayer(BaseDataLayer):
                 updates = ["updated_at = ?"]
                 params = [now_str]
                 if name is not None:
-                    updates.append("title = ?")
-                    params.append(name.strip() or "Cuộc trò chuyện")
+                    # Bo qua cac interaction name noi bo bang tieng Anh cua Chainlit
+                    clean_name = name.strip()
+                    if clean_name and clean_name not in ("quick_sample_question", "admin_open_panel", "audio", "default"):
+                        updates.append("title = ?")
+                        params.append(clean_name[:45])
                 if user_id is not None:
                     updates.append("user_id = ?")
                     params.append(user_id)
@@ -239,20 +242,34 @@ class SQLiteDataLayer(BaseDataLayer):
         selected_rows = rows[:limit]
 
         thread_dicts: List[ThreadDict] = []
-        for r in selected_rows:
-            thread_dicts.append(
-                ThreadDict(
-                    id=r["id"],
-                    createdAt=r["created_at"],
-                    name=r["title"] or "Cuộc trò chuyện",
-                    userId=r["user_id"],
-                    userIdentifier=user_ident,
-                    tags=[],
-                    metadata={},
-                    steps=[],
-                    elements=[],
+        with get_db_connection(self.db_path) as conn:
+            cur = conn.cursor()
+            for r in selected_rows:
+                raw_title = (r["title"] or "Cuộc trò chuyện").strip()
+                # Neu tieu de chua duoc dat hoac bi dinh interaction noi bo / cau chao mac dinh
+                if raw_title in ("quick_sample_question", "admin_open_panel", "Cuộc trò chuyện mới") or raw_title.startswith("Xin chào"):
+                    msg_row = cur.execute(
+                        "SELECT content FROM messages WHERE conversation_id = ? AND content NOT LIKE 'Xin chào%' ORDER BY created_at ASC LIMIT 1;",
+                        (r["id"],)
+                    ).fetchone()
+                    if msg_row and msg_row[0]:
+                        raw_title = msg_row[0].strip().splitlines()[0][:45]
+                    else:
+                        raw_title = "Câu hỏi mẫu"
+
+                thread_dicts.append(
+                    ThreadDict(
+                        id=r["id"],
+                        createdAt=r["created_at"],
+                        name=raw_title,
+                        userId=r["user_id"],
+                        userIdentifier=user_ident,
+                        tags=[],
+                        metadata={},
+                        steps=[],
+                        elements=[],
+                    )
                 )
-            )
 
         start_cursor = thread_dicts[0]["id"] if thread_dicts else None
         end_cursor = thread_dicts[-1]["id"] if thread_dicts else None
@@ -288,9 +305,11 @@ class SQLiteDataLayer(BaseDataLayer):
             # Kiem tra xem cuoc tro chuyen da ton tai chua
             row = conn.execute("SELECT id, title, user_id FROM conversations WHERE id = ?;", (thread_id,)).fetchone()
             if not row:
-                # Neu chua ton tai va la tin nhan user dau tien, tu dong tao conversation
-                # Lay title tu 40 ky tu dau cua cau hoi
-                title = content.strip().splitlines()[0][:45] if content.strip() else "Cuộc trò chuyện mới"
+                # Neu chua ton tai: chi lay title neu la tin nhan user, tranh lay loi chao he thong
+                if role == "user":
+                    title = content.strip().splitlines()[0][:45] if content.strip() else "Cuộc trò chuyện mới"
+                else:
+                    title = "Cuộc trò chuyện mới"
                 # Tam thoi gan user_id default neu chua ro
                 user_id = step_dict.get("metadata", {}).get("user_id", "anonymous")
                 # Dam bao user_id ton tai trong bang users
@@ -311,13 +330,18 @@ class SQLiteDataLayer(BaseDataLayer):
                     (thread_id, user_id, title, now_str, now_str),
                 )
             else:
-                # Cap nhat updated_at va tieu de neu tieu de con mac dinh
+                # Cap nhat updated_at va tieu de neu tieu de con mac dinh hoac welcome text
                 updates = ["updated_at = ?"]
                 params = [now_str]
-                if row["title"] == "Cuộc trò chuyện mới" and role == "user":
+                current_title = (row["title"] or "").strip()
+                if role == "user" and (
+                    current_title in ("Cuộc trò chuyện mới", "quick_sample_question", "admin_open_panel")
+                    or current_title.startswith("Xin chào")
+                ):
                     clean_first_line = content.strip().splitlines()[0][:45]
-                    updates.append("title = ?")
-                    params.append(clean_first_line)
+                    if clean_first_line:
+                        updates.append("title = ?")
+                        params.append(clean_first_line)
                 params.append(thread_id)
                 conn.execute(
                     f"UPDATE conversations SET {', '.join(updates)} WHERE id = ?;",

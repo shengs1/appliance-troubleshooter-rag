@@ -120,23 +120,25 @@ def should_refuse(
     # 2. Kiem tra bang chung ky thuat / su co
     has_evidence = False
     
-    # 2a. Neu co ma loi khop giua cau hoi va tai lieu
-    doc_error_code = str(top_doc.get("error_code", "")).strip()
-    if doc_error_code and question:
+    # 2a. Neu co ma loi khop giua cau hoi va tai lieu hang dau
+    if question:
         q_norm = normalize_error_code_spaces(question)
-        if (
-            doc_error_code.lower() in question.lower()
-            or doc_error_code.lower() in q_norm.lower()
-        ):
-            has_evidence = True
+        for doc in retrieved_documents[:3]:
+            doc_error_code = str(doc.get("error_code", "")).strip().lower()
+            if doc_error_code and (
+                doc_error_code in question.lower()
+                or doc_error_code in q_norm.lower()
+            ):
+                has_evidence = True
+                break
         
-    # 2b. Neu cau hoi chua tin hieu ve trieu chung/khac phuc su co
-    elif question and has_troubleshooting_signal(question):
+    # 2b. Neu chua co evidence ma loi, kiem tra tin hieu ve trieu chung/khac phuc su co trong cau hoi
+    if not has_evidence and question and has_troubleshooting_signal(question):
         has_evidence = True
         
     # 2c. Truong hop khong truyen question (goi don le voi retrieved_documents)
-    elif question is None:
-        # Kiem tra xem tai lieu co chua thong tin ky thuat ro rang khong
+    if not has_evidence and question is None:
+        doc_error_code = str(top_doc.get("error_code", "")).strip()
         has_evidence = bool(doc_error_code or top_doc.get("answer"))
 
     # Neu hoan toan khong co bang chung ky thuat/su co -> Tu choi ngay lap tuc
@@ -146,11 +148,11 @@ def should_refuse(
     # 3. Kiem tra khoang cach vector ChromaDB
     # Neu threshold duoc truyen cu the tu caller (vi du: unit test), ton trong threshold do.
     # Khi su dung mac dinh: cau hoi co tin hieu su co ro rang cho phep khoang cach ngu nghia
-    # len toi 0.60 de tranh tu choi nham cau hoi trieu chung tu nhien va cau hoi khong dau.
+    # len toi 0.70 de tranh tu choi nham cau hoi trieu chung tu nhien va cau hoi khong dau.
     if threshold is not None:
         effective_threshold = threshold
     elif has_evidence:
-        effective_threshold = max(settings.scope_distance_threshold, 0.60)
+        effective_threshold = max(settings.scope_distance_threshold, 0.70)
     else:
         effective_threshold = settings.scope_distance_threshold
 

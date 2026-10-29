@@ -86,6 +86,7 @@ def test_chainlit_app_entrypoint_valid():
     import rag_chatbot.chainlit_app as cl_app
     assert hasattr(cl_app, "oauth_callback")
     assert hasattr(cl_app, "main")
+    assert hasattr(cl_app, "on_chat_resume")
 
 
 def test_source_attribution_rejects_mismatched_device():

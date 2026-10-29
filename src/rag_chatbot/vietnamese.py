@@ -125,13 +125,72 @@ def apply_aliases(text: str) -> str:
     return " ".join(res.split())
 
 
+# Danh sach chuyen doi cac cum tu khong dau pho bien sang co dau chuan de mo rong tim kiem
+UNACCENT_TO_ACCENT_PATTERNS = [
+    # Thiet bi
+    (r"\bmay dieu hoa\b", "máy điều hòa"),
+    (r"\bmay lanh\b", "máy điều hòa"),
+    (r"\bdieu hoa\b", "điều hòa"),
+    (r"\btu lanh\b", "tủ lạnh"),
+    (r"\bmay giat\b", "máy giặt"),
+    (r"\bmay giac\b", "máy giặt"),
+    (r"\bmay say\b", "máy sấy"),
+    (r"\bbep tu\b", "bếp từ"),
+    (r"\blo vi song\b", "lò vi sóng"),
+    (r"\bmay rua bat\b", "máy rửa bát"),
+    (r"\bmay rua chen\b", "máy rửa bát"),
+    # Su co & Trieu chung
+    (r"\bma loi\b", "mã lỗi"),
+    (r"\bloi\b", "lỗi"),
+    (r"\bkhong lanh\b", "không lạnh"),
+    (r"\bkhong mat\b", "không mát"),
+    (r"\bkém lanh\b", "kém lạnh"),
+    (r"\blanh yeu\b", "lạnh yếu"),
+    (r"\bkhong nong\b", "không nóng"),
+    (r"\bkhong chay\b", "không chạy"),
+    (r"\bkhong len nguon\b", "không lên nguồn"),
+    (r"\bkhong len\b", "không lên"),
+    (r"\bkhong sang den\b", "không sáng đèn"),
+    (r"\bnhay den\b", "nháy đèn"),
+    (r"\bkhong xa nuoc\b", "không xả nước"),
+    (r"\bkhong vắt\b", "không vắt"),
+    (r"\bkhong vat\b", "không vắt"),
+    (r"\bkhong cap nuoc\b", "không cấp nước"),
+    (r"\bkhong vao nuoc\b", "không vào nước"),
+    (r"\bkhong dong da\b", "không đông đá"),
+    (r"\brung lac\b", "rung lắc"),
+    (r"\bkeu to\b", "kêu to"),
+    (r"\bchay nuoc\b", "chảy nước"),
+    (r"\bbao loi\b", "báo lỗi"),
+    # Y dinh xu ly
+    (r"\bkhac phuc\b", "khắc phục"),
+    (r"\bxu ly\b", "xử lý"),
+    (r"\bcach sua\b", "cách sửa"),
+    (r"\bthe nao\b", "thế nào"),
+    (r"\bra sao\b", "ra sao"),
+    (r"\bnguyen nhan\b", "nguyên nhân"),
+    (r"\bhu hong\b", "hư hỏng"),
+]
+
+
+def restore_common_accents(text: str) -> str:
+    """Khoi phuc dau tieng Viet cho cac cum tu thiet bi dien gia dung va su co pho bien."""
+    if not text:
+        return ""
+    res = text
+    for pattern, replacement in UNACCENT_TO_ACCENT_PATTERNS:
+        res = re.sub(pattern, replacement, res, flags=re.IGNORECASE)
+    return " ".join(res.split())
+
+
 def generate_query_variants(question: str) -> list[str]:
     """Sinh cac bien the cau hoi co kiem soat de mo rong tim kiem ngu nghia:
     
     1. Cau hoi goc da chuan hoa (NFC, dau thanh, ma loi).
     2. Cau hoi sau khi ap dung alias (pana -> Panasonic, may lanh -> dieu hoa...).
-    3. Cau hoi khong dau (unaccented).
-    4. Cau hoi ap dung alias va khong dau.
+    3. Cau hoi sau khi phuc hoi dau tieng Viet cho tu khoa su co / thiet bi.
+    4. Cau hoi khong dau (unaccented).
+    5. Cau hoi ap dung alias va khong dau.
     
     Loai bo cac bien the trung lap de toi uu so luong query.
     """
@@ -140,10 +199,11 @@ def generate_query_variants(question: str) -> list[str]:
 
     base_norm = normalize_vietnamese_query(question.strip())
     alias_expanded = apply_aliases(base_norm)
+    accent_restored = restore_common_accents(alias_expanded)
     unaccented = remove_vietnamese_accents(base_norm)
     unaccented_alias = remove_vietnamese_accents(alias_expanded)
 
-    candidates = [base_norm, alias_expanded, unaccented, unaccented_alias]
+    candidates = [base_norm, alias_expanded, accent_restored, unaccented, unaccented_alias]
     variants: list[str] = []
     seen: set[str] = set()
 
