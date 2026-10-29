@@ -1,23 +1,29 @@
-"""Module truy van du lieu ket hop Hybrid Retrieval (ChromaDB + Neo4j).
+"""Module truy vấn dữ liệu kết hợp Hybrid Retrieval (ChromaDB + Neo4j).
 
-Nhiem vu trong Phase 5:
-1. Trich xuat thuc the co ban tu cau hoi cua nguoi dung (Hang, Thiet bi, Ma loi).
-2. Thuc hien tim kiem ngu nghia (Semantic Search) bang ChromaDB.
-3. Thuc hien tim kiem quan he do thi (Graph Search) bang Neo4j.
-4. Hop nhat (Combine) ket qua tu ca hai nguon mot cach don gian va ro rang:
-   - Neu ban ghi duoc tim thay boi ca ChromaDB va Neo4j -> retrieval_source = 'both'.
-   - Neu chi tim thay boi mot nguon -> retrieval_source = 'chroma' hoac 'neo4j'.
-   - Uu tien dua cac ban ghi tim thay tu ca hai nguon ('both') len dau danh sach.
+Chức năng chính:
+1. Trích xuất thực thể từ câu hỏi (Hãng, Thiết bị, Mã lỗi).
+2. Tìm kiếm ngữ nghĩa vector qua ChromaDB và đồ thị tri thức quan hệ qua Neo4j.
+3. Hợp nhất và xếp hạng lại tài liệu kỹ thuật (Reranking).
 """
 
 from __future__ import annotations
+import logging
 import re
 from typing import Any
 import unicodedata
 
+logger = logging.getLogger(__name__)
+
 from rag_chatbot.chroma_db import query_similar_documents
 from rag_chatbot.config import get_settings
 from rag_chatbot.neo4j_db import run_query
+from rag_chatbot.vietnamese import (
+    apply_aliases,
+    generate_query_variants,
+    normalize_error_code_spaces,
+    normalize_vietnamese_query,
+    remove_vietnamese_accents,
+)
 
 
 # Danh sach cac cap nguyen am chuan hoa vi tri dau thanh tieng Viet (kieu moi vs kieu cu)
@@ -47,33 +53,46 @@ def normalize_question_text(text: str) -> str:
 
 
 def is_exact_question_match(q1: str, q2: str) -> bool:
-    """Kiem tra hai cau hoi co trung khop hoan toan sau khi chuan hoa hay khong."""
+    """Kiem tra hai cau hoi co trung khop hoan toan sau khi chuan hoa hay khong.
+    
+    Kiem tra ca truong hop co dau va khong dau de ho tro cau hoi tieng Viet khong dau.
+    """
     n1 = normalize_question_text(q1)
     n2 = normalize_question_text(q2)
-    return bool(n1 and n2 and n1 == n2)
+    if n1 and n2 and n1 == n2:
+        return True
+    u1 = remove_vietnamese_accents(n1)
+    u2 = remove_vietnamese_accents(n2)
+    return bool(u1 and u2 and u1 == u2)
 
 
 def extract_question_entities(text: str) -> dict[str, str | None]:
     """Trich xuat cac thuc the co ban tu cau hoi nguoi dung: Hang, Thiet bi, Ma loi.
     
-    Phuong phap:
-    - Su dung tu khoa cho Hang (Samsung, LG, Panasonic).
-    - Su dung tu dien anh xa tu khoa cho Loai thiet bi (Dieu hoa, Tu lanh, May giat...).
-    - Su dung bieu thuc chinh quy (regex) de bat ma loi sau tu 'loi' hoac 'ma loi'.
+    Ho tro day du:
+    - Tieng Viet co dau, khong dau va tron dau.
+    - Alias thuong hieu (pana -> Panasonic).
+    - Cac bien the ma loi co khoang trang (F 16 -> F16, H 97 -> H97).
+    - Dong nhat danh xung thiet bi (may lanh -> Dieu hoa, may giac -> May giat...).
     """
     if not text:
         return {"brand": None, "device": None, "error_code": None}
 
-    text_lower = text.lower()
+    # Chuan hoa khoang trang ma loi va dua ve chu thuong
+    normalized_text = normalize_error_code_spaces(text)
+    text_lower = normalized_text.lower()
+    text_unaccent = remove_vietnamese_accents(text_lower)
 
     # 1. Nhan dien Hang (Brand)
     brand: str | None = None
-    for b in ["Samsung", "LG", "Panasonic"]:
-        if b.lower() in text_lower:
-            brand = b
-            break
+    if re.search(r"\bpana\b", text_lower) or "panasonic" in text_lower or "panasonic" in text_unaccent:
+        brand = "Panasonic"
+    elif "samsung" in text_lower or "samsung" in text_unaccent:
+        brand = "Samsung"
+    elif re.search(r"\blg\b", text_lower) or re.search(r"\blg\b", text_unaccent):
+        brand = "LG"
 
-    # 2. Nhan dien Loai thiet bi (Device) voi chuan hoa danh xung
+    # 2. Nhan dien Loai thiet bi (Device) voi chuan hoa danh xung (ca co dau va khong dau)
     device: str | None = None
     device_keywords = [
         # Dieu hoa / May lanh (chuan hoa tat ca cac cach goi ve 'Dieu hoa')
@@ -82,31 +101,69 @@ def extract_question_entities(text: str) -> dict[str, str | None]:
         ("máy lạnh", "Điều hòa"),
         ("điều hòa", "Điều hòa"),
         ("điều hoà", "Điều hòa"),
+        ("may dieu hoa", "Điều hòa"),
+        ("may lanh", "Điều hòa"),
+        ("dieu hoa", "Điều hòa"),
         # Cac loai thiet bi khac trong co so du lieu
         ("máy lọc không khí", "Máy lọc không khí"),
+        ("may loc khong khi", "Máy lọc không khí"),
         ("máy rửa bát", "Máy rửa bát"),
         ("máy rửa chén", "Máy rửa bát"),
+        ("may rua bat", "Máy rửa bát"),
+        ("may rua chen", "Máy rửa bát"),
         ("lò vi sóng", "Lò vi sóng"),
+        ("lò vi ba", "Lò vi sóng"),
+        ("lo vi song", "Lò vi sóng"),
+        ("lo vi ba", "Lò vi sóng"),
         ("lò nướng", "Lò nướng"),
+        ("lo nuong", "Lò nướng"),
         ("máy giặt", "Máy giặt"),
+        ("máy giặc", "Máy giặt"),
+        ("may giat", "Máy giặt"),
+        ("may giac", "Máy giặt"),
         ("máy sấy", "Máy sấy"),
+        ("máy xấy", "Máy sấy"),
+        ("may say", "Máy sấy"),
+        ("may xay", "Máy sấy"),
         ("tủ lạnh", "Tủ lạnh"),
+        ("tu lanh", "Tủ lạnh"),
         ("bếp từ", "Bếp"),
+        ("bep tu", "Bếp"),
         ("bếp", "Bếp"),
+        ("bep", "Bếp"),
         ("tivi", "TV"),
         ("tv", "TV"),
     ]
     for kw, target_dev in device_keywords:
-        if kw in text_lower:
+        if kw in text_lower or kw in text_unaccent:
             device = target_dev
             break
 
     # 3. Nhan dien Ma loi (Error Code)
     error_code: str | None = None
-    # Tim ma loi dung sau tu 'ma loi', 'ma' hoac 'loi' (vi du: 'loi CF', 'ma loi RS')
-    match = re.search(r'(?:mã\s+lỗi|mã|lỗi)\s+([A-Za-z0-9\-]+)', text, re.IGNORECASE)
+    # Tim ma loi sau cac tu khoa: 'ma loi', 'ma', 'loi' (ca co dau va khong dau)
+    match = re.search(r'(?:mã\s+lỗi|mã|lỗi|ma\s+loi|ma|loi)\s+([A-Za-z0-9\-]+(?:\s+[0-9]+)?)', normalized_text, re.IGNORECASE)
+    if not match:
+        # Tim ma loi dang 'bao f16', 'báo F16', 'bao CF'
+        match = re.search(r'(?:báo|bao)\s+([A-Za-z][0-9]{1,3})\b', normalized_text, re.IGNORECASE)
+
+    # Danh sach tu dung sau "loi" la thiet bi hoac tu tieng Viet thong dung, khong phai ma loi
+    non_error_words = {
+        "MAY", "TU", "DIEU", "HOA", "BEP", "LO", "TI", "TIVI", "TV", "QUAT",
+        "KHONG", "BI", "CUA", "TAI", "GI", "SAO", "NAO", "THE", "LAM", "VI",
+        "XAY", "GIAC", "NUOC", "DONG", "MO", "BAT", "TAT", "KHI", "CHO", "LA"
+    }
+
     if match:
-        error_code = match.group(1).upper()
+        raw_code = match.group(1).strip()
+        clean_code = normalize_error_code_spaces(raw_code).upper()
+        # Ma loi hop le: co chua so (vi du: F16, U04, 4C) hoac la ma viet tat ky thuat ngan (vi du: CF, CL)
+        # va khong phai tu thiet bi / tu tieng Viet thong thuong
+        clean_unaccent = remove_vietnamese_accents(clean_code).upper()
+        if clean_unaccent not in non_error_words:
+            # Neu co chua so hoac la ma ngan 2-4 ky tu khong phai tu thong thuong
+            if re.search(r'\d', clean_code) or (len(clean_code) <= 4 and clean_unaccent not in non_error_words):
+                error_code = clean_code
 
     return {
         "brand": brand,
@@ -244,7 +301,11 @@ def search_graph(
         "limit": k,
     }
 
-    raw_results = run_query(cypher, parameters=params, driver=driver)
+    try:
+        raw_results = run_query(cypher, parameters=params, driver=driver)
+    except Exception as exc:
+        logger.warning("Truy van do thi Neo4j khong thanh cong hoac server chua san sang: %s", exc)
+        raw_results = []
     
     # Chuan hoa format tra ve
     results: list[dict] = []
@@ -423,37 +484,53 @@ def search_hybrid(
 
     # 1. Tim kiem tuong dong ngu nghia tu ChromaDB (ap dung metadata filtering neu co thuc the)
     active_where = where if where is not None else build_chroma_where_filter(brand=brand, device=device)
-    chroma_raw = search_similar_documents(
-        question,
-        k=fetch_k,
-        collection=chroma_collection,
-        where=active_where,
-    )
-    chroma_items: list[dict] = []
-    for r in chroma_raw:
-        meta = r.get("metadata", {})
-        doc_text = r.get("document", "")
 
-        # Trích xuất câu hỏi và câu trả lời từ document text
-        q_text = ""
-        ans_text = ""
-        for line in doc_text.splitlines():
-            if line.startswith("Câu hỏi: "):
-                q_text = line[len("Câu hỏi: "):].strip()
-            elif line.startswith("Câu trả lời: "):
-                ans_text = line[len("Câu trả lời: "):].strip()
+    # Sinh bien the cau hoi (query expansion) co kiem soat de ho tro tieng Viet khong dau / tron dau / alias
+    query_variants = generate_query_variants(question)
+    if not query_variants:
+        query_variants = [question]
 
-        chroma_items.append({
-            "question_id": str(meta.get("question_id", r.get("id", ""))),
-            "question": q_text or str(meta.get("question_id", "")),
-            "answer": ans_text,
-            "brand": str(meta.get("brand", "")),
-            "device": str(meta.get("device", "")),
-            "error_code": str(meta.get("error_code", "")),
-            "source_url": str(meta.get("source_url", "")),
-            "retrieval_source": "chroma",
-            "distance": r.get("distance"),
-        })
+    chroma_by_id: dict[str, dict] = {}
+    for q_var in query_variants:
+        chroma_raw = search_similar_documents(
+            q_var,
+            k=fetch_k,
+            collection=chroma_collection,
+            where=active_where,
+        )
+        for r in chroma_raw:
+            meta = r.get("metadata", {})
+            doc_text = r.get("document", "")
+
+            # Trich xuat cau hoi va cau tra loi tu document text
+            q_text = ""
+            ans_text = ""
+            for line in doc_text.splitlines():
+                if line.startswith("Câu hỏi: "):
+                    q_text = line[len("Câu hỏi: "):].strip()
+                elif line.startswith("Câu trả lời: "):
+                    ans_text = line[len("Câu trả lời: "):].strip()
+
+            qid = str(meta.get("question_id", r.get("id", "")))
+            dist = r.get("distance")
+
+            # Hop nhat: giu ban ghi co khoang cach vector nho nhat, tranh trung lap
+            if qid not in chroma_by_id or (
+                dist is not None and (chroma_by_id[qid].get("distance") is None or dist < chroma_by_id[qid]["distance"])
+            ):
+                chroma_by_id[qid] = {
+                    "question_id": qid,
+                    "question": q_text or str(meta.get("question_id", "")),
+                    "answer": ans_text,
+                    "brand": str(meta.get("brand", "")),
+                    "device": str(meta.get("device", "")),
+                    "error_code": str(meta.get("error_code", "")),
+                    "source_url": str(meta.get("source_url", "")),
+                    "retrieval_source": "chroma",
+                    "distance": dist,
+                }
+
+    chroma_items: list[dict] = list(chroma_by_id.values())
 
     # 2. Tim kiem cau truc quan he tu Neo4j
     neo4j_items = search_graph(question, k=fetch_k, driver=neo4j_driver)

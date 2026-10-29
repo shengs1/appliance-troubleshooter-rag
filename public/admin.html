@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bảng điều khiển Quản trị viên - Trợ lý sự cố điện gia dụng</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #0b0f19;
+            --bg-card: #111827;
+            --bg-hover: #1f2937;
+            --border: #1f2937;
+            --text-main: #f8fafc;
+            --text-sub: #94a3b8;
+            --accent: #38bdf8;
+            --accent-hover: #0284c7;
+            --danger: #ef4444;
+            --danger-bg: rgba(239, 68, 68, 0.15);
+            --success: #22c55e;
+            --success-bg: rgba(34, 197, 94, 0.15);
+            --warning: #f59e0b;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+            background: var(--bg-body);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        /* Top Header */
+        header {
+            background: #111827;
+            border-bottom: 1px solid var(--border);
+            padding: 14px 28px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .brand-container {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .brand-logo {
+            max-height: 38px;
+            max-width: 140px;
+            object-fit: contain;
+        }
+
+        .brand-fallback {
+            width: 36px;
+            height: 36px;
+            background: rgba(56, 189, 248, 0.15);
+            border: 1px solid var(--accent);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .brand-titles h1 {
+            font-size: 1.1rem;
+            margin: 0;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: -0.01em;
+        }
+
+        .brand-titles p {
+            margin: 2px 0 0 0;
+            font-size: 0.78rem;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn {
+            background: var(--bg-hover);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background: #334155;
+            border-color: #475569;
+        }
+
+        .btn-primary {
+            background: var(--accent-hover);
+            border-color: var(--accent);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background: #0369a1;
+        }
+
+        .btn-danger {
+            background: var(--danger-bg);
+            color: #fca5a5;
+            border-color: rgba(239, 68, 68, 0.4);
+        }
+
+        .btn-danger:hover {
+            background: rgba(239, 68, 68, 0.3);
+            border-color: var(--danger);
+        }
+
+        .btn-success {
+            background: var(--success-bg);
+            color: #86efac;
+            border-color: rgba(34, 197, 94, 0.4);
+        }
+
+        .btn-success:hover {
+            background: rgba(34, 197, 94, 0.3);
+            border-color: var(--success);
+        }
+
+        .btn-sm {
+            padding: 5px 10px;
+            font-size: 0.78rem;
+        }
+
+        /* Main Container */
+        .main-wrapper {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 18px;
+            margin-bottom: 28px;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--accent);
+        }
+
+        .stat-card.active::after { background: var(--success); }
+        .stat-card.locked::after { background: var(--danger); }
+        .stat-card.convs::after { background: var(--warning); }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-sub);
+            font-weight: 500;
+        }
+
+        .stat-val {
+            font-size: 1.85rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        /* Content Card */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 24px;
+            margin-bottom: 28px;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .card-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin: 0;
+            color: #fff;
+        }
+
+        .search-box {
+            background: #1e293b;
+            border: 1px solid #334155;
+            color: #fff;
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            outline: none;
+            width: 240px;
+            transition: border-color 0.2s;
+        }
+
+        .search-box:focus {
+            border-color: var(--accent);
+        }
+
+        /* Table */
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            text-align: left;
+        }
+
+        th {
+            background: #1e293b;
+            color: var(--text-sub);
+            padding: 12px 14px;
+            font-weight: 600;
+            border-bottom: 1px solid var(--border);
+        }
+
+        td {
+            padding: 12px 14px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: #cbd5e1;
+        }
+
+        tr:hover td {
+            background: rgba(30, 41, 59, 0.5);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .badge-active { background: var(--success-bg); color: #86efac; }
+        .badge-locked { background: var(--danger-bg); color: #fca5a5; }
+        .badge-admin { background: rgba(56, 189, 248, 0.15); color: #7dd3fc; }
+        .badge-user { background: rgba(148, 163, 184, 0.15); color: #cbd5e1; }
+
+        th:last-child, td:last-child {
+            white-space: nowrap !important;
+            min-width: 360px;
+        }
+
+        .actions-cell {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-wrap: nowrap !important;
+            white-space: nowrap !important;
+        }
+
+        .actions-cell .btn {
+            white-space: nowrap !important;
+            flex-shrink: 0 !important;
+        }
+
+        /* Pagination */
+        .pagination-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 18px;
+            font-size: 0.85rem;
+            color: var(--text-sub);
+        }
+
+        /* Alerts & Auth Screens */
+        .screen-msg {
+            text-align: center;
+            padding: 60px 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            max-width: 480px;
+            margin: 60px auto;
+        }
+
+        .screen-msg h2 { color: #f87171; margin-top: 0; }
+        .screen-msg p { color: var(--text-sub); line-height: 1.6; }
+
+        /* Notification Toast */
+        #toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            z-index: 100;
+            display: none;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        }
+        #toast.success { background: #166534; color: #dcfce7; border: 1px solid #22c55e; }
+        #toast.error { background: #991b1b; color: #fee2e2; border: 1px solid #ef4444; }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="brand-container">
+            <img src="/public/branding/dhv-logo.png" alt="DHV Logo" class="brand-logo" onerror="this.style.display='none'; document.getElementById('hdr-fallback').style.display='flex';" />
+            <div id="hdr-fallback" class="brand-fallback" style="display: none;">🛠️</div>
+            <div class="brand-titles">
+                <h1>Trợ lý sự cố điện gia dụng</h1>
+                <p>BẢNG ĐIỀU KHIỂN QUẢN TRỊ VIÊN</p>
+            </div>
+        </div>
+        <div class="header-actions">
+            <span id="admin-badge" class="badge badge-admin">Admin: Đang tải...</span>
+            <a href="http://localhost:8001/" id="back-to-chat-1" class="btn">💬 Quay về Chatbot</a>
+            <button onclick="logoutAdmin()" class="btn btn-danger btn-sm">🚪 Đăng xuất</button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-wrapper">
+        <div id="auth-error-screen" class="screen-msg" style="display: none; max-width: 440px; margin: 40px auto; padding: 28px; background: #111827; border: 1px solid var(--border); border-radius: 12px; text-align: left;">
+            <div style="text-align: center; margin-bottom: 16px;">
+                <span style="font-size: 36px;">🛡️</span>
+                <h2 style="margin: 8px 0 4px 0; font-size: 1.25rem; color: #fff;">Xác thực Quản trị viên</h2>
+                <p id="auth-error-detail" style="margin: 0; font-size: 0.85rem; color: var(--text-sub);">Vui lòng đăng nhập tài khoản Admin để truy cập Bảng điều khiển.</p>
+            </div>
+
+            <div id="admin-direct-login" style="margin-top: 18px;">
+                <div style="margin-bottom: 12px;">
+                    <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px; color: #cbd5e1;">Tài khoản / Email Admin</label>
+                    <input type="text" id="admin-user-input" value="admin" style="width: 100%; box-sizing: border-box; background: #1e293b; border: 1px solid var(--border); border-radius: 6px; padding: 10px 12px; color: #fff; font-size: 0.9rem;" placeholder="admin hoặc admin@example.com">
+                </div>
+                <div style="margin-bottom: 16px;">
+                    <label style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px; color: #cbd5e1;">Mật khẩu</label>
+                    <input type="password" id="admin-pass-input" style="width: 100%; box-sizing: border-box; background: #1e293b; border: 1px solid var(--border); border-radius: 6px; padding: 10px 12px; color: #fff; font-size: 0.9rem;" placeholder="••••••••">
+                </div>
+                <button id="admin-direct-login-btn" onclick="directAdminLogin()" class="btn btn-primary" style="width: 100%; padding: 10px; font-weight: 600; font-size: 0.95rem;">Đăng nhập Bảng điều khiển</button>
+                <div id="admin-direct-error" style="margin-top: 10px; font-size: 0.85rem; text-align: center; color: #ef4444; display: none;"></div>
+            </div>
+
+            <div style="text-align: center; margin-top: 20px; border-top: 1px solid var(--border); padding-top: 14px;">
+                <a href="http://localhost:8001/" id="back-to-chat-2" class="btn btn-sm" style="color: var(--accent);">← Quay về Giao diện Chatbot</a>
+            </div>
+        </div>
+
+        <div id="dashboard-content" style="display: none;">
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-label">Tổng số tài khoản</span>
+                    <span id="stat-total" class="stat-val">0</span>
+                </div>
+                <div class="stat-card active">
+                    <span class="stat-label">Tài khoản đang hoạt động</span>
+                    <span id="stat-active" class="stat-val">0</span>
+                </div>
+                <div class="stat-card locked">
+                    <span class="stat-label">Tài khoản bị khóa</span>
+                    <span id="stat-locked" class="stat-val">0</span>
+                </div>
+                <div class="stat-card convs">
+                    <span class="stat-label">Tổng số cuộc trò chuyện</span>
+                    <span id="stat-convs" class="stat-val">0</span>
+                </div>
+            </div>
+
+            <!-- User Management -->
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">👥 Quản lý Danh sách Người dùng</h2>
+                    <div style="display: flex; gap: 10px;">
+                        <input type="text" id="user-search" class="search-box" placeholder="Tìm theo tên đăng nhập / email..." oninput="debounceSearch()" />
+                        <button onclick="loadUsers()" class="btn btn-sm">🔄 Làm mới</button>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Tên đăng nhập</th>
+                                <th>Email</th>
+                                <th>Vai trò</th>
+                                <th>Trạng thái</th>
+                                <th>Ngày tạo</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody id="user-tbody">
+                            <tr><td colspan="7" style="text-align: center; color: var(--text-sub);">Đang tải dữ liệu...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="pagination-bar">
+                    <span id="page-info">Trang 1 / 1</span>
+                    <div style="display: flex; gap: 8px;">
+                        <button id="btn-prev" onclick="prevPage()" class="btn btn-sm" disabled>Trang trước</button>
+                        <button id="btn-next" onclick="nextPage()" class="btn btn-sm" disabled>Trang sau</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Audit Logs Section -->
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">📜 Nhật ký Kiểm toán Quản trị (Audit Logs)</h2>
+                    <button onclick="loadAuditLogs()" class="btn btn-sm">Làm mới nhật ký</button>
+                </div>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Thời gian</th>
+                                <th>Admin ID</th>
+                                <th>Hành động</th>
+                                <th>Mục tiêu (User ID)</th>
+                                <th>Chi tiết</th>
+                            </tr>
+                        </thead>
+                        <tbody id="logs-tbody">
+                            <tr><td colspan="5" style="text-align: center; color: var(--text-sub);">Bấm "Làm mới nhật ký" để tải...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast"></div>
+
+    <!-- Modal Xác nhận Xóa Tài khoản Vĩnh viễn -->
+    <div id="delete-modal" class="modal-backdrop" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.75); z-index: 1000; align-items: center; justify-content: center;">
+        <div style="background: #111827; border: 1px solid #ef4444; border-radius: 12px; max-width: 480px; width: 90%; padding: 24px; box-shadow: 0 20px 30px rgba(0,0,0,0.6);">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 14px;">
+                <span style="font-size: 28px;">⚠️</span>
+                <h3 style="margin: 0; color: #f87171; font-size: 1.2rem; font-weight: 700;">Xác nhận Xóa Tài khoản Vĩnh viễn</h3>
+            </div>
+            <p style="color: #cbd5e1; font-size: 0.9rem; line-height: 1.5; margin-bottom: 12px;">
+                Bạn đang yêu cầu xóa tài khoản: <strong id="delete-target-username" style="color: #fff;"></strong> (<span id="delete-target-email" style="color: #94a3b8;"></span>).
+            </p>
+            <p style="color: #fca5a5; font-size: 0.85rem; line-height: 1.4; background: rgba(239, 68, 68, 0.12); padding: 12px; border-radius: 6px; border: 1px solid rgba(239, 68, 68, 0.3); margin-bottom: 16px;">
+                ⚠️ <strong>Cảnh báo:</strong> Mọi phiên làm việc, mã đặt lại mật khẩu và toàn bộ lịch sử hội thoại của tài khoản này sẽ bị xóa khỏi cơ sở dữ liệu. Thao tác này <strong>không thể hoàn tác</strong>!
+            </p>
+            <div id="admin-verify-container" style="display: none; margin-bottom: 20px; padding: 12px; background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.4); border-radius: 8px;">
+                <label style="display: block; color: #fca5a5; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px;">
+                    🛡️ <strong>Bảo vệ Quản trị viên:</strong> Nhập mật khẩu xác thực để xóa tài khoản Admin:
+                </label>
+                <input type="password" id="admin-verify-password" placeholder="Nhập mật khẩu (123456789)..." style="width: 100%; box-sizing: border-box; background: #1e293b; border: 1px solid #ef4444; color: #fff; padding: 8px 12px; border-radius: 6px; font-size: 0.9rem; outline: none;">
+                <div id="admin-verify-error" style="color: #f87171; font-size: 0.8rem; margin-top: 6px; display: none;">Mật khẩu xác thực không đúng. Vui lòng nhập đúng 123456789!</div>
+            </div>
+            <div style="display: flex; justify-content: flex-end; gap: 10px;">
+                <button onclick="closeDeleteModal()" class="btn btn-sm" style="background: #334155; color: #fff;">Hủy</button>
+                <button id="confirm-delete-btn" onclick="executeDeleteUser()" class="btn btn-sm" style="background: #dc2626; color: #fff; font-weight: 600;">Xác nhận Xóa Vĩnh Viễn</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = "http://localhost:8000";
+        let adminToken = "";
+        let currentPage = 1;
+        let totalPages = 1;
+        let searchTimer = null;
+
+        function getFrontendBaseUrl() {
+            const isChainlitPort = window.location.port === "8001";
+            return isChainlitPort ? "" : `${window.location.protocol}//${window.location.hostname}:8001`;
+        }
+
+        // Init Token & Auth Bridge
+        document.addEventListener("DOMContentLoaded", async () => {
+            const fBase = getFrontendBaseUrl();
+            const btn1 = document.getElementById("back-to-chat-1");
+            const btn2 = document.getElementById("back-to-chat-2");
+            if (btn1) btn1.href = fBase ? `${fBase}/` : "/";
+            if (btn2) btn2.href = fBase ? `${fBase}/` : "/";
+            const hash = window.location.hash;
+            if (hash && hash.includes("token=")) {
+                const match = hash.match(/token=([^&]+)/);
+                if (match && match[1]) {
+                    adminToken = match[1];
+                    sessionStorage.setItem("admin_token", adminToken);
+                    if (window.history && window.history.replaceState) {
+                        window.history.replaceState(null, document.title, window.location.pathname);
+                    }
+                }
+            } else {
+                adminToken = sessionStorage.getItem("admin_token") || "";
+            }
+
+            // Neu chua co token trong sessionStorage/hash, tu dong lay bridge token tu phien Chainlit (port 8001) hoac FastAPI (port 8000)
+            if (!adminToken) {
+                try {
+                    const res = await fetch("/admin/bridge-token");
+                    if (res.ok) {
+                        const data = await res.json();
+                        if (data && data.token) {
+                            adminToken = data.token;
+                            sessionStorage.setItem("admin_token", adminToken);
+                        }
+                    }
+                } catch (e) {}
+            }
+
+            if (!adminToken) {
+                try {
+                    const res2 = await fetch(API_BASE + "/admin/bridge-token", { credentials: "include" });
+                    if (res2.ok) {
+                        const data2 = await res2.json();
+                        if (data2 && data2.token) {
+                            adminToken = data2.token;
+                            sessionStorage.setItem("admin_token", adminToken);
+                        }
+                    }
+                } catch (e2) {}
+            }
+
+            if (!adminToken) {
+                showAuthError("Vui lòng đăng nhập tài khoản Quản trị viên để truy cập Bảng điều khiển.");
+                return;
+            }
+
+            verifyAndLoadDashboard();
+        });
+
+        async function directAdminLogin() {
+            const u = document.getElementById("admin-user-input").value.trim();
+            const p = document.getElementById("admin-pass-input").value;
+            const errEl = document.getElementById("admin-direct-error");
+            const btn = document.getElementById("admin-direct-login-btn");
+
+            if (!u || !p) {
+                errEl.style.display = "block";
+                errEl.innerText = "Vui lòng nhập đầy đủ tài khoản và mật khẩu.";
+                return;
+            }
+
+            btn.disabled = true;
+            btn.innerText = "Đang xác thực...";
+            errEl.style.display = "none";
+
+            try {
+                const res = await fetch(API_BASE + "/auth/login", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ username: u, password: p }),
+                    credentials: "include"
+                });
+                const data = await res.json();
+                if (res.ok) {
+                    if (data.user && data.user.role === "admin") {
+                        adminToken = data.session_token;
+                        sessionStorage.setItem("admin_token", adminToken);
+                        document.getElementById("auth-error-screen").style.display = "none";
+                        verifyAndLoadDashboard();
+                    } else {
+                        errEl.style.display = "block";
+                        errEl.innerText = "⛔ Tài khoản này không có quyền Quản trị viên (Admin).";
+                        btn.disabled = false;
+                        btn.innerText = "Đăng nhập Bảng điều khiển";
+                    }
+                } else {
+                    errEl.style.display = "block";
+                    errEl.innerText = "❌ " + (data.detail || "Tên đăng nhập hoặc mật khẩu không chính xác.");
+                    btn.disabled = false;
+                    btn.innerText = "Đăng nhập Bảng điều khiển";
+                }
+            } catch (err) {
+                errEl.style.display = "block";
+                errEl.innerText = "Lỗi kết nối máy chủ API (port 8000). Vui lòng đảm bảo FastAPI đang chạy.";
+                btn.disabled = false;
+                btn.innerText = "Đăng nhập Bảng điều khiển";
+            }
+        }
+
+        function showAuthError(msg) {
+            document.getElementById("dashboard-content").style.display = "none";
+            document.getElementById("auth-error-screen").style.display = "block";
+            document.getElementById("auth-error-detail").innerText = msg;
+        }
+
+        async function apiFetch(endpoint, options = {}) {
+            options.headers = options.headers || {};
+            options.headers["Authorization"] = "Bearer " + adminToken;
+            options.headers["Content-Type"] = "application/json";
+
+            try {
+                const res = await fetch(API_BASE + endpoint, options);
+                if (res.status === 401 || res.status === 403) {
+                    showAuthError("Phiên quản trị viên đã hết hạn hoặc không có quyền Admin.");
+                    sessionStorage.removeItem("admin_token");
+                    return null;
+                }
+                return res;
+            } catch (err) {
+                showToast("Lỗi kết nối máy chủ API Backend (port 8000)", "error");
+                return null;
+            }
+        }
+
+        async function verifyAndLoadDashboard() {
+            const res = await apiFetch("/admin/stats");
+            if (!res || !res.ok) return;
+
+            const stats = await res.json();
+            document.getElementById("stat-total").innerText = stats.total_users || 0;
+            document.getElementById("stat-active").innerText = stats.active_users || 0;
+            document.getElementById("stat-locked").innerText = stats.locked_users || 0;
+            document.getElementById("stat-convs").innerText = stats.total_conversations || 0;
+
+            document.getElementById("auth-error-screen").style.display = "none";
+            document.getElementById("dashboard-content").style.display = "block";
+            document.getElementById("admin-badge").innerText = "🛡️ Quản trị viên đã xác thực";
+
+            loadUsers();
+            loadAuditLogs();
+        }
+
+        async function loadUsers() {
+            const searchVal = document.getElementById("user-search").value.trim();
+            let url = `/admin/users?page=${currentPage}&page_size=10`;
+            if (searchVal) {
+                url += `&search=${encodeURIComponent(searchVal)}`;
+            }
+
+            const res = await apiFetch(url);
+            if (!res || !res.ok) return;
+
+            const data = await res.json();
+            const users = data.users || [];
+            totalPages = Math.max(1, Math.ceil((data.total || 0) / 10));
+
+            document.getElementById("page-info").innerText = `Trang ${currentPage} / ${totalPages} (Tổng: ${data.total || 0})`;
+            document.getElementById("btn-prev").disabled = (currentPage <= 1);
+            document.getElementById("btn-next").disabled = (currentPage >= totalPages);
+
+            const tbody = document.getElementById("user-tbody");
+            if (users.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="7" style="text-align: center; color: var(--text-sub);">Không tìm thấy tài khoản nào.</td></tr>`;
+                return;
+            }
+
+            tbody.innerHTML = users.map(u => {
+                const isActive = (u.status === "active");
+                const isAdmin = (u.role === "admin");
+                const statusBadge = isActive ? `<span class="badge badge-active">Hoạt động</span>` : `<span class="badge badge-locked">Đã khóa</span>`;
+                const roleBadge = isAdmin ? `<span class="badge badge-admin">Admin</span>` : `<span class="badge badge-user">User</span>`;
+                const createdDate = u.created_at ? u.created_at.substring(0, 10) : "";
+
+                return `
+                    <tr>
+                        <td style="font-family: monospace; color: var(--text-sub);">${u.id.substring(0, 8)}...</td>
+                        <td><strong>${escapeHtml(u.username)}</strong></td>
+                        <td>${escapeHtml(u.email || "-")}</td>
+                        <td>${roleBadge}</td>
+                        <td>${statusBadge}</td>
+                        <td>${createdDate}</td>
+                        <td>
+                            <div class="actions-cell">
+                                <button onclick="toggleUserStatus('${u.id}', '${escapeHtml(u.username)}', '${isActive ? "locked" : "active"}')" class="btn btn-sm ${isActive ? "btn-danger" : "btn-success"}">
+                                    ${isActive ? "🔒 Khóa" : "🔓 Mở khóa"}
+                                </button>
+                                <button onclick="toggleUserRole('${u.id}', '${escapeHtml(u.username)}', '${isAdmin ? "user" : "admin"}')" class="btn btn-sm">
+                                    ${isAdmin ? "Hạ quyền User" : "Nâng quyền Admin"}
+                                </button>
+                                <button onclick="triggerReset('${u.id}', '${escapeHtml(u.username)}')" class="btn btn-sm btn-primary">
+                                    🔑 Gửi Reset Pass
+                                </button>
+                                <button onclick="confirmDeleteUser('${u.id}', '${escapeHtml(u.username)}', '${escapeHtml(u.email || "")}', '${u.role}')" class="btn btn-sm" style="background: #dc2626; color: #ffffff;" title="Xóa tài khoản vĩnh viễn">
+                                    🗑️ Xóa
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            }).join("");
+        }
+
+        async function toggleUserStatus(userId, username, newStatus) {
+            const actionLabel = newStatus === "locked" ? "KHÓA" : "MỞ KHÓA";
+            if (!confirm(`Bạn có chắc chắn muốn ${actionLabel} tài khoản "${username}"?`)) return;
+
+            const res = await apiFetch(`/admin/users/${userId}/status`, {
+                method: "PATCH",
+                body: JSON.stringify({ status: newStatus })
+            });
+            if (res && res.ok) {
+                showToast(`Đã ${actionLabel.toLowerCase()} tài khoản ${username} thành công!`, "success");
+                verifyAndLoadDashboard();
+            } else if (res) {
+                const err = await res.json();
+                showToast(err.detail || "Thao tác thất bại", "error");
+            }
+        }
+
+        async function toggleUserRole(userId, username, newRole) {
+            const roleLabel = newRole === "admin" ? "Quản trị viên (Admin)" : "Người dùng thường (User)";
+            if (!confirm(`Bạn có chắc chắn muốn chuyển vai trò của "${username}" sang ${roleLabel}?`)) return;
+
+            const res = await apiFetch(`/admin/users/${userId}/role`, {
+                method: "PATCH",
+                body: JSON.stringify({ role: newRole })
+            });
+            if (res && res.ok) {
+                showToast(`Đã cập nhật vai trò ${username} thành ${newRole}!`, "success");
+                loadUsers();
+            } else if (res) {
+                const err = await res.json();
+                showToast(err.detail || "Thao tác thất bại", "error");
+            }
+        }
+
+        async function triggerReset(userId, username) {
+            if (!confirm(`Gửi email hướng dẫn đặt lại mật khẩu tới hòm thư của "${username}"?`)) return;
+
+            const res = await apiFetch(`/admin/users/${userId}/password-reset`, {
+                method: "POST"
+            });
+            if (res && res.ok) {
+                const data = await res.json();
+                showToast(data.message || "Đã gửi email khôi phục mật khẩu thành công!", "success");
+                loadAuditLogs();
+            } else if (res) {
+                const err = await res.json();
+                showToast(err.detail || "Thao tác thất bại", "error");
+            }
+        }
+
+        let pendingDeleteUserId = null;
+        let pendingDeleteUserRole = null;
+
+        function confirmDeleteUser(userId, username, email, role) {
+            pendingDeleteUserId = userId;
+            pendingDeleteUserRole = role;
+            document.getElementById("delete-target-username").innerText = username;
+            document.getElementById("delete-target-email").innerText = email || "Chưa có email";
+
+            const verifyBox = document.getElementById("admin-verify-container");
+            const passInput = document.getElementById("admin-verify-password");
+            const errBox = document.getElementById("admin-verify-error");
+            if (passInput) passInput.value = "";
+            if (errBox) errBox.style.display = "none";
+
+            if (role === "admin") {
+                if (verifyBox) verifyBox.style.display = "block";
+            } else {
+                if (verifyBox) verifyBox.style.display = "none";
+            }
+
+            const modal = document.getElementById("delete-modal");
+            modal.style.display = "flex";
+        }
+
+        function closeDeleteModal() {
+            pendingDeleteUserId = null;
+            pendingDeleteUserRole = null;
+            document.getElementById("delete-modal").style.display = "none";
+        }
+
+        async function executeDeleteUser() {
+            if (!pendingDeleteUserId) return;
+
+            let url = `/admin/users/${pendingDeleteUserId}`;
+            if (pendingDeleteUserRole === "admin") {
+                const passInput = document.getElementById("admin-verify-password");
+                const errBox = document.getElementById("admin-verify-error");
+                const pass = passInput ? passInput.value.trim() : "";
+                if (pass !== "123456789") {
+                    if (errBox) {
+                        errBox.innerText = "Mật khẩu xác thực không đúng. Vui lòng nhập đúng: 123456789";
+                        errBox.style.display = "block";
+                    }
+                    showToast("Mật khẩu xác thực không đúng (yêu cầu: 123456789).", "error");
+                    return;
+                }
+                url += `?admin_password=${encodeURIComponent(pass)}`;
+            }
+
+            const btn = document.getElementById("confirm-delete-btn");
+            btn.disabled = true;
+            btn.innerText = "Đang xóa...";
+            try {
+                const res = await apiFetch(url, {
+                    method: "DELETE"
+                });
+                if (res && res.ok) {
+                    const data = await res.json();
+                    showToast(data.message || "Đã xóa tài khoản vĩnh viễn thành công!", "success");
+                    closeDeleteModal();
+                    verifyAndLoadDashboard();
+                } else if (res) {
+                    const err = await res.json();
+                    showToast(err.detail || "Không thể xóa tài khoản.", "error");
+                }
+            } catch (e) {
+                showToast("Lỗi kết nối máy chủ.", "error");
+            } finally {
+                btn.disabled = false;
+                btn.innerText = "Xác nhận Xóa Vĩnh Viễn";
+            }
+        }
+
+        async function loadAuditLogs() {
+            const res = await apiFetch("/admin/audit-logs?limit=20");
+            if (!res || !res.ok) return;
+
+            const logs = await res.json();
+            const tbody = document.getElementById("logs-tbody");
+            if (!logs || logs.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="5" style="text-align: center; color: var(--text-sub);">Chưa có nhật ký kiểm toán.</td></tr>`;
+                return;
+            }
+
+            tbody.innerHTML = logs.map(l => `
+                <tr>
+                    <td style="color: var(--text-sub);">${(l.created_at || "").replace("T", " ").substring(0, 19)}</td>
+                    <td style="font-family: monospace;">${(l.admin_id || "").substring(0, 8)}...</td>
+                    <td><span class="badge badge-admin">${escapeHtml(l.action || "")}</span></td>
+                    <td style="font-family: monospace;">${(l.target_user_id || "").substring(0, 8)}...</td>
+                    <td>${escapeHtml(l.details || "")}</td>
+                </tr>
+            `).join("");
+        }
+
+        function prevPage() {
+            if (currentPage > 1) {
+                currentPage--;
+                loadUsers();
+            }
+        }
+
+        function nextPage() {
+            if (currentPage < totalPages) {
+                currentPage++;
+                loadUsers();
+            }
+        }
+
+        function debounceSearch() {
+            clearTimeout(searchTimer);
+            searchTimer = setTimeout(() => {
+                currentPage = 1;
+                loadUsers();
+            }, 300);
+        }
+
+        async function logoutAdmin() {
+            const token = sessionStorage.getItem("admin_token") || adminToken;
+            if (token) {
+                try {
+                    await fetch(API_BASE + "/auth/logout", {
+                        method: "POST",
+                        headers: {
+                            "Authorization": "Bearer " + token,
+                            "Content-Type": "application/json"
+                        }
+                    });
+                } catch (err) {
+                    console.error("Backend logout error:", err);
+                }
+            }
+            sessionStorage.removeItem("admin_token");
+            adminToken = "";
+            // Chuyen huong toi /logout de xoa session Chainlit va quay ve trang dang nhap
+            const fBase = getFrontendBaseUrl();
+            window.location.href = fBase ? `${fBase}/logout` : "/logout";
+        }
+
+        function showToast(msg, type = "success") {
+            const toast = document.getElementById("toast");
+            toast.className = type;
+            toast.innerText = msg;
+            toast.style.display = "block";
+            setTimeout(() => { toast.style.display = "none"; }, 3500);
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement("div");
+            div.innerText = text;
+            return div.innerHTML;
+        }
+    </script>
+</body>
+</html>
+

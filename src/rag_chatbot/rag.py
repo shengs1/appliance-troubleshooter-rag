@@ -1,11 +1,10 @@
-"""Module dieu phoi RAG (Retrieval-Augmented Generation) voi Local LLM.
+"""Module điều phối quy trình RAG (Retrieval-Augmented Generation) kết hợp Local LLM.
 
-Nhiem vu trong Phase 6:
-1. Tiep nhan cau hoi cua nguoi dung.
-2. Thuc hien Hybrid Retrieval de lay cac tai lieu ky thuat phu hop nhat.
-3. Xay dung doan van ban ngu canh (Context) de doc va truyen tai du lieu.
-4. Tao Prompt huong dan nghiem ngat, chong ao giac (Grounding Prompt).
-5. Goi Local LLM (Ollama / Qwen2.5) de sinh cau tra loi cuoi cung.
+Quy trình:
+1. Tiếp nhận câu hỏi và kiểm tra phạm vi hỗ trợ (scope check).
+2. Tìm kiếm tài liệu kỹ thuật liên quan qua Hybrid Retrieval (ChromaDB + Neo4j).
+3. Xây dựng ngữ cảnh kỹ thuật và gửi prompt tới Local LLM (Ollama / Qwen2.5).
+4. Kiểm định câu trả lời chống ảo giác và ngăn chặn ký tự ngoại ngữ không mong muốn.
 """
 
 from __future__ import annotations
@@ -17,6 +16,34 @@ from rag_chatbot.answer_validator import SAFE_FALLBACK_MESSAGE, validate_answer
 from rag_chatbot.config import get_settings
 from rag_chatbot.retrieval import extract_question_entities, search_hybrid
 from rag_chatbot.scope import REFUSAL_MESSAGE, should_refuse
+
+
+# Regex phat hien ky tu chu Han / CJK Unicode
+CJK_CHAR_REGEX = re.compile(r"[\u4e00-\u9fff\u3400-\u4dbf]")
+
+
+def contains_unexpected_cjk(text: str) -> bool:
+    """Kiem tra xem van ban co chua ky tu chu Han / CJK khong mong muon hay khong."""
+    if not text:
+        return False
+    return bool(CJK_CHAR_REGEX.search(text))
+
+
+def create_cjk_rewrite_prompt(question: str, context: str, initial_answer: str) -> str:
+    """Tao prompt huong dan LLM viet lai cau tra loi hoan toan bang tieng Viet khi phat hien chu Han."""
+    return f"""Bạn là trợ lý AI chuyên nghiệp hỗ trợ khắc phục sự cố điện tử gia dụng.
+Câu trả lời trước đó của bạn bị lẫn ký tự chữ Hán/tiếng Trung. Hãy viết lại câu trả lời HOÀN TOÀN bằng tiếng Việt chuẩn xác, giữ nguyên các thông tin kỹ thuật, tên hãng, loại thiết bị và mã lỗi. Tuyệt đối KHÔNG chứa bất kỳ chữ Hán nào.
+
+NGỮ CẢNH KỸ THUẬT:
+{context}
+
+CÂU HỎI CỦA NGƯỜI DÙNG:
+{question}
+
+CÂU TRẢ LỜI CẦN VIẾT LẠI (BỊ LẪN KÝ TỰ):
+{initial_answer}
+
+CÂU TRẢ LỜI VIẾT LẠI (100% TIẾNG VIỆT):"""
 
 
 def strip_sources_from_answer(text: str) -> str:
@@ -93,6 +120,7 @@ CÁC NGUYÊN TẮC BẮT BUỘC:
 3. Nếu ngữ cảnh không có thông tin hoặc không đủ dữ liệu để giải đáp, hãy thông báo rõ ràng rằng cơ sở tri thức chưa có đủ thông tin xử lý cho trường hợp này.
 4. Luôn giữ chính xác tên hãng, loại thiết bị và mã lỗi kỹ thuật.
 5. Tuyệt đối KHÔNG tự chèn đường dẫn URL, không ghi "Nguồn tham khảo", không ghi "Nguồn đối chiếu", không tạo danh sách link hay markdown link trong câu trả lời (phần nguồn sẽ do hệ thống hiển thị riêng). Chỉ trả về nội dung giải đáp kỹ thuật.
+6. NGÔN NGỮ BẮT BUỘC: Trả lời HOÀN TOÀN bằng tiếng Việt tự nhiên và chuẩn xác. Tuyệt đối KHÔNG sử dụng tiếng Trung (chữ Hán/Hanzi), tiếng Nhật, tiếng Hàn hoặc ngôn ngữ nào khác (ngoại trừ tên thương hiệu quốc tế và mã lỗi như Samsung, Panasonic, CF, F16, H97). Toàn bộ nội dung phân tích, hướng dẫn và giải thích phải viết bằng tiếng Việt.
 
 NGỮ CẢNH KỸ THUẬT:
 {context}
@@ -197,6 +225,19 @@ def generate_rag_answer(
         raw_answer = call_local_llm(prompt, model=model, base_url=base_url)
         answer = strip_sources_from_answer(raw_answer)
         llm_status = "success"
+
+        # Kiem tra ky tu CJK / chu Han khong mong muon va thu lai toi da 1 lan
+        if contains_unexpected_cjk(answer):
+            try:
+                rewrite_prompt = create_cjk_rewrite_prompt(question, context, answer)
+                retry_raw = call_local_llm(rewrite_prompt, model=model, base_url=base_url)
+                retry_answer = strip_sources_from_answer(retry_raw)
+                if not contains_unexpected_cjk(retry_answer):
+                    answer = retry_answer
+                else:
+                    answer = "Hệ thống đã nhận diện câu trả lời chứa ký tự không phù hợp và đã chuẩn hóa. Vui lòng tham khảo tài liệu kỹ thuật được cung cấp bên dưới hoặc thử đặt câu hỏi cụ thể hơn."
+            except Exception:
+                pass
     except (ConnectionError, RuntimeError) as err:
         answer = f"[Thông báo dịch vụ Local LLM]: {err}"
         llm_status = "unavailable"

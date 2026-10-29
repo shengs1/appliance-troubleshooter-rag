@@ -1,403 +1,380 @@
-# appliance-troubleshooter-rag
+# Trợ lý sự cố điện gia dụng (appliance-troubleshooter-rag)
 
-Chatbot hỗ trợ tra cứu và hướng dẫn xử lý sự cố thiết bị điện tử gia dụng (điều hòa, tủ lạnh, máy giặt, máy sấy, lò vi sóng, máy lọc không khí) sử dụng kỹ thuật RAG (Retrieval-Augmented Generation).
+Hệ thống RAG Chatbot hỗ trợ tra cứu và hướng dẫn chẩn đoán, xử lý sự cố thiết bị điện tử gia dụng (điều hòa, tủ lạnh, máy giặt, máy sấy, lò vi sóng, bếp từ, TV...) cho 3 hãng phổ biến: **Samsung**, **LG** và **Panasonic**.
 
----
-
-## Giới thiệu
-
-Đây là project xây dựng chatbot hỗ trợ tra cứu và hướng dẫn xử lý sự cố thiết bị điện tử gia dụng bằng kỹ thuật RAG.
-
-Hệ thống giúp người dùng tìm kiếm nguyên nhân và cách khắc phục khi thiết bị gặp trục trặc hoặc báo mã lỗi, áp dụng cho 3 hãng phổ biến: Samsung, LG và Panasonic.
-
-Để tránh hiện tượng mô hình ngôn ngữ tự bịa ra thông tin kỹ thuật sai lệch, chatbot áp dụng cơ chế truy vấn thông tin trước từ cơ sở dữ liệu (ChromaDB và Neo4j), sau đó mới đưa dữ liệu thực tế vào ngữ cảnh để mô hình ngôn ngữ cục bộ (Local LLM) tổng hợp câu trả lời cho người dùng.
+Ứng dụng kết hợp kỹ thuật **Hybrid RAG** (tìm kiếm ngữ nghĩa Vector qua **ChromaDB** kết hợp truy vấn tri thức đồ thị có cấu trúc qua **Neo4j**), mô hình ngôn ngữ lớn cục bộ (**Local LLM Ollama & Qwen2.5:7B**), giao diện hội thoại **Chainlit** hiện đại, hệ thống xác thực bảo mật **Argon2id**, cơ chế lưu trữ lịch sử trò chuyện bền vững và trang Quản trị viên (Admin Dashboard) chuyên dụng.
 
 ---
 
-## Công nghệ sử dụng
+## Mục lục
 
-- **Python 3.12**: Ngôn ngữ lập trình chính của dự án.
-- **ChromaDB**: Cơ sở dữ liệu vector (Vector Database) dùng để lưu trữ vector nhúng của các tài liệu kỹ thuật và thực hiện tìm kiếm tương đồng ngữ nghĩa (semantic search).
-- **BAAI/bge-m3**: Mô hình embedding đa ngữ hỗ trợ tốt tiếng Việt, chạy qua thư viện `sentence-transformers`.
-- **Neo4j**: Cơ sở dữ liệu đồ thị (Graph Database) lưu trữ các mối quan hệ có cấu trúc giữa Hãng, Thiết bị, Sự cố, Mã lỗi, Câu hỏi, Câu trả lời và Nguồn tài liệu.
-- **Ollama & Qwen2.5:7B**: Nền tảng chạy mô hình ngôn ngữ lớn cục bộ trên máy tính cá nhân, giúp xử lý và trả lời câu hỏi mà không cần gửi dữ liệu ra dịch vụ bên ngoài.
-- **FastAPI**: Web framework xây dựng REST API để cung cấp giao diện kết nối cho chatbot.
-- **uv & pytest**: Công cụ quản lý môi trường ảo, dependencies và thực thi unit tests.
+1. [Kiến trúc hệ thống](#kiến-trúc-hệ-thống)
+2. [Công nghệ sử dụng](#công-nghệ-sử-dụng)
+3. [Các tính năng nổi bật](#các-tính-năng-nổi-bật)
+4. [Hướng dẫn xem và quản lý dữ liệu lưu trữ (Database Guide)](#hướng-dẫn-xem-và-quản-lý-dữ-liệu-lưu-trữ-database-guide)
+   - [Cách 1: Xem nhanh qua Script `scripts/view_data.py`](#cách-1-xem-nhanh-qua-script-scriptsview_datapy)
+   - [Cách 2: Xem chi tiết CSDL quan hệ SQLite (`data/chat_history.db`)](#cách-2-xem-chi-tiết-csdl-quan-hệ-sqlite-datachat_historydb)
+   - [Cách 3: Xem CSDL vector ChromaDB (`./chroma_data`)](#cách-3-xem-csdl-vector-chromadb-chroma_data)
+   - [Cách 4: Xem CSDL đồ thị Neo4j qua Neo4j Browser (`http://localhost:7474`)](#cách-4-xem-csdl-đồ-thị-neo4j-qua-neo4j-browser-httplocalhost7474)
+5. [Cài đặt và Khởi động hệ thống](#cài-đặt-và-khởi-động-hệ-thống)
+6. [Tài khoản Quản trị viên (Admin)](#tài-khoản-quản-trị-viên-admin)
+7. [Kiểm thử tự động (Testing)](#kiểm-thử-tự-động-testing)
+8. [Cấu trúc thư mục dự án](#cấu-trúc-thư-mục-dự-án)
 
 ---
 
 ## Kiến trúc hệ thống
 
-Quy trình xử lý một câu hỏi của người dùng diễn ra theo các bước:
+Hệ thống được thiết kế theo mô hình phân tầng rõ ràng, đảm bảo tính giải thích cao (explainability) và dễ trình bày trong các buổi báo cáo/vấn đáp:
 
-```text
-Người dùng / Client
-       │
-       ▼ (HTTP POST /chat)
-   FastAPI
-       │
-       ▼
-generate_rag_answer()
-       │
-       ├────────────────────────┬────────────────────────┐
-       ▼                        ▼                        ▼
-ChromaDB (Vector Search)   Neo4j (Graph Search)    Từ khóa mã lỗi/hãng
-       │                        │                        │
-       └────────────────────────┴────────────────────────┘
-                                │
-                                ▼
-                        Hybrid Retrieval
-                    (Gộp kết quả & xếp hạng)
-                                │
-                                ▼
-                          build_context()
-                     (Tạo ngữ cảnh kỹ thuật)
-                                │
-                                ▼
-                       Prompt bám sát dữ liệu
-                                │
-                                ▼
-                     Ollama (Qwen2.5:7B Local)
-                                │
-                                ▼
-                        Phản hồi JSON
-```
+```mermaid
+flowchart TD
+    User([Người dùng / Kỹ thuật viên]) -->|Giao diện Chat :8001| ChainlitUI[Chainlit UI - Cổng 8001]
+    User -->|Trang tĩnh Auth :8001| StaticPages["/public/register.html\n/public/forgot-password.html\n/public/reset-password.html"]
+    User -->|Bảng điều khiển Admin :8001| AdminDashboard["/public/admin.html\n(Token Bridge an toàn)"]
 
-1. **Tiếp nhận câu hỏi**: Client gửi câu hỏi dạng JSON tới endpoint `POST /chat` của FastAPI.
-2. **Truy vấn đa nguồn (Hybrid Retrieval)**:
-   - ChromaDB tìm kiếm các đoạn văn bản có ý nghĩa gần nhất với câu hỏi.
-   - Neo4j trích xuất mã lỗi hoặc tên hãng để truy vấn các nút và mối quan hệ tương ứng trên đồ thị.
-3. **Tổng hợp ngữ cảnh**: Ghép các kết quả tìm thấy thành một đoạn ngữ cảnh rõ ràng, ưu tiên các bản ghi được cả hai nguồn xác nhận.
-4. **Sinh câu trả lời**: Đưa ngữ cảnh và câu hỏi vào prompt, gửi tới Ollama (Qwen2.5:7B) để mô hình sinh câu trả lời ngắn gọn, bám sát tài liệu.
-5. **Trả kết quả**: Trả về cho client câu trả lời kèm thông tin trích dẫn nguồn và trạng thái thực thi.
+    ChainlitUI -->|Xác thực mật khẩu| AuthCore["Tầng Xác thực & Phân quyền\n(Argon2id Hasher + Sessions)"]
+    ChainlitUI -->|Lưu trữ hội thoại| SQLiteDataLayer["Chainlit SQLiteDataLayer"]
+    AdminDashboard -->|REST API :8000| FastApiBackend["FastAPI Backend - Cổng 8000"]
+    
+    AuthCore --> SqliteDB[("SQLite Database\ndata/chat_history.db\n(users, sessions, reset_tokens, audit_logs)")]
+    SQLiteDataLayer --> SqliteDB
+    FastApiBackend --> SqliteDB
 
----
+    ChainlitUI -->|Truy vấn RAG| VietnameseModule["Bộ chuẩn hóa tiếng Việt\n(vietnamese.py: bỏ dấu, alias, tách lỗi)"]
+    VietnameseModule --> ScopeGuard["Bộ lọc phạm vi (scope.py)"]
+    ScopeGuard --> HybridEngine["Truy vấn kết hợp (retrieval.py)"]
 
-## Dataset
+    HybridEngine -->|Tìm kiếm ngữ nghĩa| ChromaDB[("ChromaDB Vector Store\n(1.090 chunks BGE-M3)")]
+    HybridEngine -->|Truy vấn quan hệ mã lỗi| Neo4j[("Neo4j Graph Database\n(3.188 nodes, 4.391 rels)")]
 
-Dữ liệu được lưu trong file `data/raw/dataset.xlsx` gồm 1.090 bản ghi hỏi đáp về sự cố thiết bị điện tử.
-
-Cấu trúc các cột chính:
-- `ID`: Mã định danh bản ghi (ví dụ `Q0001`, `Q0358`).
-- `Hãng`: Samsung, LG, Panasonic.
-- `Thiết_bị`: Điều hòa, Tủ lạnh, Máy giặt, Máy sấy, Lò vi sóng, Máy lọc không khí,...
-- `Mã_lỗi`: Mã báo lỗi trên màn hình hoặc đèn tín hiệu (ví dụ: `CF`, `E1`, `dE`, `F11`).
-- `Sự_cố`: Mô tả ngắn về hiện tượng hoặc tên sự cố.
-- `Câu_hỏi_làm_sạch`: Câu hỏi chuẩn hóa của người dùng.
-- `Nguyên_nhân`: Nguyên nhân kỹ thuật gây ra lỗi.
-- `Cách_khắc_phục`: Các bước xử lý hoặc khuyến cáo khắc phục.
-- `Trả_lời`: Nội dung hướng dẫn chi tiết hoặc câu trả lời tổng hợp.
-- `Nguồn`: Đường dẫn trang hỗ trợ kỹ thuật chính hãng hoặc nguồn tài liệu tham khảo.
-
-File Excel này được dùng làm nguồn để nạp dữ liệu vào cả ChromaDB và Neo4j.
-
----
-
-## ChromaDB
-
-ChromaDB đảm nhiệm việc tìm kiếm ngữ nghĩa theo nội dung câu hỏi.
-
-- **Collection name**: `electronics_troubleshooting`
-- **Thư mục lưu trữ**: `./chroma_data`
-- **Embedding model**: `BAAI/bge-m3`
-- **Cơ chế biểu diễn**: Mỗi dòng dữ liệu trong dataset tương ứng với 1 document trong ChromaDB. Nội dung document được ghép từ Hãng, Thiết bị, Mã lỗi, Sự cố, Câu hỏi, Nguyên nhân và Cách khắc phục.
-- **Metadata**: Lưu các thông tin phụ trợ như `question_id`, `brand`, `device`, `error_code`, `issue_type`, `url` để phục vụ lọc và trích xuất nguồn.
-
-Khi người dùng đặt câu hỏi bằng ngôn ngữ tự nhiên (kể cả khi không nhớ chính xác mã lỗi), ChromaDB tính toán khoảng cách vector và trả về top-k tài liệu liên quan nhất.
-
----
-
-## Neo4j
-
-Neo4j đảm nhiệm việc truy vấn quan hệ có cấu trúc giữa các thực thể kỹ thuật.
-
-### Các loại Node trong đồ thị:
-- `Brand` (3 nodes): Samsung, LG, Panasonic.
-- `Device` (10 nodes): Điều hòa, Tủ lạnh, Máy giặt, Máy sấy, Máy lọc không khí, Lò vi sóng,...
-- `Issue` (632 nodes): Các vấn đề, sự cố kỹ thuật cụ thể.
-- `ErrorCode` (332 nodes): Các mã lỗi hiển thị trên thiết bị.
-- `Question` (1090 nodes): Nội dung câu hỏi.
-- `Answer` (1090 nodes): Chi tiết nguyên nhân và cách khắc phục.
-- `Source` (31 nodes): Nguồn trang web tài liệu tham khảo.
-
-### Các mối quan hệ (Relationships):
-- `(:Brand)-[:HAS_DEVICE]->(:Device)`
-- `(:Device)-[:HAS_ISSUE]->(:Issue)`
-- `(:Issue)-[:HAS_ERROR_CODE]->(:ErrorCode)`
-- `(:Question)-[:ABOUT]->(:Issue)`
-- `(:Question)-[:ANSWERED_BY]->(:Answer)`
-- `(:Answer)-[:SOURCED_FROM]->(:Source)`
-
-Tổng số nút trên đồ thị: **3.188 nodes** và **4.391 relationships**.
-
-Truy vấn được thực hiện bằng Cypher có truyền tham số để lọc nhanh theo mã lỗi hoặc tên thiết bị và hãng.
-
----
-
-## Hybrid Retrieval
-
-Hybrid Retrieval kết hợp điểm mạnh của cả ChromaDB và Neo4j:
-
-- **ChromaDB**: Hiệu quả với câu hỏi miêu tả triệu chứng tự nhiên, tìm kiếm theo ngữ nghĩa.
-- **Neo4j**: Hiệu quả với câu hỏi chứa mã lỗi cụ thể hoặc cần tra cứu chính xác quan hệ giữa hãng và thiết bị.
-
-Quy trình kết hợp:
-1. Trích xuất mã lỗi và tên hãng từ câu hỏi của người dùng bằng biểu thức chính quy và từ khóa.
-2. Thực hiện song song truy vấn vector trên ChromaDB và truy vấn đồ thị trên Neo4j.
-3. Gộp danh sách kết quả, chuẩn hóa dữ liệu theo định dạng chung và loại bỏ trùng lặp dựa trên `question_id`.
-4. Nếu một tài liệu xuất hiện ở cả hai nguồn (`retrieval_source = "both"`), tài liệu đó sẽ được ưu tiên xếp lên đầu danh sách để đưa vào ngữ cảnh.
-
----
-
-## RAG + Local LLM
-
-Sau khi có danh sách tài liệu từ bước tìm kiếm kết hợp:
-
-1. **Tạo Context (`build_context`)**: Chuẩn hóa thông tin từng tài liệu gồm mã câu hỏi, hãng, thiết bị, mã lỗi/sự cố, nguyên nhân, cách khắc phục và đường dẫn nguồn.
-2. **Cấu hình Prompt**: Prompt yêu cầu mô hình:
-   - Chỉ sử dụng các thông tin có trong ngữ cảnh được cung cấp.
-   - Không tự ý suy diễn nguyên nhân kỹ thuật hoặc thêm các khuyến cáo chung chung khi tài liệu không đề cập.
-   - Trả lời rõ ràng, trực diện vào nguyên nhân và cách khắc phục.
-   - Nếu ngữ cảnh không có thông tin phù hợp, trả lời rõ ràng là cơ sở dữ liệu hiện chưa có thông tin này.
-3. **Gọi Ollama**: Gửi prompt tới mô hình `qwen2.5:7b` chạy qua Ollama API cục bộ (`http://localhost:11434/api/generate`).
-
----
-
-## FastAPI
-
-Ứng dụng cung cấp API thông qua FastAPI tại file `src/rag_chatbot/main.py`.
-
-### Các endpoints:
-
-- `GET /`: Trả về thông tin cơ bản về dịch vụ.
-- `GET /health`: Kiểm tra trạng thái hoạt động của server.
-- `POST /chat`: Tiếp nhận câu hỏi và trả về kết quả RAG.
-
-### Ví dụ Request:
-
-```bash
-curl -X POST "http://localhost:8000/chat" \
-  -H "Content-Type: application/json" \
-  -d '{"question": "Máy điều hòa Samsung lỗi CF là gì?"}'
-```
-
-### Ví dụ Response:
-
-```json
-{
-  "question": "Máy điều hòa Samsung lỗi CF là gì?",
-  "answer": "Mã lỗi CF trên điều hòa Samsung là nhắc vệ sinh bộ lọc.\n\nCách khắc phục: Hãy vệ sinh hoặc thay bộ lọc rồi đặt lại nhắc lọc.",
-  "llm_status": "success",
-  "retrieved_documents": [
-    {
-      "question_id": "Q0358",
-      "brand": "Samsung",
-      "device": "Máy điều hòa",
-      "error_code": "CF",
-      "cause": "Mã CF là nhắc vệ sinh bộ lọc.",
-      "solution": "Hãy vệ sinh hoặc thay bộ lọc rồi đặt lại nhắc lọc.",
-      "retrieval_source": "both",
-      "url": "https://www.samsung.com/vn/support/home-appliances/what-does-a-blinking-filter-light-or-cf-code-mean-on-my-room-air-conditioner/"
-    }
-  ],
-  "sources": [
-    "https://www.samsung.com/vn/support/home-appliances/what-does-a-blinking-filter-light-or-cf-code-mean-on-my-room-air-conditioner/"
-  ]
-}
+    ChromaDB --> ContextBuilder["Tạo ngữ cảnh (build_context)"]
+    Neo4j --> ContextBuilder
+    ContextBuilder --> LocalLLM["Ollama Local LLM\n(qwen2.5:7b)"]
+    LocalLLM --> Validator["Bộ kiểm tra câu trả lời (answer_validator.py)"]
+    Validator -->|Streaming Token| ChainlitUI
 ```
 
 ---
 
-## Cài đặt và chạy project
+## Công nghệ sử dụng
 
-### Yêu cầu môi trường:
-- Windows / Linux / macOS
-- Python 3.12
-- Công cụ quản lý gói `uv`
-- Neo4j Desktop hoặc Neo4j Community Server
-- Ollama đã cài đặt mô hình `qwen2.5:7b`
-
-### Các bước cài đặt:
-
-1. **Clone repository**:
-   ```powershell
-   git clone https://github.com/<USERNAME>/appliance-troubleshooter-rag.git
-   cd appliance-troubleshooter-rag
-   ```
-
-2. **Cài đặt thư viện với `uv`**:
-   ```powershell
-   uv sync
-   ```
-
-3. **Cấu hình file `.env`**:
-   Sao chép file mẫu:
-   ```powershell
-   Copy-Item .env.example .env
-   ```
-   Mở file `.env` và điền mật khẩu Neo4j thực tế của bạn:
-   ```ini
-   APP_NAME=appliance-troubleshooter-rag
-   APP_ENV=development
-   DEBUG=True
-
-   NEO4J_URI=bolt://localhost:7687
-   NEO4J_USER=neo4j
-   NEO4J_PASSWORD=your_password_here
-
-   CHROMA_PERSIST_DIRECTORY=./chroma_data
-   CHROMA_COLLECTION_NAME=electronics_troubleshooting
-
-   EMBEDDING_MODEL_NAME=BAAI/bge-m3
-   OLLAMA_BASE_URL=http://localhost:11434
-   LLM_MODEL_NAME=qwen2.5:7b
-   ```
-
-4. **Khởi động dịch vụ hỗ trợ**:
-   - Mở Neo4j và khởi động database (port 7687).
-   - Mở Ollama và tải model:
-     ```powershell
-     ollama pull qwen2.5:7b
-     ```
-
-5. **Nạp dữ liệu vào cơ sở dữ liệu**:
-   - Nạp dữ liệu vào Neo4j:
-     ```powershell
-     uv run python -m rag_chatbot.neo4j_db
-     ```
-   - Nạp dữ liệu vào ChromaDB:
-     ```powershell
-     uv run python -m rag_chatbot.ingest
-     ```
-
-6. **Chạy thử nghiệm RAG từ terminal**:
-   ```powershell
-   $env:PYTHONIOENCODING="utf-8"; uv run python -m rag_chatbot.rag
-   ```
-
-7. **Chạy server FastAPI**:
-   ```powershell
-   uv run uvicorn rag_chatbot.main:app --reload --port 8000
-   ```
-   Xem tài liệu API tự động tại: `http://localhost:8000/docs`.
+| Công nghệ | Vai trò trong hệ thống |
+| :--- | :--- |
+| **Python 3.12+** | Ngôn ngữ lập trình cốt lõi của toàn bộ ứng dụng. |
+| **Chainlit** | Nền tảng giao diện người dùng duy nhất (port 8001), hỗ trợ streaming câu trả lời, prompt starters, chat history sidebar và xác thực người dùng. |
+| **FastAPI** | Backend API phục vụ các endpoint RESTful (port 8000), quản lý phiên, xác thực và các API dành cho Quản trị viên (Admin). |
+| **SQLite** | Cơ sở dữ liệu quan hệ cục bộ (`data/chat_history.db`) lưu trữ tài khoản, phân quyền, token đặt lại mật khẩu và lịch sử hội thoại bền vững. |
+| **Argon2id (`argon2-cffi`)** | Thuật toán mã hóa mật khẩu an toàn theo tiêu chuẩn bảo mật OWASP (m=65536, t=3, p=4), tự động nâng cấp mật khẩu cũ (rehash). |
+| **ChromaDB** | Vector Database lưu trữ 1.090 vector nhúng tài liệu kỹ thuật từ dataset thực tế. |
+| **BAAI/bge-m3** | Mô hình embedding đa ngôn ngữ hỗ trợ xuất sắc tiếng Việt (chạy qua `sentence-transformers`). |
+| **Neo4j** | Graph Database lưu trữ mạng lưới quan hệ có cấu trúc giữa Hãng $\rightarrow$ Thiết bị $\rightarrow$ Sự cố $\rightarrow$ Mã lỗi $\rightarrow$ Giải pháp. |
+| **Ollama (Qwen2.5:7B)** | Mô hình ngôn ngữ lớn chạy cục bộ trên máy tính, đảm bảo bảo mật và quyền riêng tư 100%. |
+| **uv & pytest** | Công cụ quản lý môi trường ảo siêu tốc và bộ 126+ unit tests bao quát toàn diện. |
 
 ---
 
-## Cấu trúc thư mục
+## Các tính năng nổi bật
+
+### 1. Giao diện người dùng Chainlit & Nhận diện thương hiệu DHV
+- Giao diện thân thiện phong cách ChatGPT, hỗ trợ dark/light theme, hiển thị logo DHV và tên hiển thị chính thức: **`Trợ lý sự cố điện gia dụng`**.
+- Có các câu hỏi mẫu gợi ý ban đầu (Prompt Starters) giúp người dùng mới dễ dàng bắt đầu.
+- Ô nhập liệu (Composer) có placeholder chuẩn tiếng Việt: `"Nhập câu hỏi của bạn..."`.
+- **Vô hiệu hóa upload tệp tin**: Toàn bộ icon kẹp ghim, nút upload và thao tác kéo thả tệp tin đều bị chặn hoàn toàn cả ở giao diện lẫn backend để tập trung tra cứu văn bản kỹ thuật.
+
+### 2. Xác thực tài khoản & Khôi phục mật khẩu qua Email (SMTP)
+- Hỗ trợ **Đăng ký**, **Đăng nhập** linh hoạt bằng cả `username` hoặc `email`.
+- Mật khẩu được mã hóa an toàn bằng **Argon2id**.
+- **Quên mật khẩu an toàn qua Email**:
+  - Gửi liên kết đặt lại mật khẩu dạng: `http://localhost:8001/public/reset-password.html#token=<token>`.
+  - **Bảo mật phân đoạn (#hash)**: Token đặt trong URL fragment để không bao giờ bị lưu vào log máy chủ web hoặc rò rỉ qua header `Referer`.
+  - Frontend tự động xóa token khỏi thanh địa chỉ bằng `window.history.replaceState` ngay khi nạp trang.
+  - **Bảo vệ mật khẩu cũ**: Khi người dùng yêu cầu reset hoặc gửi token sai/hết hạn, mật khẩu cũ trong CSDL **không bao giờ bị thay đổi hay bị hỏng**.
+
+### 3. Bảng điều khiển Quản trị viên (Dedicated Admin Dashboard)
+- **Nút "Quản trị" trên Header**: Nằm ở góc trên bên phải thanh điều hướng Chainlit, **chỉ hiển thị** khi tài khoản có vai trò `role == "admin"`.
+- Nhấn nút sẽ kích hoạt cầu nối bảo mật `/admin/bridge-token` và mở trang Quản trị riêng tại `/public/admin.html#token=<token>`.
+- Khi gõ lệnh `/admin` trong chat: Chatbot chỉ đưa ra chỉ dẫn ngắn gọn hướng dẫn dùng nút trên Header, không in bảng dữ liệu rườm rà làm rác cuộc trò chuyện.
+- **Tính năng quản trị đầy đủ**:
+  - Xem thống kê: Tổng số người dùng, số tài khoản hoạt động, số tài khoản bị khóa.
+  - Tìm kiếm và phân trang danh sách tài khoản theo username / email.
+  - Khóa (Lock) / Mở khóa (Unlock) tài khoản (kèm cơ chế bảo vệ không cho phép khóa Admin cuối cùng).
+  - Phân quyền tài khoản (Nâng lên Admin / Hạ xuống User).
+  - Kích hoạt gửi email đặt lại mật khẩu cho người dùng.
+  - Tra cứu nhật ký kiểm toán quản trị (Admin Audit Logs).
+  - Nút **Đăng xuất an toàn**: Thu hồi phiên backend FastAPI, xóa `sessionStorage` và xóa session cookie Chainlit.
+
+### 4. Xử lý tiếng Việt đa biến thể & Hybrid Retrieval
+- **Hỗ trợ gõ tiếng Việt tự do**: Có dấu, không dấu, viết hoa, viết thường, hoặc sai lỗi dấu (`dieu hoa pana bao loi f16`, `tu lanh lg khong lanh`).
+- **Từ điển Alias thông minh**: Tự động nhận diện `pana` $\rightarrow$ Panasonic, `máy lạnh` $\rightarrow$ điều hòa, `lò vi ba` $\rightarrow$ lò vi sóng, `máy giặt kêu cạch cạch lúc vắt`...
+- **Chuẩn hóa khoảng trắng mã lỗi**: Tự động sửa `F 16` $\rightarrow$ `F16`, `U 04` $\rightarrow$ `U04`, `H 97` $\rightarrow$ `H97`.
+- **Loại trừ ảo giác (Answer Validator)**: Kiểm chứng câu trả lời của mô hình với tài liệu gốc, không tự bịa mã lỗi hoặc giải pháp sai lệch.
+
+---
+
+## Hướng dẫn xem và quản lý dữ liệu lưu trữ (Database Guide)
+
+Trong dự án có 3 cơ sở dữ liệu với mục đích sử dụng khác nhau. Dưới đây là các cách xem dữ liệu đơn giản nhất phục vụ cho việc kiểm tra và bảo vệ đồ án:
+
+### Cách 1: Xem nhanh qua Script `scripts/view_data.py`
+
+Đây là cách thuận tiện nhất trong buổi vấn đáp để xem toàn bộ dữ liệu chỉ bằng 1 dòng lệnh terminal:
+
+```powershell
+uv run python scripts/view_data.py
+```
+
+Lệnh này sẽ tự động kiểm tra và in tóm tắt trực quan:
+- Danh sách các bảng và số lượng bản ghi trong **SQLite**.
+- Danh sách 5 người dùng đăng ký mới nhất (kèm vai trò `admin`/`user`).
+- Danh sách 3 cuộc trò chuyện và nội dung câu hỏi - đáp gần nhất.
+- Trạng thái kết nối và số lượng vector chunks trong **ChromaDB**.
+- Số lượng Nodes và Relationships trong **Neo4j** (nếu server đang bật).
+
+Bạn cũng có thể xem riêng từng cơ sở dữ liệu:
+```powershell
+uv run python scripts/view_data.py --sqlite    # Xem riêng SQLite
+uv run python scripts/view_data.py --chroma    # Xem riêng ChromaDB
+uv run python scripts/view_data.py --neo4j     # Xem riêng Neo4j
+```
+
+---
+
+### Cách 2: Xem chi tiết CSDL quan hệ SQLite (`data/chat_history.db`)
+
+File database nằm tại đường dẫn: `data/chat_history.db`.
+
+#### Phương pháp 1: Dùng phần mềm giao diện trực quan (Khuyên dùng)
+1. Tải và cài đặt phần mềm miễn phí [DB Browser for SQLite](https://sqlitebrowser.org/). Hoặc nếu dùng VS Code / Cursor, bạn có thể cài extension **SQLite Viewer** (của Florian Klampfer).
+2. Mở file `data/chat_history.db`.
+3. Nhấp vào tab **Browse Data** (Duyệt dữ liệu) để xem nội dung các bảng:
+   - `users`: Xem toàn bộ tài khoản, email, mật khẩu đã hash (`password_hash`), vai trò (`role = 'admin'` hoặc `'user'`), trạng thái (`active` hoặc `locked`).
+   - `conversations`: Xem danh sách các cuộc trò chuyện đã tạo trên Chainlit kèm tiêu đề.
+   - `messages`: Xem toàn bộ các tin nhắn trao đổi giữa người dùng (`role = 'user'`) và trợ lý (`role = 'assistant'`).
+   - `sessions`: Danh sách các phiên đăng nhập đang hoạt động.
+   - `password_reset_tokens`: Lịch sử các mã token đặt lại mật khẩu đã cấp.
+   - `admin_audit_logs`: Nhật ký kiểm toán mọi hành động quản trị (khóa tài khoản, nâng quyền, đổi mật khẩu).
+
+#### Phương pháp 2: Xem nhanh bằng Python CLI
+```powershell
+# Xem 5 user đầu tiên trong bảng users:
+uv run python -c "import sqlite3; c=sqlite3.connect('data/chat_history.db'); [print(r) for r in c.execute('SELECT username, email, role, status FROM users LIMIT 5;').fetchall()]"
+
+# Xem 5 tin nhắn gần nhất:
+uv run python -c "import sqlite3; c=sqlite3.connect('data/chat_history.db'); [print(r) for r in c.execute('SELECT role, content FROM messages ORDER BY id DESC LIMIT 5;').fetchall()]"
+```
+
+---
+
+### Cách 3: Xem CSDL vector ChromaDB (`./chroma_data`)
+
+ChromaDB lưu trữ vector nhúng của 1.090 tài liệu kỹ thuật trong thư mục `./chroma_data/`.
+
+Dữ liệu vector được lưu dưới dạng file nhị phân của Chroma. Bạn có thể kiểm tra dữ liệu bằng lệnh:
+
+```powershell
+uv run python -c "from rag_chatbot.chroma_db import get_chroma_client; col = get_chroma_client().get_collection('electronics_troubleshooting'); print('Tổng số chunks:', col.count()); print('Tài liệu đầu tiên:', col.peek(1))"
+```
+
+Kết quả sẽ hiển thị:
+- Tên collection: `electronics_troubleshooting`.
+- Tổng số chunks: `1090`.
+- Metadata đi kèm: `question_id`, `brand`, `device`, `error_code`, `source_url`.
+- Nội dung văn bản của document chunk được trích xuất từ dataset Excel.
+
+---
+
+### Cách 4: Xem CSDL đồ thị Neo4j qua Neo4j Browser (`http://localhost:7474`)
+
+Neo4j cung cấp giao diện đồ thị trực quan mạnh mẽ qua trình duyệt web:
+
+1. Khởi động Neo4j Desktop hoặc Neo4j Service trên máy tính của bạn.
+2. Mở trình duyệt web truy cập: [http://localhost:7474](http://localhost:7474).
+3. Đăng nhập với thông tin cấu hình trong file `.env`:
+   - **Connect URL**: `bolt://localhost:7687`
+   - **Username**: `neo4j`
+   - **Password**: Mật khẩu bạn đã thiết lập (mặc định trong mẫu: `password123`).
+4. Gõ các câu lệnh Cypher vào thanh lệnh ở đầu trang và nhấn nút **Run** (Ctrl + Enter):
+
+```cypher
+// 1. Xem 25 node và mối quan hệ mẫu bất kỳ trên đồ thị
+MATCH (n) RETURN n LIMIT 25;
+
+// 2. Xem toàn bộ các Hãng và Thiết bị mà hệ thống hỗ trợ
+MATCH (b:Brand)-[r:HAS_DEVICE]->(d:Device)
+RETURN b, r, d;
+
+// 3. Tra cứu trực quan toàn bộ cây quan hệ của mã lỗi 'CF' trên máy điều hòa Samsung (ví dụ Q0358)
+MATCH (b:Brand {name: 'Samsung'})-[:HAS_DEVICE]->(d:Device {name: 'Điều hòa'})-[:HAS_ISSUE]->(i:Issue)-[:HAS_ERROR_CODE]->(e:ErrorCode {code: 'CF'})
+OPTIONAL MATCH (q:Question)-[:ABOUT]->(i)
+OPTIONAL MATCH (q)-[:ANSWERED_BY]->(a:Answer)
+RETURN b, d, i, e, q, a;
+```
+
+---
+
+## Cài đặt và Khởi động hệ thống
+
+### 1. Chuẩn bị môi trường
+- Hệ điều hành: Windows, macOS hoặc Linux.
+- Đã cài đặt **Python 3.12+** và công cụ [uv](https://github.com/astral-sh/uv).
+- Đã cài đặt và khởi chạy **Neo4j** (port 7687) và **Ollama** (với model `qwen2.5:7b`).
+
+### 2. Cài đặt thư viện dependencies
+```powershell
+uv sync
+```
+
+### 3. Cấu hình file môi trường `.env`
+Sao chép từ file mẫu:
+```powershell
+Copy-Item .env.example .env
+```
+Mở file `.env` và cập nhật thông tin kết nối Neo4j cùng cấu hình Chainlit:
+```ini
+APP_NAME=appliance-troubleshooter-rag
+APP_ENV=development
+DEBUG=True
+
+# Cấu hình Neo4j
+NEO4J_URI=bolt://localhost:7687
+NEO4J_USER=neo4j
+NEO4J_PASSWORD=your_password_here
+
+# Cấu hình ChromaDB
+CHROMA_PERSIST_DIRECTORY=./chroma_data
+CHROMA_COLLECTION_NAME=electronics_troubleshooting
+EMBEDDING_MODEL_NAME=BAAI/bge-m3
+
+# Cấu hình Local LLM (Ollama)
+OLLAMA_BASE_URL=http://localhost:11434
+LLM_MODEL_NAME=qwen2.5:7b
+
+# Cấu hình CSDL SQLite & URL cổng dịch vụ
+SQLITE_DB_PATH=data/chat_history.db
+FRONTEND_BASE_URL=http://localhost:8001
+CHAINLIT_PORT=8001
+API_PORT=8000
+CHAINLIT_AUTH_SECRET=dev-chainlit-auth-secret-change-in-production-32chars
+```
+
+### 4. Nạp dữ liệu vào cơ sở dữ liệu (chỉ chạy lần đầu)
+```powershell
+# Nạp dữ liệu vào Neo4j
+uv run python -m rag_chatbot.neo4j_db
+
+# Nạp dữ liệu vào ChromaDB
+uv run python -m rag_chatbot.ingest
+```
+
+### 5. Khởi động toàn bộ hệ thống bằng 1 lệnh duy nhất
+
+Sử dụng launcher PowerShell đã tích hợp sẵn cơ chế kiểm tra cổng mạng, giải phóng cổng xung đột và khởi động đồng thời cả FastAPI và Chainlit:
+
+```powershell
+.\scripts\run_dev.ps1
+```
+
+Các đường dẫn truy cập sau khi khởi động:
+- **Giao diện Chatbot Chainlit**: [http://localhost:8001](http://localhost:8001)
+- **Bảng điều khiển Quản trị viên (Admin)**: [http://localhost:8001/public/admin.html](http://localhost:8001/public/admin.html)
+- **Trang Đăng ký tài khoản**: [http://localhost:8001/public/register.html](http://localhost:8001/public/register.html)
+- **Trang Quên mật khẩu**: [http://localhost:8001/public/forgot-password.html](http://localhost:8001/public/forgot-password.html)
+- **Trang Đặt lại mật khẩu**: [http://localhost:8001/public/reset-password.html](http://localhost:8001/public/reset-password.html)
+- **FastAPI REST API Docs (Swagger)**: [http://localhost:8000/docs](http://localhost:8000/docs)
+
+---
+
+## Tài khoản Quản trị viên (Admin)
+
+Để tạo tài khoản Quản trị viên có toàn quyền truy cập hệ thống, chạy lệnh tiện ích:
+
+```powershell
+uv run python scripts/create_admin.py --username admin --email admin@example.com --password AdminPassword123
+```
+
+Sau khi tạo:
+1. Đăng nhập vào Chainlit tại [http://localhost:8001](http://localhost:8001) bằng tài khoản vừa tạo.
+2. Nút **`🛡️ Quản trị`** sẽ xuất hiện ở góc trên bên phải header của giao diện chat.
+3. Nhấn nút để mở Bảng điều khiển quản trị chuyên dụng.
+
+---
+
+## Kiểm thử tự động (Testing)
+
+Dự án có bộ kiểm thử tự động toàn diện được viết bằng `pytest` với hơn 126 test cases:
+
+```powershell
+# Chạy toàn bộ kiểm thử
+uv run pytest -v
+
+# Chạy riêng kiểm thử luồng Đặt lại mật khẩu & Bảo mật
+uv run pytest tests/test_password_reset.py -v
+
+# Chạy riêng kiểm thử Quản trị viên & Phân quyền
+uv run pytest tests/test_admin.py -v
+
+# Chạy riêng kiểm thử Giao diện & Chat Composer
+uv run pytest tests/test_ui.py -v
+
+# Chạy riêng kiểm thử Xử lý tiếng Việt & Tìm kiếm
+uv run pytest tests/test_vietnamese.py tests/test_retrieval_vietnamese.py -v
+```
+
+---
+
+## Cấu trúc thư mục dự án
 
 ```text
 appliance-troubleshooter-rag/
-├── chroma_data/                         # Thư mục lưu trữ dữ liệu ChromaDB
+├── .chainlit/
+│   ├── config.toml                      # Cấu hình Chainlit (theme, tắt upload file)
+│   └── translations/
+│       └── en-US.json                   # Chuỗi dịch ngôn ngữ (placeholder tiếng Việt)
+├── chroma_data/                         # Thư mục lưu trữ cơ sở dữ liệu vector ChromaDB
 ├── data/
-│   ├── evaluation/
-│   │   ├── evaluation_set.json          # Tập 30 câu hỏi kiểm thử
-│   │   └── rag_eval_results.json        # Kết quả chi tiết đánh giá RAG + LLM
-│   ├── processed/                       # Dữ liệu qua xử lý trung gian
-│   ├── raw/
-│   │   └── dataset.xlsx                 # Bộ dữ liệu gốc 1.090 bản ghi
-│   └── samples/
-├── scripts/                             # Các script tiện ích
+│   ├── chat_history.db                  # CSDL SQLite lưu users, sessions, chat history, audit logs
+│   ├── evaluation/                      # Tập dữ liệu kiểm thử và kết quả đo lường
+│   └── raw/
+│       └── dataset.xlsx                 # Dataset gốc gồm 1.090 bản ghi sự cố kỹ thuật
+├── docs/                                # Báo cáo kiến trúc và tài liệu di trú Chainlit
+├── public/                              # Tài nguyên tĩnh phục vụ giao diện
+│   ├── admin.html                       # Giao diện Bảng điều khiển Quản trị viên chuyên biệt
+│   ├── branding/
+│   │   └── dhv-logo.png                 # Logo thương hiệu DHV
+│   ├── custom.css                       # CSS tùy biến giao diện đăng nhập, header button, composer
+│   ├── custom.js                        # JS tiêm nút Admin header, việt hóa, chặn drag-drop file
+│   ├── forgot-password.html             # Giao diện yêu cầu quên mật khẩu
+│   ├── register.html                    # Giao diện đăng ký tài khoản mới
+│   └── reset-password.html              # Giao diện đặt lại mật khẩu với token hash
+├── scripts/
+│   ├── create_admin.py                  # Script CLI tạo tài khoản Quản trị viên
+│   ├── run_dev.ps1                      # Script PowerShell khởi động hệ thống 1 chạm
+│   └── view_data.py                     # Script xem nhanh dữ liệu các CSDL (SQLite, Chroma, Neo4j)
 ├── src/
 │   └── rag_chatbot/
-│       ├── __init__.py
-│       ├── chroma_db.py                 # Kết nối và cấu hình ChromaDB
-│       ├── config.py                    # Quản lý cấu hình qua pydantic-settings
-│       ├── evaluation.py                # Đo lường và đánh giá hiệu năng
-│       ├── ingest.py                    # Nạp dữ liệu vào ChromaDB
-│       ├── main.py                      # Ứng dụng FastAPI REST API
-│       ├── neo4j_db.py                  # Kết nối và nạp dữ liệu Neo4j
-│       ├── rag.py                       # Xử lý Prompt, Context và gọi LLM
-│       └── retrieval.py                 # Logic tìm kiếm ChromaDB, Neo4j, Hybrid
-├── tests/
-│   ├── test_api.py                      # Test các API endpoints của FastAPI
-│   ├── test_chroma.py                   # Test kết nối và tìm kiếm ChromaDB
-│   ├── test_config.py                   # Test nạp biến môi trường
-│   ├── test_evaluation.py               # Test các hàm tính chỉ số đánh giá
-│   ├── test_hybrid.py                   # Test thuật toán tìm kiếm kết hợp
-│   ├── test_neo4j.py                    # Test kết nối và truy vấn Neo4j
-│   └── test_rag.py                      # Test prompt, context và luồng RAG
-├── .env.example                         # File mẫu cấu hình môi trường
-├── .gitignore                           # Danh sách bỏ qua của Git
-├── EVALUATION.md                        # Báo cáo chi tiết kết quả đánh giá
-├── pyproject.toml                       # Cấu hình dự án và dependencies
-├── README.md                            # Tài liệu hướng dẫn sử dụng dự án
-└── uv.lock                              # Khóa phiên bản thư viện chính xác
+│       ├── auth.py                      # Xác thực, băm Argon2id, quản lý phiên và token reset
+│       ├── chainlit_app.py              # Ứng dụng giao diện Chainlit chính & token bridge
+│       ├── chainlit_data_layer.py       # SQLiteDataLayer lưu lịch sử chat Chainlit vào SQLite
+│       ├── chat_service.py              # Dịch vụ điều phối câu hỏi - đáp RAG
+│       ├── chroma_db.py                 # Kết nối và cấu hình ChromaDB Vector Store
+│       ├── config.py                    # Quản lý cấu hình tập trung qua Pydantic Settings
+│       ├── database.py                  # Thao tác CSDL SQLite (bảng users, chat, audit logs)
+│       ├── email_service.py             # Dịch vụ gửi email khôi phục mật khẩu qua SMTP / Dev Mock
+│       ├── main.py                      # Ứng dụng FastAPI REST API & Admin API endpoints
+│       ├── neo4j_db.py                  # Kết nối và nạp dữ liệu đồ thị Neo4j
+│       ├── rag.py                       # Luồng tổng hợp prompt, context và gọi Ollama LLM
+│       ├── retrieval.py                 # Truy vấn kết hợp Hybrid Retrieval (ChromaDB + Neo4j)
+│       ├── scope.py                     # Bộ lọc phát hiện và chặn câu hỏi ngoài phạm vi
+│       └── vietnamese.py                # Xử lý tiếng Việt (bỏ dấu, alias, tách khoảng trắng mã lỗi)
+├── tests/                               # Thư mục chứa toàn bộ unit tests và regression tests
+├── .env.example                         # File mẫu cấu hình biến môi trường
+├── pyproject.toml                       # Khai báo cấu hình dự án, gói và dependencies uv
+└── README.md                            # Tài liệu hướng dẫn sử dụng chính thức
 ```
 
 ---
 
-## Kiểm thử
+## Tuyên bố học thuật
 
-Dự án có 36 unit tests bao quát các thành phần từ cấu hình, truy vấn database, pipeline RAG cho tới các endpoint FastAPI.
-
-Chạy toàn bộ kiểm thử bằng lệnh:
-
-```powershell
-uv run pytest
-```
-
-Kết quả:
-```text
-36 passed, 1 warning in ~2 phút
-```
-
----
-
-## Kết quả đánh giá
-
-Hệ thống được đánh giá trên tập dữ liệu chuẩn gồm **30 câu hỏi thực tế** trích xuất từ dataset, đại diện cho cả 3 hãng và 6 nhóm thiết bị khác nhau.
-
-Chi tiết báo cáo được ghi nhận tại file `EVALUATION.md`.
-
-### 1. Hiệu năng truy vấn (Retrieval Metrics trên 30 câu hỏi, k = 5):
-
-| Phương pháp tìm kiếm | Hit@1 | Hit@5 | Độ trễ trung bình |
-| :--- | :---: | :---: | :---: |
-| **ChromaDB** (Semantic Search) | 22 / 30 (**73.3%**) | 29 / 30 (**96.7%**) | ~718 ms |
-| **Neo4j** (Graph Search) | 15 / 30 (**50.0%**) | 15 / 30 (**50.0%**) | ~2.068 ms |
-| **Hybrid Retrieval** (ChromaDB + Neo4j) | 20 / 30 (**66.7%**) | 29 / 30 (**96.7%**) | ~2.210 ms |
-
-- **ChromaDB**: Hiểu tốt câu hỏi triệu chứng hư hỏng bằng ngôn ngữ tự nhiên.
-- **Neo4j**: Tìm kiếm chính xác với các câu hỏi có mã lỗi cụ thể (15/15 câu hỏi có mã lỗi đều tìm thấy), nhưng hạn chế hơn với các câu hỏi chỉ miêu tả triệu chứng chung.
-- **Hybrid Retrieval**: Giữ được độ bao phủ Hit@5 ở mức **96.7%**, đồng thời ưu tiên được 40 lượt tài liệu được xác thực bởi cả hai cơ sở dữ liệu (`both`).
-
-### 2. Đánh giá sinh câu trả lời RAG + Local LLM (trên 10 câu hỏi):
-
-- **Tỷ lệ gọi LLM thành công**: **10 / 10** (không có lượt nào bị ngắt kết nối hay lỗi timeout).
-- **Thời gian phản hồi sinh câu trả lời (Latency)**:
-  - Trung bình: **31.77 giây**.
-  - Nhanh nhất: **22.22 giây**.
-  - Lâu nhất: **55.21 giây**.
-
-### 3. Đánh giá tính bám sát ngữ cảnh (Grounding Review):
-
-Qua kiểm tra đối chiếu thủ công 10 câu trả lời sinh ra từ LLM so với ngữ cảnh tài liệu:
-- **10 / 10 câu trả lời** bám sát nội dung ngữ cảnh được trích xuất.
-- Mô hình không tự ý thêm các thao tác sửa chữa hoặc suy đoán ngoài phạm vi tài liệu.
-- Khi gặp câu hỏi chung chung không đủ thông tin, mô hình phản hồi rõ ràng rằng cơ sở tri thức hiện tại chưa đủ dữ liệu thay vì tự đưa ra giả định.
-
----
-
-## Ví dụ Q0358
-
-Một ví dụ điển hình minh họa luồng xử lý của hệ thống:
-
-- **Câu hỏi**: `"Máy điều hòa Samsung lỗi CF là gì?"`
-- **Tài liệu truy vấn được**:
-  - Hãng: Samsung | Thiết bị: Máy điều hòa | Mã lỗi: CF
-  - Nguyên nhân: *Mã CF là nhắc vệ sinh bộ lọc.*
-  - Cách khắc phục: *Hãy vệ sinh hoặc thay bộ lọc rồi đặt lại nhắc lọc.*
-  - Nguồn: Trang hỗ trợ chính thức của Samsung.
-- **Câu trả lời từ Chatbot**:
-  > Mã lỗi CF trên điều hòa Samsung là nhắc vệ sinh bộ lọc.
-  >
-  > Cách khắc phục: Hãy vệ sinh hoặc thay bộ lọc rồi đặt lại nhắc lọc.
-- **Nhận xét**: Câu trả lời truyền đạt đúng bản chất sự cố và hướng xử lý theo tài liệu của nhà sản xuất, không thêm các chi tiết ngoài như "bộ lọc bị bẩn" hay "liên hệ thợ kỹ thuật".
-
----
-
-## Giới hạn
-
-- **Thời gian phản hồi của LLM**: Khi chạy mô hình 7B cục bộ trên phần cứng máy tính cá nhân thông thường, thời gian sinh câu trả lời trung bình khoảng 31.8 giây, chưa phù hợp cho các kịch bản cần phản hồi tức thì.
-- **Truy vấn triệu chứng trên Neo4j**: Tìm kiếm đồ thị hiện tại chủ yếu phụ thuộc vào việc bóc tách mã lỗi và tên hãng. Khi người dùng chỉ hỏi triệu chứng hư hỏng chung mà không có mã lỗi, Neo4j khó so khớp hơn so với tìm kiếm vector của ChromaDB.
-- **Phạm vi dữ liệu**: Tập dữ liệu hiện có 1.090 bản ghi tập trung vào 3 hãng sản xuất chính (Samsung, LG, Panasonic). Khi người dùng hỏi về các hãng khác hoặc model quá đặc thù chưa có trong dữ liệu, hệ thống sẽ thông báo chưa có thông tin.
+Dự án được xây dựng với mục tiêu phục vụ học tập, nghiên cứu và bảo vệ đồ án/khóa luận.

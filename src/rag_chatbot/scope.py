@@ -1,14 +1,9 @@
-"""Module kiem tra pham vi cau hoi (Scope Checking) va tu choi cau hoi ngoai le.
+"""Module kiểm tra phạm vi câu hỏi (Scope Checking) và từ chối câu hỏi ngoài lề.
 
-Nhiem vu trong Phase 10A:
-1. Phat hien cac cau hoi ngoai pham vi ho tro cua chatbot:
-   - Chatbot chi ho tro: ma loi, nguyen nhan su co, huong dan khac phuc cho thiet bi dien gia dung.
-   - Tu choi cac cau hoi ngoai le (tien so, thoi tiet, the thao, lap trinh, hoi y kien, gia ca...).
-2. Quyết dinh pham vi dua tren cac tieu chi theo thu tu uu tien:
-   - Khoang cach ngu nghia ChromaDB (distance) cua ket qua tot nhat.
-   - Bang chung ve loi ky thuat / trieu chung su co / ma loi trong cau hoi va tai lieu.
-   - retrieval_source ('both') chi dong vai tro tin hieu tang do tin cay, khong tu dong chap nhan.
-3. Cung cap thong bao tu choi tu nhien va lich su.
+Mục tiêu:
+1. Phát hiện các câu hỏi ngoài phạm vi hỗ trợ (thời tiết, tài chính, lập trình, ý kiến chủ quan...).
+2. Đánh giá độ tin cậy dựa trên khoảng cách vector ngữ nghĩa và bằng chứng mã lỗi/triệu chứng kỹ thuật.
+3. Cung cấp thông báo từ chối an toàn, lịch sự và đúng trọng tâm.
 """
 
 from __future__ import annotations
@@ -16,6 +11,7 @@ import re
 from typing import Any
 
 from rag_chatbot.config import get_settings
+from rag_chatbot.vietnamese import normalize_error_code_spaces, remove_vietnamese_accents
 
 
 REFUSAL_MESSAGE = (
@@ -24,7 +20,7 @@ REFUSAL_MESSAGE = (
 )
 
 # Các từ khóa đơn ngắn cần khớp ranh giới từ để tránh khớp nhầm (ví dụ: 'hư' trong 'phương pháp')
-STANDALONE_KEYWORDS = ["hư", "mã"]
+STANDALONE_KEYWORDS = ["hư", "mã lỗi"]
 
 # Danh sách từ khóa và cụm từ về sự cố, triệu chứng và xử lý kỹ thuật thiết bị điện gia dụng
 TROUBLESHOOTING_KEYWORDS = [
@@ -32,8 +28,8 @@ TROUBLESHOOTING_KEYWORDS = [
     "lỗi", "mã lỗi", "sự cố", "hỏng", "hư hỏng", "bị hư", "báo lỗi", "cảnh báo",
     
     # 2. Triệu chứng bất thường về âm thanh, rung, mùi, nhiệt độ, nước
-    "kêu", "rung", "tiếng ồn", "chảy", "mùi", "chớp", "nhấp nháy", "tự tắt", "tự dừng",
-    "tự nhiên dừng", "quá nhiệt", "rò rỉ", "tràn", "chập", "đọng nước", "đọng sương",
+    "kêu", "rung", "tiếng ồn", "chảy nước", "bị chảy", "mùi", "chớp", "nhấp nháy", "tự tắt", "tự dừng",
+    "tự nhiên dừng", "quá nhiệt", "rò rỉ", "tràn nước", "bị tràn", "nước tràn", "tràn bọt", "chập", "đọng nước", "đọng sương",
     "đóng tuyết", "bị nhăn", "nhiều bọt",
 
     # 3. Biến thể làm mát / làm lạnh (theo yêu cầu)
@@ -59,14 +55,37 @@ TROUBLESHOOTING_KEYWORDS = [
 
 
 def has_troubleshooting_signal(text: str) -> bool:
-    """Kiem tra xem van ban co chua tu khoa ve su co, ma loi hoac huong dan khac phuc hay khong."""
+    """Kiem tra xem van ban co chua tu khoa ve su co, ma loi hoac huong dan khac phuc hay khong.
+    
+    Ho tro ca tieng Viet co dau va khong dau.
+    """
     if not text:
         return False
     text_lower = text.lower()
+    text_unaccent = remove_vietnamese_accents(text_lower)
+
+    # 1. Kiem tra tu khoa don ngan can ranh gioi tu (co dau va khong dau)
     for word in STANDALONE_KEYWORDS:
         if re.search(r"\b" + re.escape(word) + r"\b", text_lower):
             return True
-    return any(keyword in text_lower for keyword in TROUBLESHOOTING_KEYWORDS)
+        unaccent_word = remove_vietnamese_accents(word)
+        if re.search(r"\b" + re.escape(unaccent_word) + r"\b", text_unaccent):
+            return True
+
+    # 2. Kiem tra cac tu khoa ve su co / trieu chung voi ranh gioi tu (co dau va khong dau)
+    for keyword in TROUBLESHOOTING_KEYWORDS:
+        pattern = r"\b" + re.escape(keyword) + r"\b"
+        if re.search(pattern, text_lower):
+            return True
+        unaccent_kw = remove_vietnamese_accents(keyword)
+        if unaccent_kw == "mat dien":
+            unaccent_pattern = r"(?<!\bra\s)\bmat dien\b"
+        else:
+            unaccent_pattern = r"\b" + re.escape(unaccent_kw) + r"\b"
+        if re.search(unaccent_pattern, text_unaccent):
+            return True
+
+    return False
 
 
 def should_refuse(
@@ -95,35 +114,48 @@ def should_refuse(
         return True
 
     settings = get_settings()
-    active_threshold = threshold if threshold is not None else settings.scope_distance_threshold
-
     top_doc = retrieved_documents[0]
     distance = top_doc.get("distance")
 
-    # 2. Khoang cach vector ChromaDB vuot nguong -> Tu choi
-    # (Khoang cach lon nghia la do tuong dong ngu nghia kem, cau hoi xa la)
-    if distance is not None and distance > active_threshold:
-        return True
-
-    # 3. Kiem tra bang chung ky thuat / su co
+    # 2. Kiem tra bang chung ky thuat / su co
     has_evidence = False
     
-    # 3a. Neu co ma loi khop giua cau hoi va tai lieu
+    # 2a. Neu co ma loi khop giua cau hoi va tai lieu
     doc_error_code = str(top_doc.get("error_code", "")).strip()
-    if doc_error_code and question and doc_error_code.lower() in question.lower():
-        has_evidence = True
+    if doc_error_code and question:
+        q_norm = normalize_error_code_spaces(question)
+        if (
+            doc_error_code.lower() in question.lower()
+            or doc_error_code.lower() in q_norm.lower()
+        ):
+            has_evidence = True
         
-    # 3b. Neu cau hoi chua tin hieu ve trieu chung/khac phuc su co
+    # 2b. Neu cau hoi chua tin hieu ve trieu chung/khac phuc su co
     elif question and has_troubleshooting_signal(question):
         has_evidence = True
         
-    # 3c. Truong hop khong truyen question (goi don le voi retrieved_documents)
+    # 2c. Truong hop khong truyen question (goi don le voi retrieved_documents)
     elif question is None:
         # Kiem tra xem tai lieu co chua thong tin ky thuat ro rang khong
         has_evidence = bool(doc_error_code or top_doc.get("answer"))
 
+    # Neu hoan toan khong co bang chung ky thuat/su co -> Tu choi ngay lap tuc
     if not has_evidence:
         return True
 
-    # 4. Khi da du bang chung va khoang cach tot -> Chap nhan
+    # 3. Kiem tra khoang cach vector ChromaDB
+    # Neu threshold duoc truyen cu the tu caller (vi du: unit test), ton trong threshold do.
+    # Khi su dung mac dinh: cau hoi co tin hieu su co ro rang cho phep khoang cach ngu nghia
+    # len toi 0.60 de tranh tu choi nham cau hoi trieu chung tu nhien va cau hoi khong dau.
+    if threshold is not None:
+        effective_threshold = threshold
+    elif has_evidence:
+        effective_threshold = max(settings.scope_distance_threshold, 0.60)
+    else:
+        effective_threshold = settings.scope_distance_threshold
+
+    if distance is not None and distance > effective_threshold:
+        return True
+
+    # 4. Khi da du bang chung va khoang cach phu hop -> Chap nhan
     return False

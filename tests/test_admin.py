@@ -357,7 +357,7 @@ def test_11_admin_trigger_password_reset(admin_client, user_client):
     email = get_latest_dev_email()
     assert email is not None
     assert user_info["email"] in email["to"]
-    assert "reset_token=" in email["reset_url"]
+    assert "#token=" in email["reset_url"]
 
     # Kiem tra ghi log kiem toan trong database
     with get_db_connection() as conn:
@@ -369,16 +369,24 @@ def test_11_admin_trigger_password_reset(admin_client, user_client):
         assert log["action"] == "password_reset_trigger"
 
 
-# 12. Cac endpoint giao dien /admin va /admin-ui phan hoi dung
-def test_12_ui_endpoints_and_history_preservation(admin_client, user_client):
-    # Kiem tra redirect /admin sang /admin-ui
-    res_admin = client.get("/admin", follow_redirects=False)
-    assert res_admin.status_code in (301, 302, 307)
-    assert "/admin-ui" in res_admin.headers.get("location", "")
-
-    # Kiem tra /admin-ui tra ve 200
+# 12. Cac endpoint giao dien Admin HTML cu da go bo va bao toan lich su tro chuyen
+def test_12_admin_chainlit_integration_and_history_preservation(admin_client, user_client):
+    # Kiem tra /admin-ui cu cua Gradio da duoc go bo khoi FastAPI (tra ve 404)
     res_admin_ui = client.get("/admin-ui")
-    assert res_admin_ui.status_code == 200
+    assert res_admin_ui.status_code == 404
+
+    # Kiem tra logic kiem tra quyen Admin cho Chainlit
+    from rag_chatbot.chainlit_app import check_admin_privilege
+    from chainlit.user import User
+
+    a_client, admin_info = admin_client
+    _, user_info = user_client
+
+    admin_cl_user = User(identifier=admin_info["username"], metadata={"id": admin_info["id"], "role": "admin"})
+    assert check_admin_privilege(admin_cl_user) is not None
+
+    normal_cl_user = User(identifier=user_info["username"], metadata={"id": user_info["id"], "role": "user"})
+    assert check_admin_privilege(normal_cl_user) is None
 
     # Kiem tra bao toan lich su tro chuyen khi tai khoan bi khoa/mo khoa (soft-lock)
     a_client, _ = admin_client
@@ -407,3 +415,129 @@ def test_12_ui_endpoints_and_history_preservation(admin_client, user_client):
     assert len(msgs) == 2
     assert msgs[0]["content"] == "Tủ lạnh kêu to sửa sao?"
     assert msgs[1]["content"] == "Kiểm tra lại chân đế tủ lạnh."
+
+
+def test_13_admin_bridge_token_and_logout_revocation(admin_client, user_client):
+    a_client, admin_info = admin_client
+    u_client, _ = user_client
+
+    # 1. Khach chua dang nhap goi /admin/bridge-token phai nhan 401
+    unauth_res = client.get("/admin/bridge-token")
+    assert unauth_res.status_code == 401
+
+    # 2. User thuong goi /admin/bridge-token phai nhan 403
+    user_res = u_client.get("/admin/bridge-token")
+    assert user_res.status_code == 403
+
+    # 3. Admin goi /admin/bridge-token phai nhan 200 kem token
+    admin_res = a_client.get("/admin/bridge-token")
+    assert admin_res.status_code == 200
+    token_data = admin_res.json()
+    assert "token" in token_data
+    bridge_token = token_data["token"]
+    assert len(bridge_token) >= 32
+
+    # 4. Kiem tra token lay duoc co the truy cap vao /admin/stats
+    bridge_client = TestClient(app)
+    stats_res = bridge_client.get("/admin/stats", headers={"Authorization": f"Bearer {bridge_token}"})
+    assert stats_res.status_code == 200
+
+    # 5. Dang xuat voi bridge token qua /auth/logout
+    logout_res = bridge_client.post("/auth/logout", headers={"Authorization": f"Bearer {bridge_token}"})
+    assert logout_res.status_code == 200
+
+    # 6. Sau khi dang xuat, token da bi thu hoi (revoke) -> truy cap lai bi 401
+    revoked_res = bridge_client.get("/admin/stats", headers={"Authorization": f"Bearer {bridge_token}"})
+    assert revoked_res.status_code == 401
+
+
+def test_14_admin_delete_user_success_and_safeguards(admin_client, user_client):
+    """Kiem tra Admin xoa tai khoan nguoi dung, cac rang buoc bao ve va cleanup du lieu lien quan."""
+    a_client, admin_info = admin_client
+    u_client, user_info = user_client
+
+    # 1. Tao hoi thoai va tin nhan cho user
+    turn = save_chat_turn(
+        user_id=user_info["id"],
+        question="May giat Toshiba loi E2",
+        answer="Loi cong tac cua hoac nap chua dong kin.",
+    )
+    conv_id = turn["conversation_id"]
+
+    # 2. Admin khong the tu xoa chinh minh (phai tra ve 400)
+    self_del = a_client.delete(f"/admin/users/{admin_info['id']}")
+    assert self_del.status_code == 400
+    assert "Không thể tự xóa" in self_del.json()["detail"]
+
+    # 3. Admin xoa tai khoan user thanh cong
+    del_res = a_client.delete(f"/admin/users/{user_info['id']}")
+    assert del_res.status_code == 200
+    assert "thành công" in del_res.json()["message"]
+
+    # 4. Kiem tra user da bi xoa khoi he thong
+    get_res = a_client.get(f"/admin/users/{user_info['id']}")
+    assert get_res.status_code == 404
+
+    # 5. Kiem tra conversations va messages lien quan da duoc don sach
+    convs = get_user_conversations(user_info["id"])
+    assert len(convs) == 0
+
+    msgs = get_conversation_messages(conv_id)
+    assert len(msgs) == 0
+
+    # 6. User da bi xoa khong the tiep tuc dang nhap
+    login_res = client.post("/auth/login", json={
+        "username": user_info["username"],
+        "password": "UserPass123!",
+    })
+    assert login_res.status_code in [400, 401]
+
+
+def test_15_admin_delete_user_permissions(admin_client, user_client):
+    """Kiem tra phan quyen khi goi endpoint DELETE /admin/users/{id}."""
+    a_client, admin_info = admin_client
+    u_client, user_info = user_client
+
+    # 1. Khach chua dang nhap goi DELETE bi tu choi 401
+    unauth_res = client.delete(f"/admin/users/{user_info['id']}")
+    assert unauth_res.status_code == 401
+
+    # 2. User thuong goi DELETE bi tu choi 403
+    forbidden_res = u_client.delete(f"/admin/users/{user_info['id']}")
+    assert forbidden_res.status_code == 403
+
+
+def test_16_admin_delete_admin_requires_security_password(admin_client):
+    """Kiem tra khi xoa tai khoan Admin, bat buoc phai nhap dung mat khau bao mat 123456789."""
+    a_client, admin_info = admin_client
+
+    # Tao tai khoan admin thu 2
+    uid = uuid.uuid4().hex[:6]
+    admin2_info = create_admin_user(
+        username=f"admin2_{uid}",
+        email=f"admin2_{uid}@example.com",
+        password="AdminPass123!",
+    )
+    admin2_id = admin2_info["id"]
+
+    # 1. Xoa admin ma khong truyen mat khau bao mat -> 400 Bad Request
+    no_pass_res = a_client.delete(f"/admin/users/{admin2_id}")
+    assert no_pass_res.status_code == 400
+    assert "123456789" in no_pass_res.json()["detail"]
+
+    # 2. Xoa admin voi mat khau sai -> 400 Bad Request
+    wrong_pass_res = a_client.delete(f"/admin/users/{admin2_id}?admin_password=wrongpass")
+    assert wrong_pass_res.status_code == 400
+    assert "123456789" in wrong_pass_res.json()["detail"]
+
+    # 3. Xoa admin voi mat khau dung 123456789 -> 200 OK
+    ok_res = a_client.delete(f"/admin/users/{admin2_id}?admin_password=123456789")
+    assert ok_res.status_code == 200
+    assert "thành công" in ok_res.json()["message"]
+
+    # 4. Kiem tra admin2 da bi xoa khoi he thong
+    get_res = a_client.get(f"/admin/users/{admin2_id}")
+    assert get_res.status_code == 404
+
+
+

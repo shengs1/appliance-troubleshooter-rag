@@ -39,6 +39,9 @@ def main() -> None:
     email = args.email
     password = args.password
 
+    if password:
+        print("[CANH BAO] Ban dang truyen mat khau qua command-line. De tranh lo mat khau qua lich su shell, nen de trong de nhap an toan qua prompt getpass.")
+
     # Neu chua nhap qua tham so dong lenh, hoi tuong tac
     if not username:
         try:

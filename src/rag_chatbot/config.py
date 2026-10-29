@@ -56,11 +56,15 @@ class Settings(BaseSettings):
     smtp_password: str = ""
     smtp_from: str = "noreply@ragchatbot.local"
     smtp_use_tls: bool = True
-    frontend_base_url: str = "http://localhost:8000"
+    frontend_base_url: str = "http://localhost:8001"
     password_reset_expire_minutes: int = 15
     password_reset_rate_limit_count: int = 3
     password_reset_rate_limit_minutes: int = 15
     password_reset_cooldown_seconds: int = 15
+
+    # Cau hinh Chainlit UI
+    chainlit_auth_secret: str = "dev-chainlit-auth-secret-change-in-production-32chars"
+    chainlit_port: int = 8001
 
     # Cau hinh Pydantic Settings
     model_config = SettingsConfigDict(

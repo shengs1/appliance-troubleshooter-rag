@@ -26,10 +26,10 @@ DEV_SENT_EMAILS: list[dict[str, Any]] = []
 
 
 def build_reset_password_url(raw_token: str) -> str:
-    """Tao URL khoi phuc mat khau dua tren FRONTEND_BASE_URL duoc cau hinh an toan."""
+    """Tao URL khoi phuc mat khau dua tren FRONTEND_BASE_URL (Chainlit port) voi token chi nam o URL fragment (#token=...)."""
     settings = get_settings()
-    base_url = getattr(settings, "frontend_base_url", "http://localhost:8000").rstrip("/")
-    return f"{base_url}/chat-ui?reset_token={raw_token}"
+    base_url = getattr(settings, "frontend_base_url", "http://localhost:8001").rstrip("/")
+    return f"{base_url}/public/reset-password.html#token={raw_token}"
 
 
 def clear_dev_emails() -> None:

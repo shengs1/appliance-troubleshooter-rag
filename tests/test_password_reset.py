@@ -136,8 +136,8 @@ def test_04_new_password_is_hashed_in_db(test_user_email):
 
     # Khong bao gio duoc la chuoi plaintext
     assert stored_hash != new_pass
-    # Phai la dinh dang bcrypt ($2b$ hoac $2a$)
-    assert stored_hash.startswith("$2b$") or stored_hash.startswith("$2a$")
+    # Phai la dinh dang Argon2id (hoac bcrypt tuong thich cu)
+    assert stored_hash.startswith("$argon2id$") or stored_hash.startswith(("$2b$", "$2a$"))
 
 
 # 5. Token da su dung khong the dung lai lan thu hai (Single-use token)
@@ -247,3 +247,86 @@ def test_09_token_cannot_modify_another_user_account():
     # User B khong the dang nhap bang mat khau moi cua A
     login_b_new = client.post("/auth/login", json={"username": f"user_b_{uid_b}", "password": "newPassForA999"})
     assert login_b_new.status_code == 401
+
+
+# 10. Dinh dang link reset phai tro toi Chainlit port va dung fragment #token= (khong dung query string)
+def test_10_reset_url_format_and_fragment_token(test_user_email):
+    from rag_chatbot.email_service import build_reset_password_url
+    from rag_chatbot.config import get_settings
+
+    settings = get_settings()
+    sample_token = "secure_test_token_1234567890abcdef"
+    url = build_reset_password_url(sample_token)
+
+    # 1. URL phai tro toi port 8001 (hoac frontend_base_url)
+    assert ":8001" in url or settings.frontend_base_url in url
+    assert "/public/reset-password.html" in url
+
+    # 2. Token phai nam o hash fragment (#token=) de an toan o phia client
+    assert f"#token={sample_token}" in url
+
+    # 3. Khong bao gio duoc truyen token o query param (?reset_token=)
+    assert "?" not in url
+    assert "reset_token=" not in url
+
+
+# 11. Yeu cau reset va cac lan thu that bai KHONG BAO GIO duoc thay doi password_hash
+def test_11_old_password_preserved_on_forgot_and_failed_reset(test_user_email):
+    client = TestClient(app)
+    username, email, old_password = test_user_email
+
+    user_before = get_user_by_email(email)
+    hash_before = user_before["password_hash"]
+
+    # 1. Yeu cau reset mat khau
+    res_forgot = client.post("/auth/forgot-password", json={"email": email})
+    assert res_forgot.status_code == 200
+
+    # Kiem tra password_hash khong he bi thay doi sau khi yeu cau reset
+    user_after_forgot = get_user_by_email(email)
+    assert user_after_forgot["password_hash"] == hash_before
+
+    # 2. Gui token sai hoac rong de gia lap reset that bai
+    res_failed = client.post("/auth/reset-password", json={"token": "invalid_token_xyz", "new_password": "newPassword789"})
+    assert res_failed.status_code == 400
+
+    # password_hash van phai nguyen ven
+    user_after_failed = get_user_by_email(email)
+    assert user_after_failed["password_hash"] == hash_before
+
+    # 3. Nguoi dung van dang nhap thanh cong bang ca username va email voi mat khau cu
+    login_by_user = client.post("/auth/login", json={"username": username, "password": old_password})
+    assert login_by_user.status_code == 200
+    assert login_by_user.json()["user"]["username"] == username
+
+    login_by_email = client.post("/auth/login", json={"username": email, "password": old_password})
+    assert login_by_email.status_code == 200
+    assert login_by_email.json()["user"]["email"] == email
+
+
+# 12. Dang nhap ho tro ca Username va Email lien mach truoc va sau khi doi mat khau
+def test_12_login_supports_both_username_and_email(test_user_email):
+    client = TestClient(app)
+    username, email, old_password = test_user_email
+
+    # Truoc khi reset: Dang nhap bang email thanh cong
+    res1 = client.post("/auth/login", json={"username": email, "password": old_password})
+    assert res1.status_code == 200
+
+    # Thuc hien reset mat khau
+    client.post("/auth/forgot-password", json={"email": email})
+    token = get_latest_dev_email()["token"]
+    new_password = "anotherStrongPass999"
+    res_reset = client.post("/auth/reset-password", json={"token": token, "new_password": new_password})
+    assert res_reset.status_code == 200
+
+    # Sau khi reset: Dang nhap bang email voi mat khau moi thanh cong
+    res2 = client.post("/auth/login", json={"username": email, "password": new_password})
+    assert res2.status_code == 200
+    assert res2.json()["user"]["username"] == username
+
+    # Dang nhap bang username voi mat khau moi thanh cong
+    res3 = client.post("/auth/login", json={"username": username, "password": new_password})
+    assert res3.status_code == 200
+    assert res3.json()["user"]["username"] == username
+

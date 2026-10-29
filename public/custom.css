@@ -1,0 +1,619 @@
+/* ==========================================================================
+   Custom CSS for Appliance Troubleshooting RAG Chatbot
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+:root, html.dark {
+    --bg-primary: #0b0f19;
+    --bg-secondary: #111827;
+    --bg-tertiary: #1e293b;
+    --accent-color: #38bdf8;
+    --accent-hover: #0284c7;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --border-color: #1f2937;
+    --user-msg-bg: #1e293b;
+    --bot-msg-bg: transparent;
+    --code-bg: #090d16;
+    --code-text: #e2e8f0;
+    --table-header-bg: #1e293b;
+    --table-row-hover: rgba(51, 65, 85, 0.3);
+    --composer-bg: #151d2a;
+    --composer-border: #2a3749;
+    --placeholder-color: #64748b;
+    --radius-lg: 12px;
+    --radius-md: 8px;
+    --shadow-soft: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
+}
+
+html.light {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8fafc;
+    --bg-tertiary: #f1f5f9;
+    --accent-color: #0284c7;
+    --accent-hover: #0369a1;
+    --text-primary: #0f172a;        /* Màu chữ tối rõ nét trên nền sáng */
+    --text-secondary: #475569;      /* Màu chữ phụ xám đậm */
+    --border-color: #e2e8f0;
+    --user-msg-bg: #f1f5f9;         /* Bong bóng chat người dùng màu xám nhạt dịu mắt */
+    --bot-msg-bg: transparent;
+    --code-bg: #f8fafc;
+    --code-text: #0f172a;
+    --table-header-bg: #f1f5f9;
+    --table-row-hover: rgba(241, 245, 249, 0.7);
+    --composer-bg: #ffffff;
+    --composer-border: #cbd5e1;
+    --placeholder-color: #94a3b8;
+    --radius-lg: 12px;
+    --radius-md: 8px;
+    --shadow-soft: 0 4px 20px -2px rgba(0, 0, 0, 0.08);
+}
+
+body, html {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    background-color: var(--bg-primary) !important;
+    color: var(--text-primary) !important;
+}
+
+/* Sidebar & Navigation */
+aside, div[role="navigation"] {
+    background-color: var(--bg-secondary) !important;
+    border-right: 1px solid var(--border-color) !important;
+    color: var(--text-primary) !important;
+}
+
+aside *, div[role="navigation"] * {
+    color: var(--text-primary);
+}
+
+/* Starters styling */
+.starter-item, button[data-testid="starter"] {
+    background: var(--bg-secondary) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: var(--radius-lg) !important;
+    color: var(--text-primary) !important;
+    transition: all 0.2s ease-in-out !important;
+}
+
+.starter-item:hover, button[data-testid="starter"]:hover {
+    background: rgba(56, 189, 248, 0.12) !important;
+    border-color: var(--accent-color) !important;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-soft);
+}
+
+/* Message Bubbles & Typography (Đảm bảo chữ đọc rõ trong cả 2 theme) */
+.step-user_message {
+    background-color: var(--user-msg-bg) !important;
+    color: var(--text-primary) !important;
+    border-radius: var(--radius-lg) !important;
+    padding: 12px 16px !important;
+    border: 1px solid var(--border-color) !important;
+}
+
+.step-user_message * {
+    color: var(--text-primary) !important;
+}
+
+.step-assistant_message {
+    background-color: var(--bot-msg-bg) !important;
+    color: var(--text-primary) !important;
+    padding: 8px 0px !important;
+}
+
+.step-assistant_message *,
+.prose, .prose * {
+    color: var(--text-primary) !important;
+}
+
+/* ==========================================================================
+   Chat Composer - Sleek Single-Row Capsule / Pill Layout (ChatGPT / Image 2 Style)
+   ========================================================================== */
+
+/* 1. The Outer Capsule Container: Long rounded pill shape */
+#message-composer,
+div[id="message-composer"] {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    border-radius: 9999px !important;
+    min-height: 52px !important;
+    max-height: 140px !important;
+    padding: 6px 8px 6px 20px !important;
+    background-color: var(--composer-bg) !important;
+    border: 1.5px solid var(--composer-border) !important;
+    box-shadow: 0 4px 18px -2px rgba(0, 0, 0, 0.3) !important;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+    box-sizing: border-box !important;
+    gap: 10px !important;
+    width: 100% !important;
+}
+
+#message-composer:focus-within,
+div[id="message-composer"]:focus-within {
+    border-color: #2563eb !important;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.25), 0 4px 20px rgba(0, 0, 0, 0.35) !important;
+}
+
+/* 2. Strip any inner nested boxes / borders from wrappers inside composer */
+#message-composer > div,
+#message-composer .relative,
+#message-composer div:has(> #chat-input),
+#message-composer div:has(> textarea) {
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+/* 3. Sleek Textarea without any border or background */
+#chat-input,
+textarea#chat-input {
+    background: transparent !important;
+    color: var(--text-primary) !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    font-size: 0.98rem !important;
+    line-height: 1.45 !important;
+    padding: 6px 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    resize: none !important;
+    min-height: 24px !important;
+    max-height: 110px !important;
+}
+
+#chat-input:focus,
+textarea#chat-input:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+#chat-input::placeholder,
+textarea::placeholder {
+    color: var(--placeholder-color) !important;
+    font-style: normal !important;
+    opacity: 0.75 !important;
+}
+
+/* 4. Right side actions container inside pill */
+#message-composer > div.flex.items-center.justify-between,
+#message-composer > div:last-child {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    flex: 0 0 auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    gap: 6px !important;
+}
+
+/* Hide unneeded attachment / speech / settings buttons on the left */
+#message-composer .flex.items-center.-ml-1\.5,
+#message-composer button#upload-button,
+#message-composer button[aria-label*="upload" i],
+#message-composer button[aria-label*="attach" i],
+#message-composer button[aria-label*="audio" i],
+#message-composer button[id*="settings" i] {
+    display: none !important;
+}
+
+/* 5. Circular Send Button (Perfect Circle with Vibrant Blue & White Arrow, exactly like Image 2) */
+#chat-submit,
+button#chat-submit,
+#stop-button,
+button#stop-button,
+button[id*="submit" i],
+button[id*="send" i] {
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+    min-height: 38px !important;
+    max-width: 38px !important;
+    max-height: 38px !important;
+    border-radius: 50% !important;
+    background: #2563eb !important;
+    color: #ffffff !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.45) !important;
+    transition: all 0.2s ease !important;
+    flex-shrink: 0 !important;
+}
+
+#chat-submit:hover,
+button#chat-submit:hover {
+    background: #1d4ed8 !important;
+    transform: scale(1.05) !important;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.6) !important;
+}
+
+#chat-submit:disabled,
+button#chat-submit:disabled {
+    background: #334155 !important;
+    color: #94a3b8 !important;
+    cursor: not-allowed !important;
+    opacity: 0.45 !important;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* Icon mũi tên trắng hướng lên bên trong nút tròn */
+#chat-submit svg,
+button#chat-submit svg,
+#stop-button svg,
+button#stop-button svg {
+    width: 20px !important;
+    height: 20px !important;
+    color: #ffffff !important;
+    stroke: #ffffff !important;
+    fill: none !important;
+    stroke-width: 2.3 !important;
+    display: block !important;
+    margin: auto !important;
+}
+
+/* Markdown tables */
+table {
+    border-collapse: collapse !important;
+    width: 100% !important;
+    margin: 12px 0 !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: var(--radius-md) !important;
+    overflow: hidden !important;
+}
+
+th {
+    background-color: var(--table-header-bg) !important;
+    color: var(--accent-color) !important;
+    padding: 10px 14px !important;
+    font-weight: 600 !important;
+    text-align: left !important;
+    border-bottom: 2px solid var(--border-color) !important;
+}
+
+td {
+    padding: 8px 14px !important;
+    border-bottom: 1px solid var(--border-color) !important;
+    color: var(--text-primary) !important;
+}
+
+tr:hover {
+    background-color: var(--table-row-hover) !important;
+}
+
+/* Code block styling */
+pre, code {
+    font-family: 'Fira Code', Consolas, monospace !important;
+    background-color: var(--code-bg) !important;
+    color: var(--code-text) !important;
+    border-radius: var(--radius-md) !important;
+}
+
+/* Links */
+a {
+    color: var(--accent-color) !important;
+    text-decoration: none !important;
+    transition: color 0.15s ease !important;
+}
+
+a:hover {
+    color: var(--accent-hover) !important;
+    text-decoration: underline !important;
+}
+
+/* ==========================================================================
+   Centered Clean Login Page (DHV Branding, Single Column, No Split-Screen)
+   ========================================================================== */
+
+/* 1. Main outer screen container */
+div.grid.min-h-svh {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: 100vh !important;
+    min-height: 100dvh !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    background-color: #0b0f19 !important;
+    padding: 16px !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+}
+
+/* 2. Hide right-side decorative split-screen column */
+div.grid.min-h-svh > div.relative,
+div.grid.min-h-svh > div.bg-muted,
+div.grid.min-h-svh > div:nth-child(2),
+div.grid.min-h-svh > div.hidden {
+    display: none !important;
+}
+
+/* 3. Hide Chainlit default top-left logo and watermarks */
+div.grid.min-h-svh > div:first-child > div.flex.justify-center,
+div.grid.min-h-svh svg[class*="chainlit"],
+div.grid.min-h-svh a[href*="chainlit"],
+div.grid.min-h-svh a[href*="chainlit.io"],
+div.grid.min-h-svh .w-\[150px\] {
+    display: none !important;
+}
+
+/* 4. Child 1 is the Card: Single column, vertically and horizontally centered */
+div.grid.min-h-svh > div.flex.flex-col {
+    background: #111827 !important;
+    border: 1px solid #1f2937 !important;
+    border-radius: 16px !important;
+    padding: 28px 20px !important;
+    width: 100% !important;
+    max-width: 440px !important;
+    min-width: 0 !important;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7) !important;
+    margin: 0 auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-sizing: border-box !important;
+    gap: 0 !important;
+}
+
+div.grid.min-h-svh > div.flex.flex-col * {
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+}
+
+/* 5. Inner flex wrapper: CRITICAL! Must be flex-direction: column and 100% width */
+div.grid.min-h-svh > div.flex.flex-col > div.flex.flex-1 {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    flex: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* 6. Form container: full width, 1 column */
+div.grid.min-h-svh .max-w-xs {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+}
+
+div.grid.min-h-svh form {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+}
+
+/* 7. Input fields styling */
+div.grid.min-h-svh input {
+    background: #1e293b !important;
+    border: 1px solid #334155 !important;
+    color: #f8fafc !important;
+    border-radius: 8px !important;
+    padding: 10px 14px !important;
+    font-size: 0.95rem !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    transition: border-color 0.2s ease !important;
+}
+
+div.grid.min-h-svh input:focus {
+    border-color: var(--accent-color) !important;
+    outline: none !important;
+    box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.25) !important;
+}
+
+/* 8. Submit button styling */
+div.grid.min-h-svh button[type="submit"] {
+    background: var(--accent-hover) !important;
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    font-size: 0.95rem !important;
+    border-radius: 8px !important;
+    padding: 12px !important;
+    width: 100% !important;
+    border: none !important;
+    cursor: pointer !important;
+    transition: background 0.2s ease !important;
+    margin-top: 4px !important;
+}
+
+div.grid.min-h-svh button[type="submit"]:hover {
+    background: #0369a1 !important;
+}
+
+/* 9. Field labels */
+div.grid.min-h-svh label {
+    color: #cbd5e1 !important;
+    font-weight: 600 !important;
+    font-size: 0.88rem !important;
+    margin-bottom: 2px !important;
+}
+
+/* 10. Injected DHV Branding Header */
+.dhv-login-header {
+    text-align: center;
+    margin-bottom: 18px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.dhv-login-logo-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 12px;
+    width: 100%;
+}
+
+.dhv-login-logo {
+    display: block;
+    margin: 0 auto;
+    width: auto;
+    max-width: 200px;
+    height: auto;
+    max-height: 84px;
+    object-fit: contain;
+    border-radius: 4px;
+}
+
+.dhv-login-fallback {
+    width: 52px;
+    height: 52px;
+    background: rgba(56, 189, 248, 0.12);
+    border: 1px solid var(--accent-color);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    margin: 0 auto;
+}
+
+.dhv-login-title {
+    margin: 0 0 6px 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #f8fafc;
+    letter-spacing: -0.01em;
+    line-height: 1.35;
+    text-align: center;
+}
+
+.dhv-login-subtitle {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+    text-align: center;
+}
+
+/* 11. Form Title 'Đăng nhập' */
+div.grid.min-h-svh form h1 {
+    font-size: 1.15rem !important;
+    font-weight: 700 !important;
+    color: #e2e8f0 !important;
+    text-align: center !important;
+    margin: 4px 0 0 0 !important;
+    letter-spacing: -0.01em !important;
+}
+
+/* 12. Injected DHV Footer (Links) */
+.dhv-login-footer {
+    margin-top: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+    font-size: 0.85rem;
+    width: 100%;
+}
+
+.dhv-login-footer a {
+    color: var(--accent-color) !important;
+    text-decoration: none !important;
+    font-weight: 600;
+}
+
+.dhv-login-footer a:hover {
+    text-decoration: underline !important;
+    color: #7dd3fc !important;
+}
+
+.dhv-register-wrap {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+}
+
+
+/* ==========================================================================
+   Admin Header Button (Top-Right of Chainlit Interface)
+   ========================================================================== */
+.dhv-admin-header-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    background: #0284c7 !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(56, 189, 248, 0.4) !important;
+    border-radius: 8px !important;
+    padding: 6px 14px !important;
+    font-size: 0.85rem !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    margin-right: 8px !important;
+    transition: all 0.2s ease !important;
+    box-shadow: 0 2px 6px rgba(2, 132, 199, 0.3) !important;
+    height: 34px !important;
+}
+
+.dhv-admin-header-btn:hover {
+    background: #0369a1 !important;
+    border-color: #38bdf8 !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.4) !important;
+}
+
+/* ==========================================================================
+   Disable File Upload Completely
+   ========================================================================== */
+
+/* Hide upload buttons, paperclip icons, and spontaneous file drop targets */
+button[aria-label*="upload" i],
+button[aria-label*="attach" i],
+button[aria-label*="Attach" i],
+button[aria-label*="file" i],
+button#upload-button,
+div[data-testid*="upload"],
+input[type="file"],
+div[role="button"][aria-label*="attach" i],
+svg.lucide-paperclip,
+svg.lucide-upload {
+    display: none !important;
+    pointer-events: none !important;
+    visibility: hidden !important;
+}
+
+/* ==========================================================================
+   Quick Actions Row - Ensure Single Horizontal Row Without Wrapping
+   ========================================================================== */
+div:has(> button[id*="action-"]),
+.cl-action-container,
+div.flex.flex-wrap.gap-2 {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    gap: 8px !important;
+    padding-bottom: 4px !important;
+}
+
+button[id*="action-"] {
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+}

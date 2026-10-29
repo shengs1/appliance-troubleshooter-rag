@@ -17,6 +17,8 @@ from typing import Any
 import uuid
 
 import bcrypt
+from argon2 import PasswordHasher
+from argon2.exceptions import InvalidHashError, VerifyMismatchError
 from fastapi import Depends, Header, HTTPException, Request, status
 
 from rag_chatbot.config import get_settings
@@ -34,21 +36,56 @@ from rag_chatbot.email_service import build_reset_password_url, send_password_re
 
 SESSION_COOKIE_NAME = "session_token"
 
+_argon2_hasher = PasswordHasher()
+
 
 def hash_password(password: str) -> str:
-    """Hash mat khau su dung bcrypt voi ngau nhien salt tu dong."""
-    salt = bcrypt.gensalt()
-    hashed = bcrypt.hashpw(password.encode("utf-8"), salt)
-    return hashed.decode("utf-8")
+    """Hash mat khau su dung Argon2id (chuan bao mat cao nhat cho authentication)."""
+    return _argon2_hasher.hash(password)
 
 
 def verify_password(plain_password: str, hashed_password: str) -> bool:
-    """Kiem tra mat khau nhap vao co khop voi chuoi hash bcrypt hay khong."""
+    """Kiem tra mat khau, ho tro Argon2id va tuong thich nguoc voi bcrypt / SHA-256."""
+    if not hashed_password or not plain_password:
+        return False
+
+    # 1. Kiem tra Argon2id
+    if hashed_password.startswith("$argon2"):
+        try:
+            return _argon2_hasher.verify(hashed_password, plain_password)
+        except (VerifyMismatchError, InvalidHashError):
+            return False
+        except Exception:
+            return False
+
+    # 2. Ho tro legacy bcrypt ($2a$, $2b$, $2y$)
+    if hashed_password.startswith(("$2a$", "$2b$", "$2y$")):
+        try:
+            return bcrypt.checkpw(
+                plain_password.encode("utf-8"),
+                hashed_password.encode("utf-8"),
+            )
+        except Exception:
+            return False
+
+    # 3. Ho tro legacy SHA-256 dang salt$hash hoac hex
     try:
-        return bcrypt.checkpw(
-            plain_password.encode("utf-8"),
-            hashed_password.encode("utf-8"),
-        )
+        if "$" in hashed_password:
+            salt, hash_val = hashed_password.split("$", 1)
+            computed = hashlib.sha256((salt + plain_password).encode("utf-8")).hexdigest()
+            return secrets.compare_digest(computed, hash_val)
+    except Exception:
+        pass
+
+    return False
+
+
+def needs_rehash(hashed_password: str) -> bool:
+    """Kiem tra xem chuoi hash co can duoc rehash sang Argon2id khong."""
+    if not hashed_password.startswith("$argon2"):
+        return True
+    try:
+        return _argon2_hasher.check_needs_rehash(hashed_password)
     except Exception:
         return False
 
@@ -208,7 +245,16 @@ def authenticate_user(username: str, password: str, db_path: str | None = None) 
             raise ValueError("Tài khoản của bạn đã bị khóa. Vui lòng liên hệ quản trị viên.")
 
         now_str = datetime.now(timezone.utc).isoformat()
-        conn.execute("UPDATE users SET last_login_at = ? WHERE id = ?;", (now_str, row["id"]))
+        
+        # Tu dong rehash sang Argon2id neu dang dung hash cu (legacy bcrypt / sha256)
+        if needs_rehash(row["password_hash"]):
+            new_argon2_hash = hash_password(password)
+            conn.execute(
+                "UPDATE users SET last_login_at = ?, password_hash = ? WHERE id = ?;",
+                (now_str, new_argon2_hash, row["id"]),
+            )
+        else:
+            conn.execute("UPDATE users SET last_login_at = ? WHERE id = ?;", (now_str, row["id"]))
         conn.commit()
 
         return {

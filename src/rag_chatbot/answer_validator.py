@@ -1,18 +1,9 @@
-"""Module Answer Validation - Kiem tra va xac thuc cau tra loi cua Local LLM.
+"""Module Answer Validation - Kiểm định và xác thực câu trả lời của Local LLM.
 
-Nhiem vu:
-1. Kiem tra tinh groundedness (cau tra loi co bam sat tai lieu retrieved khong).
-2. Kiem tra tinh nhat quan ve Hang (Brand consistency).
-3. Kiem tra tinh nhat quan ve Thiet bi (Device consistency).
-4. Kiem tra tinh nhat quan ve Ma loi (Error code consistency).
-5. Phat hien ao giac (Hallucination detection): ma loi la, hang la, thiet bi la, linh kien / nguyen nhan khong co trong context.
-6. Kiem tra tinh nhat quan ve Nguon (Source consistency): tai lieu retrieved co phu hop thuc the yeu cau khong.
-7. Xu ly khi context khong du hoac cau tra loi rong.
-
-Tuan thu quy tac:
-- Rule-based / deterministic hoan toan.
-- Khong dung LLM judge / model judge / agent / framework phuc tap.
-- De hieu, de giai thich trong do an tot nghiep.
+Chức năng:
+1. Groundedness: Đảm bảo câu trả lời bám sát tài liệu tham khảo, chống ảo giác.
+2. Consistency: Kiểm tra tính nhất quán về Hãng, Thiết bị, Mã lỗi và Nguồn đối chiếu.
+3. Fallback an toàn: Trả về thông báo tiêu chuẩn khi câu trả lời không vượt qua kiểm định.
 """
 
 from __future__ import annotations

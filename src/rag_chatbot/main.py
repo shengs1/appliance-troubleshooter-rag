@@ -6,27 +6,33 @@ Nhiem vu:
    - POST /auth/login: Dang nhap va thiet lap cookie HttpOnly session_token.
    - POST /auth/logout: Dang xuat va huy phien lam viec.
    - GET /auth/me: Lay thong tin tai khoan dang dang nhap.
+   - POST /auth/forgot-password: Yeu cau dat lai mat khau qua email.
+   - POST /auth/reset-password: Dat lai mat khau moi voi token.
 2. Cung cap cac endpoint quan ly lich su hoi thoai:
    - GET /conversations: Danh sach cuoc tro chuyen cua user hien tai.
    - GET /conversations/{conversation_id}: Chi tiet cuoc tro chuyen va danh sach tin nhan.
 3. Endpoint RAG Chat:
    - POST /chat: Nhan cau hoi, goi pipeline RAG va luu lich su vao SQLite trong transaction.
-4. Tich hop giao dien Gradio tai /chat-ui.
+4. Endpoint Quan tri (Admin API JSON):
+   - GET /admin/stats, GET /admin/users, POST /admin/users/{id}/status, GET /admin/audit-logs...
 """
 
 from __future__ import annotations
 
-from typing import Any
-from fastapi import Depends, FastAPI, HTTPException, Request, Response, status
+from typing import Any, Optional
+import os
+from fastapi import Depends, FastAPI, HTTPException, Query, Request, Response, status
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import HTMLResponse, RedirectResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
-import gradio as gr
 
-from rag_chatbot.admin_ui import CUSTOM_ADMIN_CSS, build_admin_demo
 from rag_chatbot.auth import (
     SESSION_COOKIE_NAME,
     authenticate_user,
     create_user_session,
     get_current_user,
+    hash_password,
     register_user,
     require_admin,
     request_password_reset,
@@ -34,10 +40,13 @@ from rag_chatbot.auth import (
     revoke_session,
 )
 from rag_chatbot.database import (
+    delete_user_permanently,
+    get_admin_audit_logs,
     get_admin_stats,
     get_admin_users,
     get_conversation_by_id,
     get_conversation_messages,
+    get_db_connection,
     get_user_by_id,
     get_user_conversations,
     init_db,
@@ -48,7 +57,6 @@ from rag_chatbot.database import (
 )
 from rag_chatbot.rag import generate_rag_answer
 from rag_chatbot.retrieval import extract_matching_sources
-from rag_chatbot.ui import CUSTOM_CSS, build_demo
 
 
 # Khoi tao CSDL SQLite cho nguoi dung va lich su hoi thoai
@@ -60,6 +68,19 @@ app = FastAPI(
     description="API tra cuu huong dan xu ly su co thiet bi dien tu gia dung su dung RAG",
     version="0.2.0",
 )
+
+# Cau hinh CORS cho phep Chainlit UI (port 8001) goi REST API an toan
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:8001", "http://127.0.0.1:8001", "http://localhost:8000", "http://127.0.0.1:8000"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# Phuc vu cac file giao dien tinh trong thu muc public/ (dam bao ca port 8000 va port 8001 deu mo duoc HTML)
+if os.path.exists("public"):
+    app.mount("/public", StaticFiles(directory="public", html=True), name="public")
 
 
 # 2. Mo hinh du lieu Pydantic (Request / Response)
@@ -93,6 +114,7 @@ class AdminStatsResponse(BaseModel):
     total_users: int
     active_users: int
     locked_users: int
+    total_conversations: int = 0
 
 
 class AdminUserResponse(BaseModel):
@@ -133,6 +155,11 @@ class ResetPasswordRequest(BaseModel):
     """Du lieu dau vao cho endpoint POST /auth/reset-password."""
     token: str = Field(..., description="Ma token khoi phuc nhan duoc tu email")
     new_password: str = Field(..., min_length=6, description="Mat khau moi (toi thieu 6 ky tu)")
+
+
+class AdminChangePasswordRequest(BaseModel):
+    """Du lieu dau vao cho endpoint POST /admin/change-password."""
+    new_password: str = Field(..., min_length=6, description="Mat khau moi cho Admin (toi thieu 6 ky tu)")
 
 
 class GenericMessageResponse(BaseModel):
@@ -194,9 +221,38 @@ class ChatResponse(BaseModel):
 # 3. Cac endpoint he thong co ban
 
 @app.get("/", summary="Root endpoint")
-def root() -> dict[str, str]:
-    """Endpoint goc thong bao trang thai he thong."""
+def root(request: Request) -> Any:
+    """Endpoint goc thong bao trang thai he thong.
+    
+    Neu trinh duyet nguoi dung mo truc tiep bang trinh duyet (Accept: text/html),
+    tu dong chuyen huong sang giao dien Chatbot Chainlit (port 8001).
+    Neu la API request / automated test, tra ve thong bao trang thai API.
+    """
+    accept = request.headers.get("accept", "")
+    if "text/html" in accept and "application/json" not in accept:
+        from rag_chatbot.config import get_settings
+        settings = get_settings()
+        base_url = getattr(settings, "frontend_base_url", "http://localhost:8001").rstrip("/")
+        return RedirectResponse(url=f"{base_url}/", status_code=307)
     return {"message": "RAG Chatbot API is running"}
+
+
+@app.get("/login", include_in_schema=False)
+def login_redirect() -> RedirectResponse:
+    """Chuyen huong nguoi dung tu API port 8000 sang trang dang nhap Chainlit port 8001."""
+    from rag_chatbot.config import get_settings
+    settings = get_settings()
+    base_url = getattr(settings, "frontend_base_url", "http://localhost:8001").rstrip("/")
+    return RedirectResponse(url=f"{base_url}/login", status_code=307)
+
+
+@app.get("/logout", include_in_schema=False)
+def logout_redirect() -> RedirectResponse:
+    """Chuyen huong nguoi dung sang endpoint logout cua Chainlit port 8001."""
+    from rag_chatbot.config import get_settings
+    settings = get_settings()
+    base_url = getattr(settings, "frontend_base_url", "http://localhost:8001").rstrip("/")
+    return RedirectResponse(url=f"{base_url}/logout", status_code=307)
 
 
 @app.get("/health", summary="Health check endpoint")
@@ -479,6 +535,18 @@ def chat(
 # 7. Cac endpoint Quan tri he thong (Admin API)
 
 @app.get(
+    "/admin/bridge-token",
+    summary="Sinh token phien moi cho giao dien Quan tri Admin",
+)
+def admin_get_bridge_token(
+    current_admin: dict[str, Any] = Depends(require_admin),
+) -> dict[str, str]:
+    """Sinh session token an toan cho Admin Dashboard."""
+    raw_token, _ = create_user_session(user_id=current_admin["id"])
+    return {"token": raw_token}
+
+
+@app.get(
     "/admin/stats",
     response_model=AdminStatsResponse,
     summary="Thống kê tổng quan người dùng cho Quản trị viên",
@@ -620,28 +688,73 @@ def admin_trigger_password_reset(
     )
 
 
-@app.get("/admin", include_in_schema=False)
-def redirect_to_admin_ui():
-    """Chuyen huong tu /admin sang /admin-ui."""
-    from fastapi.responses import RedirectResponse
-    return RedirectResponse(url="/admin-ui", status_code=status.HTTP_307_TEMPORARY_REDIRECT)
-
-
-# 8. Tich hop giao dien web Gradio vao FastAPI
-# Giao dien Chatbot tai /chat-ui
-demo = build_demo()
-gr.mount_gradio_app(
-    app,
-    demo,
-    path="/chat-ui",
-    css=CUSTOM_CSS,
+@app.delete(
+    "/admin/users/{user_id}",
+    response_model=GenericMessageResponse,
+    summary="Xóa vĩnh viễn tài khoản người dùng và toàn bộ dữ liệu liên quan",
 )
+def admin_delete_user(
+    user_id: str,
+    admin_password: Optional[str] = Query(None, description="Mật khẩu xác thực bảo mật bắt buộc khi xóa tài khoản Quản trị viên"),
+    current_admin: dict[str, Any] = Depends(require_admin),
+) -> GenericMessageResponse:
+    """Xóa tài khoản người dùng, toàn bộ phiên đăng nhập và lịch sử trò chuyện.
+    
+    Bảo vệ an toàn:
+    - Admin không thể tự xóa chính mình.
+    - Không thể xóa Quản trị viên cuối cùng còn hoạt động trong hệ thống.
+    - Khi xóa tài khoản Quản trị viên, bắt buộc phải cung cấp đúng mật khẩu bảo mật (123456789).
+    """
+    try:
+        result = delete_user_permanently(
+            target_user_id=user_id,
+            admin_id=current_admin["id"],
+            admin_password=admin_password,
+        )
+        return GenericMessageResponse(message=result["message"])
+    except ValueError as err:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=str(err),
+        )
 
-# Giao dien Quan tri tai /admin-ui
-admin_demo = build_admin_demo()
-gr.mount_gradio_app(
-    app,
-    admin_demo,
-    path="/admin-ui",
-    css=CUSTOM_ADMIN_CSS,
+
+@app.post(
+    "/admin/change-password",
+    response_model=GenericMessageResponse,
+    summary="Admin truc tiep doi mat khau cho chinh minh",
 )
+def admin_change_password(
+    payload: AdminChangePasswordRequest,
+    current_admin: dict[str, Any] = Depends(require_admin),
+) -> GenericMessageResponse:
+    """Admin truc tiep doi mat khau cho tai khoan Admin ma khong can qua luong email."""
+    new_hash = hash_password(payload.new_password)
+    with get_db_connection() as conn:
+        conn.execute(
+            "UPDATE users SET password_hash = ? WHERE id = ?;",
+            (new_hash, current_admin["id"]),
+        )
+        conn.commit()
+
+    record_admin_audit_log(
+        admin_id=current_admin["id"],
+        action="admin_change_own_password",
+        target_user_id=current_admin["id"],
+        details="Admin đổi mật khẩu qua endpoint /admin/change-password",
+    )
+    return GenericMessageResponse(
+        message="Đổi mật khẩu Admin thành công! Mật khẩu mới có hiệu lực ngay lập tức."
+    )
+
+@app.get(
+    "/admin/audit-logs",
+    summary="Lấy danh sách nhật ký kiểm toán các thao tác quản trị",
+)
+def admin_get_audit_logs(
+    limit: int = 20,
+    current_admin: dict = Depends(require_admin),
+) -> list[dict]:
+    """Trả về danh sách audit logs gần nhất cho Quản trị viên."""
+    return get_admin_audit_logs(limit=limit)
+

@@ -25,7 +25,7 @@ from rag_chatbot.scope import (
     has_troubleshooting_signal,
     should_refuse,
 )
-from rag_chatbot.ui import chat_fn
+from rag_chatbot.chat_service import chat_fn
 
 
 client = TestClient(app)
@@ -191,3 +191,38 @@ def test_ui_chat_fn_refusal_display():
     assert history[1]["role"] == "assistant"
     assert REFUSAL_MESSAGE in history[1]["content"]
     assert "**Nguồn tham khảo:**" not in history[1]["content"]
+
+
+def test_unaccented_and_real_queries_scope_acceptance():
+    """Kiem tra cac cau hoi thuc te khong dau, tron dau va alias phai duoc chap nhan vao pham vi."""
+    mock_doc = {
+        "question_id": "Q1050",
+        "question": "Máy điều hòa Samsung không làm lạnh?",
+        "answer": "Kiểm tra gas và lưới lọc.",
+        "distance": 0.526,
+        "error_code": "",
+        "brand": "Samsung",
+        "device": "Điều hòa",
+        "retrieval_source": "chroma",
+    }
+    in_scope_queries = [
+        "loi may lanh samsung khong lanh",
+        "lỗi máy lạnh Samsung không lạnh",
+        "dieu hoa samsung khong lanh",
+        "điều hòa samsung không lạnh",
+        "may giat lg khong xa nuoc",
+        "máy giặt LG không xả nước",
+        "bep tu panasonic bao loi u04",
+        "dieu hòa pana báo loi F16",
+    ]
+    for q in in_scope_queries:
+        assert has_troubleshooting_signal(q) is True
+        assert should_refuse([mock_doc], question=q) is False
+
+    out_of_scope_queries = [
+        "lap trinh python co kho khong",
+        "lich su nha tran",
+    ]
+    for q in out_of_scope_queries:
+        assert has_troubleshooting_signal(q) is False
+        assert should_refuse([mock_doc], question=q) is True

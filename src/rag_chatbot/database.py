@@ -209,17 +209,27 @@ def get_user_conversations(user_id: str, db_path: str | None = None) -> list[dic
         return [dict(row) for row in rows]
 
 
-def get_conversation_by_id(conversation_id: str, user_id: str, db_path: str | None = None) -> dict[str, Any] | None:
-    """Lay thong tin cuoc tro chuyen neu no thuoc ve user_id chi dinh. Tra ve None neu khong tim thay hoac khong thuoc quyen so huu."""
+def get_conversation_by_id(conversation_id: str, user_id: str | None = None, db_path: str | None = None) -> dict[str, Any] | None:
+    """Lay thong tin cuoc tro chuyen neu no thuoc ve user_id chi dinh (hoac theo id neu khong truyen user_id)."""
     with get_db_connection(db_path) as conn:
-        row = conn.execute(
-            """
-            SELECT id, user_id, title, created_at, updated_at
-            FROM conversations
-            WHERE id = ? AND user_id = ?;
-            """,
-            (conversation_id, user_id),
-        ).fetchone()
+        if user_id:
+            row = conn.execute(
+                """
+                SELECT id, user_id, title, created_at, updated_at
+                FROM conversations
+                WHERE id = ? AND user_id = ?;
+                """,
+                (conversation_id, user_id),
+            ).fetchone()
+        else:
+            row = conn.execute(
+                """
+                SELECT id, user_id, title, created_at, updated_at
+                FROM conversations
+                WHERE id = ?;
+                """,
+                (conversation_id,),
+            ).fetchone()
         return dict(row) if row else None
 
 
@@ -569,10 +579,13 @@ def get_admin_stats(db_path: str | None = None) -> dict[str, int]:
             """
         ).fetchone()
 
+        conv_row = conn.execute("SELECT COUNT(*) AS total_conversations FROM conversations;").fetchone()
+
         return {
             "total_users": int(row["total_users"]) if row else 0,
             "active_users": int(row["active_users"]) if row else 0,
             "locked_users": int(row["locked_users"]) if row else 0,
+            "total_conversations": int(conv_row["total_conversations"]) if conv_row else 0,
         }
 
 
@@ -586,6 +599,23 @@ def get_user_by_id(user_id: str, db_path: str | None = None) -> dict[str, Any] |
             WHERE id = ?;
             """,
             (user_id,),
+        ).fetchone()
+        return dict(row) if row else None
+
+
+def get_user_by_username(username: str, db_path: str | None = None) -> dict[str, Any] | None:
+    """Tim kiem nguoi dung dua vao username (khong phan biet hoa thuong)."""
+    clean_u = (username or "").strip()
+    if not clean_u:
+        return None
+    with get_db_connection(db_path) as conn:
+        row = conn.execute(
+            """
+            SELECT id, username, email, password_hash, role, status, created_at, last_login_at
+            FROM users
+            WHERE LOWER(username) = LOWER(?);
+            """,
+            (clean_u,),
         ).fetchone()
         return dict(row) if row else None
 
@@ -751,6 +781,63 @@ def update_user_role(
     return get_user_by_id(target_user_id, db_path=db_path)  # type: ignore[return-value]
 
 
+def delete_user_permanently(
+    target_user_id: str,
+    admin_id: str,
+    admin_password: str | None = None,
+    db_path: str | None = None,
+) -> dict[str, Any]:
+    """Xóa vĩnh viễn tài khoản người dùng và toàn bộ dữ liệu liên quan (hard delete).
+    
+    Quy tắc an toàn:
+    - Không cho phép Admin tự xóa tài khoản của chính mình.
+    - Không cho phép xóa Admin cuối cùng còn hoạt động trong hệ thống.
+    - Khi xóa tài khoản Quản trị viên (Admin), bắt buộc phải có mật khẩu xác thực an toàn (123456789).
+    - Thực hiện trong một SQLite transaction: xóa sessions, tokens, messages, conversations, và user.
+    - Ghi nhận audit log sau khi xóa.
+    """
+    target_user = get_user_by_id(target_user_id, db_path=db_path)
+    if not target_user:
+        raise ValueError("Không tìm thấy người dùng.")
+
+    if target_user_id == admin_id:
+        raise ValueError("Không thể tự xóa tài khoản của chính mình.")
+
+    if target_user.get("role") == "admin":
+        if target_user.get("status") == "active" and count_active_admins(db_path=db_path) <= 1:
+            raise ValueError("Không thể xóa Quản trị viên (Admin) duy nhất còn hoạt động.")
+
+        # Yeu cau xac thuc mat khau an toan khi xoa tai khoan Admin
+        if admin_password != "123456789":
+            raise ValueError("Để xóa tài khoản Quản trị viên (Admin), bạn phải nhập chính xác mật khẩu xác thực bảo mật (123456789).")
+
+    target_username = target_user.get("username", "unknown")
+    target_email = target_user.get("email", "")
+
+    with get_db_connection(db_path) as conn:
+        cursor = conn.cursor()
+        cursor.execute("DELETE FROM sessions WHERE user_id = ?;", (target_user_id,))
+        cursor.execute("DELETE FROM password_reset_tokens WHERE user_id = ?;", (target_user_id,))
+        
+        cursor.execute("SELECT id FROM conversations WHERE user_id = ?;", (target_user_id,))
+        conv_ids = [row[0] for row in cursor.fetchall()]
+        for cid in conv_ids:
+            cursor.execute("DELETE FROM messages WHERE conversation_id = ?;", (cid,))
+        cursor.execute("DELETE FROM conversations WHERE user_id = ?;", (target_user_id,))
+        cursor.execute("DELETE FROM users WHERE id = ?;", (target_user_id,))
+        conn.commit()
+
+    record_admin_audit_log(
+        admin_id=admin_id,
+        action="admin_delete_user",
+        target_user_id=target_user_id,
+        details=f"Xóa vĩnh viễn tài khoản '{target_username}' ({target_email})",
+        db_path=db_path,
+    )
+
+    return {"message": f"Tài khoản '{target_username}' đã được xóa vĩnh viễn thành công."}
+
+
 def update_last_login(user_id: str, db_path: str | None = None) -> None:
     """Cap nhat moc thoi gian dang nhap gan nhat."""
     now_str = datetime.now(timezone.utc).isoformat()
@@ -760,5 +847,23 @@ def update_last_login(user_id: str, db_path: str | None = None) -> None:
             (now_str, user_id),
         )
         conn.commit()
+
+
+def get_admin_audit_logs(limit: int = 20, db_path: str | None = None) -> list[dict[str, Any]]:
+    """Lay danh sach nhat ky kiem toan cac thao tac quan tri gan nhat."""
+    with get_db_connection(db_path) as conn:
+        cursor = conn.cursor()
+        rows = cursor.execute(
+            """
+            SELECT l.id, l.admin_id, u.username AS admin_username, l.action, l.target_user_id, l.details, l.created_at
+            FROM admin_audit_logs l
+            LEFT JOIN users u ON l.admin_id = u.id
+            ORDER BY l.created_at DESC
+            LIMIT ?;
+            """,
+            (limit,),
+        ).fetchall()
+        return [dict(r) for r in rows]
+
 
 

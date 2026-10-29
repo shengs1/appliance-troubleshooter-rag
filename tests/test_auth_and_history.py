@@ -71,7 +71,7 @@ def test_01_register_success(unique_username: str):
         assert row is not None
         stored_hash = row["password_hash"]
         assert stored_hash != raw_password
-        assert stored_hash.startswith("$2b$") or stored_hash.startswith("$2a$")
+        assert stored_hash.startswith("$argon2id$") or stored_hash.startswith(("$2b$", "$2a$"))
 
 
 # 2. Tu choi dang ky trung username/email va validation do dai
