@@ -136,7 +136,7 @@ def call_local_llm(
     prompt: str,
     model: str | None = None,
     base_url: str | None = None,
-    timeout: int = 60,
+    timeout: int = 90,
 ) -> str:
     """Goi API toi Local LLM (Ollama) de sinh cau tra loi.
     
@@ -157,11 +157,15 @@ def call_local_llm(
         response.raise_for_status()
         data = response.json()
         return data.get("response", "").strip()
+    except requests.exceptions.ReadTimeout:
+        raise TimeoutError("Thời gian chờ phản hồi từ Local LLM đã quá hạn (timeout).")
     except requests.exceptions.ConnectionError:
         raise ConnectionError(
             f"Không thể kết nối tới dịch vụ Local LLM tại {endpoint}. "
             f"Vui lòng kiểm tra dịch vụ Ollama đã được khởi động chưa (ví dụ: ollama serve)."
         )
+    except requests.exceptions.Timeout:
+        raise TimeoutError("Thời gian chờ phản hồi từ Local LLM đã quá hạn (timeout).")
     except Exception as exc:
         raise RuntimeError(f"Lỗi khi gọi Local LLM: {exc}")
 
@@ -238,9 +242,36 @@ def generate_rag_answer(
                     answer = "Hệ thống đã nhận diện câu trả lời chứa ký tự không phù hợp và đã chuẩn hóa. Vui lòng tham khảo tài liệu kỹ thuật được cung cấp bên dưới hoặc thử đặt câu hỏi cụ thể hơn."
             except Exception:
                 pass
-    except (ConnectionError, RuntimeError) as err:
-        answer = f"[Thông báo dịch vụ Local LLM]: {err}"
+    except Exception as err:
         llm_status = "unavailable"
+        # 1. Neu trong tai lieu tim duoc tu Chroma / Neo4j da co huong dan xu ly cu the:
+        # Cung cap truc tiep huong dan da duoc xac thuc tu CSDL thay vi bao loi vo ich cho nguoi dung
+        top_answer = ""
+        for d in retrieved_docs:
+            if d.get("answer") and d.get("answer").strip():
+                top_answer = d["answer"].strip()
+                break
+
+        if top_answer:
+            answer = (
+                f"{top_answer}\n\n"
+                f"*(Lưu ý: Hướng dẫn kỹ thuật trên được trích xuất trực tiếp từ Cơ sở tri thức do mô hình Local LLM đang phản hồi chậm).* "
+            )
+        elif isinstance(err, TimeoutError) or "timed out" in str(err).lower() or "timeout" in str(err).lower():
+            answer = (
+                "⚠️ **Thời gian phản hồi quá lâu:** Mô hình AI cục bộ (Ollama) đang bận hoặc phản hồi chậm hơn thời gian quy định (90 giây). "
+                "Vui lòng thử lại sau giây lát hoặc kiểm tra ứng dụng Ollama trên máy tính."
+            )
+        elif isinstance(err, ConnectionError) or "kết nối" in str(err).lower() or "connection" in str(err).lower():
+            answer = (
+                "⚠️ **Không thể kết nối tới mô hình AI (Ollama):** Dịch vụ Local LLM chưa được khởi động trên máy tính (cổng 11434). "
+                "Vui lòng mở ứng dụng Ollama hoặc chạy lệnh `ollama serve` trong terminal."
+            )
+        else:
+            answer = (
+                "⚠️ **Hệ thống đang bận:** Đã xảy ra lỗi kỹ thuật khi tạo phản hồi tự nhiên. "
+                "Vui lòng kiểm tra dịch vụ AI cục bộ hoặc thử lại sau giây lát."
+            )
 
     # 6. Kiem dinh va xac thuc cau tra loi (Phase Answer Validation)
     if llm_status == "success":
