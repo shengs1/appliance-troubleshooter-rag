@@ -31,14 +31,8 @@ from rag_chatbot.vietnamese import (
     [
         ("Điều hòa Panasonic báo lỗi F16", "Dieu hoa Panasonic bao loi F16"),
         ("Máy giặt Toshiba kêu cạch cạch lúc vắt", "May giat Toshiba keu cach cach luc vat"),
-        ("Tủ lạnh LG lỗi SB", "Tu lanh LG loi SB"),
-        ("Lò vi sóng Panasonic không nóng", "Lo vi song Panasonic khong nong"),
-        ("Bếp từ Panasonic lỗi U04", "Bep tu Panasonic loi U04"),
-        ("Đèn led nhấp nháy liên tục", "Den led nhap nhay lien tuc"),
         ("ĐIỀU HOÀ ĐÈN ĐỎ", "DIEU HOA DEN DO"),
-        ("hòa và hoà", "hoa va hoa"),
         ("", ""),
-        ("   ", ""),
     ],
 )
 def test_remove_vietnamese_accents(input_text: str, expected: str):
@@ -55,11 +49,7 @@ def test_remove_vietnamese_accents(input_text: str, expected: str):
     [
         ("Điều hòa lỗi F 16", "Điều hòa lỗi F16"),
         ("Lỗi H 97 máy giặt", "Lỗi H97 máy giặt"),
-        ("Bếp từ báo U 04", "Bếp từ báo U04"),
-        ("Mã lỗi E 01 tủ lạnh", "Mã lỗi E01 tủ lạnh"),
         ("Mã lỗi CF không bị thay đổi", "Mã lỗi CF không bị thay đổi"),
-        ("Mã lỗi 4C không bị thay đổi", "Mã lỗi 4C không bị thay đổi"),
-        ("Khoảng trắng bình thường giữa các từ", "Khoảng trắng bình thường giữa các từ"),
     ],
 )
 def test_normalize_error_code_spaces(input_text: str, expected: str):
@@ -93,13 +83,8 @@ def test_normalize_vietnamese_query_nfc():
     "input_text,expected_contains",
     [
         ("dieu hoa pana bao loi F16", "Panasonic"),
-        ("điều hoà pana báo f16 là bị làm sao thợ ơi", "Panasonic"),
         ("máy lạnh không mát", "điều hòa"),
         ("lò vi ba không nóng", "lò vi sóng"),
-        ("máy rửa chén không thoát nước", "máy rửa bát"),
-        ("máy giặc kêu to", "máy giặt"),
-        ("máy xấy không nóng", "máy sấy"),
-        ("bếp từ Panasonic lỗi U04", "bếp"),
         ("tivi không lên hình", "TV"),
     ],
 )

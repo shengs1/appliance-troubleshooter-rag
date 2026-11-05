@@ -17,6 +17,7 @@ import smtplib
 from typing import Any
 
 from rag_chatbot.config import get_settings
+from rag_chatbot.database import get_smtp_config_from_db
 
 
 logger = logging.getLogger(__name__)
@@ -57,16 +58,29 @@ def send_password_reset_email(to_email: str, reset_url: str, raw_token: str) -> 
         "created_at": now_str,
     })
 
-    # Kiem tra neu co cau hinh SMTP thuc te (host khac localhost va co username)
-    smtp_host = getattr(settings, "smtp_host", "localhost")
-    smtp_username = getattr(settings, "smtp_username", "")
-    smtp_password = getattr(settings, "smtp_password", "")
+    # Kiem tra cau hinh SMTP ma hoa tu Co so du lieu SQLite (Brevo) hoac .env
+    db_smtp = get_smtp_config_from_db()
+
+    if db_smtp and db_smtp.get("host") and db_smtp.get("username") and db_smtp.get("password"):
+        smtp_host = db_smtp["host"]
+        smtp_port = int(db_smtp.get("port", 587))
+        smtp_username = db_smtp["username"]
+        smtp_password = db_smtp["password"]
+        smtp_from = db_smtp.get("from_email") or getattr(settings, "smtp_from", "noreply@ragchatbot.local")
+        smtp_use_tls = db_smtp.get("use_tls", True)
+    else:
+        smtp_host = getattr(settings, "smtp_host", "localhost")
+        smtp_port = getattr(settings, "smtp_port", 587)
+        smtp_username = getattr(settings, "smtp_username", "")
+        smtp_password = getattr(settings, "smtp_password", "")
+        smtp_from = getattr(settings, "smtp_from", "noreply@ragchatbot.local")
+        smtp_use_tls = getattr(settings, "smtp_use_tls", True)
 
     if smtp_host and smtp_host != "localhost" and smtp_username:
         try:
             msg = MIMEMultipart("alternative")
             msg["Subject"] = "Yêu cầu đặt lại mật khẩu - Trợ Lý Sự Cố Thiết Bị Điện Gia Dụng"
-            msg["From"] = getattr(settings, "smtp_from", "noreply@ragchatbot.local")
+            msg["From"] = smtp_from
             msg["To"] = to_email
 
             text_content = (
@@ -104,11 +118,8 @@ def send_password_reset_email(to_email: str, reset_url: str, raw_token: str) -> 
             msg.attach(MIMEText(text_content, "plain", "utf-8"))
             msg.attach(MIMEText(html_content, "html", "utf-8"))
 
-            port = getattr(settings, "smtp_port", 587)
-            use_tls = getattr(settings, "smtp_use_tls", True)
-
-            with smtplib.SMTP(smtp_host, port, timeout=10) as server:
-                if use_tls:
+            with smtplib.SMTP(smtp_host, smtp_port, timeout=10) as server:
+                if smtp_use_tls:
                     server.starttls()
                 if smtp_username and smtp_password:
                     server.login(smtp_username, smtp_password)

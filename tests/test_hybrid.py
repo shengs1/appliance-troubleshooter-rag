@@ -19,6 +19,18 @@ from rag_chatbot.retrieval import (
 )
 
 
+def is_neo4j_online() -> bool:
+    """Kiem tra xem may chu Neo4j co dang hoat dong hay khong."""
+    try:
+        from rag_chatbot.neo4j_db import get_neo4j_driver
+        driver = get_neo4j_driver()
+        driver.verify_connectivity()
+        driver.close()
+        return True
+    except Exception:
+        return False
+
+
 def test_extract_question_entities():
     """Kiem tra ham trich xuat thuc the nhan dien dung Hang, Thiet bi va Ma loi."""
     query = "Máy điều hòa Samsung lỗi CF là gì?"
@@ -39,6 +51,7 @@ def test_chroma_retrieves_q0358():
     assert "Q0358" in ids, f"Q0358 khong xuat hien trong ket qua ChromaDB: {ids}"
 
 
+@pytest.mark.skipif(not is_neo4j_online(), reason="Máy chủ Neo4j chưa khởi động (cổng 7687 offline)")
 def test_neo4j_retrieves_q0358():
     """Kiem tra tim kiem rieng biet tu Neo4j do thi co the tim thay Q0358."""
     query = "Máy điều hòa Samsung lỗi CF là gì?"
@@ -49,6 +62,7 @@ def test_neo4j_retrieves_q0358():
     assert "Q0358" in ids, f"Q0358 khong xuat hien trong ket qua Neo4j: {ids}"
 
 
+@pytest.mark.skipif(not is_neo4j_online(), reason="Máy chủ Neo4j chưa khởi động (cổng 7687 offline)")
 def test_hybrid_retrieval_finds_q0358_and_marks_both():
     """Kiem tra hybrid retrieval hop nhat dung va danh dau retrieval_source = 'both' cho Q0358."""
     query = "Máy điều hòa Samsung lỗi CF là gì?"

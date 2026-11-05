@@ -30,6 +30,10 @@ node_modules/
 
 .agents/
 AGENTS.md
+.files/
+.gemini/
+.claude/
+.cursor/
 
 Read skill.docx
 ~$ad skill.docx

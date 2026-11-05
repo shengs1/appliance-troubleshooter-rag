@@ -22,6 +22,17 @@ from rag_chatbot.neo4j_db import (
 )
 
 
+def is_neo4j_online() -> bool:
+    """Kiem tra xem may chu Neo4j co dang hoat dong hay khong."""
+    try:
+        driver = get_neo4j_driver()
+        driver.verify_connectivity()
+        driver.close()
+        return True
+    except Exception:
+        return False
+
+
 def test_neo4j_config_loaded():
     """Kiem tra cau hinh ket noi Neo4j co the duoc doc chinh xac tu config."""
     settings = get_settings()
@@ -30,6 +41,7 @@ def test_neo4j_config_loaded():
     assert len(settings.neo4j_password) > 0
 
 
+@pytest.mark.skipif(not is_neo4j_online(), reason="Máy chủ Neo4j chưa khởi động (cổng 7687 offline)")
 def test_neo4j_connection():
     """Kiem tra khoi tao driver va kiem tra ket noi toi Neo4j server."""
     driver = get_neo4j_driver()
@@ -39,6 +51,7 @@ def test_neo4j_connection():
         driver.close()
 
 
+@pytest.mark.skipif(not is_neo4j_online(), reason="Máy chủ Neo4j chưa khởi động (cổng 7687 offline)")
 def test_expected_node_labels_and_counts():
     """Kiem tra 7 node labels duoc tao tu du lieu thuc te voi so luong chinh xac."""
     driver = get_neo4j_driver()
@@ -65,6 +78,7 @@ def test_expected_node_labels_and_counts():
         driver.close()
 
 
+@pytest.mark.skipif(not is_neo4j_online(), reason="Máy chủ Neo4j chưa khởi động (cổng 7687 offline)")
 def test_expected_relationships_and_counts():
     """Kiem tra 6 loai quan he (relationships) voi so luong chinh xac tu dataset."""
     driver = get_neo4j_driver()
@@ -90,6 +104,7 @@ def test_expected_relationships_and_counts():
         driver.close()
 
 
+@pytest.mark.skipif(not is_neo4j_online(), reason="Máy chủ Neo4j chưa khởi động (cổng 7687 offline)")
 def test_q0358_example_and_query_paths():
     """Kiem tra ban ghi mau Q0358 va cac duong di quan he tren do thi tri thuc."""
     driver = get_neo4j_driver()

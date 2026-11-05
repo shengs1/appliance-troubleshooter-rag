@@ -294,7 +294,7 @@ def request_password_reset(
     max_reqs = getattr(settings, "password_reset_rate_limit_count", 3)
     window_mins = getattr(settings, "password_reset_rate_limit_minutes", 15)
 
-    # 1. Kiem tra gioi han 15 giay moi lan gui theo email (Cooldown 15 giay theo yeu cau nguoi dung)
+    # 1. Kiem tra gioi han 15 giay moi lan gui theo email (Cooldown 15 giay chong spam lien tuc)
     email_key = f"email:{clean_email.lower()}"
     allowed_email, remaining_email = check_rate_limit_cooldown(email_key, cooldown_seconds=cooldown_secs, db_path=db_path)
     if not allowed_email:

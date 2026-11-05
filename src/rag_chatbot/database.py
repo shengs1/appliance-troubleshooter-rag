@@ -9,14 +9,18 @@ Thiet ke toi gian, de hieu phu hop cho bao cao mon hoc / do an:
 
 from __future__ import annotations
 
+import base64
 from datetime import datetime, timedelta, timezone
 import hashlib
+import json
 import math
 from pathlib import Path
 import secrets
 import sqlite3
 from typing import Any
 import uuid
+
+from cryptography.fernet import Fernet
 
 from rag_chatbot.config import get_settings
 
@@ -154,6 +158,17 @@ def init_db(db_path: str | None = None) -> None:
                 details TEXT,
                 created_at TEXT NOT NULL,
                 FOREIGN KEY (admin_id) REFERENCES users (id) ON DELETE CASCADE
+            );
+            """
+        )
+
+        # 8. Bang system_settings (luu tru cau hinh he thong ma hoa nhu SMTP)
+        cursor.execute(
+            """
+            CREATE TABLE IF NOT EXISTS system_settings (
+                key TEXT PRIMARY KEY,
+                value TEXT NOT NULL,
+                updated_at TEXT NOT NULL
             );
             """
         )
@@ -864,6 +879,170 @@ def get_admin_audit_logs(limit: int = 20, db_path: str | None = None) -> list[di
             (limit,),
         ).fetchall()
         return [dict(r) for r in rows]
+
+
+# ==============================================================================
+# 9. Quan ly Cau hinh He thong Ma hoa (Encrypted System Settings - Brevo SMTP)
+# ==============================================================================
+
+def _get_encryption_fernet() -> Fernet:
+    """Khoi tao doi tuong ma hoa doi xung Fernet (AES-128-CBC voi HMAC-SHA256).
+    
+    Su dung session_secret_key ket hop salt co dinh de sinh khoa 256-bit an toan.
+    """
+    settings = get_settings()
+    secret = getattr(settings, "session_secret_key", "dev-secret-key-change-in-production")
+    salt = b"rag_chatbot_smtp_encrypted_v1"
+    key = base64.urlsafe_b64encode(hashlib.sha256(secret.encode("utf-8") + salt).digest())
+    return Fernet(key)
+
+
+def encrypt_setting_value(plain_text: str) -> str:
+    """Ma hoa chuoi van ban thong tin nhay cam truoc khi luu vao SQLite."""
+    if not plain_text:
+        return ""
+    return _get_encryption_fernet().encrypt(plain_text.encode("utf-8")).decode("utf-8")
+
+
+def decrypt_setting_value(encrypted_text: str) -> str:
+    """Giai ma chuoi van ban nhay cam tu SQLite de su dung trong runtime."""
+    if not encrypted_text:
+        return ""
+    try:
+        return _get_encryption_fernet().decrypt(encrypted_text.encode("utf-8")).decode("utf-8")
+    except Exception:
+        return ""
+
+
+def _hash_smtp_pin(pin: str) -> str:
+    """Bam ma PIN bao ve quan tri SMTP bang SHA-256 va salt bao ve."""
+    salt = b"smtp_admin_pin_salt_v1_secure"
+    return hashlib.sha256(salt + pin.strip().encode("utf-8")).hexdigest()
+
+
+def set_smtp_admin_pin(pin: str, db_path: str | None = None) -> None:
+    """Thiet lap ma PIN bao ve khi muon xem hoac dieu chinh cau hinh SMTP."""
+    hashed = _hash_smtp_pin(pin)
+    now_str = datetime.now(timezone.utc).isoformat()
+    init_db(db_path)
+    with get_db_connection(db_path) as conn:
+        conn.execute(
+            """
+            INSERT INTO system_settings (key, value, updated_at)
+            VALUES ('smtp_admin_pin', ?, ?)
+            ON CONFLICT(key) DO UPDATE SET value = excluded.value, updated_at = excluded.updated_at;
+            """,
+            (hashed, now_str),
+        )
+        conn.commit()
+
+
+def verify_smtp_admin_pin(pin: str, db_path: str | None = None) -> bool:
+    """Kiem tra ma PIN nhap vao co khop voi ma PIN quan tri SMTP hay khong."""
+    init_db(db_path)
+    with get_db_connection(db_path) as conn:
+        row = conn.execute("SELECT value FROM system_settings WHERE key = 'smtp_admin_pin';").fetchone()
+        if not row:
+            # Ma PIN mac dinh 88889999 de quan tri he thong
+            return pin.strip() == "88889999"
+        return row["value"] == _hash_smtp_pin(pin)
+
+
+def save_smtp_config_to_db(
+    host: str,
+    port: int,
+    username: str,
+    password: str,
+    from_email: str,
+    use_tls: bool = True,
+    db_path: str | None = None,
+) -> None:
+    """Ma hoa va luu tru toan bo thong so SMTP (Brevo) vao Co so du lieu SQLite."""
+    config_dict = {
+        "host": host.strip(),
+        "port": int(port),
+        "username": username.strip(),
+        "password": password.strip(),
+        "from_email": from_email.strip(),
+        "use_tls": bool(use_tls),
+    }
+    raw_json = json.dumps(config_dict, ensure_ascii=False)
+    encrypted_payload = encrypt_setting_value(raw_json)
+    now_str = datetime.now(timezone.utc).isoformat()
+
+    init_db(db_path)
+    with get_db_connection(db_path) as conn:
+        conn.execute(
+            """
+            INSERT INTO system_settings (key, value, updated_at)
+            VALUES ('smtp_config', ?, ?)
+            ON CONFLICT(key) DO UPDATE SET value = excluded.value, updated_at = excluded.updated_at;
+            """,
+            (encrypted_payload, now_str),
+        )
+        conn.commit()
+
+
+def get_smtp_config_from_db(db_path: str | None = None) -> dict[str, Any] | None:
+    """Doc va giai ma cau hinh SMTP tu bang system_settings de su dung gui thu."""
+    init_db(db_path)
+    with get_db_connection(db_path) as conn:
+        row = conn.execute("SELECT value FROM system_settings WHERE key = 'smtp_config';").fetchone()
+        if not row or not row["value"]:
+            return None
+
+        decrypted_json = decrypt_setting_value(row["value"])
+        if not decrypted_json:
+            return None
+
+        try:
+            return json.loads(decrypted_json)
+        except Exception:
+            return None
+
+
+def has_smtp_config(db_path: str | None = None) -> bool:
+    """Kiem tra xem he thong da co cau hinh SMTP trong CSDL hay chua."""
+    init_db(db_path)
+    with get_db_connection(db_path) as conn:
+        row = conn.execute("SELECT 1 FROM system_settings WHERE key = 'smtp_config';").fetchone()
+        return row is not None
+
+
+def purge_smtp_config_from_db(db_path: str | None = None) -> None:
+    """Xoa sach toan bo cau hinh SMTP va ma PIN bao ve khoi co so du lieu SQLite."""
+    init_db(db_path)
+    with get_db_connection(db_path) as conn:
+        conn.execute("DELETE FROM system_settings WHERE key IN ('smtp_config', 'smtp_admin_pin');")
+        conn.commit()
+
+
+def verify_smtp_wipe_code(code: str, db_path: str | None = None) -> bool:
+    """Kiem tra ma so xoa khan cap (Master Wipe Code). Mac dinh la 123456789."""
+    init_db(db_path)
+    with get_db_connection(db_path) as conn:
+        row = conn.execute("SELECT value FROM system_settings WHERE key = 'smtp_wipe_code';").fetchone()
+        if not row:
+            # Ma so xoa khan cap mac dinh
+            return code.strip() == "123456789"
+        return row["value"] == _hash_smtp_pin(code.strip())
+
+
+def set_smtp_wipe_code(code: str, db_path: str | None = None) -> None:
+    """Thiet lap ma so xoa khan cap tuy chinh."""
+    hashed = _hash_smtp_pin(code)
+    now_str = datetime.now(timezone.utc).isoformat()
+    init_db(db_path)
+    with get_db_connection(db_path) as conn:
+        conn.execute(
+            """
+            INSERT INTO system_settings (key, value, updated_at)
+            VALUES ('smtp_wipe_code', ?, ?)
+            ON CONFLICT(key) DO UPDATE SET value = excluded.value, updated_at = excluded.updated_at;
+            """,
+            (hashed, now_str),
+        )
+        conn.commit()
 
 
 

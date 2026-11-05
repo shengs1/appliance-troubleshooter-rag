@@ -199,7 +199,7 @@ async def set_starters():
 @cl.author_rename
 async def rename_author(author: str) -> str:
     """Chuan hoa ten hien thi cua assistant tren giao dien Chainlit thanh ten chinh thuc."""
-    if author.lower() in ["assistant", "default", "tro ly ky thuat dien tu", "chatgpt"]:
+    if author.lower() in ["assistant", "default", "tro ly ky thuat dien tu"]:
         return "Trợ Lý Sự Cố Thiết Bị Điện Gia Dụng"
     return author
 
