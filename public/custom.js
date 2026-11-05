@@ -37,6 +37,12 @@
 
         // 1. Chèn Header thương hiệu DHV trên đầu form
         const existingHeader = document.getElementById("dhv-login-header");
+        if (existingHeader) {
+            const titleEl = existingHeader.querySelector(".dhv-login-title");
+            if (titleEl && titleEl.innerText !== "Trợ Lý Sự Cố Thiết Bị Điện Gia Dụng") {
+                titleEl.innerText = "Trợ Lý Sự Cố Thiết Bị Điện Gia Dụng";
+            }
+        }
         if (!existingHeader || existingHeader.parentElement !== formWrapper) {
             if (existingHeader) existingHeader.remove();
 
