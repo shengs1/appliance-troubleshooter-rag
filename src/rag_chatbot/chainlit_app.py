@@ -5,7 +5,7 @@ Tich hop:
 2. Authentication bang password_auth_callback lien ket CSDL nguoi dung duy nhat.
 3. RAG Pipeline (ChromaDB + Neo4j + Hybrid Reranker + Answer Validator).
 4. Ho tro tieng Viet co dau, khong dau, tron dau, alias.
-5. Trai nghiem ChatGPT-like: streaming cau tra loi, starters, markdown, nguon tham khao.
+5. Trai nghiem hoi dap truc quan: streaming cau tra loi, starters, markdown, nguon tham khao.
 6. Quan tri Admin truc tiep trong Chainlit qua lenh /admin va Action buttons tuong tac.
 """
 
@@ -200,7 +200,7 @@ async def set_starters():
 async def rename_author(author: str) -> str:
     """Chuan hoa ten hien thi cua assistant tren giao dien Chainlit thanh ten chinh thuc."""
     if author.lower() in ["assistant", "default", "tro ly ky thuat dien tu", "chatgpt"]:
-        return "Trợ lý sự cố điện gia dụng"
+        return "Trợ Lý Sự Cố Thiết Bị Điện Gia Dụng"
     return author
 
 
@@ -220,7 +220,7 @@ async def on_chat_start():
 
     welcome_text = (
         f"Xin chào **{username}**! 👋\n\n"
-        f"Chào mừng bạn đến với **Trợ lý sự cố điện gia dụng**. Bạn đang gặp sự cố gì với thiết bị điện tử gia dụng?\n\n"
+        f"Chào mừng bạn đến với **Trợ Lý Sự Cố Thiết Bị Điện Gia Dụng**. Bạn đang gặp sự cố gì với thiết bị điện tử gia dụng?\n\n"
         f"Tôi có thể hỗ trợ bạn tra cứu mã lỗi, chẩn đoán nguyên nhân và hướng dẫn xử lý sự cố cho máy giặt, điều hòa, tủ lạnh, bếp từ, lò vi sóng..."
         f"{admin_hint}"
     )

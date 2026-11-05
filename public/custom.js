@@ -1,8 +1,8 @@
 // public/custom.js
-// Custom JavaScript for Trợ lý sự cố điện gia dụng (Appliance Troubleshooting Chatbot)
+// Custom JavaScript for Trợ Lý Sự Cố Thiết Bị Điện Gia Dụng (Appliance Troubleshooting Chatbot)
 
 (function () {
-    console.log("Trợ lý sự cố điện gia dụng - Frontend initialized.");
+    console.log("Trợ Lý Sự Cố Thiết Bị Điện Gia Dụng - Frontend initialized.");
 
     let currentUserChecked = false;
     let currentUserRole = null;
@@ -49,7 +49,7 @@
                          onerror="this.style.display='none'; document.getElementById('dhv-login-fallback').style.display='flex';" />
                     <div id="dhv-login-fallback" class="dhv-login-fallback" style="display: none;">🛠️</div>
                 </div>
-                <h2 class="dhv-login-title">Trợ lý sự cố điện gia dụng</h2>
+                <h2 class="dhv-login-title">Trợ Lý Sự Cố Thiết Bị Điện Gia Dụng</h2>
                 <p class="dhv-login-subtitle">Đăng nhập để tra cứu mã lỗi và khắc phục sự cố</p>
             `;
             formWrapper.insertBefore(headerEl, form);

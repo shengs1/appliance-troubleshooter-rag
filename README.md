@@ -1,4 +1,4 @@
-# Trợ lý sự cố điện gia dụng (appliance-troubleshooter-rag)
+# Trợ Lý Sự Cố Thiết Bị Điện Gia Dụng (appliance-troubleshooter-rag)
 
 Hệ thống RAG Chatbot hỗ trợ tra cứu và hướng dẫn chẩn đoán, xử lý sự cố thiết bị điện tử gia dụng (điều hòa, tủ lạnh, máy giặt, máy sấy, lò vi sóng, bếp từ, TV...) cho 3 hãng phổ biến: **Samsung**, **LG** và **Panasonic**.
 
@@ -11,11 +11,11 @@ Hệ thống RAG Chatbot hỗ trợ tra cứu và hướng dẫn chẩn đoán, 
 1. [Kiến trúc hệ thống](#kiến-trúc-hệ-thống)
 2. [Công nghệ sử dụng](#công-nghệ-sử-dụng)
 3. [Các tính năng nổi bật](#các-tính-năng-nổi-bật)
-4. [Hướng dẫn xem và quản lý dữ liệu lưu trữ (Database Guide)](#hướng-dẫn-xem-và-quản-lý-dữ-liệu-lưu-trữ-database-guide)
-   - [Cách 1: Xem nhanh qua Script `scripts/view_data.py`](#cách-1-xem-nhanh-qua-script-scriptsview_datapy)
-   - [Cách 2: Xem chi tiết CSDL quan hệ SQLite (`data/chat_history.db`)](#cách-2-xem-chi-tiết-csdl-quan-hệ-sqlite-datachat_historydb)
-   - [Cách 3: Xem CSDL vector ChromaDB (`./chroma_data`)](#cách-3-xem-csdl-vector-chromadb-chroma_data)
-   - [Cách 4: Xem CSDL đồ thị Neo4j qua Neo4j Browser (`http://localhost:7474`)](#cách-4-xem-csdl-đồ-thị-neo4j-qua-neo4j-browser-httplocalhost7474)
+4. [Hướng dẫn quản lý và kiểm tra dữ liệu lưu trữ (Database Guide)](#hướng-dẫn-quản-lý-và-kiểm-tra-dữ-liệu-lưu-trữ-database-guide)
+   - [1. Kiểm tra tổng quan hệ thống qua CLI Tool (`scripts/view_data.py`)](#1-kiểm-tra-tổng-quan-hệ-thống-qua-cli-tool-scriptsview_datapy)
+   - [2. Quản lý CSDL quan hệ SQLite (`data/chat_history.db`)](#2-quản-lý-csdl-quan-hệ-sqlite-datachat_historydb)
+   - [3. Kiểm tra CSDL vector ChromaDB (`./chroma_data`)](#3-kiểm-tra-csdl-vector-chromadb-chroma_data)
+   - [4. Truy vấn CSDL đồ thị Neo4j qua Neo4j Browser (`http://localhost:7474`)](#4-truy-vấn-csdl-đồ-thị-neo4j-qua-neo4j-browser-httplocalhost7474)
 5. [Cài đặt và Khởi động hệ thống](#cài-đặt-và-khởi-động-hệ-thống)
 6. [Tài khoản Quản trị viên (Admin)](#tài-khoản-quản-trị-viên-admin)
 7. [Kiểm thử tự động (Testing)](#kiểm-thử-tự-động-testing)
@@ -25,7 +25,7 @@ Hệ thống RAG Chatbot hỗ trợ tra cứu và hướng dẫn chẩn đoán, 
 
 ## Kiến trúc hệ thống
 
-Hệ thống được thiết kế theo mô hình phân tầng rõ ràng, đảm bảo tính giải thích cao (explainability) và dễ trình bày trong các buổi báo cáo/vấn đáp:
+Hệ thống được thiết kế theo mô hình phân tầng rõ ràng, đảm bảo tính giải thích cao (explainability), tính module hóa và dễ dàng bảo trì:
 
 ```mermaid
 flowchart TD
@@ -77,10 +77,10 @@ flowchart TD
 ## Các tính năng nổi bật
 
 ### 1. Giao diện người dùng Chainlit & Nhận diện thương hiệu DHV
-- Giao diện thân thiện phong cách ChatGPT, hỗ trợ dark/light theme, hiển thị logo DHV và tên hiển thị chính thức: **`Trợ lý sự cố điện gia dụng`**.
-- Có các câu hỏi mẫu gợi ý ban đầu (Prompt Starters) giúp người dùng mới dễ dàng bắt đầu.
-- Ô nhập liệu (Composer) có placeholder chuẩn tiếng Việt: `"Nhập câu hỏi của bạn..."`.
-- **Vô hiệu hóa upload tệp tin**: Toàn bộ icon kẹp ghim, nút upload và thao tác kéo thả tệp tin đều bị chặn hoàn toàn cả ở giao diện lẫn backend để tập trung tra cứu văn bản kỹ thuật.
+- Giao diện trực quan, hiện đại, hỗ trợ chuyển đổi linh hoạt chế độ Sáng/Tối (Light/Dark theme).
+- Nhận diện thương hiệu chính thức với logo DHV và tên hệ thống: **`Trợ Lý Sự Cố Thiết Bị Điện Gia Dụng`**.
+- Tích hợp các câu hỏi mẫu gợi ý ban đầu (Prompt Starters) giúp người dùng nhanh chóng làm quen và tra cứu sự cố thường gặp.
+- Hộp thoại nhập liệu (Composer) hỗ trợ tiếng Việt tự nhiên và tối ưu trải nghiệm tương tác với hệ thống.
 
 ### 2. Xác thực tài khoản & Khôi phục mật khẩu qua Email (SMTP)
 - Hỗ trợ **Đăng ký**, **Đăng nhập** linh hoạt bằng cả `username` hoặc `email`.
@@ -112,13 +112,13 @@ flowchart TD
 
 ---
 
-## Hướng dẫn xem và quản lý dữ liệu lưu trữ (Database Guide)
+## Hướng dẫn quản lý và kiểm tra dữ liệu lưu trữ (Database Guide)
 
-Trong dự án có 3 cơ sở dữ liệu với mục đích sử dụng khác nhau. Dưới đây là các cách xem dữ liệu đơn giản nhất phục vụ cho việc kiểm tra và bảo vệ đồ án:
+Hệ thống tích hợp 3 cơ sở dữ liệu chuyên biệt phục vụ các mục tiêu khác nhau (Quan hệ, Vector và Đồ thị tri thức). Dưới đây là các phương pháp kiểm tra và truy xuất dữ liệu của từng thành phần:
 
-### Cách 1: Xem nhanh qua Script `scripts/view_data.py`
+### 1. Kiểm tra tổng quan hệ thống qua CLI Tool (`scripts/view_data.py`)
 
-Đây là cách thuận tiện nhất trong buổi vấn đáp để xem toàn bộ dữ liệu chỉ bằng 1 dòng lệnh terminal:
+Hệ thống cung cấp script công cụ tổng hợp giúp kiểm tra nhanh trạng thái kết nối và số liệu thống kê của cả 3 cơ sở dữ liệu:
 
 ```powershell
 uv run python scripts/view_data.py
@@ -140,7 +140,7 @@ uv run python scripts/view_data.py --neo4j     # Xem riêng Neo4j
 
 ---
 
-### Cách 2: Xem chi tiết CSDL quan hệ SQLite (`data/chat_history.db`)
+### 2. Quản lý CSDL quan hệ SQLite (`data/chat_history.db`)
 
 File database nằm tại đường dẫn: `data/chat_history.db`.
 
@@ -166,7 +166,7 @@ uv run python -c "import sqlite3; c=sqlite3.connect('data/chat_history.db'); [pr
 
 ---
 
-### Cách 3: Xem CSDL vector ChromaDB (`./chroma_data`)
+### 3. Kiểm tra CSDL vector ChromaDB (`./chroma_data`)
 
 ChromaDB lưu trữ vector nhúng của 1.090 tài liệu kỹ thuật trong thư mục `./chroma_data/`.
 
@@ -184,7 +184,7 @@ Kết quả sẽ hiển thị:
 
 ---
 
-### Cách 4: Xem CSDL đồ thị Neo4j qua Neo4j Browser (`http://localhost:7474`)
+### 4. Truy vấn CSDL đồ thị Neo4j qua Neo4j Browser (`http://localhost:7474`)
 
 Neo4j cung cấp giao diện đồ thị trực quan mạnh mẽ qua trình duyệt web:
 
@@ -329,7 +329,7 @@ uv run pytest tests/test_vietnamese.py tests/test_retrieval_vietnamese.py -v
 ```text
 appliance-troubleshooter-rag/
 ├── .chainlit/
-│   ├── config.toml                      # Cấu hình Chainlit (theme, tắt upload file)
+│   ├── config.toml                      # Cấu hình giao diện và hệ thống Chainlit
 │   └── translations/
 │       └── en-US.json                   # Chuỗi dịch ngôn ngữ (placeholder tiếng Việt)
 ├── chroma_data/                         # Thư mục lưu trữ cơ sở dữ liệu vector ChromaDB
@@ -344,7 +344,7 @@ appliance-troubleshooter-rag/
 │   ├── branding/
 │   │   └── dhv-logo.png                 # Logo thương hiệu DHV
 │   ├── custom.css                       # CSS tùy biến giao diện đăng nhập, header button, composer
-│   ├── custom.js                        # JS tiêm nút Admin header, việt hóa, chặn drag-drop file
+│   ├── custom.js                        # JS tùy biến giao diện, nút Quản trị và hỗ trợ người dùng
 │   ├── forgot-password.html             # Giao diện yêu cầu quên mật khẩu
 │   ├── register.html                    # Giao diện đăng ký tài khoản mới
 │   └── reset-password.html              # Giao diện đặt lại mật khẩu với token hash
@@ -381,6 +381,6 @@ appliance-troubleshooter-rag/
 
 ---
 
-## Tuyên bố học thuật
+## Mục tiêu dự án
 
-Dự án được xây dựng với mục tiêu phục vụ học tập, nghiên cứu và bảo vệ đồ án/khóa luận.
+Dự án được xây dựng nhằm mục đích nghiên cứu và phát triển giải pháp ứng dụng công nghệ Retrieval-Augmented Generation (RAG) kết hợp Đồ thị tri thức (Knowledge Graph) vào bài toán tra cứu và hỗ trợ khắc phục sự cố kỹ thuật cho các thiết bị điện tử gia dụng.

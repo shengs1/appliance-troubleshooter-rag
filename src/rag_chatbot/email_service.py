@@ -65,7 +65,7 @@ def send_password_reset_email(to_email: str, reset_url: str, raw_token: str) -> 
     if smtp_host and smtp_host != "localhost" and smtp_username:
         try:
             msg = MIMEMultipart("alternative")
-            msg["Subject"] = "Yêu cầu đặt lại mật khẩu - Trợ lý Sự cố Điện gia dụng"
+            msg["Subject"] = "Yêu cầu đặt lại mật khẩu - Trợ Lý Sự Cố Thiết Bị Điện Gia Dụng"
             msg["From"] = getattr(settings, "smtp_from", "noreply@ragchatbot.local")
             msg["To"] = to_email
 
@@ -81,7 +81,7 @@ def send_password_reset_email(to_email: str, reset_url: str, raw_token: str) -> 
             <html>
                 <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
                     <div style="max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e2e8f0; border-radius: 8px;">
-                        <h2 style="color: #ea580c;">Trợ lý Sự cố Điện gia dụng</h2>
+                        <h2 style="color: #ea580c;">Trợ Lý Sự Cố Thiết Bị Điện Gia Dụng</h2>
                         <p>Xin chào,</p>
                         <p>Bạn vừa yêu cầu đặt lại mật khẩu tài khoản. Vui lòng bấm vào nút bên dưới để tiến hành tạo mật khẩu mới:</p>
                         <p style="text-align: center; margin: 30px 0;">

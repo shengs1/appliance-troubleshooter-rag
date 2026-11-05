@@ -1,6 +1,6 @@
-# 🛠️ Trợ lý sự cố điện gia dụng
+# 🛠️ Trợ Lý Sự Cố Thiết Bị Điện Gia Dụng
 
-Chào mừng bạn đến với **Trợ lý sự cố điện gia dụng** — Chatbot tra cứu mã lỗi và hỗ trợ xử lý sự cố thiết bị điện tử gia dụng.
+Chào mừng bạn đến với **Trợ Lý Sự Cố Thiết Bị Điện Gia Dụng** — Chatbot tra cứu mã lỗi và hỗ trợ xử lý sự cố thiết bị điện tử gia dụng.
 
 ### 💡 Khả năng hỗ trợ:
 - **Tra cứu mã lỗi:** Chẩn đoán chính xác mã lỗi trên máy giặt, điều hòa, tủ lạnh, bếp từ, lò vi sóng (Samsung, LG, Panasonic, Daikin, Electrolux, Sharp...).
