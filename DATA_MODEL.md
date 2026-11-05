@@ -1,7 +1,7 @@
 # TÀI LIỆU MÔ HÌNH DỮ LIỆU (DATA_MODEL.md)
-## Hệ Thống RAG Chatbot Hỗ Trợ Sửa Chữa Thiết Bị Điện Tử
+## Trợ Lý Sự Cố Thiết Bị Điện Gia Dụng
 
-> **Ghi chú học tập**: Tài liệu này mô tả chi tiết mô hình dữ liệu thực tế được phân tích trực tiếp từ file `data/raw/dataset.xlsx`. Mục tiêu phục vụ đồ án học tập, ưu tiên tính đơn giản, tường minh và dễ giải thích trong buổi thi vấn đáp (oral examination).
+> **Ghi chú tài liệu**: Tài liệu này mô tả chi tiết mô hình dữ liệu thực tế được phân tích trực tiếp từ file `data/raw/dataset.xlsx`, thiết kế theo hướng đơn giản, tường minh và dễ đối chiếu trong quá trình bảo vệ đồ án.
 
 ---
 

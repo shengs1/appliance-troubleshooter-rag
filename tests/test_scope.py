@@ -1,4 +1,4 @@
-"""Kiem thu co che phat hien va tu choi cau hoi ngoai pham vi (Phase 10A).
+"""Kiem thu co che phat hien va tu choi cau hoi ngoai pham vi (Scope Guard).
 
 Cac test case bao gom:
 1. Danh sach retrieved_documents rong -> should_refuse = True.

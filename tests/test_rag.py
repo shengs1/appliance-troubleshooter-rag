@@ -1,4 +1,4 @@
-"""Kiem thu chuc nang RAG Generation voi Local LLM (Phase 6).
+"""Kiem thu luong tong hop ngu canh va sinh cau tra loi RAG voi Local LLM.
 
 Cac test case bao gom:
 1. Kiem thu ham xay dung ngu canh (build_context) tu danh sach tai lieu.

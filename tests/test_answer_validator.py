@@ -1,4 +1,4 @@
-"""Unit tests for the Answer Validator module (Phase: Answer Validation).
+"""Kiem thu bo kiem dinh cau tra loi chong ao giac (Answer Validator).
 
 Cac test cases bat buoc theo dac ta:
 1. Correct grounded answer -> PASS

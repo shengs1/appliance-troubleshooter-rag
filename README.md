@@ -399,11 +399,12 @@ appliance-troubleshooter-rag/
 ├── chroma_data/                         # Thư mục lưu trữ cơ sở dữ liệu vector ChromaDB
 ├── data/
 │   ├── chat_history.db                  # CSDL SQLite lưu users, sessions, chat history, audit logs, system_settings
-│   ├── evaluation/                      # Tập dữ liệu kiểm thử và kết quả đo lường
+│   ├── evaluation/                      # 6 tệp tập dữ liệu kiểm thử chuẩn và kết quả đo lường RAG
 │   └── raw/
 │       └── dataset.xlsx                 # Dataset gốc gồm 1.090 bản ghi sự cố kỹ thuật
 ├── public/                              # Tài nguyên tĩnh phục vụ giao diện
 │   ├── admin.html                       # Giao diện Bảng điều khiển Quản trị viên chuyên biệt
+│   ├── avatars/                         # Biểu tượng đại diện trợ lý ảo trên khung hội thoại
 │   ├── branding/
 │   │   └── dhv-logo.png                 # Logo thương hiệu DHV
 │   ├── custom.css                       # CSS tùy biến giao diện đăng nhập, header button, composer
@@ -430,12 +431,10 @@ appliance-troubleshooter-rag/
 │       ├── email_service.py             # Dịch vụ gửi email khôi phục mật khẩu qua Brevo SMTP / Dev Mock
 │       ├── evaluation.py                # Đo lường và đánh giá chất lượng hệ thống RAG (Hit Rate, MRR)
 │       ├── ingest.py                    # Nạp dữ liệu sự cố từ dataset.xlsx vào ChromaDB & Neo4j
-│       ├── knowledge_eval.py            # Đánh giá độ phủ tri thức thiết bị, mã lỗi và giải pháp
 │       ├── main.py                      # Ứng dụng FastAPI REST API & Admin API endpoints
 │       ├── neo4j_db.py                  # Kết nối và nạp dữ liệu đồ thị Neo4j
 │       ├── rag.py                       # Luồng tổng hợp prompt, context và gọi Ollama LLM
-│       ├── reranker.py                  # Module xếp hạng lại kết quả truy vấn (Neural/Cross-encoder)
-│       ├── retrieval.py                 # Truy vấn kết hợp Hybrid Retrieval (ChromaDB + Neo4j)
+│       ├── retrieval.py                 # Truy vấn kết hợp Hybrid Retrieval (ChromaDB + Neo4j + Reranking)
 │       ├── scope.py                     # Bộ lọc phát hiện và chặn câu hỏi ngoài phạm vi
 │       └── vietnamese.py                # Xử lý tiếng Việt (bỏ dấu, alias, tách khoảng trắng mã lỗi)
 ├── tests/                               # Thư mục kiểm thử tự động (14 module cốt lõi, 135 test cases)
@@ -455,8 +454,12 @@ appliance-troubleshooter-rag/
 │   ├── test_ui.py                       # Kiểm thử giao diện Chainlit và Composer
 │   └── test_vietnamese.py               # Kiểm thử chuẩn hóa tiếng Việt, alias và mã lỗi
 ├── .env.example                         # File mẫu cấu hình biến môi trường
+├── chainlit.md                          # Nội dung trang chào mừng và câu hỏi gợi ý trên Chainlit
+├── DATA_MODEL.md                        # Tài liệu phân tích mô hình dữ liệu dataset.xlsx & đồ thị Neo4j
+├── EVALUATION.md                        # Báo cáo kết quả đánh giá thực nghiệm hệ thống RAG
 ├── pyproject.toml                       # Khai báo cấu hình dự án, gói và dependencies uv
-└── README.md                            # Tài liệu hướng dẫn sử dụng chính thức
+├── README.md                            # Tài liệu hướng dẫn sử dụng chính thức
+└── uv.lock                              # File khóa phiên bản thư viện đảm bảo đồng nhất môi trường
 ```
 
 ---

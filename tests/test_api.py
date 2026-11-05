@@ -1,4 +1,4 @@
-"""Kiem thu API layer FastAPI (Phase 7 va Phase cap nhat Quan ly nguoi dung).
+"""Kiem thu API layer FastAPI va cac endpoint xac thuc, quan ly nguoi dung.
 
 Cac test case bao gom:
 1. GET /: Kiem tra tra ve message bao he thong dang chay.

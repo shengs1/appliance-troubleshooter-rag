@@ -71,7 +71,7 @@ for _r in cl_server.router.routes:
             norm_id = avatar_id.strip().lower()
             if norm_id in ["assistant", "default"] or "trợ lý" in norm_id or "tro ly" in norm_id:
                 av_dir = Path(__file__).resolve().parent.parent.parent / "public" / "avatars"
-                for cand in ["assistant.png", "assistant.svg", "trợ_lý_sự_cố_điện_gia_dụng.png"]:
+                for cand in ["assistant.png", "assistant.svg"]:
                     p = av_dir / cand
                     if p.exists():
                         m, _ = mimetypes.guess_type(str(p))

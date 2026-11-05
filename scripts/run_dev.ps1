@@ -73,14 +73,15 @@ Free-Port $chainlitPort
 Write-Host "  -> Cong API ($apiPort) va Cong Chainlit ($chainlitPort) da san sang." -ForegroundColor Green
 
 # 4. Hien thi thong tin dich vu
+$displayHost = "localhost"
 Write-Host "`n[4/4] Cac dich vu va URL truy cap:" -ForegroundColor Yellow
-Write-Host "  * Chainlit UI (Giao dien Chatbot duy nhat): http://$chainlitHost`:$chainlitPort" -ForegroundColor Cyan
-Write-Host "  * Bang quan tri Admin chuyen dung:         http://$chainlitHost`:$chainlitPort/public/admin.html" -ForegroundColor Cyan
-Write-Host "  * Trang Dang ky tai khoan moi:             http://$chainlitHost`:$chainlitPort/public/register.html" -ForegroundColor Cyan
-Write-Host "  * Trang Quen mat khau:                     http://$chainlitHost`:$chainlitPort/public/forgot-password.html" -ForegroundColor Cyan
-Write-Host "  * Trang Dat lai mat khau:                  http://$chainlitHost`:$chainlitPort/public/reset-password.html" -ForegroundColor Cyan
-Write-Host "  * FastAPI Backend REST API / Swagger:       http://$apiHost`:$apiPort/docs" -ForegroundColor Cyan
-Write-Host "  * Backend Health Check Endpoint:            http://$apiHost`:$apiPort/health" -ForegroundColor Cyan
+Write-Host "  * Chainlit UI (Giao dien Chatbot duy nhat): http://$displayHost`:$chainlitPort" -ForegroundColor Cyan
+Write-Host "  * Bang quan tri Admin chuyen dung:         http://$displayHost`:$chainlitPort/public/admin.html" -ForegroundColor Cyan
+Write-Host "  * Trang Dang ky tai khoan moi:             http://$displayHost`:$chainlitPort/public/register.html" -ForegroundColor Cyan
+Write-Host "  * Trang Quen mat khau:                     http://$displayHost`:$chainlitPort/public/forgot-password.html" -ForegroundColor Cyan
+Write-Host "  * Trang Dat lai mat khau:                  http://$displayHost`:$chainlitPort/public/reset-password.html" -ForegroundColor Cyan
+Write-Host "  * FastAPI Backend REST API / Swagger:       http://$displayHost`:$apiPort/docs" -ForegroundColor Cyan
+Write-Host "  * Backend Health Check Endpoint:            http://$displayHost`:$apiPort/health" -ForegroundColor Cyan
 Write-Host "`nNhan [Ctrl+C] de dung toan bo cac tien trinh." -ForegroundColor Gray
 Write-Host "======================================================================" -ForegroundColor Cyan
 

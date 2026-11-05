@@ -1,4 +1,4 @@
-"""Kiem thu chuc nang truy van ket hop Hybrid Retrieval (ChromaDB + Neo4j) - Phase 5.
+"""Kiem thu chuc nang truy van ket hop Hybrid Retrieval (ChromaDB + Neo4j).
 
 Cac test case bao gom:
 1. Kiem thu ham trich xuat thuc the co ban tu cau hoi (Hang, Thiet bi, Ma loi).

@@ -1,4 +1,4 @@
-"""Kiem thu chuc nang nap du lieu va tim kiem tuong dong ChromaDB (Phase 3).
+"""Kiem thu chuc nang nap du lieu va tim kiem tuong dong ngu nghia tren ChromaDB.
 
 Cac test case bao gom:
 1. Kiem tra load dataset bang pandas du 1.090 ban ghi.

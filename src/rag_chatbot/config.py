@@ -34,7 +34,7 @@ class Settings(BaseSettings):
     ollama_base_url: str = "http://localhost:11434"
     llm_model_name: str = "qwen2.5:7b"
 
-    # Cau hinh nguong phat hien cau hoi ngoai pham vi (Phase 10A)
+    # Cau hinh nguong phat hien cau hoi ngoai pham vi (Scope Guard)
     scope_distance_threshold: float = 0.40
 
     # Cau hinh trong so Post-Retrieval Reranking

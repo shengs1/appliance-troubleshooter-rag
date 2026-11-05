@@ -197,7 +197,7 @@ def generate_rag_answer(
     # 1. Truy van ket hop Hybrid Retrieval
     retrieved_docs = search_hybrid(question, k=k)
 
-    # 2. Kiem tra pham vi cau hoi (Scope Check - Phase 10A)
+    # 2. Kiem tra pham vi cau hoi (Scope Check)
     if should_refuse(retrieved_docs, question=question):
         return {
             "question": question,
@@ -273,7 +273,7 @@ def generate_rag_answer(
                 "Vui lòng kiểm tra dịch vụ AI cục bộ hoặc thử lại sau giây lát."
             )
 
-    # 6. Kiem dinh va xac thuc cau tra loi (Phase Answer Validation)
+    # 6. Kiem dinh va xac thuc cau tra loi (Answer Validation)
     if llm_status == "success":
         entities = extract_question_entities(question)
         validation = validate_answer(

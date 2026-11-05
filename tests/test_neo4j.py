@@ -1,4 +1,4 @@
-"""Kiem thu chuc nang nap du lieu va truy van do thi Neo4j (Phase 4).
+"""Kiem thu chuc nang nap du lieu va truy van do thi tri thuc Neo4j.
 
 Cac test case bao gom:
 1. Kiem tra cau hinh ket noi Neo4j tu Settings.

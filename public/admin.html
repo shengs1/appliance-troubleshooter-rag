@@ -505,7 +505,7 @@
     </div>
 
     <script>
-        const API_BASE = "http://localhost:8000";
+        const API_BASE = `${window.location.protocol}//${window.location.hostname || "localhost"}:8000`;
         let adminToken = "";
         let currentPage = 1;
         let totalPages = 1;

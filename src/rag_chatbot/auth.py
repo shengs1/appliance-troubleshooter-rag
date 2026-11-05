@@ -1,7 +1,7 @@
 """Module quan ly xac thuc, mat khau va phien lam viec (Authentication & Session Management).
 
 Tuan thu cac nguyen tac:
-1. Mat khau duoc hash bang bcrypt voi salt an toan, khong bao gio luu hoac tra ve plaintext.
+1. Mat khau duoc hash bang Argon2id (ho tro tuong thich nguoc bcrypt), khong bao gio luu hoac tra ve plaintext.
 2. Phien dang nhap duoc quan ly qua bang sessions trong SQLite; chi luu token da hash bang SHA-256.
 3. Cookie HttpOnly, SameSite=Lax, tu dong bat Secure khi HTTPS.
 4. Cung cap FastAPI dependency ro rang de bao ve endpoint.

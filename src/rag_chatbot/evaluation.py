@@ -1,4 +1,4 @@
-"""Module danh gia he thong RAG Chatbot (Phase 8 - Evaluation).
+"""Module danh gia chat luong he thong RAG Chatbot.
 
 Cung cap cac ham danh gia don gian, de hieu va minh bach ve:
 1. Retrieval Evaluation: ChromaDB Hit@1 / Hit@5, Neo4j Hit@1 / Hit@5, Hybrid Hit@1 / Hit@5.
@@ -467,7 +467,7 @@ def run_scope_evaluation(
     oos_path: str | Path = "data/evaluation/out_of_scope_30.json",
     in_scope_path: str | Path = "data/evaluation/evaluation_set_200.json",
 ) -> dict[str, Any]:
-    """Danh gia pham vi (Phase 10A): Refusal rate tren Out-of-scope va False refusal tren In-scope."""
+    """Danh gia bo loc pham vi: Refusal rate tren Out-of-scope va False refusal tren In-scope."""
     chroma_col = get_or_create_collection()
     neo_driver = get_neo4j_driver()
 

@@ -489,7 +489,7 @@ def search_hybrid(
     brand = entities["brand"]
     device = entities["device"]
 
-    fetch_k = max(10, k * 2) if (use_reranking and rerank_mode == "neural") else k
+    fetch_k = k
 
     # 1. Tim kiem tuong dong ngu nghia tu ChromaDB (ap dung metadata filtering neu co thuc the)
     active_where = where if where is not None else build_chroma_where_filter(brand=brand, device=device)
@@ -575,15 +575,9 @@ def search_hybrid(
 
     # 5. Sap xep: Reranking hoac Baseline
     if use_reranking:
-        if rerank_mode == "neural":
-            from rag_chatbot.reranker import rerank_with_model
-            sorted_results = rerank_with_model(
-                question, filtered_results, top_k=k
-            )
-        else:
-            sorted_results = rerank_results(
-                question, filtered_results, entities=entities, mode=rerank_mode
-            )
+        sorted_results = rerank_results(
+            question, filtered_results, entities=entities, mode=rerank_mode
+        )
     else:
         sorted_results = sorted(
             filtered_results,

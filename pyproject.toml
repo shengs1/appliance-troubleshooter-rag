@@ -6,15 +6,20 @@ readme = "README.md"
 requires-python = ">=3.12,<3.13"
 dependencies = [
     "argon2-cffi>=23.1.0",
+    "bcrypt>=4.0.0",
     "chainlit>=2.12.0",
     "chromadb>=1.5.9",
+    "cryptography>=42.0.0",
     "fastapi>=0.142.2",
     "neo4j>=6.4.0",
     "openpyxl>=3.1.5",
     "pandas>=3.0.6",
     "pydantic>=2.6.0",
     "pydantic-settings>=2.2.0",
+    "python-dotenv>=1.0.0",
+    "requests>=2.31.0",
     "sentence-transformers>=6.1.0",
+    "uvicorn>=0.30.0",
 ]
 
 [dependency-groups]
