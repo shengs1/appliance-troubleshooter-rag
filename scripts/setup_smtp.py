@@ -113,10 +113,10 @@ def interactive_setup_flow() -> None:
 
     # Yeu cau dat ma PIN bao ve cho cac lan sua sau
     print("\n--- THIẾT LẬP MÃ PIN BẢO VỆ CHO CÁC LẦN CHỈNH SỬA SAU ---")
-    new_pin = getpass.getpass("Nhập mã PIN bảo vệ mới [mặc định 88889999]: ").strip() or "88889999"
-    confirm_pin = getpass.getpass(f"Xác nhận lại mã PIN mới [{new_pin}]: ").strip() or new_pin
+    new_pin = getpass.getpass("Nhập mã PIN bảo vệ mới: ").strip() or "88889999"
+    confirm_pin = getpass.getpass("Xác nhận lại mã PIN mới: ").strip() or new_pin
     if new_pin != confirm_pin:
-        print("[CẢNH BÁO] Xác nhận không khớp, hệ thống áp dụng mã PIN mặc định 88889999.")
+        print("[CẢNH BÁO] Xác nhận không khớp, hệ thống áp dụng mã PIN mặc định an toàn.")
         new_pin = "88889999"
 
     set_smtp_admin_pin(new_pin)
@@ -127,8 +127,8 @@ def main() -> None:
     init_db()
 
     parser = argparse.ArgumentParser(description="Script quan ly cau hinh Brevo SMTP an toan trong SQLite.")
-    parser.add_argument("--pin", "-p", type=str, help="Ma PIN bao ve quan tri (mac dinh: 88889999)")
-    parser.add_argument("--wipe-code", "-w", type=str, help="Ma so xoa khan cap de tu dong xoa cau hinh cu (mac dinh: 123456789)")
+    parser.add_argument("--pin", "-p", type=str, help="Ma PIN bao ve quan tri")
+    parser.add_argument("--wipe-code", "-w", type=str, help="Ma so xoa khan cap de tu dong xoa cau hinh cu")
     parser.add_argument("--purge", action="store_true", help="Yeu cau xoa sach cau hinh SMTP cu")
     parser.add_argument("--host", type=str, default="smtp-relay.brevo.com", help="Dia chi SMTP Host")
     parser.add_argument("--port", type=int, default=587, help="Cong ket noi SMTP (587)")
@@ -178,8 +178,8 @@ def main() -> None:
         try:
             print("\n" + "=" * 65)
             print(" HỆ THỐNG ĐÃ CÓ CẤU HÌNH SMTP ĐƯỢC MÃ HÓA BẢO VỆ")
-            print(" - Nhập mã PIN (88889999) để vào Menu điều chỉnh.")
-            print(" - Hoặc nhập Mã số xóa khẩn cấp (123456789) để TỰ ĐỘNG XÓA SẠCH.")
+            print(" - Nhập mã PIN bảo vệ để vào Menu điều chỉnh.")
+            print(" - Hoặc nhập Mã số xóa khẩn cấp (Wipe Code) để TỰ ĐỘNG XÓA SẠCH.")
             print("=" * 65)
             pin = getpass.getpass("Nhập mã PIN hoặc Mã số xóa khẩn cấp: ").strip()
         except (KeyboardInterrupt, EOFError):

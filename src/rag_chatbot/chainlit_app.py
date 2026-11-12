@@ -53,7 +53,7 @@ from rag_chatbot.database import (
     update_user_status,
 )
 from rag_chatbot.rag import generate_rag_answer
-from rag_chatbot.retrieval import extract_matching_sources
+from rag_chatbot.retrieval import analyze_source_authority, extract_matching_sources
 
 # Patch Chainlit's avatar endpoint to support Vietnamese author names safely
 import chainlit.server as cl_server
@@ -365,14 +365,28 @@ async def on_message(message: cl.Message):
     raw_answer = rag_result.get("answer", "")
     retrieved_docs = rag_result.get("retrieved_documents", [])
 
-    # Trich xuat nguon tham khao phu hop
+    # Trich xuat nguon tham khao phu hop va phan tich tinh chinh hang
     matching_sources = extract_matching_sources(retrieved_docs, user_query)
     source_section = ""
     if matching_sources:
-        source_links = "\n".join(f"- [{url}]({url})" for url in matching_sources)
-        source_section = f"\n\n---\n**📚 Nguồn tham khảo chính thức:**\n{source_links}"
+        source_lines = []
+        for url in matching_sources:
+            auth = analyze_source_authority(url)
+            badge_text = f" *({auth['badge']})*"
+            source_lines.append(f"- [{url}]({url}){badge_text}")
+        source_links = "\n".join(source_lines)
+        source_section = f"\n\n---\n**📚 Nguồn tham khảo đối chiếu:**\n{source_links}"
 
-    full_response = f"{raw_answer}{source_section}"
+    # Canh bao an toan dien & Phan biet thao tac Nguoi dung va Ky thuat vien
+    safety_section = ""
+    if rag_result.get("llm_status") != "refused_scope" and raw_answer:
+        safety_section = (
+            "\n\n> ⚡ **CẢNH BÁO AN TOÀN ĐIỆN & PHÂN QUYỀN THAO TÁC:**\n"
+            "> - 👤 **Dành cho Người dùng:** Luôn ngắt nguồn điện (rút phích cắm hoặc cúp aptomat) trước khi kiểm tra hoặc vệ sinh máy. Chỉ thực hiện vệ sinh bên ngoài, kiểm tra nguồn điện, nguồn nước hoặc thao tác theo hướng dẫn sử dụng.\n"
+            "> - 🛠️ **Dành cho Kỹ thuật viên:** Các thao tác can thiệp sâu (tháo vỏ máy, đo kiểm tụ điện, xử lý bo mạch điều khiển, nạp gas, thay thế linh kiện bên trong) bắt buộc phải do thợ hoặc kỹ thuật viên chuyên nghiệp có trang bị đồ bảo hộ thực hiện."
+        )
+
+    full_response = f"{raw_answer}{safety_section}{source_section}"
 
     # Xoa thong bao trang thai cho truoc khi streaming noi dung cau tra loi
     response_msg.content = ""

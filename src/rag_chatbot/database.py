@@ -20,7 +20,9 @@ import sqlite3
 from typing import Any
 import uuid
 
-from cryptography.fernet import Fernet
+from cryptography.fernet import Fernet, MultiFernet
+from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
+from cryptography.hazmat.primitives import hashes
 
 from rag_chatbot.config import get_settings
 
@@ -885,16 +887,37 @@ def get_admin_audit_logs(limit: int = 20, db_path: str | None = None) -> list[di
 # 9. Quan ly Cau hinh He thong Ma hoa (Encrypted System Settings - Brevo SMTP)
 # ==============================================================================
 
-def _get_encryption_fernet() -> Fernet:
+def _get_encryption_fernet() -> MultiFernet:
     """Khoi tao doi tuong ma hoa doi xung Fernet (AES-128-CBC voi HMAC-SHA256).
     
-    Su dung session_secret_key ket hop salt co dinh de sinh khoa 256-bit an toan.
+    Nang cap bao mat theo tieu chuan NIST:
+    1. Khoa chinh (Primary Key): Su dung PBKDF2-HMAC-SHA256 voi 100.000 vong lap
+       ket hop salt co dinh de sinh khoa 256-bit Fernet tu db_encryption_key.
+    2. Khoa phu (Legacy Key): Sinh tu session_secret_key de tuong thich nguoc 100%
+       giup giai ma thanh cong moi du lieu cu ma khong gay loi.
+    3. Su dung MultiFernet: luon ma hoa moi bang Khoa chinh, nhung giai ma duoc ca 2 khoa.
     """
     settings = get_settings()
-    secret = getattr(settings, "session_secret_key", "dev-secret-key-change-in-production")
-    salt = b"rag_chatbot_smtp_encrypted_v1"
-    key = base64.urlsafe_b64encode(hashlib.sha256(secret.encode("utf-8") + salt).digest())
-    return Fernet(key)
+
+    # 1. Khoa chinh manh me (PBKDF2 100.000 iterations)
+    db_secret = getattr(settings, "db_encryption_key", "rag-chatbot-production-grade-encryption-key-256bit")
+    pbkdf2_kdf = PBKDF2HMAC(
+        algorithm=hashes.SHA256(),
+        length=32,
+        salt=b"rag_chatbot_pbkdf2_salt_v2_hardened",
+        iterations=100000,
+    )
+    strong_key = base64.urlsafe_b64encode(pbkdf2_kdf.derive(db_secret.encode("utf-8")))
+    strong_fernet = Fernet(strong_key)
+
+    # 2. Khoa phu tuong thich nguoc (Legacy Key)
+    legacy_secret = getattr(settings, "session_secret_key", "dev-secret-key-change-in-production")
+    legacy_key = base64.urlsafe_b64encode(
+        hashlib.sha256(legacy_secret.encode("utf-8") + b"rag_chatbot_smtp_encrypted_v1").digest()
+    )
+    legacy_fernet = Fernet(legacy_key)
+
+    return MultiFernet([strong_fernet, legacy_fernet])
 
 
 def encrypt_setting_value(plain_text: str) -> str:

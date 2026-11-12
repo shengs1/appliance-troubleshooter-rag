@@ -633,6 +633,76 @@ def extract_matching_sources(
     return valid_sources
 
 
+def analyze_source_authority(url: str) -> dict[str, Any]:
+    """Phan tich tinh chinh hang va tham quyen cua nguon tai lieu tham khao.
+    
+    Quy tac:
+    - Nguon chinh hang (Official Support): Thuoc domain ho tro ky thuat chinh hang cua 3 nha san xuat:
+      + Samsung: samsung.com
+      + LG: lg.com
+      + Panasonic: panasonic.com
+    - Nguon tong hop uy tin (Authorized/Community): Cac don vi dien may/ban le uy tin:
+      + dienmayxanh.com, fptshop.com.vn, appongtho.vn, kanto.vn...
+      
+    Returns:
+        dict: {
+            "is_official": bool,
+            "brand_owner": str,
+            "label": str,
+            "badge": str,
+            "domain": str
+        }
+    """
+    if not url:
+        return {
+            "is_official": False,
+            "brand_owner": "",
+            "label": "Tài liệu kỹ thuật nội bộ",
+            "badge": "ℹ️ Nguồn kỹ thuật nội bộ",
+            "domain": "",
+        }
+
+    lower = url.lower()
+    if "samsung.com" in lower:
+        return {
+            "is_official": True,
+            "brand_owner": "Samsung",
+            "label": "Nguồn chính hãng Samsung",
+            "badge": "✅ Nguồn chính hãng Samsung (Official Support)",
+            "domain": "samsung.com",
+        }
+    elif "lg.com" in lower:
+        return {
+            "is_official": True,
+            "brand_owner": "LG",
+            "label": "Nguồn chính hãng LG",
+            "badge": "✅ Nguồn chính hãng LG (Official Support)",
+            "domain": "lg.com",
+        }
+    elif "panasonic.com" in lower:
+        return {
+            "is_official": True,
+            "brand_owner": "Panasonic",
+            "label": "Nguồn chính hãng Panasonic",
+            "badge": "✅ Nguồn chính hãng Panasonic (Official Support)",
+            "domain": "panasonic.com",
+        }
+    else:
+        domain_name = ""
+        for known in ["dienmayxanh.com", "fptshop.com.vn", "appongtho.vn", "kanto.vn"]:
+            if known in lower:
+                domain_name = known
+                break
+        display_name = domain_name or "Đơn vị kỹ thuật uy tín"
+        return {
+            "is_official": False,
+            "brand_owner": "",
+            "label": f"Nguồn kỹ thuật tổng hợp ({display_name})",
+            "badge": f"ℹ️ Nguồn kỹ thuật tổng hợp ({display_name})",
+            "domain": domain_name,
+        }
+
+
 def retrieve_hybrid_context(query: str, k: int = 5) -> list[dict]:
     """Ham thuc hien truy van ket hop Vector va Graph cho cau hoi (alias cho search_hybrid)."""
     return search_hybrid(question=query, k=k)

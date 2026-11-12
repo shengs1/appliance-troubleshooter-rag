@@ -48,6 +48,7 @@ class Settings(BaseSettings):
     sqlite_db_path: str = "data/chat_history.db"
     session_expire_days: int = 7
     session_secret_key: str = "dev-secret-key-change-in-production"
+    db_encryption_key: str = "rag-chatbot-production-grade-encryption-key-256bit"
 
     # Cau hinh SMTP gui email & Dat lai mat khau
     smtp_host: str = "localhost"

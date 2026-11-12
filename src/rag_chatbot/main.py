@@ -78,6 +78,24 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
+# Middleware bao mat HTTPS & HTTP Security Headers
+@app.middleware("http")
+async def add_security_headers(request: Request, call_next):
+    """Tu dong thiet lap cac tieu chuan bao mat HTTPS va tieu de HTTP Security Headers."""
+    response = await call_next(request)
+    is_https = request.url.scheme == "https" or request.headers.get("x-forwarded-proto") == "https"
+    if is_https:
+        # HSTS (HTTP Strict Transport Security): bat buoc truyen thong ma hoa HTTPS
+        response.headers["Strict-Transport-Security"] = "max-age=31536000; includeSubDomains; preload"
+
+    # Ngan chan tan cong MIME-sniffing, Clickjacking va XSS
+    response.headers["X-Content-Type-Options"] = "nosniff"
+    response.headers["X-Frame-Options"] = "SAMEORIGIN"
+    response.headers["X-XSS-Protection"] = "1; mode=block"
+    response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
+    return response
+
 # Phuc vu cac file giao dien tinh trong thu muc public/ (dam bao ca port 8000 va port 8001 deu mo duoc HTML)
 if os.path.exists("public"):
     app.mount("/public", StaticFiles(directory="public", html=True), name="public")
@@ -312,8 +330,8 @@ def login(request: LoginRequest, req: Request, response: Response) -> LoginRespo
 
     raw_token, _ = create_user_session(user["id"])
 
-    # Thiet lap cookie HttpOnly an toan
-    is_secure = req.url.scheme == "https"
+    # Thiet lap cookie HttpOnly an toan (tu dong Secure khi ket noi HTTPS)
+    is_secure = req.url.scheme == "https" or req.headers.get("x-forwarded-proto") == "https"
     response.set_cookie(
         key=SESSION_COOKIE_NAME,
         value=raw_token,

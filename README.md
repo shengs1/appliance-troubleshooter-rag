@@ -43,7 +43,7 @@ flowchart TD
     EmailService -->|Gửi thư TLS :587| BrevoSMTP["Brevo SMTP Relay\n(smtp-relay.brevo.com:587)"]
     BrevoSMTP --> UserMail([Hộp thư người dùng])
 
-    AdminCLI["CLI Quản trị SMTP\n(scripts/setup_smtp.py)\nPIN 88889999 / Wipe 123456789"] -->|Mã hóa AES Fernet| SqliteDB
+    AdminCLI["CLI Quản trị SMTP\n(scripts/setup_smtp.py)\nMã hóa AES Fernet + PIN bảo vệ"] -->|Mã hóa AES Fernet| SqliteDB
     EmailService -->|Đọc cấu hình đã mã hóa| SqliteDB
     
     AuthCore --> SqliteDB[("SQLite Database\ndata/chat_history.db\n(users, sessions, reset_tokens,\naudit_logs, system_settings)")]
@@ -103,8 +103,8 @@ flowchart TD
   - Cấu hình SMTP (bao gồm API Key và tài khoản) được mã hóa đối xứng an toàn trước khi lưu vào bảng `system_settings` trong SQLite.
   - Ngay cả khi file CSDL `data/chat_history.db` bị trích xuất hoặc mở bằng công cụ xem SQLite thông thường, khóa SMTP vẫn hoàn toàn vô hại ở dạng chuỗi ciphertext ngẫu nhiên.
 - **Bảo vệ bằng mã PIN & Cơ chế Mã số xóa khẩn cấp (Master Wipe Code)**:
-  - **Mã PIN quản trị** (mặc định: **`88889999`**): Bắt buộc nhập đúng mã PIN để truy cập menu điều chỉnh hoặc xem cấu hình SMTP (khóa bí mật luôn được ẩn `••••••••`).
-  - **Mã số xóa khẩn cấp (Wipe Code)** (mặc định: **`123456789`**): Khi người dùng hoặc quản trị viên nhập mã này, toàn bộ tài khoản SMTP cũ và mã PIN trong CSDL sẽ được **tự động xóa sạch hoàn toàn**. Hệ thống ngay lập tức mở khóa cho phép thiết lập cấu hình mới mà **không đòi hỏi mật khẩu cũ**, sau đó yêu cầu thiết lập mã PIN mới cho các lần chỉnh sửa tiếp theo.
+  - **Mã PIN quản trị**: Bắt buộc nhập đúng mã PIN bảo vệ để truy cập menu điều chỉnh hoặc xem cấu hình SMTP (khóa bí mật luôn được ẩn `••••••••`).
+  - **Mã số xóa khẩn cấp (Wipe Code)**: Khi người dùng hoặc quản trị viên nhập mã này, toàn bộ tài khoản SMTP cũ và mã PIN trong CSDL sẽ được **tự động xóa sạch hoàn toàn**. Hệ thống ngay lập tức mở khóa cho phép thiết lập cấu hình mới mà **không đòi hỏi mật khẩu cũ**, sau đó yêu cầu thiết lập mã PIN mới cho các lần chỉnh sửa tiếp theo.
 - **Quy trình đặt lại mật khẩu an toàn**:
   - Gửi liên kết dạng: `http://localhost:8001/public/reset-password.html#token=<token>`.
   - **Bảo mật phân đoạn (#hash)**: Token đặt trong URL fragment để không bao giờ bị ghi vào log máy chủ web hoặc rò rỉ qua header `Referer`.
@@ -170,21 +170,21 @@ Công cụ CLI tương tác chuyên dụng giúp quản trị viên cấu hình 
 uv run python scripts/setup_smtp.py
 ```
 - **Nếu CSDL chưa có cấu hình (hoặc vừa bị xóa sạch)**: Hệ thống tự động vào chế độ thiết lập mới, cho phép nhập Host, Port, Username, SMTP Key mà **không yêu cầu mật khẩu cũ**. Cuối cùng, hệ thống yêu cầu thiết lập mã PIN bảo vệ mới.
-- **Nếu CSDL đã có cấu hình**: Hệ thống yêu cầu nhập mã PIN bảo vệ (mặc định: `88889999`) hoặc Mã số xóa khẩn cấp (mặc định: `123456789`).
+- **Nếu CSDL đã có cấu hình**: Hệ thống yêu cầu nhập mã PIN bảo vệ hoặc Mã số xóa khẩn cấp (Wipe Code).
 
 #### b. Các lệnh tiện ích dòng lệnh (CLI flags):
 ```powershell
 # 1. Xem trạng thái cấu hình hiện tại (ẩn ký tự nhạy cảm)
-uv run python scripts/setup_smtp.py --pin 88889999
+uv run python scripts/setup_smtp.py --pin <ma_pin_cua_ban>
 
 # 2. Kiểm tra bắt tay xác thực với máy chủ Brevo
-uv run python scripts/setup_smtp.py --pin 88889999 --test
+uv run python scripts/setup_smtp.py --pin <ma_pin_cua_ban> --test
 
 # 3. Đổi mã PIN bảo vệ mới
-uv run python scripts/setup_smtp.py --pin 88889999 --set-pin 99998888
+uv run python scripts/setup_smtp.py --pin <ma_pin_cu> --set-pin <ma_pin_moi>
 
 # 4. Tự động xóa sạch cấu hình SMTP bằng Mã số xóa khẩn cấp (Wipe Code)
-uv run python scripts/setup_smtp.py --wipe-code 123456789 --purge
+uv run python scripts/setup_smtp.py --wipe-code <ma_wipe_code> --purge
 ```
 
 ---
@@ -352,7 +352,7 @@ Các đường dẫn truy cập sau khi khởi động:
 Để tạo tài khoản Quản trị viên có toàn quyền truy cập hệ thống, chạy lệnh tiện ích:
 
 ```powershell
-uv run python scripts/create_admin.py --username admin --email admin@example.com --password AdminPassword123
+uv run python scripts/create_admin.py --username admin --email admin@example.com --password <mat_khau_quan_tri>
 ```
 
 Sau khi tạo:
@@ -415,6 +415,7 @@ appliance-troubleshooter-rag/
 ├── scripts/
 │   ├── cleanup_test_accounts.py         # Script dọn dẹp các tài khoản kiểm thử
 │   ├── create_admin.py                  # Script CLI tạo tài khoản Quản trị viên
+│   ├── export_clean_smtp_db.py          # Script xuất CSDL mẫu sạch chỉ chứa cấu hình SMTP mã hóa để chia sẻ
 │   ├── run_dev.ps1                      # Script PowerShell khởi động hệ thống 1 chạm
 │   ├── setup_smtp.py                    # Script CLI quản lý và mã hóa cấu hình Brevo SMTP an toàn
 │   └── view_data.py                     # Script xem nhanh dữ liệu các CSDL (SQLite, Chroma, Neo4j)

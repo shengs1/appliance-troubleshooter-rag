@@ -15,6 +15,11 @@
   3. `Samsung`
 - **Phạm vi thiết bị (10 loại thiết bị)**:
   - Tủ lạnh, Máy giặt, Máy sấy, Điều hòa, Lò nướng, Lò vi sóng, Máy rửa bát, Máy lọc không khí, Bếp, TV.
+- **Tính chính hãng của nguồn tài liệu (Source Authority)**:
+  - **86.97% (948 bản ghi)** được trích xuất trực tiếp từ các cổng hỗ trợ kỹ thuật chính hãng của 3 nhà sản xuất: Samsung (`samsung.com`), LG (`lg.com`) và Panasonic (`panasonic.com`).
+  - **13.03% (142 bản ghi)** từ các đơn vị bán lẻ và sửa chữa điện máy uy tín (Điện máy XANH, FPT Shop, Kanto, App Ong Thợ).
+- **Kiểm định và làm sạch dữ liệu**:
+  - Toàn bộ 1.090 bản ghi đã được đối soát kỹ lưỡng, khắc phục triệt để lỗi gán nhầm câu trả lời máy giặt vào câu hỏi mùi hôi máy lạnh và tủ lạnh (các mã Q0548, Q0554 và biến thể).
 - **Vai trò trong hệ thống RAG**:
   - Dữ liệu cung cấp tri thức cơ sở (ground truth knowledge).
   - Không tự sinh dữ liệu giả lập (no hallucination).
