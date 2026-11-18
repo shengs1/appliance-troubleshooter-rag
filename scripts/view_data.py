@@ -1,6 +1,6 @@
 """Script tien ich xem du lieu nhanh trong cac co so du lieu cua he thong.
 
-Danh cho sinh vien / giang vien kiem tra trong buoi bao cao:
+Chuc nang kiem tra va quan sat du lieu he thong:
 1. SQLite: Nguoi dung (users), lich su hoi thoai (conversations, messages), nhat ky quan tri (admin_audit_logs).
 2. ChromaDB: So luong vector chunks da nhung va metadata mau.
 3. Neo4j: Thong ke so luong Node va Relationship (neu server dang bat).

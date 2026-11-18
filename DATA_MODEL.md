@@ -1,7 +1,7 @@
 # TÀI LIỆU MÔ HÌNH DỮ LIỆU (DATA_MODEL.md)
 ## Trợ Lý Sự Cố Thiết Bị Điện Gia Dụng
 
-> **Ghi chú tài liệu**: Tài liệu này mô tả chi tiết mô hình dữ liệu thực tế được phân tích trực tiếp từ file `data/raw/dataset.xlsx`, thiết kế theo hướng đơn giản, tường minh và dễ đối chiếu trong quá trình bảo vệ đồ án.
+> **Ghi chú tài liệu**: Tài liệu này mô tả chi tiết mô hình dữ liệu thực tế được phân tích trực tiếp từ file `data/raw/dataset.xlsx`, thiết kế theo hướng đơn giản, chuẩn hóa và tường minh.
 
 ---
 

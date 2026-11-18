@@ -4,9 +4,8 @@ Muc dich:
 - Tao ra mot file CSDL SQLite sach (mac dinh: data/chat_history_smtp_template.db).
 - Khoi tao day du cau truc tat ca cac bang (users, sessions, conversations, messages, v.v.).
 - Sao chep nguyen ven cau hinh Brevo SMTP da ma hoa (AES Fernet) tu CSDL hien tai.
-- Tuyet doi KHONG kem bat ky tai khoan nguoi dung, lich su chat, token hay audit log nao.
-- Ban co the gui file nay cho ban be/dong nghiep de ho chi can dat ten lai thanh
-  data/chat_history.db la co the su dung ngay tinh nang gui email khoi phuc mat khau.
+- Khong kem tai khoan nguoi dung, lich su chat, token hay audit log (dam bao an toan thong tin).
+- CSDL mau phuc vu khoi tao moi truong moi hoac nạp vao may khac qua script import_smtp_config.py.
 """
 
 from __future__ import annotations
@@ -70,9 +69,9 @@ def export_clean_smtp_db(
     print(f"  * So ban ghi chep: {len(settings)} (smtp_config & ma PIN ma hoa)")
     print("  * Dữ liệu bảo mật:  0 users, 0 messages, 0 tokens (Hoàn toàn sạch)")
     print("\n[Huong dan su dung]:")
-    print(f"  1. Gui file '{output_path.name}' cho nguoi can chia se.")
-    print("  2. Nguoi nhan dat file nay vao thu muc 'data/' va doi ten thanh 'chat_history.db'.")
-    print("  3. Khoi dong he thong, tinh nang Brevo SMTP se san sang hoat dong ngay!")
+    print(f"  1. File '{output_path.name}' da duoc tao tai thu muc data/.")
+    print("  2. Dung lenh 'python scripts/import_smtp_config.py' de nap cau hinh vao CSDL hien tai.")
+    print("  3. Hoac doi ten thanh 'chat_history.db' neu khoi tao moi truong moi tu dau.")
     print("==================================================================")
 
 

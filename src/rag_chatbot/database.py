@@ -1,6 +1,6 @@
 """Module quan ly co so du lieu SQLite cho nguoi dung va lich su hoi thoai.
 
-Thiet ke toi gian, de hieu phu hop cho bao cao mon hoc / do an:
+Thiet ke toi gian, de hieu va bao mat cao:
 1. users: luu tru tai khoan nguoi dung va mat khau da hash.
 2. sessions: luu tru phien dang nhap voi token da hash (bao mat server-side).
 3. conversations: luu tru cac cuoc tro chuyen cua nguoi dung.

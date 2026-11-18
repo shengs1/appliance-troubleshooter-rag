@@ -1,11 +1,8 @@
-"""Script sao chep cau hinh SMTP ma hoa vao CSDL SQLite hien tai ma KHONG lam mat tai khoan cu.
+"""Script sao chep cau hinh SMTP ma hoa vao CSDL SQLite hien tai ma khong lam thay doi tai khoan cu.
 
-Muc dich:
-- Khi ban be hoac thanh vien trong nhom da co tai khoan hoac lich su chat trong data/chat_history.db,
-  ho KHONG DUOC ghi de file data/chat_history_smtp_template.db len file cu vi se bi mat het tai khoan.
-- Script nay se sao chep an toan chi rieng cac ban ghi cau hinh SMTP ma hoa (AES Fernet)
-  tu file template (hoac CSDL mau) vao file chat_history.db hien tai.
-- Bao toan nguyen ven 100% tat ca tai khoan nguoi dung, phan quyen admin va lich su hoi thoai!
+Chuc nang:
+- Sao chep an toan cac ban ghi cau hinh SMTP ma hoa (AES Fernet) tu CSDL mau vao CSDL dich.
+- Bao toan nguyen ven tat ca tai khoan nguoi dung, phan quyen admin va lich su hoi thoai hien co.
 
 Cach su dung:
   python scripts/import_smtp_config.py
@@ -74,7 +71,7 @@ def import_smtp_config(
     print(f"  * So muc SMTP da nap: {len(settings)} (smtp_config, PIN, Wipe code)")
     print(f"  * So tai khoan bao toan: {user_count} tai khoan (HOAN TOAN NGUYEN VEN)")
     print("==================================================================")
-    print("[Ket qua]: He thong cua ban da co the gui email khoi phuc mat khau ma khong bi mat bat ky tai khoan hay tin nhan nao!")
+    print("[Ket qua]: He thong da san sang gui email khoi phuc mat khau voi CSDL hien tai.")
 
 
 if __name__ == "__main__":
