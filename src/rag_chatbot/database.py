@@ -621,7 +621,7 @@ def get_user_by_id(user_id: str, db_path: str | None = None) -> dict[str, Any] |
 
 
 def get_user_by_username(username: str, db_path: str | None = None) -> dict[str, Any] | None:
-    """Tim kiem nguoi dung dua vao username (khong phan biet hoa thuong)."""
+    """Tim kiem nguoi dung dua vao username hoac email (khong phan biet hoa thuong)."""
     clean_u = (username or "").strip()
     if not clean_u:
         return None
@@ -630,9 +630,9 @@ def get_user_by_username(username: str, db_path: str | None = None) -> dict[str,
             """
             SELECT id, username, email, password_hash, role, status, created_at, last_login_at
             FROM users
-            WHERE LOWER(username) = LOWER(?);
+            WHERE LOWER(username) = LOWER(?) OR LOWER(email) = LOWER(?);
             """,
-            (clean_u,),
+            (clean_u, clean_u),
         ).fetchone()
         return dict(row) if row else None
 

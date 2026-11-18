@@ -195,8 +195,12 @@ def create_admin_user(
         if existing:
             user_id = existing["id"]
             cursor.execute(
-                "UPDATE users SET role = 'admin', status = 'active', password_hash = ? WHERE id = ?;",
-                (password_hash, user_id),
+                """
+                UPDATE users
+                SET role = 'admin', status = 'active', password_hash = ?, email = ?, username = ?
+                WHERE id = ?;
+                """,
+                (password_hash, clean_e, clean_u, user_id),
             )
         else:
             user_id = str(uuid.uuid4())

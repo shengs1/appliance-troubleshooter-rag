@@ -32,6 +32,7 @@ from rag_chatbot.database import (
     get_db_connection,
     get_db_path,
     get_user_by_id,
+    get_user_by_email,
     get_user_by_username,
 )
 
@@ -45,6 +46,8 @@ class SQLiteDataLayer(BaseDataLayer):
     async def get_user(self, identifier: str) -> Optional[PersistedUser]:
         """Lay thong tin user tu CSDL SQLite."""
         user = get_user_by_username(identifier, db_path=self.db_path)
+        if not user:
+            user = get_user_by_email(identifier, db_path=self.db_path)
         if not user:
             user = get_user_by_id(identifier, db_path=self.db_path)
         if not user:
@@ -70,13 +73,14 @@ class SQLiteDataLayer(BaseDataLayer):
         now_str = datetime.now(timezone.utc).isoformat()
         user_id = str(uuid.uuid4())
         role = user.metadata.get("role", "user") if user.metadata else "user"
+        email = user.metadata.get("email") if user.metadata else None
         with get_db_connection(self.db_path) as conn:
             conn.execute(
                 """
-                INSERT INTO users (id, username, password_hash, role, status, created_at)
-                VALUES (?, ?, ?, ?, 'active', ?);
+                INSERT INTO users (id, username, email, password_hash, role, status, created_at)
+                VALUES (?, ?, ?, '', ?, 'active', ?);
                 """,
-                (user_id, user.identifier, "", role, now_str),
+                (user_id, user.identifier, email, role, now_str),
             )
             conn.commit()
 
@@ -84,7 +88,7 @@ class SQLiteDataLayer(BaseDataLayer):
             id=user_id,
             identifier=user.identifier,
             createdAt=now_str,
-            metadata={"role": role, "status": "active"},
+            metadata={"role": role, "status": "active", "email": email},
         )
 
     async def get_thread_author(self, thread_id: str) -> str:

@@ -23,17 +23,18 @@ from rag_chatbot.database import init_db
 
 
 def main() -> None:
-    # Khoi tao co so du lieu neu chua co
-    init_db()
-
     parser = argparse.ArgumentParser(
         description="Script an toan de tao hoac nang quyen tai khoan Admin cho he thong RAG Chatbot."
     )
     parser.add_argument("--username", "-u", type=str, help="Ten dang nhap cua Admin")
     parser.add_argument("--email", "-e", type=str, help="Email cua Admin (dung de nhan email khoi phuc)")
     parser.add_argument("--password", "-p", type=str, help="Mat khau khoi tao cho Admin")
+    parser.add_argument("--db-path", type=str, default=None, help="Duong dan tuy chon toi file CSDL SQLite (mac dinh: data/chat_history.db)")
 
     args = parser.parse_args()
+
+    # Khoi tao co so du lieu neu chua co
+    init_db(db_path=args.db_path)
 
     username = args.username
     email = args.email
@@ -73,6 +74,7 @@ def main() -> None:
             username=username,
             email=email,
             password=password,
+            db_path=args.db_path,
         )
         print("--------------------------------------------------")
         print("Tao / Nang quyen Admin thanh cong!")
